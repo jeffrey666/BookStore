@@ -2,7 +2,7 @@
 public class placeholder {
  
 	public String fenzhi_1_1;
-	
+	public String friskj___;
 	public String fenzhi;
 	public String fenzhi2;
 
@@ -15,5 +15,16 @@ public class placeholder {
 	public String fenzhi1_swj;
 	
 	public String dkp_feizhi1;
+
+	
+	public String lxw_fenzhi1;
+
+	public String wt_feizhi1; 
+
+	public String yy_messi_fenzhi;
+	
+	public String cb22;
+	public String cb3;
+	public String sp;
 
 }
