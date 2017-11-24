@@ -9,4 +9,6 @@ public class placeholder {
 	public String masterfenzhi1;
 	
 	public String zwb_feizhi1;
+	
+	public String dkp_fenzhi1;
 }
