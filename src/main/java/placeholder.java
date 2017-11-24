@@ -25,6 +25,15 @@ public class placeholder {
 	
 	public String cb22;
 	public String cb3;
+	public String hsx_fenzhi2;
 	public String sp;
 
+	
+	public String husxhshl1l;
+	
+	public String aaaabfdsabfbsdbfsd;
+	
+	public String dsfjlsadfnsdalkfjlsda;
+	public String aaaaaaaaaaaa;
+	public String aajajfdlkjadsfflkj123123;
 }
