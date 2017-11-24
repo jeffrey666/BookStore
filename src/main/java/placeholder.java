@@ -7,4 +7,6 @@ public class placeholder {
 	public String fenzhi2;
 
 	public String masterfenzhi1;
+	
+	public String zwb_feizhi1;
 }
