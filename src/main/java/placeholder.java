@@ -9,9 +9,9 @@ public class placeholder {
 	public String masterfenzhi1;
 	
 	public String zwb_feizhi1;
-<<<<<<< HEAD
+
 	public String zf_feizhi2;
-=======
+
 	
 	public String dkp_feizhi1;
 	
@@ -23,5 +23,5 @@ public class placeholder {
 	
 	public String cb22;
 	public String cb3;
->>>>>>> master
+
 }
