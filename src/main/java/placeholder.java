@@ -24,4 +24,6 @@ public class placeholder {
 	public String sp;
 	
 	public String husxhshl1l;
+	
+	public String aaaaaaaaaaaa;
 }
