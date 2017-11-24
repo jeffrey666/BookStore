@@ -22,7 +22,7 @@ public class placeholder {
 	public String cb3;
 	public String hsx_fenzhi2;
 	public String sp;
-	private String zhfeg123;
+	private String zhfeg;
 	
 	public String husxhshl1l;
 	
