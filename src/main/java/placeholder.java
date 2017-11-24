@@ -18,6 +18,8 @@ public class placeholder {
 	
 	public String llw_feizhi1;
 	
+	public String yy_222;
+	
 	public String lxw_fenzhi1;
 
 	public String wt_feizhi1; 
