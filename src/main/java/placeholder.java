@@ -19,4 +19,5 @@ public class placeholder {
 	public String yy_messi_fenzhi;
 	
 	public String cb22;
+	public String cb3;
 }
