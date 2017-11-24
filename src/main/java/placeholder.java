@@ -14,4 +14,10 @@ public class placeholder {
 	
 	public String hsx_fenzhi1;
 	
+
+	public String wt_feizhi1;
+
+	public String yy_messi_fenzhi;
+	
+
 }
