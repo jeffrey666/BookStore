@@ -1,0 +1,26 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jieshu
+    username: root
+    password: root
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+      
+  http:
+    encoding:
+      force: true
+mybatis:
+  type-aliases-package: cn.tarena.jieshu.pojo
+  config-location: classpath:/mybatis/mybatis-config.xml
+  mapper-locations: classpath:/mybatis/mappers/*.xml
+
+
+
+
+
