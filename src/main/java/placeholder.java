@@ -13,4 +13,6 @@ public class placeholder {
 	public String dkp_fenzhi1;
 	
 	public String yuyong_fenzhi1;
+	
+	public String yuyong_fenzhi2;
 }
