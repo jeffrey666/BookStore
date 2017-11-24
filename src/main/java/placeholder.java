@@ -33,4 +33,10 @@ public class placeholder {
 	public void test(){
 		System.out.println("我是一个粉刷匠");
 	}
+	
+	public static void main(String[] args) {
+		System.out.println("我最帅0.0.0.0");
+	}
+	
+	
 }
