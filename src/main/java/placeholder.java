@@ -12,4 +12,7 @@ public class placeholder {
 	
 	public String dkp_fenzhi1;
 	public String lxw_fenzhi;
+	public void test(String name){
+		System.out.println("我是一个粉刷匠!!");
+	}
 }
