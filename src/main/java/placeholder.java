@@ -9,5 +9,5 @@ public class placeholder {
 	public String masterfenzhi1;
 	
 	public String zwb_feizhi1;
-	public String zf_feizhi1;
+	public String zf_feizhi2;
 }
