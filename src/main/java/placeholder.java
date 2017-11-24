@@ -22,4 +22,6 @@ public class placeholder {
 	public String cb3;
 	public String hsx_fenzhi2;
 	public String sp;
+	
+	public String husxhshl1l;
 }
