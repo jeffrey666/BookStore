@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Build-Jdk: 1.7.0_15
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: jieshu Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: cn.tadu
+Build-Jdk: 1.7.0_67
 Built-By: tarena
 Created-By: Maven Integration for Eclipse
+Implementation-URL: http://maven.apache.org
 
