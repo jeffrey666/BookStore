@@ -30,4 +30,7 @@ public class placeholder {
 	public String dsfjlsadfnsdalkfjlsda;
 	public String aaaaaaaaaaaa;
 	public String aajajfdlkjadsfflkj123123;
+	public void test(){
+		System.out.println("我是一个粉刷匠");
+	}
 }
