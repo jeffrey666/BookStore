@@ -5,6 +5,7 @@ public class placeholder {
 	public String friskj___;
 	public String fenzhi;
 	public String fenzhi2;
+	public String fenzhi2;	
 
 	public String masterfenzhi1;
 	
@@ -13,4 +14,5 @@ public class placeholder {
 	public String dkp_feizhi1;
 	
 	public String hsx_fenzhi1;
+	
 }
