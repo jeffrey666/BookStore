@@ -11,4 +11,5 @@ public class placeholder {
 	public String zwb_feizhi1;
 	
 	public String dkp_feizhi1;
+	public String lxw_fenzhi1;
 }
