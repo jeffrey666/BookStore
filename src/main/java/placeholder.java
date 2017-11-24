@@ -10,7 +10,7 @@ public class placeholder {
 	
 	public String zwb_feizhi1;
 
-	public String zf_feizhi;
+	public String zf_feizhi4;
 
 	
 	public String dkp_feizhi1;
