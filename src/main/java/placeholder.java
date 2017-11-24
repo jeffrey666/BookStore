@@ -7,9 +7,8 @@ public class placeholder {
 	public String fenzhi2;
 
 	public String masterfenzhi1;
-	
+	public String user_id;
 	public String zwb_feizhi1;
 	
 	public String dkp_fenzhi1;
-	public String lxw_fenzhi;
 }
