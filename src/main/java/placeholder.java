@@ -1,3 +1,4 @@
+import org.omg.Messaging.SyncScopeHelper;
 
 public class placeholder {
  
@@ -35,7 +36,7 @@ public class placeholder {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("我最帅0.0.0.0");
+		int i;
 	}
 	
 	
