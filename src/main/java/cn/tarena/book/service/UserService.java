@@ -5,5 +5,5 @@ import java.util.List;
 import cn.tarena.book.pojo.User;
 
 public interface UserService {
-    public List<User> findAllUser();
+//    public List<User> findAllUser();
 }
