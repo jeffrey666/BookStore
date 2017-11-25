@@ -11,8 +11,43 @@ public class HomeController {
         return "/index";
     }
     
-    @RequestMapping("/regist")
+    @RequestMapping("/toregist")
     public String regist() {
         return "/regist";
     } 
+    
+    @RequestMapping("details")
+    public String details(){
+    	return "/details";
+    }
+    
+    @RequestMapping("/tologin")
+    public String login(){
+    	return "/login";
+    }
+    
+    @RequestMapping("bookupload")
+    public String upload(){
+    	return "/bookupload";
+    }
+
+    
+    @RequestMapping("tosearch")
+    public String tosearch(){
+    	
+    	return "/search";
+    }
+
+    @RequestMapping("/tocart")
+    public String cart(){
+    	return "/cart";
+    }
+    
+    @RequestMapping("/tocategory")
+    public String category(){
+    	return "/category";
+    }
+    
+
+
 }

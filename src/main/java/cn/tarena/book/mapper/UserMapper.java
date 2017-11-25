@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserMapper {
 	//    User findUserById(@Param("id") String id);
 
-	List<User> findAllUser();
+//	List<User> findAllUser();
 
 	//    int saveUser(User user);
 
