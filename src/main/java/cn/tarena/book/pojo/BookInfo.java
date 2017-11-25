@@ -13,6 +13,13 @@ public class BookInfo {
 	private	String bookPub;//图书出版社
 	private String pubDate;//图书出版日期
 	private String category;//图书分类
+	private String imgurl;//图书存放地址
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
 	public String getBookInfoId() {
 		return bookInfoId;
 	}
@@ -73,13 +80,12 @@ public class BookInfo {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
 	@Override
 	public String toString() {
 		return "BookInfo [bookInfoId=" + bookInfoId + ", author=" + author + ", updateTime=" + updateTime
 				+ ", borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", searchVolume=" + searchVolume
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
-				+ category + "]";
+				+ category + ", imgurl=" + imgurl + "]";
 	}
-	
-	
 }

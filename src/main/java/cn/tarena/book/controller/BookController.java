@@ -23,6 +23,5 @@ public class BookController {
 		 bookService.save(book);
 		 return "";
 	 }
-	 
 	
 }
