@@ -46,4 +46,26 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User findUser(String user_id) {
+		return userMapper.findUserById(user_id);
+	}
+
+	@Override
+	public int updatePsw(String userId, String newPassword) {
+		return userMapper.updatePsw(userId, newPassword);
+	}
+
+	@Override
+	public User findUserByIdAndPsw(User user) {
+		
+		return userMapper.findUserByIdAndPsw(user);
+	}
+	//根据用户名查找用户，校验是否注册时候用了重复的用户名
+	@Override
+	public User findUserByUsername(String username) {
+		
+		return userMapper.findUserByUsername(username);
+	}
+
 }

@@ -17,7 +17,8 @@
             <li><a href="/tocategory">分类</a></li>
             <li><a href="details.html">价格</a></li>
             <li><a href="contact.html">联系</a></li>
-            <li><a href="/tocart">用户详情</a></li>
+            <li><a href="/user/userinfo.action">用户详情</a></li>
+
             <li><a href="/bookupload">上传图书</a></li>
 
             <li>

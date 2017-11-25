@@ -1,14 +1,10 @@
 package cn.tarena.book.mapper;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Select;
 
 import cn.tarena.book.pojo.User;
-
-import java.util.List;
 
 public interface UserMapper {
 
@@ -21,12 +17,15 @@ public interface UserMapper {
 	//根据用户名密码查找单个用户
 	public User findUser(@Param("username")String username, @Param("password")String password);
 
-//	List<User> findAllUser();
+	public abstract User findUserById(String user_id);
+	
+	public abstract User findUserByIdAndPsw(User user);
 
-	//    int saveUser(User user);
+	public abstract int updatePsw( @Param("userId") String userId,
+			@Param("newPassword") String newPassword);
+	@Select("select * from user where username=#{username}")
+	public User findUserByUsername(String username);
 
-	//    @Delete("delete from t_account where c_id = #{id}")
-	//    void deleteUserById(@Param("id") String id);
-	//
-	//    void updateUser(User user);
+
+	
 }
