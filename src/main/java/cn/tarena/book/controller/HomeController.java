@@ -36,6 +36,14 @@ public class HomeController {
     public String upload(){
     	return "/bookupload";
     }
+
+    
+    @RequestMapping("tosearch")
+    public String tosearch(){
+    	
+    	return "/search";
+    }
+
     @RequestMapping("/tocart")
     public String cart(){
     	return "/cart";
