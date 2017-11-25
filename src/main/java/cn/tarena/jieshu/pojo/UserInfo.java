@@ -2,7 +2,7 @@ package cn.tarena.jieshu.pojo;
 
 public class UserInfo {
 
-	private Integer userInfoId;
+	private String userInfoId;
 	private String nickname;
 	private String email;
 	private String address;
@@ -11,7 +11,7 @@ public class UserInfo {
 	private String telephone;
 	private String gender;
 
-	public UserInfo(Integer userInfoId, String nickname,
+	public UserInfo(String userInfoId, String nickname,
 			String email, String address, String cardNo,
 			Integer score, String telephone, String gender) {
 		super();
@@ -29,11 +29,13 @@ public class UserInfo {
 		super();
 	}
 
-	public Integer getUserInfoId() {
+
+
+	public String getUserInfoId() {
 		return userInfoId;
 	}
 
-	public void setUserInfoId(Integer userInfoId) {
+	public void setUserInfoId(String userInfoId) {
 		this.userInfoId = userInfoId;
 	}
 
@@ -95,11 +97,10 @@ public class UserInfo {
 
 	@Override
 	public String toString() {
-		return "UserInfo [userInfoId=" + userInfoId
-				+ ", nickname=" + nickname + ", email=" + email
-				+ ", address=" + address + ", cardNo=" + cardNo
-				+ ", score=" + score + ", telephone=" + telephone
-				+ ", gender=" + gender + "]";
+		return "UserInfo [userInfoId=" + userInfoId + ", nickname=" + nickname + ", email=" + email + ", address="
+				+ address + ", cardNo=" + cardNo + ", score=" + score + ", telephone=" + telephone + ", gender="
+				+ gender + "]";
 	}
 
+	
 }
