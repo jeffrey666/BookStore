@@ -11,7 +11,7 @@ public class HomeController {
         return "/index";
     }
     
-    @RequestMapping("/regist")
+    @RequestMapping("/toregist")
     public String regist() {
         return "/regist";
     } 
@@ -21,8 +21,13 @@ public class HomeController {
     	return "/details";
     }
     
-    @RequestMapping("/login")
+    @RequestMapping("/tologin")
     public String login(){
     	return "/login";
+    }
+    
+    @RequestMapping("toupload")
+    public String upload(){
+    	return "/upload";
     }
 }
