@@ -8,6 +8,16 @@ public interface BookService {
 	 * @param book
 	 */
 	void save(Book book);
+
+	void updateState(String bookId);
+
+	void updateDate(String bookId);
+
+	void updateBorrower(String userId, String bookId);
+
+	void addHistory(String userId, String bookId);
+
+	Book findOne(String bookId);
 	
 	
 }
