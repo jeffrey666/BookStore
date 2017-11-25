@@ -16,7 +16,7 @@ spring:
     encoding:
       force: true
 mybatis:
-  type-aliases-package: cn.tarena.jieshu.pojo
+  type-aliases-package: cn.tarena.book.pojo
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mybatis/mappers/*.xml
 

@@ -1,4 +1,4 @@
-package cn.tarena.jieshu.pojo;
+package cn.tarena.book.pojo;
 
 public class User {
 	private Integer id;
