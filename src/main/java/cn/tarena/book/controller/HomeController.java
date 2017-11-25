@@ -28,9 +28,6 @@ public class HomeController {
     
 
   /*  @RequestMapping("toupload")
-=======
-    @RequestMapping("bookupload")
->>>>>>> master
     public String upload(){
     	return "/bookupload";
     }*/
