@@ -2,24 +2,24 @@ package cn.tarena.book.pojo;
 
 public class User {
 	private String id;
-	private String username;
+	private String name;
 	private String password;
 	private Integer state;
-	private UserInfo userInfo;
 
-	public User(String id, String username, String password,
-			Integer state, UserInfo userInfo) {
+	public User(String id, String name, String password,
+			Integer state) {
 		super();
 		this.id = id;
-		this.username = username;
+		this.name = name;
 		this.password = password;
 		this.state = state;
-		this.userInfo = userInfo;
 	}
 
 	public User() {
 		super();
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -29,12 +29,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -53,19 +53,11 @@ public class User {
 		this.state = state;
 	}
 
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username
-				+ ", password=" + password + ", state=" + state
-				+ ", userInfo=" + userInfo + "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", state=" + state + "]";
 	}
+
+
 
 }

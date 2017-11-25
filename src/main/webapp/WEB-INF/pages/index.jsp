@@ -20,14 +20,14 @@
         
         	<div class="feat_prod_box">
             
-            	<div class="prod_img"><a href="/details"><img src="${app}/staticfile/images/prod1.gif" alt="" title="" border="0" /></a></div>
+            	<div class="prod_img"><a href="details.html"><img src="${app}/staticfile/images/prod1.gif" alt="" title="" border="0" /></a></div>
                 
                 <div class="prod_det_box">
                 	<div class="box_top"></div>
                     <div class="box_center">
                     <div class="prod_title">Product name</div>
                     <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                    <a href="/details" class="more">- more details -</a>
+                    <a href="details.html" class="more">- more details -</a>
                     <div class="clear"></div>
                     </div>
                     
@@ -46,7 +46,7 @@
                     <div class="box_center">
                     <div class="prod_title">Product name</div>
                     <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                    <a href="/details" class="more">- more details -</a>
+                    <a href="details.html" class="more">- more details -</a>
                     <div class="clear"></div>
                     </div>
                     
@@ -111,7 +111,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/tocart" class="view_cart">view cart</a>
+                  <a href="cart.html" class="view_cart">view cart</a>
               
               </div>
                        
@@ -198,7 +198,28 @@
        
        <div class="clear"></div>
        </div><!--end of center content-->
-    
+       
+               
+       <%-- <div class="footer">
+       	<div class="left_footer">
+       	<img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" />
+       	<br /> 
+       	<a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
+        <div class="right_footer">
+        <a href="#">home</a>
+        <a href="#">about us</a>
+        <a href="#">services</a>
+        <a href="#">privacy policy</a>
+        <a href="#">contact us</a>
+        <p>
+		Copyright © 2017-2018 全球技术有限公司 版权所有 保留一切权利 粤B-20170088号 
+		<br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 网络文化经营许可证全球网文[2017]0808-kkf8019号
+	</p>
+        </div>
+       </div> --%>
     
 
 </div>

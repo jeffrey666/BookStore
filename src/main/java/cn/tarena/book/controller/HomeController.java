@@ -11,28 +11,12 @@ public class HomeController {
         return "/index";
     }
     
-    @RequestMapping("/toregist")
+    @RequestMapping("/regist")
     public String regist() {
         return "/regist";
     } 
-    
-    @RequestMapping("details")
-    public String details(){
-    	return "/details";
+    @RequestMapping("/toupload")
+    public String toupload(){
+    	return "bookupload";
     }
-    
-    @RequestMapping("/tologin")
-    public String login(){
-    	return "/login";
-    }
-    
-    @RequestMapping("toupload")
-    public String upload(){
-    	return "/upload";
-    }
-    @RequestMapping("/tocart")
-    public String cart(){
-    	return "/cart";
-    }
-    
 }
