@@ -26,6 +26,12 @@ public class HomeController {
     	return "/login";
     }
     
+
+    @RequestMapping("toupload")
+    public String upload(){
+    	return "/bookupload";
+    }
+
     @RequestMapping("/tocart")
     public String cart(){
     	return "/cart";
