@@ -546,10 +546,10 @@ padding:10px 0 0 10px;
 }
 .right_footer{
 float:right;
-padding:10px 10px 0 0;
+padding:10px 225px 0 0;
 }
 .footer a{
-text-decoration:none;
+text-decoration:none;	
 padding:0 5px 0 5px;
 color:#afaeaf;
 }

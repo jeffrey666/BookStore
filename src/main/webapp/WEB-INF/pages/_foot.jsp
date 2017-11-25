@@ -20,7 +20,7 @@
         <a href="#">services</a>
         <a href="#">privacy policy</a>
         <a href="#">contact us</a>
-        <p>
+        <p id="end">
 		Copyright © 2017-2018 全球技术有限公司 版权所有 保留一切权利 粤B-20170088号 
 		<br>
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
