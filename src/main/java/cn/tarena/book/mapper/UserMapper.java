@@ -1,23 +1,18 @@
 package cn.tarena.book.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import cn.tarena.book.pojo.User;
 
-import java.util.List;
-
 public interface UserMapper {
-	//    User findUserById(@Param("id") String id);
 
-//	List<User> findAllUser();
+	public abstract User findUserById(String user_id);
+	
+	public abstract User findUser(User user);
 
-	//    int saveUser(User user);
+	public abstract int updatePsw( @Param("userId") String userId,
+			@Param("newPassword") String newPassword);
 
-	//    @Delete("delete from t_account where c_id = #{id}")
-	//    void deleteUserById(@Param("id") String id);
-	//
-	//    void updateUser(User user);
+
+	
 }

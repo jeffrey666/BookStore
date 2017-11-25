@@ -28,4 +28,20 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public User findUser(String user_id) {
+		return userMapper.findUserById(user_id);
+	}
+
+	@Override
+	public int updatePsw(String userId, String newPassword) {
+		return userMapper.updatePsw(userId, newPassword);
+	}
+
+	@Override
+	public User findUser(User user) {
+		
+		return userMapper.findUser(user);
+	}
+
 }

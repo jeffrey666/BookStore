@@ -4,10 +4,18 @@ import cn.tarena.book.pojo.User;
 
 public interface UserService {
 
-	User findUserByBookId(String bookId);
+	public abstract User findUserByBookId(String bookId);
 
-	void deduct(String userId);
+	public abstract void deduct(String userId);
 
-	void gain(User user);
+	public abstract void gain(User user);
+
+	public abstract User findUser(String user_id);
+
+	public abstract int updatePsw(String userId,
+			String newPassword);
+
+	public abstract User findUser(User user);
+
 
 }
