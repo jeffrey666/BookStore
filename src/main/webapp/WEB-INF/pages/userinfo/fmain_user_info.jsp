@@ -11,7 +11,7 @@
 	<frame name="head_frame" scrolling="no"  target="middleFrameSet" src="_head.action">	
 	<frameset cols="202,*" height="100%" name="middle" frameborder="no" border="0" framespacing="0">
 		<frame name="leftFrame" class="leftFrame" target="main" scrolling="no" src="userInfoLeft.action" />
-		<frame name="main" class="rightFrame" src="userInfoMain.action" />
+		<frame name="rightFrame" class="rightFrame" src="userInfoMain.action" />
 	</frameset>
 	<frame name="foot_frame" scrolling="no"  target="middleFrameSet" src="_foot.action">	
 </frameset>

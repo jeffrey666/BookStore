@@ -17,7 +17,7 @@
             <li><a href="about.html">关于我们</a></li>
             <li><a href="category.html">书城</a></li>
             <li><a href="specials.html">精品书</a></li>
-            <li><a href="myaccount.html">用户详情</a></li>
+            <li><a href="/userinfo.action">用户详情</a></li>
             <li><a href="/regist">注册</a></li>
             <li><a href="details.html">价格</a></li>
             <li><a href="contact.html">联系</a></li>

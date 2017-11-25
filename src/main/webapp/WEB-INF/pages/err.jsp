@@ -3,13 +3,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-		<title>个人页面</title>
+		<title>err page</title>
 	</head>
 	<body>
 		
+		<%@include file="/_head.jsp" %>
 		
-		欢迎进入个人页面
+		${requestScope.errMsg }
 		
+		<%@include file="/_foot.jsp" %>
 		
 	</body>
 </html>
