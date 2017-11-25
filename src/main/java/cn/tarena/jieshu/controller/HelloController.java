@@ -19,7 +19,7 @@ public class HelloController {
 		String str = userService.findAllUser().toString();
 		return str;
 	}
-	
+
 	@RequestMapping("/")
 	public String index() {
 		return "index";
