@@ -11,5 +11,22 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
+	@Override
+	public User findUserByBookId(String bookId) {
+		return null;
+	}
+
+	@Override
+	public void deduct(String userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gain(User user) {
+		// TODO Auto-generated method stub
+		
+	}
    
 }
