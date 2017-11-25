@@ -555,3 +555,14 @@ color:#afaeaf;
 }
 
 
+
+
+
+
+
+
+/*搜索条*/
+#content #search_div{
+	border: 1px solid #D4D4D4;
+	padding:8px;
+}

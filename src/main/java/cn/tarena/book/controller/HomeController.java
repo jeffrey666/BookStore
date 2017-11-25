@@ -26,10 +26,18 @@ public class HomeController {
     	return "/login";
     }
     
-    @RequestMapping("toupload")
+    @RequestMapping("bookupload")
     public String upload(){
     	return "/bookupload";
     }
+
+    
+    @RequestMapping("tosearch")
+    public String tosearch(){
+    	
+    	return "/search";
+    }
+
     @RequestMapping("/tocart")
     public String cart(){
     	return "/cart";
@@ -39,10 +47,8 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
-    @RequestMapping("/tosearch")
-    public String search(){
-    	return "/search";
-    }
+
     
+
 
 }
