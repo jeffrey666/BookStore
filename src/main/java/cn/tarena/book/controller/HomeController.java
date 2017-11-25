@@ -30,4 +30,10 @@ public class HomeController {
     public String upload(){
     	return "/upload";
     }
+    
+    @RequestMapping("tosearch")
+    public String tosearch(){
+    	
+    	return "/search";
+    }
 }
