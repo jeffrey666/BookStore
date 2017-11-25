@@ -14,6 +14,9 @@ import cn.tarena.book.service.UserService;
 @RequestMapping("/search")
 public class SearchController {
 	
+	
+	
+	
 	@Autowired
 	private BookService bookService;
 	@Autowired
