@@ -86,7 +86,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="cart.html" class="view_cart">view cart</a>
+                  <a href="/tocart" class="view_cart">view cart</a>
               
               </div>
         
@@ -171,20 +171,7 @@
        <div class="clear"></div>
        </div><!--end of center content-->
        
-              
-    <%--    <div class="footer">
-       	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
-        <div class="right_footer">
-        <a href="#">home</a>
-        <a href="#">about us</a>
-        <a href="#">services</a>
-        <a href="#">privacy policy</a>
-        <a href="#">contact us</a>
-       
-        </div>
-        
-       
-       </div> --%>
+             
     
 
 </div>
