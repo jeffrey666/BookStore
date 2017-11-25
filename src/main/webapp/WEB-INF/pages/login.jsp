@@ -32,7 +32,7 @@
        
        <div class="center_content">
        	<div class="left_content">
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>My account</div>
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>My account</div>
         
         	<div class="feat_prod_box_details">
             <p class="details">
@@ -83,9 +83,9 @@
         
                 	<div class="languages_box">
             <span class="red">Languages:</span>
-            <a href="#"><img src="images/gb.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/fr.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/de.gif" alt="" title="" border="0" /></a>
+            <a href="#"><img src="${app}/staticfile/images/gb.gif" alt="" title="" border="0" /></a>
+            <a href="#"><img src="${app}/staticfile/images/fr.gif" alt="" title="" border="0" /></a>
+            <a href="#"><img src="${app}/staticfile/images/de.gif" alt="" title="" border="0" /></a>
             </div>
                 <div class="currency">
                 <span class="red">Currency: </span>
@@ -96,7 +96,7 @@
                 
                 
               <div class="cart">
-                  <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" title="" /></span>My cart</div>
+                  <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My cart</div>
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
@@ -104,7 +104,7 @@
               
               </div>
         
-             <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
+             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
              <div class="about">
              <p>
              <img src="images/about.gif" alt="" title="" class="right" />
@@ -115,28 +115,28 @@
              
              <div class="right_box">
              
-             	<div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
+             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
+                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
                     
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
+                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                    
                     
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
+                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>               
              
@@ -144,7 +144,7 @@
              
              <div class="right_box">
              
-             	<div class="title"><span class="title_icon"><img src="images/bullet5.gif" alt="" title="" /></span>Categories</div> 
+             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet5.gif" alt="" title="" /></span>Categories</div> 
                 
                 <ul class="list">
                 <li><a href="#">accesories</a></li>
@@ -160,7 +160,7 @@
                 <li><a href="#">specials</a></li>                                              
                 </ul>
                 
-             	<div class="title"><span class="title_icon"><img src="images/bullet6.gif" alt="" title="" /></span>Partners</div> 
+             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet6.gif" alt="" title="" /></span>Partners</div> 
                 
                 <ul class="list">
                 <li><a href="#">accesories</a></li>
