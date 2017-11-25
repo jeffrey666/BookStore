@@ -1,16 +1,15 @@
 package cn.tarena.book.service;
 
-import cn.tarena.book.mapper.UserMapper;
-import cn.tarena.book.pojo.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import cn.tarena.book.mapper.UserMapper;
+import cn.tarena.book.pojo.User;
+
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 
 	@Override
 	public User findUserByBookId(String bookId) {
@@ -20,13 +19,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deduct(String userId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void gain(User user) {
 		// TODO Auto-generated method stub
-		
+
 	}
-   
+
 }
