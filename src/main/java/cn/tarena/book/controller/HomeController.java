@@ -39,6 +39,10 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
+    @RequestMapping("/tosearch")
+    public String search(){
+    	return "/search";
+    }
     
 
 }
