@@ -86,7 +86,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="cart.html" class="view_cart">view cart</a>
+                  <a href="/tocart" class="view_cart">view cart</a>
               
               </div>
         
@@ -185,6 +185,7 @@
         
        
        </div> --%>
+
     
 
 </div>
