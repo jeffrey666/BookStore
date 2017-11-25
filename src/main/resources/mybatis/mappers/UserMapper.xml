@@ -3,7 +3,6 @@
 <mapper namespace="cn.tarena.jieshu.mapper.UserMapper">
 
     <select id="findAllUser" resultType="cn.tarena.jieshu.pojo.User">
-
         select * from user
     </select>
 
