@@ -4,33 +4,14 @@
 <c:set var="app" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Book Store</title>
-<link rel="stylesheet" type="text/css" href="${app}/staticfile/css/style.css" />
-
-</head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Book Store</title>
+		<link rel="stylesheet" type="text/css" href="${app}/staticfile/css/style.css" />
+	</head>
+	<%@include file="_head.jsp" %>
 <body>
-<div id="wrap">
-
-       <div class="header">
-       		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
-            <ul>                                                                       
-            <li class="selected"><a href="index.html">主页</a></li>
-            <li><a href="about.html">关于我们</a></li>
-            <li><a href="category.html">书城</a></li>
-            <li><a href="specials.html">精品书</a></li>
-            <li><a href="myaccount.html">用户详情</a></li>
-            <li><a href="/regist">注册</a></li>
-            <li><a href="details.html">价格</a></li>
-            <li><a href="contact.html">联系</a></li>
-            </ul>
-        </div>     
-            
-            
-       </div> 
-       
+<div id="wrap">    
        
        <div class="center_content">
        	<div class="left_content">
@@ -218,23 +199,30 @@
        <div class="clear"></div>
        </div><!--end of center content-->
        
-              
-       <div class="footer">
-       	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
+               
+       <%-- <div class="footer">
+       	<div class="left_footer">
+       	<img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" />
+       	<br /> 
+       	<a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
         <a href="#">home</a>
         <a href="#">about us</a>
         <a href="#">services</a>
         <a href="#">privacy policy</a>
         <a href="#">contact us</a>
-       
+        <p>
+		Copyright © 2017-2018 全球技术有限公司 版权所有 保留一切权利 粤B-20170088号 
+		<br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 网络文化经营许可证全球网文[2017]0808-kkf8019号
+	</p>
         </div>
-        
-       
-       </div>
+       </div> --%>
     
 
 </div>
-
 </body>
+<%@include file="_foot.jsp" %>
 </html>
