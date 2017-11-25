@@ -26,14 +26,6 @@ public class HomeController {
     	return "/login";
     }
     
-
-  /*  @RequestMapping("toupload")
-    public String upload(){
-    	return "/bookupload";
-<<<<<<< HEAD
-    }*/
-
-    
     @RequestMapping("tosearch")
     public String tosearch(){
     	
