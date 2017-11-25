@@ -15,7 +15,7 @@
 		<form  onsubmit="return checkForm()"
 		action="<%= request.getContextPath() %>/saveBookUpload.action" method="POST" enctype="multipart/form-data">
 		
-			<h1>书籍上传</h1>
+			<h1 id="tt">书籍上传</h1>
 			<table>
 			    <tr>
 			        <td >
