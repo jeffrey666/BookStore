@@ -28,7 +28,7 @@ public class HomeController {
     
     @RequestMapping("toupload")
     public String upload(){
-    	return "/upload";
+    	return "/bookupload";
     }
     @RequestMapping("/tocart")
     public String cart(){
