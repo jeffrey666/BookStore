@@ -39,4 +39,6 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
+    
+
 }

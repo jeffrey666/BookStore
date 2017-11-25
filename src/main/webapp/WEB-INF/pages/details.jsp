@@ -19,24 +19,8 @@
 <body>
 <div id="wrap">
 
-      <%--  <div class="header">
-       		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
-            <ul>                                                                       
-            <li class="selected"><a href="index.html">home</a></li>
-            <li><a href="about.html">about us</a></li>
-            <li><a href="category.html">books</a></li>
-            <li><a href="specials.html">specials books</a></li>
-            <li><a href="myaccount.html">my accout</a></li>
-            <li><a href="register.html">register</a></li>
-            <li><a href="details.html">prices</a></li>
-            <li><a href="contact.html">contact</a></li>
-            </ul>
-        </div>     
-            
-            
-       </div> 
-        --%>
+
+
        
        <div class="center_content">
        	<div class="left_content">
@@ -174,7 +158,11 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
+<<<<<<< HEAD
                   <a href="cart.html" class="view_cart">view cart</a>
+=======
+                  <a href="/tocart" class="view_cart">view cart</a>
+>>>>>>> master
               
               </div>
         
@@ -259,6 +247,7 @@
        <div class="clear"></div>
        </div><!--end of center content-->
        
+<<<<<<< HEAD
               
    <!--     <div class="footer">
        	<div class="left_footer"><img src="images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
@@ -273,6 +262,9 @@
         
        
        </div> -->
+=======
+ 
+>>>>>>> master
     
 
 </div>
