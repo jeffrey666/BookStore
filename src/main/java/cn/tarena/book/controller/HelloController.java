@@ -10,19 +10,4 @@ import cn.tarena.book.service.UserService;
 @Controller
 public class HelloController {
 
-	@Autowired
-	private UserService userService;
-
-	@RequestMapping("/hello")
-	@ResponseBody //可以返回字符串到页面中
-	public String hello() {
-		String str = userService.findAllUser().toString();
-		return str;
-	}
-
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
-
 }
