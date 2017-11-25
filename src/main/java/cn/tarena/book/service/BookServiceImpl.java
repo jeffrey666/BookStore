@@ -14,31 +14,26 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void updateState(String bookId) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void updateDate(String bookId) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void updateBorrower(String userId, String bookId) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void addHistory(String userId, String bookId) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public Book findOne(String bookId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

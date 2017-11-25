@@ -13,7 +13,7 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	 @RequestMapping("/toupload")
+	 @RequestMapping("/bookupload")
 	 public String bookupload(){
 	    	return "/bookupload";
 	 }
