@@ -49,7 +49,8 @@ public class UserController {
 		//成功则跳转至主页
 		return "redirect:/";
 	}
-	//用户登录
+	//用户的登录
+	//用户的登录
 	@RequestMapping("/tologin.action")
 	public String toLogin(String username,String password,Model model,HttpSession session){
 		//非空验证
