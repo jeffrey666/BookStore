@@ -34,15 +34,15 @@
        
        <div class="center_content">
        	<div class="left_content">
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Register</div>
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>LOGIN</div>
         
         	<div class="feat_prod_box_details">
             <p class="details">
-            	欢迎注册jieshu，完成注册后请至个人中心完善信息。。。注册成功后将跳转至主页。。
+            	欢迎来到jieshu
             </p>
             
               	<div class="contact_form">
-                <div class="form_subtitle">注册新用户</div>
+                <div class="form_subtitle">登录</div>
                  	
                  	
                  	<div class="details">
@@ -52,7 +52,7 @@
 					</div>	
                  
                  
-                 <form name="register" action="toregist.action">          
+                 <form name="register" action="tologin.action">          
                     <div class="form_row">
                     <label class="contact"><strong>用户名:</strong></label>
                     <input name="username" type="text" class="contact_input" />
@@ -64,10 +64,7 @@
                     <input name="password" type="password" class="contact_input" />
                     </div> 
                    
-                    <div class="form_row">
-                    <label class="contact"><strong>确认密码:</strong></label>
-                    <input name="password2" type="password" class="contact_input" />
-                    </div> 
+                  
 
                   <!--   <div class="form_row">
                     <label class="contact"><strong>Email:</strong></label>
@@ -98,7 +95,7 @@
 
                     
                     <div class="form_row">
-                    <input type="submit" class="register" value="注册" />
+                    <input type="submit" class="register" value="登录" />
                     </div>   
                   </form>     
                 </div>  

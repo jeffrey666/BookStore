@@ -15,4 +15,8 @@ public class HomeController {
     public String regist() {
         return "/regist";
     } 
+    @RequestMapping("/login")
+	public String toLogin(){
+		return "login";
+	}
 }
