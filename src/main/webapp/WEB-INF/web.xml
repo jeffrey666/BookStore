@@ -4,14 +4,7 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	
-	<filter>
 		<filter-name>DevlopTestDataInitFilter</filter-name>
-		<filter-class>cn.tarena.book.user.filter.DevlopTestDataInitFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>DevlopTestDataInitFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
+
+
 </web-app>

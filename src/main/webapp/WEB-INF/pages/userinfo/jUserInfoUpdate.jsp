@@ -7,20 +7,8 @@
 </head>
 
 <body>
-<form name="icform" method="post">
+<form name="icform" method="post" target="_self"  action="/user/userinfo/update" >
 
-<div id="menubar">
-<div id="middleMenubar">
-<div id="innerMenubar">
-  <div id="navMenubar">
-<ul>
-	<li id="save"><a href="#" onclick="formSubmit('update','_self');this.blur();">修改</a></li>
-	<li id="back"><a href="#" onclick="window.history.back();">返回</a></li>
-</ul>
-  </div>
-</div>
-</div>
-</div>
    
   <div class="textbox-title">
 	<img src="../../staticfile/skin/default/images/icon/currency_yen.png"/>
@@ -31,15 +19,19 @@
 
 
 <div class="eXtremeTable" >
-<table id="ec_table" class="tableRegion" width="98%" >
-	<tr><td><input name="userId" value="${_CURRENT_USER.id } " type="hidden" ></td></tr>
-	<tr><td><input name="userInfoId" value="${_CURRENT_USER.userInfo.userInfoId } " type="hidden" ></td></tr>
+<table id="ec_table" class="tableRegion" width="98%"   >
+	<tr><td><input name="id" value="${_CURRENT_USER.id } " type="hidden" ></td></tr>
+	<tr><td><input name="userInfo.userInfoId" value="${_CURRENT_USER.userInfo.userInfoId } " type="hidden" ></td></tr>
 	<tr>
 	
 		<td>用户名：</td>
 		<td><input type="text" name="username" value="${_CURRENT_USER.username }" readonly="readonly" /></td>
+
 		<td>状态：</td>
-		<td><input type="text" name="state" value="<c:if test="${_CURRENT_USER.state==1 }">启用</c:if> <c:if test="${_CURRENT_USER.state!=1 }">其他状态</c:if>" readonly="readonly" /></td>
+		<td>
+			<input disabled="disabled" type="radio" name="state" value="1"   <c:if test="${_CURRENT_USER.state==1 }">checked="checked"</c:if> />启用
+			<input disabled="disabled" type="radio" name="state"  value="0" <c:if test="${_CURRENT_USER.state==0 }">checked="checked"</c:if> />关闭
+		</td>
 	</tr>
 	<tr>
 		<td>昵称：</td>
@@ -63,6 +55,11 @@
 	 	<tr>
 		<td>电话号码：</td>
 		<td><input type="text" name="userInfo.telephone" value="${_CURRENT_USER.userInfo.telephone }" /></td>
+	</tr>
+	
+	<tr>
+		<td><input type="submit" value="提交"/></td>
+		<td><input type="button" value="返回" onclick="window.history.back();" /></td>		
 	</tr>
 	
 	
