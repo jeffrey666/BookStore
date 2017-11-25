@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.pojo.UserInfo;
@@ -27,13 +28,15 @@ public class DevlopTestDataInitFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig)
 			throws ServletException {
-		
+
 	}
 
 	@Override
 	public void doFilter(ServletRequest request,
 			ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		System.out.println("11111111111111111111111111111111111111111111111111111");
 
 		String userInfoId = "100";
 		String nickname = "史诗之狐";
@@ -54,15 +57,17 @@ public class DevlopTestDataInitFilter implements Filter {
 
 		User user = new User(id, username, password, state,
 				userInfo);
-		
-//		(httpservletrequest)request
-//		session.setAttribute("_CURRENT_USER", user);
-			
+
+		HttpServletRequest req = (HttpServletRequest) request;
+		req.getSession().setAttribute("_CURRENT_USER", user);
+
+		chain.doFilter(request, response);
+
 	}
 
 	@Override
 	public void destroy() {
-		
+
 	}
 
 }
