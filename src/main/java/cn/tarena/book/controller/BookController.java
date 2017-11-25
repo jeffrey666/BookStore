@@ -18,10 +18,10 @@ public class BookController {
 	    	return "/bookupload";
 	 }
 	
-	 @RequestMapping("/toupload")
+	/* @RequestMapping("/toupload")
 	 public String toupload(Book book){
 		 bookService.save(book);
 		 return "";
-	 }
+	 }*/
 	
 }

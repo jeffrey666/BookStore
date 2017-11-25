@@ -15,6 +15,7 @@
             
             
             <li><a href="/tosearch">搜索</a></li>
+
             <li><a href="/tocategory">分类</a></li>
             <li><a href="/toregist">注册</a></li>
             <li><a href="details.html">价格</a></li>

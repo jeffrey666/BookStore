@@ -27,10 +27,10 @@ public class HomeController {
     }
     
 
-    @RequestMapping("toupload")
+  /*  @RequestMapping("toupload")
     public String upload(){
     	return "/bookupload";
-    }
+    }*/
 
     @RequestMapping("/tocart")
     public String cart(){
