@@ -15,4 +15,8 @@ public class HomeController {
     public String regist() {
         return "/regist";
     } 
+    @RequestMapping("/toupload")
+    public String toupload(){
+    	return "bookupload";
+    }
 }
