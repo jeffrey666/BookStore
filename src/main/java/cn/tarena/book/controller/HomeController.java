@@ -15,6 +15,12 @@ public class HomeController {
     public String regist() {
         return "/regist";
     } 
+
+    @RequestMapping("/login")
+	public String toLogin(){
+		return "login";
+	}
+
     
     @RequestMapping("details")
     public String details(){
@@ -47,6 +53,7 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
+
     
 
 
