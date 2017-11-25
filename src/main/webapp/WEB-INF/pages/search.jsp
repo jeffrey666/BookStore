@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="app" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,19 +41,46 @@
             <a href="index.html">home</a> &gt;&gt; category name
             </div>	
             <!-- 搜索行表单 -->
-            <div id="search_div">
+            <div id="content">
+            
 			<form method="post" action="/search/search">
+				<div id="search_div">
 				<span class="input_span">书名：<input type="text" name="name" value="${bookname }"/></span>
-				<span class="input_span">书籍种类：<input type="text" name="style" value="${style }"/></span>
-				<span class="input_span">书籍出版日期年限：<input type="text" name="mindate" value="${minDate }"/> - <input type="text" name="maxprice" value="${maxDate }"/></span>
-				<input type="submit" value="查询">
+				<span class="input_span">书籍种类：
+				<select name="bookInfo.category">
+				<option value="文学类" <c:if test="${book.bookInfo.category eq '文学类' } ">selected="selected"</c:if>>文学类</option>
+				<option value="小说类" <c:if test="${book.bookInfo.category eq '小说类' } ">selected="selected"</c:if>>小说类</option>
+				<option value="IT类" <c:if test="${book.bookInfo.category eq 'IT类' } ">selected="selected"</c:if>>IT类</option>
+				<option value="艺术与摄影类" <c:if test="${book.bookInfo.category eq '艺术与摄影类' } ">selected="selected"</c:if>>艺术与摄影类</option>
+				<option value="时尚杂志类" <c:if test="${book.bookInfo.category eq '时尚杂志类' } ">selected="selected"</c:if>>时尚杂志类</option>
+				<option value="辅导教材类" <c:if test="${book.bookInfo.category eq '辅导教材类' } ">selected="selected"</c:if>>辅导教材类</option>
+				<option value="历史类" <c:if test="${book.bookInfo.category eq '历史类' } ">selected="selected"</c:if>>历史类</option>
+				</select>
+				</span>
+				</div>
+				<div id="search_div2">
+				<span class="input_span">书籍出版日期年限：<input type="text" name="mindate" value="${minDate }"/></span>
+				<span class="input_span"><input type="submit" value="查询"></span>
+				</div>
 			</form>
-		    </div>
+		    
+            </div>
             
             
             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Category books</div>
            
            <div class="new_products">
+<<<<<<< HEAD
+               <c:forEach items="${books }" var="book">
+                    <div class="new_prod_box">
+                        <a href="search/toview?id=${book.bookId}">${book.bookName}</a>
+                        <div class="new_prod_bg">
+                        <a href="search/toview?id=${book.bookId}"><img src="${book.bookInfo.pcUrl}" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>
+               </c:forEach>
+                           
+=======
            
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
@@ -115,11 +143,12 @@
                         <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                  
+>>>>>>> master
                      
 
             <div class="pagination">
             <span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a>?a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
-            </div>  
+            </div>    
             
             </div> 
           
