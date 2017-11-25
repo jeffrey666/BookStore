@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.tarena.book.mapper.UserInfoMapper">
+
+
+	<update id="update">
+		UPDATE user_info
+		<set>
+			<if test="nickname != null"> nickname = #{nickname}, </if>
+			<if test="email != null"> email = #{email}, </if>
+			<if test="address != null"> address = #{address}, </if>
+			<if test="cardNo != null"> card_no = #{cardNo}, </if>
+			<if test="score != null"> score = #{score}, </if>
+			<if test="telephone != null"> telephone = #{telephone}, </if>
+			<if test="gender != null"> gender = #{gender}, </if>
+		</set>
+		WHERE
+		user_info_id = #{userInfoId}
+	</update>
+
+
+</mapper>
