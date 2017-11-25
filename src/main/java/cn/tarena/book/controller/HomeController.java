@@ -30,6 +30,14 @@ public class HomeController {
     public String upload(){
     	return "/bookupload";
     }
+<<<<<<< HEAD
+    
+    @RequestMapping("tosearch")
+    public String tosearch(){
+    	
+    	return "/search";
+    }
+=======
     @RequestMapping("/tocart")
     public String cart(){
     	return "/cart";
@@ -41,4 +49,5 @@ public class HomeController {
     }
     
 
+>>>>>>> master
 }
