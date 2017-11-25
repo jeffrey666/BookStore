@@ -23,6 +23,8 @@
             <li><a href="/toupload">上传图书</a></li>
             <li><a href="/toregist">注册</a></li>
 
+
+
             <li>
 			<c:choose>
 				<c:when test="${sessionScope._CURRENT_USER == null}">
