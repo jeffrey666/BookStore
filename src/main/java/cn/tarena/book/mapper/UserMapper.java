@@ -1,17 +1,18 @@
-package cn.tarena.jieshu.mapper;
+package cn.tarena.book.mapper;
 
-import cn.tarena.jieshu.pojo.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import cn.tarena.book.pojo.User;
 
 import java.util.List;
 
 public interface UserMapper {
 	//    User findUserById(@Param("id") String id);
 
-	List<User> findAllUser();
+//	List<User> findAllUser();
 
 	//    int saveUser(User user);
 

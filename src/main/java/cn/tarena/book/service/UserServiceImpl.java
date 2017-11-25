@@ -1,7 +1,8 @@
-package cn.tarena.jieshu.service;
+package cn.tarena.book.service;
 
-import cn.tarena.jieshu.mapper.UserMapper;
-import cn.tarena.jieshu.pojo.User;
+import cn.tarena.book.mapper.UserMapper;
+import cn.tarena.book.pojo.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,5 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
-    @Override
-    public List<User> findAllUser() {
-        return userMapper.findAllUser();
-    }
+   
 }

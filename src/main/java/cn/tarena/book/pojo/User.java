@@ -1,12 +1,12 @@
-package cn.tarena.jieshu.pojo;
+package cn.tarena.book.pojo;
 
 public class User {
-	private Integer id;
+	private String id;
 	private String name;
 	private String password;
 	private Integer state;
 
-	public User(Integer id, String name, String password,
+	public User(String id, String name, String password,
 			Integer state) {
 		super();
 		this.id = id;
@@ -19,11 +19,13 @@ public class User {
 		super();
 	}
 
-	public Integer getId() {
+
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -53,9 +55,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name
-				+ ", password=" + password + ", state=" + state
-				+ "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", state=" + state + "]";
 	}
+
+
 
 }
