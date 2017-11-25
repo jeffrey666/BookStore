@@ -8,7 +8,8 @@ public class User {
 	private UserInfo userInfo;
 
 	public User(String id, String username, String password,
-			Integer state, UserInfo userInfo) {
+Integer state, UserInfo userInfo) {
+
 		super();
 		this.id = id;
 		this.username = username;
@@ -28,6 +29,7 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 
 	public String getUsername() {
 		return username;
@@ -53,8 +55,10 @@ public class User {
 		this.state = state;
 	}
 
+
 	public UserInfo getUserInfo() {
 		return userInfo;
+
 	}
 
 	public void setUserInfo(UserInfo userInfo) {

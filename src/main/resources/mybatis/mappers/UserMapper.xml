@@ -33,7 +33,7 @@
 		<include refid="findAllUser_sql"></include> WHERE id = #{user_id}
 	</select>
 	
-	<select id="findUser" resultMap="user_rm"  >
+	<select id="findUserByIdAndPsw" resultMap="user_rm"  >
 		<include refid="findAllUser_sql"></include> WHERE id = #{id} and password = #{password}
 	</select>	
 	
@@ -45,4 +45,8 @@
 	</update>		
 
 
+	<!--根据用户名和密码查询该用户是否存在-->
+	<select id="findUser" resultType="cn.tarena.book.pojo.User">
+		select * from user where username=#{username} and password=#{password}
+	</select>
 </mapper>
