@@ -26,7 +26,7 @@ public class HomeController {
     	return "/login";
     }
     
-    @RequestMapping("toupload")
+    @RequestMapping("bookupload")
     public String upload(){
     	return "/bookupload";
     }
