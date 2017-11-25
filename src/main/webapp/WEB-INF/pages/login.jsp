@@ -34,15 +34,21 @@
 					</div>	
                  
                  
-                 <form name="register" action="tologin.action">          
+                  <form name="register" action="tologin.action">          
                     <div class="form_row">
                     <label class="contact"><strong>用户名:</strong></label>
                     <input name="username" type="text" class="contact_input" />
+                    </div>  
 
+
+                    <div class="form_row">
                     <label class="contact"><strong>密码:</strong></label>
                     <input name="password" type="password" class="contact_input" />
                     </div> 
                    
+                   
+             
+
                     
                     <div class="form_row">
                     <input type="submit" class="register" value="登录" />

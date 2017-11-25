@@ -39,6 +39,12 @@ public class UserController {
 			model.addAttribute("errorInfo","用户名或密码不能为空");
 			return "/regist";
 		}
+		User exitUser = userService.findUserByUsername(user.getUsername()); 
+		if(exitUser!=null){
+			model.addAttribute("errorInfo","用户名已存在");
+			return "/regist";
+		}
+		
 		userService.addUser(user);
 		//成功则跳转至主页
 		return "redirect:/";

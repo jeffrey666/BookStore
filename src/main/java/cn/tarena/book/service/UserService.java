@@ -18,10 +18,14 @@ public interface UserService {
 
 	public abstract User findUser(String user_id);
 
+	
 	public abstract int updatePsw(String userId,
 			String newPassword);
 
 	public abstract User findUserByIdAndPsw(User user);
+	
+	//根据用户名查找用户，校验是否注册时候用了重复的用户名
+	public abstract User findUserByUsername(String username);
 
 
 
