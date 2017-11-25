@@ -31,7 +31,13 @@
        
        
        <div class="center_content">
-       <!-- 添加代码处 -->
+       	<div class="left_content">
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>About us</div>
+        
+
+            
+        <div class="clear"></div>
+        </div><!--end of left content-->
         
         <div class="right_content">
         
