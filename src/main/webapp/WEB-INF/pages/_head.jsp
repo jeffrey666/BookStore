@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"  isELIgnored="false" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 	<head>
@@ -15,12 +15,11 @@
             
             
             <li><a href="/tosearch">搜索</a></li>
-            <li><a href="/tocategory">分类</a></li>
-            <li><a href="/userinfo.action">用户详情</a></li>
+            <li><a href="specials.html">精品书</a></li>
             <li><a href="/toregist">注册</a></li>
             <li><a href="details.html">价格</a></li>
             <li><a href="contact.html">联系</a></li>
-            <li><a href="/tocart">用户详情</a></li>
+            <li><a href="myaccount.html">用户详情</a></li>
             <li><a href="/toupload">上传图书</a></li>
             <li>
 			<c:choose>
