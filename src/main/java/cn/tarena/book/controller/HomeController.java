@@ -30,4 +30,9 @@ public class HomeController {
     public String upload(){
     	return "/upload";
     }
+    @RequestMapping("/tocart")
+    public String cart(){
+    	return "/cart";
+    }
+    
 }
