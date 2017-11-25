@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="app" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,28 +11,10 @@
 <body>
 <div id="wrap">
 
-      <%--  <div class="header">
-       		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
-            <ul>                                                                       
-            <li><a href="index.html">home</a></li>
-            <li><a href="about.html">about us</a></li>
-            <li><a href="category.html">books</a></li>
-            <li><a href="specials.html">specials books</a></li>
-            <li><a href="myaccount.html">my accout</a></li>
-            <li class="selected"><a href="register.html">register</a></li>
-            <li><a href="details.html">prices</a></li>
-            <li><a href="contact.html">contact</a></li>
-            </ul>
-        </div>     
-            
-            
-       </div>  --%>
-       
        
        <div class="center_content">
        	<div class="left_content">
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Register</div>
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Contact Us</div>
         
         	<div class="feat_prod_box_details">
             <p class="details">
@@ -42,18 +22,11 @@
             </p>
             
               	<div class="contact_form">
-                <div class="form_subtitle">create new account</div>
-                 <form name="register" action="#">          
+                <div class="form_subtitle">all fields are requierd</div>          
                     <div class="form_row">
-                    <label class="contact"><strong>Username:</strong></label>
+                    <label class="contact"><strong>Name:</strong></label>
                     <input type="text" class="contact_input" />
                     </div>  
-
-
-                    <div class="form_row">
-                    <label class="contact"><strong>Password:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div> 
 
                     <div class="form_row">
                     <label class="contact"><strong>Email:</strong></label>
@@ -70,23 +43,16 @@
                     <label class="contact"><strong>Company:</strong></label>
                     <input type="text" class="contact_input" />
                     </div>
-                    
-                    <div class="form_row">
-                    <label class="contact"><strong>Adrres:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>                    
+
 
                     <div class="form_row">
-                        <div class="terms">
-                        <input type="checkbox" name="terms" />
-                        I agree to the <a href="#">terms &amp; conditions</a>                        </div>
-                    </div> 
+                    <label class="contact"><strong>Message:</strong></label>
+                    <textarea class="contact_textarea" ></textarea>
+                    </div>
 
                     
                     <div class="form_row">
-                    <input type="submit" class="register" value="register" />
-                    </div>   
-                  </form>     
+                    <a href="#" class="contact">send</a>                    </div>      
                 </div>  
             
           </div>	
@@ -158,7 +124,7 @@
                         <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
                         <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
-                    </div>              
+                    </div>                
              
              </div>
              
@@ -205,8 +171,8 @@
        <div class="clear"></div>
        </div><!--end of center content-->
        
-       <%--        
-       <div class="footer">
+              
+    <%--    <div class="footer">
        	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
         <a href="#">home</a>
