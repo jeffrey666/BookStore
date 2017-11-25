@@ -9,6 +9,7 @@ body{
 form{
 	width: 450px;
 	margin: 0 auto;
+	height: 630px;
 }
 h1{
 	width: 300px;/* */
@@ -29,6 +30,7 @@ td{
 .tds{
 	font-size: 18px;
 	text-align: right;
+	padding-bottom: 10px;
 }
 
 input{
