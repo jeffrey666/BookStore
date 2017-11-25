@@ -1,58 +1,53 @@
 /*
-SQLyog Ultimate - MySQL GUI v8.2 
-MySQL - 5.5.27 : Database - jieshu
-*********************************************************************
+Navicat MySQL Data Transfer
+
+Source Server         : mMysql
+Source Server Version : 50527
+Source Host           : localhost:3306
+Source Database       : jieshu
+
+Target Server Type    : MYSQL
+Target Server Version : 50527
+File Encoding         : 65001
+
+Date: 2017-11-25 10:06:04
 */
 
+SET FOREIGN_KEY_CHECKS=0;
 
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`jieshu` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `jieshu`;
-
-/*Table structure for table `user` */
-
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
 DROP TABLE IF EXISTS `user`;
-
 CREATE TABLE `user` (
-  `user_id` varchar(20) NOT NULL,
-  `username` varchar(30) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `state` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL COMMENT '用户名',
+  `password` varchar(50) NOT NULL COMMENT '密码',
+  `state` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `user` */
+-- ----------------------------
+-- Records of user
+-- ----------------------------
 
-insert  into `user`(`user_id`,`username`,`password`,`state`) values ('1','aaa','111',NULL);
-
-/*Table structure for table `user_info` */
-
+-- ----------------------------
+-- Table structure for `user_info`
+-- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
-
 CREATE TABLE `user_info` (
-  `user_info_id` varchar(20) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `user_info_id` int(11) NOT NULL,
+  `nickname` varchar(20) DEFAULT NULL COMMENT '真实姓名',
+  `email` varchar(40) DEFAULT NULL COMMENT '邮箱',
+  `address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `card_no` varchar(20) DEFAULT NULL COMMENT '身份证号',
+  `score` int(11) DEFAULT NULL COMMENT '积分',
   `telephone` varchar(20) DEFAULT NULL,
-  `card_no` varchar(20) DEFAULT NULL,
-  `gender` varchar(20) DEFAULT NULL,
-  `level` int(11) DEFAULT NULL,
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_info_id`)
+  `gender` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`user_info_id`),
+  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`user_info_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `user_info` */
-
-insert  into `user_info`(`user_info_id`,`name`,`telephone`,`card_no`,`gender`,`level`,`create_date`) values ('1','赵云','123456','12348955','男',NULL,'2017-11-24 17:54:19');
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- ----------------------------
+-- Records of user_info
+-- ----------------------------

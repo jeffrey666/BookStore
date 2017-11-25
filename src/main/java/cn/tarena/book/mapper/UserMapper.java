@@ -10,14 +10,14 @@ import cn.tarena.book.pojo.User;
 import java.util.List;
 
 public interface UserMapper {
-//    User findUserById(@Param("id") String id);
+	//    User findUserById(@Param("id") String id);
 
-    List<User> findAllUser();
+	List<User> findAllUser();
 
-//    int saveUser(User user);
+	//    int saveUser(User user);
 
-//    @Delete("delete from t_account where c_id = #{id}")
-//    void deleteUserById(@Param("id") String id);
-//
-//    void updateUser(User user);
+	//    @Delete("delete from t_account where c_id = #{id}")
+	//    void deleteUserById(@Param("id") String id);
+	//
+	//    void updateUser(User user);
 }
