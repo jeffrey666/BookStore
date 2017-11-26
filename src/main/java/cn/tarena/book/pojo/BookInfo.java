@@ -88,6 +88,6 @@ public class BookInfo {
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
 				+ category + ", imgurl=" + imgurl + "]";
 	}
-
 }
+
 

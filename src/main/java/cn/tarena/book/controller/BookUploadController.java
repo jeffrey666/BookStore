@@ -19,11 +19,8 @@ import cn.tarena.book.service.BookService;
 import cn.tarena.book.utils.FileUpload;
 
 
-
-
 @Controller
 public class BookUploadController  extends BaseController{
-	
 	
 	@Autowired
 	private BookService bookService;
@@ -41,14 +38,12 @@ public class BookUploadController  extends BaseController{
 	 */
 	@RequestMapping("saveBookUpload")
 	public String upload(HttpSession session,Book book,HttpServletRequest request,MultipartFile picFile){
-
-	
-	
 		
 		try {
+
 			//生成八级目录
 			String path=FileUpload.filePhoto(); 
-			
+
 			//获取文件名称
 			String filename=picFile.getOriginalFilename();
 			
@@ -76,7 +71,9 @@ public class BookUploadController  extends BaseController{
 			String userID =user.getId();
 			System.out.println("userID:"+userID);
 			//保存书籍用户关系表
+
 			bookService.saveBookAndUser(userID,book.getBookId());
+
 
 			
 			BookInfo bookInfo =book.getBookInfo();
@@ -94,5 +91,4 @@ public class BookUploadController  extends BaseController{
 	}
 	
 
-	
 }
