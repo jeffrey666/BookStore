@@ -9,30 +9,27 @@
 <title>Book Store</title>
 <link rel="stylesheet" type="text/css"
 	href="${app}/staticfile/css/style.css" />
+<script src="${app }/staticfile/js/jquery-1.6.2.js"></script>
+<script src="${app }/staticfile/js/regist.js"></script>
+<script>
+			function checkUsername(thisObj){
+				var username = thisObj.value;
+				if($.trim(username)==""){
+					setMsg("username","用户名不能为空");
+					return;
+				}
+				$("#username_msg").load(
+					"/AjaxCheckUsername.action",
+					{"username":username}
+				);
+			}
+		</script>
 </head>
 <%@include file="_head.jsp"%>
 <body>
 	<div id="wrap">
 
-		<%--  <div class="header">
-       		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
-         <ul>                                                                       
-      			<li id="back"><a href="#" onclick="window.history.back();">返回</a></li>
-       <!--      <li><a href="index.html"></a></li>
-            <li><a href="about.html"></a></li>
-            <li><a href="category.html"></a></li>
-            <li><a href="specials.html"></a></li>
-            <li><a href="myaccount.html"</a></li>
-            <li class="selected"><a href="register.html"></a></li>
-            <li><a href="details.html"></a></li>
-            <li><a href="contact.html"></a></li> -->
-            </ul> 
-        </div>     
-            
-            
-       </div>  --%>
-
+		
 
 
 		<div class="center_content">
@@ -49,28 +46,33 @@
 						<div class="form_subtitle">注册新用户</div>
 
 
-						<div class="details">
+						<div class="details" >
 							<c:if test="${!empty errorInfo}">
-					${errorInfo}
-				</c:if>
+								${errorInfo}
+							</c:if>
 						</div>
 
 
-						<form name="register" action="toregist.action">
+						<form name="register" 
+						onsubmit=" return checkForm()"					
+						action="toregist.action">
 							<div class="form_row">
-								<label class="contact"><strong>用户名:</strong></label> <input
-									name="username" type="text" class="contact_input" />
+								<label class="contact"><strong>用户名:</strong></label>
+								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input" />
+								<span id="username_msg">${msg }</span>
 							</div>
 
 
 							<div class="form_row">
-								<label class="contact"><strong>密码:</strong></label> <input
-									name="password" type="password" class="contact_input" />
+								<label class="contact"><strong>密码:</strong></label> 
+								<input  onblur="checkNull('password','密码不能为空')" name="password" type="password" class="contact_input" />
+								<span>${msg }</span>
 							</div>
 
 							<div class="form_row">
-								<label class="contact"><strong>确认密码:</strong></label> <input
-									name="password2" type="password" class="contact_input" />
+								<label class="contact"><strong>确认密码:</strong></label> 
+								<input onblur="checkPassword('password','两次密码不一致')" name="password2" type="password" class="contact_input" />
+								<span>${msg }</span>
 							</div>
 
 							<!--   <div class="form_row">
