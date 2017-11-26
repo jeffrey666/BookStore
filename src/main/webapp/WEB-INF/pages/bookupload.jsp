@@ -17,28 +17,6 @@
 <%@include file="_head.jsp"%>
 <body>
 	<div id="wrap">
-
-		<%--  <div class="header">
-       		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
-         <ul>                                                                       
-      			<li id="back"><a href="#" onclick="window.history.back();">返回</a></li>
-       <!--      <li><a href="index.html"></a></li>
-            <li><a href="about.html"></a></li>
-            <li><a href="category.html"></a></li>
-            <li><a href="specials.html"></a></li>
-            <li><a href="myaccount.html"</a></li>
-            <li class="selected"><a href="register.html"></a></li>
-            <li><a href="details.html"></a></li>
-            <li><a href="contact.html"></a></li> -->
-            </ul> 
-        </div>     
-            
-            
-       </div>  --%>
-
-
-
 		<div class="center_content">
 			<div class="left_content">
 				<form onsubmit="return checkForm()"
@@ -48,35 +26,33 @@
 					<h1 id="tt">书籍上传</h1>
 					<table>
 						<tr>
-							<td><input type="hidden" name="userId" values="${_CURRENT_USER.userId}" />
-							</td>
-						</tr>
-						<tr>
 							<td class="tds">书籍名称：</td>
 							<td><input type="text" name="bookName"
 								onblur="checkNull('bookName','书籍名称不能为空')"
-								value="<%=request.getParameter("bookName") == null ? "" : request.getParameter("bookName")%>" />
+								value="${book.bookName}" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍作者：</td>
 							<td><input type="text" name="bookInfo.author"
 								onblur="checkNull('bookInfo.author','书籍作者不能为空!')"
-								value="<%=request.getParameter("bookInfo.author") == null ? "" : request.getParameter("bookInfo.author")%>" />
+								value="${book.bookInfo.author}" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
-								value="<%=request.getParameter("bookInfo.bookPub") == null ? "" : request.getParameter("bookInfo.bookPub")%>" />
+								value="${book.bookInfo.bookPub}" />
+
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版日期：</td>
 							<td><input type="date" name="bookInfo.pubDate"
 								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')"
-								value="<%=request.getParameter("bookInfo.pubDate") == null ? "" : request.getParameter("bookInfo.pubDate")%>" />
+								value="${book.bookInfo.pubDate}" />
+
 								<span></span></td>
 						</tr>
 						<tr>
@@ -93,7 +69,6 @@
 							<td class="tds">书籍照片：</td>
 							<td><input type="file" name="picFile" /> <span></span>
 							</td>
-						</tr>
 						</tr>
 						<tr>
 							<td class="sub_td" colspan="2" class="tds"><input

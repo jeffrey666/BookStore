@@ -14,8 +14,8 @@
     </resultMap>
     
     <insert id="saveBookUpload" >
-    insert into book_info (book_info_id,author,imgurl,pub_date,category) 
-    		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category})
+    insert into book_info (book_info_id,author,imgurl,pub_date,category,book_pub) 
+    		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub})
     </insert>
     <select id="tocart" resultMap="BookRM">
    		SELECT bo.book_id,bo.book_name,b.author,b.category,b.imgurl,b.pub_date FROM 

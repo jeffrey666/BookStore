@@ -10,7 +10,6 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.UserInfo;
 
-
 @Service
 public class BookInfoServiceImpl  implements BookInfoService{
 
@@ -20,8 +19,6 @@ public class BookInfoServiceImpl  implements BookInfoService{
 
 	public void saveBookUpload(BookInfo bookInfo) {
 		bookInfoMapper.saveBookUpload(bookInfo);
-
-
   }
 	@Override
 	public List<Book> tocart(String userId) {

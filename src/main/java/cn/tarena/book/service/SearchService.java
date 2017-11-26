@@ -5,21 +5,61 @@ import cn.tarena.book.pojo.User;
 
 public interface SearchService {
 
+	
+	
+	/******************************/
+
+	/**
+	 * 根据bookId查找图书的拥有人
+	 * @param bookId
+	 * @return：图书拥有者的对象
+	 */
+
 	User findUserByBookId(String bookId);
-
+	/**
+	 * 通过userId扣去用户积分
+	 * @param userId
+	 */
 	void deduct(String userId);
-
+	/**
+	 * 通过userId给用户增加积分
+	 * @param user
+	 */
 	void gain(User user);
-
-	User findUser(String user_id);
-
+	/**
+	 * 通过userId找到对应的用户
+	 * @param userId
+	 * @return
+	 */
+	User findUser(String userId);
+	/**
+	 * 通过bookId改变书的状态
+	 * @param bookId
+	 */
 	void updateState(String bookId);
-
+	/**
+	 * 通过bookId更改书的借书日期和归还期限
+	 * @param bookId
+	 */
 	void updateDate(String bookId);
-
+	/**
+	 * 通过bookId找到书的详细信息
+	 * @param bookId
+	 * @return
+	 */
 	Book findOne(String bookId);
-
+	/**
+	 * 将图书的借阅信息添加到历史记录中
+	 * @param userId：借书人的id
+	 * @param bookId：图书的id
+	 */
 	void addHistory(String userId, String bookId);
-
+	/**
+	 * 将借阅信息添加到借阅关联表中
+	 * @param userId：借书人的id
+	 * @param bookId：图书id
+	 */
 	void updateBorrower(String userId, String bookId);
+	
+	/******************************/
 }
