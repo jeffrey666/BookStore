@@ -7,8 +7,11 @@ import cn.tarena.book.pojo.Book;
 public interface BookMapper {
 
 	
-	void saveBookUpload(Book book);
+	public void saveBookUpload(Book book);
 
-	void saveBookAndUser(@Param("userId")String userId, @Param("bookId")String bookId);
+	
+
+	public void saveBookAndUser(@Param("userId")String userId, @Param("bookId")String bookId);
+
 
 }

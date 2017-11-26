@@ -5,7 +5,8 @@ import cn.tarena.book.pojo.Book;
 public interface BookService {
 
 	void saveBookUpload(Book book);
+	
+	void saveBookAndUser(String userId, String bookId);
 
-	public void saveBookAndUser(String userId, String bookId);
 
 }

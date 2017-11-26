@@ -1,7 +1,7 @@
 package cn.tarena.book.utils;
 
-import java.io.File;
 import java.util.UUID;
+import java.io.File;
 
 public class FileUpload {
 	
@@ -10,7 +10,10 @@ public class FileUpload {
 		filePhoto();
 	}
 
-
+	/**
+	 * 生成八级目录，testing
+	 * @return
+	 */  
 	public static String filePhoto(){
 		String hc = Integer.toHexString(UUID.randomUUID().hashCode());
 		// 为了保证一定能够产生一个八级深的目录结构
@@ -18,22 +21,12 @@ public class FileUpload {
 		for (int j = 0; j < i; j++) {
 			hc = "0" + hc;
 		}
-		// 切块存放的总文件
-
-
-
-		String path ="\\WEB-INF:\\upload";
+		
+		String path ="";
 		// 产生一个八级深的目录
 		for (char c : hc.toCharArray()) {
 			path = path + "\\" + c;
 		}
-
-		//生成目录
-		File dir =new  File(path);
-		dir.mkdirs();
-
 		return path;
 	}
-
-
 }
