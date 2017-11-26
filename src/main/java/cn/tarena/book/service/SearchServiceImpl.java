@@ -6,6 +6,10 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 @Service
 public class SearchServiceImpl implements SearchService {
+	
+	
+	
+	/******************************/
 
 	@Override
 	public User findUserByBookId(String bookId) {
@@ -60,5 +64,8 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 
 	}
+	/******************************/
+	
+	
 
 }

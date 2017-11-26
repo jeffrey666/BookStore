@@ -4,6 +4,9 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 public interface SearchService {
+	
+	
+	/******************************/
 
 	User findUserByBookId(String bookId);
 
@@ -22,4 +25,6 @@ public interface SearchService {
 	void addHistory(String userId, String bookId);
 
 	void updateBorrower(String userId, String bookId);
+	
+	/******************************/
 }
