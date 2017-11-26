@@ -10,4 +10,6 @@ public interface UserService {
 
 	void gain(User user);
 
+	public void saveBookUpload(String userId, String bookId);
+
 }
