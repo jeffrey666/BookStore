@@ -36,8 +36,6 @@
             
        </div>  --%>
 
-
-
 		<div class="center_content">
 			<div class="left_content">
 				<form onsubmit="return checkForm()"
@@ -132,7 +130,7 @@
 						<span class="red"></span>
 					</div>
 
-					<a href="/tocart" class="view_cart">view cart</a>
+					<a href="<%request.getContextPath() %>/tocart.action?userId=1" class="view_cart">view cart</a>
 
 				</div>
 
