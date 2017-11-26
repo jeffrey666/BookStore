@@ -35,7 +35,6 @@
        
        <div class="center_content">
        	<div class="left_content">
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>About us</div>
 
         	<div class="crumb_nav">
             <a href="index.html">home</a> &gt;&gt; category name
@@ -70,7 +69,7 @@
             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Category books</div>
            
            <div class="new_products">
-<<<<<<< HEAD
+
                <c:forEach items="${books }" var="book">
                     <div class="new_prod_box">
                         <a href="search/toview?id=${book.bookId}">${book.bookName}</a>
@@ -79,71 +78,7 @@
                         </div>           
                     </div>
                </c:forEach>
-                           
-=======
-           
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>          
-
-
-                    
-       
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div> 
-
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                         <span class="new_icon"><img src="${app}/staticfile/images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                  
->>>>>>> master
+ 
                      
 
             <div class="pagination">
