@@ -68,24 +68,5 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findUserByUsername(username);
 	}
 
-	/**
-	 * 把书籍信息关联到用户和书籍关联表中
-	 */
-	@Override
-	public void saveBookUpload(String userId, String bookId) {
-		userMapper.saveBookUpload(userId, bookId);
-		
-	}
-
-	/**
-	 * 把书籍信息关联到用户和书籍关联表中
-	 */
-	@Override
-	public void saveBookUpload(String userId, String bookId) {
-		userMapper.saveBookUpload(userId, bookId);
-		
-	}
-
 	
-
 }
