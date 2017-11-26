@@ -10,12 +10,13 @@
 <div class="header">
        		<div class="logo"><a href="index.html"><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
         <div id="menu">
+        
             <ul>                                                                       
             <li class="selected"><a href="/">主页</a></li>
             <li><a href="/tosearch">搜索</a></li>
             <li><a href="/tocategory">分类</a></li>
-            <li><a href="details.html">价格</a></li>
-            <li><a href="contact.html">联系</a></li>
+            <li><a href="/topsellers">热门书籍</a></li>
+          <!--   <li><a href="contact.html">联系</a></li> -->
             <li><a href="/user/userinfo.action">用户详情</a></li>
 
             <li><a href="/bookupload">上传图书</a></li>
