@@ -69,6 +69,12 @@ public class UserController {
 		session.setAttribute("_CURRENT_USER", user);
 		return "redirect:/";
 	}
+	//用户退出登录
+	@RequestMapping("tologout")
+	public String tologout(HttpSession session){
+		session.removeAttribute("_CURRENT_USER");
+		return "redirect:/";
+	}
 	
 	
 	
