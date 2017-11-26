@@ -36,38 +36,18 @@ public class BookUploadController {
 	@Autowired
 	private BookInfoService bookInfoService;
 
-	/*public @ResponseBody String upload(HttpServletRequest request,MultipartFile file){
-		
-		try {
-			String uploadDir=request.getSession().getServletContext().getRealPath("/")+"upload/";
-			File dir=new File(uploadDir);
-			if(!dir.exists()){
-				dir.mkdir();
-			}
-			String filename=file.getOriginalFilename();
-			File serverFile=new File(uploadDir+filename);
-			file.transferTo(serverFile);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "上传失败";
-		} 
-		return "shangchu"
-	}
-	*/
+	
 	@RequestMapping("saveBookUpload")
 	public String registAction(MultipartFile picFile,Book book,HttpSession session,HttpServletRequest request) throws IOException{
-		String path=request.getSession().getServletContext().getRealPath("upload");
+		String path=request.getSession().getServletContext().getRealPath("/upload/");
 		System.out.println(path);
-		
 		
 		//把传递过来的文件保存到e盘
 		FileUtils.writeByteArrayToFile(new File(path+"1.jpg"), picFile.getBytes());
 		session.setAttribute("Book", book);
 		//重定向
-		return "success";
+		return "index";
 	}
-	
 	
 	@RequestMapping("BookUpload")
 	public String saveBookUpload(String userId,HttpSession session){
