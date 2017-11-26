@@ -4,7 +4,9 @@
 
     
     <insert id="saveBookUpload">
+
     insert into book (book_id,book_name,state) values(#{bookId},#{bookName},#{state})
+
     </insert>
 
 

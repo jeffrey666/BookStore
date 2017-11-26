@@ -8,6 +8,7 @@
     insert into book_info (book_info_id,author,imgurl,pub_date,category) 
     		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category})
 
+
     </insert>
 
 </mapper>

@@ -12,8 +12,14 @@ public interface UserMapper {
 
 
 
-	//注册时用户表插入一条信息
 
+	
+
+
+
+	public void saveBookUpload(@Param("userId")String userId,@Param("bookId") String bookId);
+
+	//注册时用户表插入一条信息
 	@Insert("INSERT INTO user (id,username,PASSWORD,state) VALUES(#{id},#{username},#{password},#{state}) ")
 	public void addUser(User user);
 

@@ -15,6 +15,8 @@ import cn.tarena.book.pojo.Book;
 
 import cn.tarena.book.pojo.BookInfo;
 
+
+
 import cn.tarena.book.service.BookInfoService;
 import cn.tarena.book.service.BookService;
 import cn.tarena.book.service.UserService;
@@ -69,11 +71,9 @@ public class BookUploadController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		
+
 		return "index";
 	}
-	
-
 	
 
 	
