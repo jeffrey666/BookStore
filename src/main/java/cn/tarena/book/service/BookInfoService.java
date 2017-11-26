@@ -8,8 +8,4 @@ public interface BookInfoService {
 
 	public void saveBookUpload(BookInfo bookInfo);
 
-
-
-
-
 }
