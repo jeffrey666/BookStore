@@ -21,20 +21,21 @@
             
             <table class="cart_table">
             	<tr class="cart_title">
-                	<td>Item pic</td>
-                	<td>Book name</td>
-                    <td>Unit price</td>
-                    <td>Qty</td>
-                    <td>Total</td>               
+                	<td>商品图片</td>
+                	<td>商品作者</td>
+                    <td>图书类别</td>
+                    <td>图书出版日期</td>
                 </tr>
                 
+                <c:forEach items="bookInfos" var="b" varStatus="index">
             	<tr>
                 	<td><a href="details.html"><img src="${app}/staticfile/images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
                 	<td>Books</td>
                     <td>100$</td>
                     <td>1</td>
                     <td>100$</td>               
-                </tr>          
+                </tr>    
+                </c:forEach>      
             	<tr>
                 	<td><a href="details.html"><img src="${app}/staticfile/images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
                 	<td>Books</td>

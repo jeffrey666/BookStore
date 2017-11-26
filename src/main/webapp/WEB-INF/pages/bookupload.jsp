@@ -133,7 +133,7 @@
 						<span class="red"></span>
 					</div>
 
-					<a href="/tocart" class="view_cart">view cart</a>
+					<a href="<%request.getContextPath() %>/tocart.action" class="view_cart">view cart</a>
 
 				</div>
 

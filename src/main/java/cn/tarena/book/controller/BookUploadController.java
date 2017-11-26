@@ -1,6 +1,7 @@
 package cn.tarena.book.controller;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,15 +9,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.tarena.book.pojo.Book;
 
 import cn.tarena.book.pojo.BookInfo;
-
-
-
+import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.BookInfoService;
 import cn.tarena.book.service.BookService;
 import cn.tarena.book.service.UserService;
@@ -30,7 +30,14 @@ public class BookUploadController {
 	private BookService bookService;
 	@Autowired
 	private BookInfoService bookInfoService;
-
+	
+	@RequestMapping("/tocart")
+	public String tocart(Model model,String userId){
+		
+		List<UserInfo> bookInfos = bookInfoService.tocart(userId);
+		model.addAttribute("bookInfos",bookInfos);
+		return "cart";
+	}
 	
 	@RequestMapping("saveBookUpload")
 	public String upload(Book book,HttpServletRequest request,MultipartFile picFile,HttpSession session){
