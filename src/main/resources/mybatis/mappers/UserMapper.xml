@@ -4,10 +4,7 @@
 
 
     
-    
-    <insert id="saveBookUpload" >
-    insert into user_book_borrower (user_id,book_id) values(#{userId},#{bookId})
-    </insert>
+   
 
 	<sql id="findAllUser_sql">
 		SELECT * FROM
