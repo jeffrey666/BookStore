@@ -82,6 +82,5 @@ public class BookInfo {
 				+ category + ", pcUrl=" + pcUrl + "]";
 	}
 	
-	
-	
+
 }

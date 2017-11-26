@@ -8,7 +8,6 @@ import cn.tarena.book.pojo.User;
 
 public interface UserMapper {
 
-
 	public void saveBookUpload(@Param("userId")String userId,@Param("bookId") String bookId);
 
 	//注册时用户表插入一条信息
