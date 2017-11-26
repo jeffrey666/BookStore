@@ -10,6 +10,8 @@ import cn.tarena.book.pojo.BookInfo;
 public interface BookInfoService {
 	public void saveBookUpload(BookInfo bookInfo);
 	
-	public List<Book> tocart(String userId);
+	public List<Book> tocart(String userId,int i,int y);
+
+	public Integer line(String id);
 
 }

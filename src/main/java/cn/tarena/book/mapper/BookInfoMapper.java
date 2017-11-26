@@ -2,17 +2,18 @@ package cn.tarena.book.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Param;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
-import cn.tarena.book.pojo.UserInfo;
 
 public interface BookInfoMapper {
 
 	void saveBookUpload(BookInfo bookInfo);
 	
-	List<Book> tocart(String userId);
+	List<Book> tocart(@Param("userId")String userId,@Param("i")int i,@Param("y")int y);
+
+	Integer line(String id);
 
 }
 

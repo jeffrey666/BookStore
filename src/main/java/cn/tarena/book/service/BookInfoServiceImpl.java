@@ -21,7 +21,11 @@ public class BookInfoServiceImpl  implements BookInfoService{
 		bookInfoMapper.saveBookUpload(bookInfo);
   }
 	@Override
-	public List<Book> tocart(String userId) {
-		return bookInfoMapper.tocart(userId);
+	public List<Book> tocart(String userId,int i,int y) {
+		return bookInfoMapper.tocart(userId,i,y);
+	}
+	@Override
+	public Integer line(String id) {
+		return bookInfoMapper.line(id);
 	}
 }
