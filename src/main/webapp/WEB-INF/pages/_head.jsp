@@ -25,7 +25,7 @@
 				</c:when>
 				<c:otherwise>
 					<a href="/user/userinfo.action" target="_top" >您好：${_CURRENT_USER.username}</a>	
-					<a   href="${app}/tologout"   target="_top" >&nbsp;&nbsp;注销</a>				
+					<a href="${app}/tologout"   target="_top" >&nbsp;&nbsp;注销</a>				
 				</c:otherwise>
 			</c:choose>
             </li>
