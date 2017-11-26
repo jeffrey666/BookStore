@@ -7,12 +7,7 @@
     </select>
     
     <insert id="saveBookUpload" >
-<<<<<<< HEAD
-    insert into book_info (book_info_id,author,imgurl,pub_date,category) 
-    		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category})
-=======
     insert into user_book_borrower (user_id,book_id) values(#{userId},#{bookId})
->>>>>>> 09cf4a79d592ccaa33368b2846c1a1c47d161e95
     </insert>
 
 </mapper>
