@@ -53,10 +53,7 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
-    @RequestMapping("/topsellers")
-    public String topsellers(){
-    	return "sellers";
-    }
+    
 
     
 
