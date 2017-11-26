@@ -8,10 +8,6 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 @Service
 public class SearchServiceImpl implements SearchService {
-	
-	
-	
-	/******************************/
 
 	@Autowired
 	private SearchMapper searchMapper;
@@ -60,8 +56,5 @@ public class SearchServiceImpl implements SearchService {
 	public void updateBorrower(String userId, String bookId) {
 		searchMapper.updateBorrower(userId,bookId);
 	}
-	/******************************/
-	
-	
 
 }
