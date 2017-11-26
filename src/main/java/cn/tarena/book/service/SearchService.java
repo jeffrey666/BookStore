@@ -4,11 +4,17 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 public interface SearchService {
+
+	
+	
+	/******************************/
+
 	/**
 	 * 根据bookId查找图书的拥有人
 	 * @param bookId
 	 * @return：图书拥有者的对象
 	 */
+
 	User findUserByBookId(String bookId);
 	/**
 	 * 通过userId扣去用户积分
@@ -54,4 +60,6 @@ public interface SearchService {
 	 * @param bookId：图书id
 	 */
 	void updateBorrower(String userId, String bookId);
+	
+	/******************************/
 }
