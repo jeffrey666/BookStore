@@ -10,4 +10,8 @@
 	<insert id="saveBookAndUser" >
     insert into user_book_borrower (user_id,book_id) values(#{userId},#{bookId})
     </insert>
+    
+    
+    
+    
 </mapper>

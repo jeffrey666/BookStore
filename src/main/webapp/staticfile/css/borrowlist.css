@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+.currentPage {
+	font-weight: bold;
+	color: #ff9a00;
+}
+
+#jumpTo {
+	width: 20px;
+}
+
+#pageControl a {
+	text-decoration: none;
+}
