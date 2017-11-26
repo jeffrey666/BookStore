@@ -2,6 +2,7 @@ package cn.tarena.book.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import cn.tarena.book.pojo.User;
 
@@ -22,6 +23,8 @@ public interface UserMapper {
 
 	public abstract int updatePsw( @Param("userId") String userId,
 			@Param("newPassword") String newPassword);
+	@Select("select * from user where username=#{username}")
+	public User findUserByUsername(String username);
 
 
 	

@@ -9,12 +9,15 @@ body{
 form{
 	width: 450px;
 	margin: 0 auto;
+	height: 630px;
 }
 h1{
 	width: 300px;/* */
 	color: #990000;
 	margin: 190px auto 30px;
 	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 0px
 }
 
 table{
@@ -27,6 +30,7 @@ td{
 .tds{
 	font-size: 18px;
 	text-align: right;
+	padding-bottom: 10px;
 }
 
 input{
