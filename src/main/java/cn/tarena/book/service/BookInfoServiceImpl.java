@@ -7,7 +7,6 @@ import cn.tarena.book.mapper.BookInfoMapper;
 
 import cn.tarena.book.pojo.BookInfo;
 
-
 @Service
 public class BookInfoServiceImpl  implements BookInfoService{
 
@@ -17,7 +16,5 @@ public class BookInfoServiceImpl  implements BookInfoService{
 
 	public void saveBookUpload(BookInfo bookInfo) {
 		bookInfoMapper.saveBookUpload(bookInfo);
-
-
   }
 }
