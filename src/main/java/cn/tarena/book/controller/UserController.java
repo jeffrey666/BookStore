@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.User;
 
@@ -69,7 +70,23 @@ public class UserController {
 		session.setAttribute("_CURRENT_USER", user);
 		return "redirect:/";
 	}
+	//用户退出登录
+	@RequestMapping("tologout")
+	public String tologout(HttpSession session){
+		session.removeAttribute("_CURRENT_USER");
+		return "redirect:/";
+	}
 	
+	//注册时ajax验证用户名是否存在
+	@RequestMapping("/AjaxCheckUsername.action")
+	@ResponseBody
+	public String AjaxCheckUsername( String username){
+		 User exitUser = userService.findUserByUsername(username); 
+		 if(exitUser!=null){
+			 return "用户名已存在";
+		 }
+		return "恭喜,用户名可用";
+	}
 	
 	
 

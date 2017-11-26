@@ -31,5 +31,7 @@ public interface SearchService {
 	void addHistory(String userId, String bookId);
 /*********************************/
 
+	void saveBookUpload(Book book);
+
 
 }

@@ -32,7 +32,7 @@ public class HomeController {
     	return "/login";
     }
     
-    @RequestMapping("bookupload")
+    @RequestMapping("/bookupload")
     public String upload(){
     	return "/bookupload";
     }
@@ -52,6 +52,10 @@ public class HomeController {
     @RequestMapping("/tocategory")
     public String category(){
     	return "/category";
+    }
+    @RequestMapping("/topsellers")
+    public String topsellers(){
+    	return "sellers";
     }
 
     
