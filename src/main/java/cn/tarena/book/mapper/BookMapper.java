@@ -1,10 +1,7 @@
-package cn.tarena.book.service;
+package cn.tarena.book.mapper;
 
 import cn.tarena.book.pojo.Book;
 
-
-public interface BookInfoService {
-
+public interface BookMapper {
 	public void saveBookUpload(Book book);
-
 }

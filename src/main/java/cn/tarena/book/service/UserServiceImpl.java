@@ -12,10 +12,6 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 
-
-	
-
-	
 	//登录时查找用户是否存在
 	@Override
 	public User findUser(String username, String password) {
@@ -35,6 +31,10 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User findUser(String user_id) {
+		return userMapper.findUserById(user_id);
+	}
 
 	@Override
 	public int updatePsw(String userId, String newPassword) {
@@ -53,8 +53,6 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findUserByUsername(username);
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * 把书籍信息关联到用户和书籍关联表中
 	 */
@@ -64,16 +62,7 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	/**
-	 * 把书籍信息关联到用户和书籍关联表中
-	 */
-	@Override
-	public void saveBookUpload(String userId, String bookId) {
-		userMapper.saveBookUpload(userId, bookId);
-		
-	}
 
 	
->>>>>>> master
 
 }

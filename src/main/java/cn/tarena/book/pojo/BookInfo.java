@@ -3,8 +3,6 @@ package cn.tarena.book.pojo;
 import java.util.Date;
 
 public class BookInfo {
-<<<<<<< HEAD
-=======
 	private String bookInfoId;
 	private String author;//图书作者
 	private Date updateTime;//图书上传日期
@@ -15,17 +13,7 @@ public class BookInfo {
 	private	String bookPub;//图书出版社
 	private String pubDate;//图书出版日期
 	private String category;//图书分类
-<<<<<<< HEAD
-	private String imgurl;//图书存放地址
-	public String getImgurl() {
-		return imgurl;
-	}
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
-	}
-=======
-	private String pcUrl;//图书图片地址
->>>>>>> 09cf4a79d592ccaa33368b2846c1a1c47d161e95
+	private String imgUrl;//图书存放地址
 	public String getBookInfoId() {
 		return bookInfoId;
 	}
@@ -86,20 +74,18 @@ public class BookInfo {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	@Override
 	public String toString() {
 		return "BookInfo [bookInfoId=" + bookInfoId + ", author=" + author + ", updateTime=" + updateTime
 				+ ", borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", searchVolume=" + searchVolume
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
-<<<<<<< HEAD
-				+ category + ", imgurl=" + imgurl + "]";
+				+ category + ", imgUrl=" + imgUrl + "]";
 	}
-=======
-				+ category + ", pcUrl=" + pcUrl + "]";
-	}
->>>>>>> master
 	
-	
-	
->>>>>>> 09cf4a79d592ccaa33368b2846c1a1c47d161e95
 }
