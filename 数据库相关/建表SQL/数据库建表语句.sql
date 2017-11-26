@@ -56,9 +56,9 @@ CREATE TABLE `book_info` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `id` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `username` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
-  `password` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
+  `id` VARCHAR(40)  NOT NULL,
+  `username` VARCHAR(20)  DEFAULT NULL COMMENT '用户名',
+  `password` VARCHAR(50)  DEFAULT NULL COMMENT '密码',
   `state` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -82,14 +82,14 @@ CREATE TABLE `user_book_borrower` (
 DROP TABLE IF EXISTS `user_info`;
 
 CREATE TABLE `user_info` (
-  `user_info_id` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nickname` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '真实姓名',
-  `email` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
-  `address` VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '地址',
-  `card_no` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '身份证号',
+  `user_info_id` VARCHAR(40)  NOT NULL,
+  `nickname` VARCHAR(20)  DEFAULT NULL COMMENT '真实姓名',
+  `email` VARCHAR(40) DEFAULT NULL COMMENT '邮箱',
+  `address` VARCHAR(200) DEFAULT NULL COMMENT '地址',
+  `card_no` VARCHAR(20) DEFAULT NULL COMMENT '身份证号',
   `score` INT(11) DEFAULT NULL COMMENT '积分',
-  `telephone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `gender` VARCHAR(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` VARCHAR(20)  DEFAULT NULL,
+  `gender` VARCHAR(5) DEFAULT NULL,
   PRIMARY KEY (`user_info_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
