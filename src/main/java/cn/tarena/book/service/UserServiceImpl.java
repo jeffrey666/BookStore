@@ -11,22 +11,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
 
-	@Override
-	public User findUserByBookId(String bookId) {
-		return null;
-	}
 
-	@Override
-	public void deduct(String userId) {
-		// TODO Auto-generated method stub
 
-	}
+	
 
-	@Override
-	public void gain(User user) {
-		// TODO Auto-generated method stub
-
-	}
+	
 	//登录时查找用户是否存在
 	@Override
 	public User findUser(String username, String password) {
@@ -46,10 +35,6 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	@Override
-	public User findUser(String user_id) {
-		return userMapper.findUserById(user_id);
-	}
 
 	@Override
 	public int updatePsw(String userId, String newPassword) {
@@ -67,5 +52,6 @@ public class UserServiceImpl implements UserService {
 		
 		return userMapper.findUserByUsername(username);
 	}
+
 
 }

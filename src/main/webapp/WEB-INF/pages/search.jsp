@@ -36,9 +36,7 @@
        <div class="center_content">
        	<div class="left_content">
 
-        	<div class="crumb_nav">
-            <a href="index.html">home</a> &gt;&gt; category name
-            </div>	
+        	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Category books</div>	
             <!-- 搜索行表单 -->
             <div id="content">
             
@@ -58,23 +56,22 @@
 				</span>
 				</div>
 				<div id="search_div2">
-				<span class="input_span">书籍出版日期年限：<input type="text" name="mindate" value="${minDate }"/></span>
+				<span class="input_span">作者：<input type="text" name="author" value="${book.bookInfo.author }"/></span>
+				<span class="input_span">书籍出版日期年限：<input type="date" name="mindate" value='<fmt:formatDate value="${minDate }" pattern="yyyy-MM-dd"/>'/></span>
 				<span class="input_span"><input type="submit" value="查询"></span>
 				</div>
 			</form>
 		    
             </div>
             
-            
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Category books</div>
-           
+          
            <div class="new_products">
 
                <c:forEach items="${books }" var="book">
                     <div class="new_prod_box">
                         <a href="search/toview?id=${book.bookId}">${book.bookName}</a>
                         <div class="new_prod_bg">
-                        <a href="search/toview?id=${book.bookId}"><img src="${book.bookInfo.pcUrl}" alt="" title="" class="thumb" border="0" /></a>
+                        <a href="search/toview?id=${book.bookId}"><img src="${book.bookInfo.imgUrl}" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
                </c:forEach>

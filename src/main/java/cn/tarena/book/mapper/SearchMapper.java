@@ -1,5 +1,5 @@
 package cn.tarena.book.mapper;
 
-public interface BookMapper {
+public interface SearchMapper {
 
 }
