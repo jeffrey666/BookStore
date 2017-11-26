@@ -7,11 +7,11 @@
 	</head>
 	<body>
 		
-		<%@include file="/_head.jsp" %>
+		<%@include file="_head.jsp" %>
 		
 		${requestScope.errMsg }
 		
-		<%@include file="/_foot.jsp" %>
+		<%@include file="_foot.jsp" %>
 		
 	</body>
 </html>

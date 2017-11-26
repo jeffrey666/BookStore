@@ -36,7 +36,7 @@
 				<tr>
 					<td class="tds">书籍作者：</td>
 					<td>
-						<input type="text" name="bookAuthor"
+						<input type="text" name="bookInfo.author"
 						onblur="checkNull('bookAuthor','书籍作者不能为空!')"
 						value="<%=request.getParameter("bookAuthor")==null
 						       ?"" : request.getParameter("bookAuthor") %>"
@@ -47,7 +47,7 @@
 				<tr>
 					<td class="tds">书籍出版社：</td>
 					<td>
-						<input type="text" name="press"
+						<input type="text" name="bookInfo.bookPub"
 						 onblur="checkNull('press','出版社不能为空!')"
 						 value="<%=request.getParameter("press")==null
 						       ?"" : request.getParameter("press") %>"
@@ -58,7 +58,7 @@
 				<tr>
 					<td class="tds">书籍出版日期：</td>
 					<td>
-						<input type="text" name="createTime"
+						<input type="text" name="bookInfo.pubDate"
 						 onblur="checkNull('createTime','出版社日期不能为空!')"
 						 value="<%=request.getParameter("createTime")==null
 						       ?"" : request.getParameter("createTime") %>"
@@ -82,7 +82,7 @@
 				<tr>
 					<td class="tds">书籍照片：</td>
 					<td>
-						<input type="file" name="bookInfo.imgurl"/>
+						<input type="file" name="picFile"/>
 						<span></span>
 					</td>
 				</tr>

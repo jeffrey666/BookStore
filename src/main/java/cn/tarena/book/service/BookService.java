@@ -16,5 +16,7 @@ public interface BookService {
 
 	void addHistory(String userId, String bookId);
 
+	void saveBookUpload(Book book);
+
 
 }

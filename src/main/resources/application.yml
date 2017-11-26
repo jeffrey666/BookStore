@@ -15,10 +15,18 @@ spring:
   http:
     encoding:
       force: true
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB    
 mybatis:
   type-aliases-package: cn.tarena.book.pojo
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mybatis/mappers/*.xml
+
+
+
+    
 
 
 
