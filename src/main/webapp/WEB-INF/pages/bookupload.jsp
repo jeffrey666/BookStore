@@ -60,21 +60,21 @@
 						</tr>
 						<tr>
 							<td class="tds">书籍作者：</td>
-							<td><input type="text" name="bookAuthor"
+							<td><input type="text" name="author"
 								onblur="checkNull('bookAuthor','书籍作者不能为空!')"
 								value="<%=request.getParameter("bookAuthor") == null ? "" : request.getParameter("bookAuthor")%>" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版社：</td>
-							<td><input type="text" name="press"
+							<td><input type="text" name="bookPub"
 								onblur="checkNull('press','出版社不能为空!')"
 								value="<%=request.getParameter("press") == null ? "" : request.getParameter("press")%>" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版日期：</td>
-							<td><input type="text" name="createTime"
+							<td><input type="text" name="pubDate"
 								onblur="checkNull('createTime','出版社日期不能为空!')"
 								value="<%=request.getParameter("createTime") == null ? "" : request.getParameter("createTime")%>" />
 								<span></span></td>
