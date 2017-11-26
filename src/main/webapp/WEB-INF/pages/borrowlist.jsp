@@ -34,12 +34,12 @@
 	<div id="wrap">
 		<div class="center_content">
 			<div class="left_content">
-				
 
 			<h1 id="tt">借阅书籍榜单</h1>
-	<table border="1">
+	<table border="1" width="400px" >
 		<tr>
 			<th class="ths">书籍图片</th>
+			<th class="ths">书籍名称</th>
 			<th class="ths">书籍作者</th>
 			<th class="ths">书籍状态</th>
 			<th class="ths">书籍借阅次数</th>
@@ -54,12 +54,19 @@
 			<td>
 				<img width="120px" height="120px" src="${app}${book.bookInfo.imgurl}" alt="图片暂无" > 
 			</td>
-			<td>${book.bookInfo.author}</td>
-			<td>
-			<c:if test="${book.state}==0">未借</c:if>
-			<c:if test="${book.state}==1">已借</c:if>
+			<td> 
+			   ${book.bookName}
 			</td>
-			<td>${book.bookInfo.borrowCount}</td>
+			<td>
+			    ${book.bookInfo.author}
+			</td>
+			<td>
+			     <c:if test="${book.state}==0">未借</c:if>
+			     <c:if test="${book.state}==1">已借</c:if>
+			</td>
+			<td>
+			    ${book.bookInfo.borrowCount}
+			</td>
 			
 			
 		</tr>
@@ -68,12 +75,14 @@
 	<div>
 		<span>共${page.total }条记录，每页显示 <input id="view" type="text"
 			name="page.pageSize" value="${page.pageSize }">
-		</span> <span>当前第${page.pageNum }/${page.pages }</span> <a
-			href="${ctx }/book.action?page=1">首页</a> <a
-			href="${ctx }/book.action?page=${page.pageNum-1}">上一页</a> <a
-			href="${ctx }/book.action?page=${page.pageNum+1}">下一页</a> <span>
+		</span> 
+		<span>当前第${page.pageNum }/${page.pages }</span> 
+		<a  href="${ctx }/book.action?page=1">首页</a> 
+		<a	href="${ctx }/book.action?page=${page.pageNum-1}">上一页</a> 
+		<a	href="${ctx }/book.action?page=${page.pageNum+1}">下一页</a> 
+		<span>
 			转到第 <input id="changeNum" type="text" name="page"
-			value="${page.pageNum }" /> <a id="changePageNum" href="">GO</a>
+			value="${page.pageNum}" /> <a id="changePageNum" href="">GO</a>
 		</span>
 	</div>
 					
