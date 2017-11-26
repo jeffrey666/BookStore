@@ -57,8 +57,8 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `id` VARCHAR(40)  NOT NULL,
-  `username` VARCHAR(20)  NOT NULL COMMENT '用户名',
-  `password` VARCHAR(50)  NOT NULL COMMENT '密码',
+  `username` VARCHAR(20)  DEFAULT NULL COMMENT '用户名',
+  `password` VARCHAR(50)  DEFAULT NULL COMMENT '密码',
   `state` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
