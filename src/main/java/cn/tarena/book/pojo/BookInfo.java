@@ -13,6 +13,7 @@ public class BookInfo {
 	private	String bookPub;//图书出版社
 	private String pubDate;//图书出版日期
 	private String category;//图书分类
+	private String pcUrl;//图书图片地址
 	public String getBookInfoId() {
 		return bookInfoId;
 	}
@@ -78,8 +79,9 @@ public class BookInfo {
 		return "BookInfo [bookInfoId=" + bookInfoId + ", author=" + author + ", updateTime=" + updateTime
 				+ ", borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", searchVolume=" + searchVolume
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
-				+ category + "]";
+				+ category + ", pcUrl=" + pcUrl + "]";
 	}
+	
 	
 	
 }

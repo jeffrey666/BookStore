@@ -42,7 +42,7 @@
 	<body margin="0">
 		<div id="menu_bar">
 			<div><a href="/user/toUserInfoUpdate.action" target="rightFrame">&gt; 个人信息</a></div>
-			<div><a href="prod_list.html" target="rightFrame">&gt; 密码管理</a></div>
+			<div><a href="/user/toChangePassword.action" target="rightFrame">&gt; 密码管理</a></div>
 		</div>		
 	</body>
 </html>
