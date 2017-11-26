@@ -4,7 +4,11 @@
 
     
     <insert id="saveBookUpload">
+<<<<<<< HEAD
     insert into book (book_id,book_name,state) values(#{bookId},#{bookName},#{state})
+=======
+    insert into book (boo_id,book_name) values(#{bookId},#{bookName},#{state})
+>>>>>>> 09cf4a79d592ccaa33368b2846c1a1c47d161e95
     </insert>
 
 </mapper>
