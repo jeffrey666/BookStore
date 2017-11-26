@@ -5,5 +5,5 @@ import cn.tarena.book.pojo.BookInfo;
 public interface BookInfoService {
 
 	public void saveBookUpload(BookInfo bookInfo);
-
+	
 }
