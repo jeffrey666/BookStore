@@ -41,4 +41,12 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public void saveBookAndUser(String userId, String bookId) {
+		bookMapper.saveBookAndUser(userId,bookId);
+		
+	}
+
+	
+
 }

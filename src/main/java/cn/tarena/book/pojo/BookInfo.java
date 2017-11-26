@@ -20,6 +20,7 @@ public class BookInfo {
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
+
 	public String getBookInfoId() {
 		return bookInfoId;
 	}
@@ -87,4 +88,5 @@ public class BookInfo {
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
 				+ category + ", imgurl=" + imgurl + "]";
 	}
+
 }
