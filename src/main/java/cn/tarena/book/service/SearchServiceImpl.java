@@ -1,0 +1,67 @@
+package cn.tarena.book.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.tarena.book.mapper.SearchMapper;
+import cn.tarena.book.pojo.Book;
+import cn.tarena.book.pojo.User;
+@Service
+public class SearchServiceImpl implements SearchService {
+	
+	
+	
+	/******************************/
+
+	@Autowired
+	private SearchMapper searchMapper;
+	@Override
+	public User findUserByBookId(String bookId) {
+
+		return searchMapper.findUserByBookId(bookId);
+	}
+
+	@Override
+	public void deduct(String userId) {
+		searchMapper.deduct(userId);
+	}
+
+	@Override
+	public void gain(User user) {
+		searchMapper.gain(user);
+	}
+
+	@Override
+	public User findUser(String userId) {
+		return searchMapper.findUser(userId);
+	}
+
+	@Override
+	public void updateState(String bookId) {
+		searchMapper.updateState(bookId);
+	}
+
+	@Override
+	public void updateDate(String bookId) {
+		searchMapper.updateDate(bookId);
+	}
+
+	@Override
+	public Book findOne(String bookId) {
+		return searchMapper.findOne(bookId);
+	}
+
+	@Override
+	public void addHistory(String userId, String bookId) {
+		searchMapper.addHistory(userId,bookId);
+	}
+
+	@Override
+	public void updateBorrower(String userId, String bookId) {
+		searchMapper.updateBorrower(userId,bookId);
+	}
+	/******************************/
+	
+	
+
+}

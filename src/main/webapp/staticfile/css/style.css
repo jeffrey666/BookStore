@@ -125,6 +125,12 @@ width:490px;
 float:left;
 padding:20px 0 20px 20px;
 }
+.left_content2{
+width:880px;
+float:none;
+background-color:white;
+padding:20px 0 20px 20px;
+}
 .right_content{
 width:370px;
 float:left;
@@ -137,8 +143,17 @@ float:left;
 font-size:19px;
 margin:10px 0 10px 0;
 }
+.title1{
+color:#734633;
+padding:0px;
+font-size:19px;
+margin:10px 0 10px 0;
+}
 span.title_icon{
 float:left;
+padding:0 5px 0 0;
+}
+span.title_icon1{
 padding:0 5px 0 0;
 }
 .prod_title{
@@ -437,6 +452,18 @@ text-align:center;
 line-height:24px;
 color:#fff;
 }
+a.checkout1{
+width:71px;
+height:25px;
+display:block;
+float:left;
+margin:10px 30px 0 10px;
+background:url(/staticfile/images/register_bt.gif) no-repeat center;
+text-decoration:none;
+text-align:center;
+line-height:25px;
+color:#fff;
+}
 a.checkout{
 width:71px;
 height:25px;
@@ -449,6 +476,7 @@ text-align:center;
 line-height:25px;
 color:#fff;
 }
+
 a.continue{
 width:71px;
 height:25px;
@@ -480,6 +508,12 @@ line-height:20px;
 /*--------------cart_table-------------*/
 .cart_table{
 width:440px;
+border:1px #CCCCCC solid;
+text-align:center;
+}
+
+.cart_table1{
+width:800px;
 border:1px #CCCCCC solid;
 text-align:center;
 }
@@ -561,22 +595,22 @@ color:#afaeaf;
 
 
 /*搜索条*/
-#content #search_div #search_div2{
+#content #search_div,#content #search_div2{
 	border: 1px solid #D4D4D4;
 	padding:8px;
 }
 #content #search_div .input_span,#content #search_div2 .input_span{
 	margin: 0px 0px 0px 15px;
 }
-#content #search_div input[type=text],#content #search_div select[name=bookInfo.category],#content #search_div2 input[name=mindate]{
+#content #search_div input[type=text],#content #search_div select[name=bookInfo.category],#content #search_div2 input[name=mindate],#search_div2 input[name=author]{
 	border: 1px solid #D4D4D4;
 	height:20px;
 }
 
-#content #search_div input[name=bookname],#content #search_div select[name=bookInfo.category]{
-	width:130px;
+#content #search_div input[name=bookname],#content #search_div select[name=bookInfo.category],#content #search_div2 input[name=mindate]{
+	width:100px;
 }
-#content #search_div2 input[name=mindate]{
+#content #search_div2 input[name=author]{
 	width:60px;;
 }
 
