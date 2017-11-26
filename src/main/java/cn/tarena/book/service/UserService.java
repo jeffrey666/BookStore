@@ -29,4 +29,10 @@ public interface UserService {
 
 
 
+	public void saveBookUpload(String userId, String bookId);
+
+	public void saveBookUpload(String userId, String bookId);
+
+	
+
 }

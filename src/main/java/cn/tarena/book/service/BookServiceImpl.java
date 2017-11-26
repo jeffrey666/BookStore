@@ -35,4 +35,10 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public void saveBookUpload(Book book) {
+		bookMapper.saveBookUpload(book);
+		
+	}
+
 }
