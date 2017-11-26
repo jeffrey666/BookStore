@@ -158,7 +158,7 @@
 				</div>
 				<div class="about">
 					<p>
-						<img src="images/about.gif" alt="" title="" class="right" />
+						<img src="${app}/staticfile/images/about.gif" alt="" title="" class="right" />
 
 					</p>
 
