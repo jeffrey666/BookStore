@@ -63,7 +63,7 @@ public class BookUploadController  extends BaseController{
 			picFile.transferTo(serverFile);
 			
 			//获取书籍图片全路径
-			String imgurl=uploadDir+filename;
+			String imgurl="\\upload"+path+"\\"+filename;
 			book. getBookInfo().setImgurl(imgurl);
 			String Id=UUID.randomUUID().toString();
 			book.setBookId(Id);
