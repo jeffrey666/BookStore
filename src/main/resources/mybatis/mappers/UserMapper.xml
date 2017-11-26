@@ -50,4 +50,42 @@
 	<select id="findUser" resultType="cn.tarena.book.pojo.User">
 		select * from user where username=#{username} and password=#{password}
 	</select>
+	
+	
+	<resultMap type="Book" id="bookRM"  autoMapping="true">
+		<id column="book_id" property="bookId"/>
+		<association property="bookInfo" javaType="BookInfo">
+		<id column="book_info_id" property="bookInfoId"/>
+		<result column="borrow_date" property="borrowDate"/>
+		<result column="return_date" property="returnDate"/>
+		<result column="imgurl" property="imgurl"/>
+		</association>
+	</resultMap>
+	
+	<!-- 根据Id查找用户自己拥有的书 -->
+	<select id="findMyBookListByUserId" resultMap="bookRM">
+SELECT b.* FROM
+user_book_borrower ubb
+LEFT JOIN 
+(SELECT b.book_id,b.book_name,b.state,bi.borrow_date,bi.return_date,bi.imgurl FROM 
+book b
+LEFT JOIN 
+book_info bi
+ON b.book_id=bi.book_info_id) b ON ubb.book_id=b.book_id WHERE 
+ubb.user_id=#{userId}
+
+
+
+<!-- 	SELECT b.* FROM
+	user_book_borrower ubb
+	LEFT JOIN 
+	(SELECT b.book_id,b.book_name,b.state,bi.borrow_date,bi.return_date,bi.imgurl FROM 
+	book b
+	LEFT JOIN 
+	book_info bi
+	ON b.book_id=bi.book_info_id) b 
+	ON ubb.book_id=b.book_id WHERE 
+	ubb.user_id=#{userId} -->
+	</select> 
+	
 </mapper>
