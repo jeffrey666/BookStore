@@ -48,7 +48,7 @@
 					<h1 id="tt">书籍上传</h1>
 					<table>
 						<tr>
-							<td><input type="hidden" name="userId" values="${userId}" />
+							<td><input type="hidden" name="userId" values="${_CURRENT_USER.userId}" />
 							</td>
 						</tr>
 						<tr>
@@ -60,23 +60,23 @@
 						</tr>
 						<tr>
 							<td class="tds">书籍作者：</td>
-							<td><input type="text" name="author"
-								onblur="checkNull('bookAuthor','书籍作者不能为空!')"
-								value="<%=request.getParameter("bookAuthor") == null ? "" : request.getParameter("bookAuthor")%>" />
+							<td><input type="text" name="bookInfo.author"
+								onblur="checkNull('bookInfo.author','书籍作者不能为空!')"
+								value="<%=request.getParameter("bookInfo.author") == null ? "" : request.getParameter("bookInfo.author")%>" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版社：</td>
-							<td><input type="text" name="bookPub"
-								onblur="checkNull('press','出版社不能为空!')"
-								value="<%=request.getParameter("press") == null ? "" : request.getParameter("press")%>" />
+							<td><input type="text" name="bookInfo.bookPub"
+								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
+								value="<%=request.getParameter("bookInfo.bookPub") == null ? "" : request.getParameter("bookInfo.bookPub")%>" />
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍出版日期：</td>
-							<td><input type="text" name="pubDate"
-								onblur="checkNull('createTime','出版社日期不能为空!')"
-								value="<%=request.getParameter("createTime") == null ? "" : request.getParameter("createTime")%>" />
+							<td><input type="date" name="bookInfo.pubDate"
+								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')"
+								value="<%=request.getParameter("bookInfo.pubDate") == null ? "" : request.getParameter("bookInfo.pubDate")%>" />
 								<span></span></td>
 						</tr>
 						<tr>

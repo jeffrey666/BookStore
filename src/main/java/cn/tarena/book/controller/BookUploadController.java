@@ -22,7 +22,7 @@ import cn.tarena.book.service.BookService;
 import cn.tarena.book.service.UserService;
 
 @Controller
-public class BookUploadController {
+public class BookUploadController extends BaseController{
 	
 	@Autowired
 	private UserService userService;
@@ -40,7 +40,7 @@ public class BookUploadController {
 	}
 	
 	@RequestMapping("saveBookUpload")
-	public String upload(Book book,HttpServletRequest request,MultipartFile picFile,HttpSession session){
+	public String upload(String userId,Book book,HttpServletRequest request,MultipartFile picFile,HttpSession session){
 		
 		try {
 			//获取文件名称
@@ -65,7 +65,7 @@ public class BookUploadController {
 			book.setState(0);
 			
 			//保存书籍用户关系表
-			bookService.saveBookAndUser("1",book.getBookId());
+			bookService.saveBookAndUser(userId,book.getBookId());
 			
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);
