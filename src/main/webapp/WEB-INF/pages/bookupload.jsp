@@ -48,7 +48,7 @@
 					<h1 id="tt">书籍上传</h1>
 					<table>
 						<tr>
-							<td><input type="hidden" name="userId" values="${_CURRENT_USER.userId}" />
+							<td><input type="hidden" name="userId" values="${_CURRENT_USER.id}" />
 							</td>
 						</tr>
 						<tr>

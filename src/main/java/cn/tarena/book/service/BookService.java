@@ -6,6 +6,6 @@ public interface BookService {
 
 	void saveBookUpload(Book book);
 
-	public void saveBookAndUser(String string, String bookId);
+	public void saveBookAndUser(String userId, String bookId);
 
 }
