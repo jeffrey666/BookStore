@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.tarena.book.mapper.BookInfoMapper;
-
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.UserInfo;
 
@@ -24,7 +24,7 @@ public class BookInfoServiceImpl  implements BookInfoService{
 
   }
 	@Override
-	public List<UserInfo> tocart(String userId) {
+	public List<Book> tocart(String userId) {
 		return bookInfoMapper.tocart(userId);
 	}
 }

@@ -1,10 +1,23 @@
 package cn.tarena.book.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.tarena.book.pojo.Book;
+import cn.tarena.book.pojo.UserInfo;
+import cn.tarena.book.service.BookInfoService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private BookInfoService bookInfoService;
 	
     @RequestMapping("/")
     public String index() {
@@ -45,9 +58,13 @@ public class HomeController {
     }
 
     @RequestMapping("/tocart")
-    public String cart(){
-    	return "/cart";
-    }
+	public String tocart(Model model){
+		
+		List<Book> books = bookInfoService.tocart("1");
+		model.addAttribute("books",books);
+		System.out.println("=============="+books.get(1).getBookInfo().getImgurl());
+		return "cart";
+	}
     
     @RequestMapping("/tocategory")
     public String category(){

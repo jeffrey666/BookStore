@@ -11,8 +11,6 @@
 <body>
 <div id="wrap">
 
-     
-       
        <div class="center_content">
        	<div class="left_content">
             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>My cart</div>
@@ -21,46 +19,24 @@
             
             <table class="cart_table">
             	<tr class="cart_title">
+            		<td>商品序号:</td>
                 	<td>商品图片</td>
+                	<td>商品名称</td>
                 	<td>商品作者</td>
                     <td>图书类别</td>
-                    <td>图书出版日期</td>
+                    <td>出版日期</td>
                 </tr>
                 
-                <c:forEach items="bookInfos" var="b" varStatus="index">
+                <c:forEach items="${books }" var="b" varStatus="v">
             	<tr>
-                	<td><a href="details.html"><img src="${app}/staticfile/images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
-                	<td>Books</td>
-                    <td>100$</td>
-                    <td>1</td>
-                    <td>100$</td>               
+                	<td>${v.index+1}</td>
+					<td><a><img src="/upload\[0$]`20}X30}Z@R2W$U{AI7.png" alt="暂无图片" height="40" width="200"/>   </a></td>
+                	<td>${b.bookName}</td>
+                    <td>${b.bookInfo.author}</td>
+                    <td>${b.bookInfo.category}</td>
+                    <td>${b.bookInfo.pubDate}</td>               
                 </tr>    
                 </c:forEach>      
-            	<tr>
-                	<td><a href="details.html"><img src="${app}/staticfile/images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
-                	<td>Books</td>
-                    <td>100$</td>
-                    <td>1</td>
-                    <td>100$</td>               
-                </tr>                  
-            	<tr>
-                	<td><a href="details.html"><img src="${app}/staticfile/images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
-                	<td>Books</td>
-                    <td>100$</td>
-                    <td>1</td>
-                    <td>100$</td>               
-                </tr>
-
-                <tr>
-                <td colspan="4" class="cart_total"><span class="red">TOTAL SHIPPING:</span></td>
-                <td> 250$</td>                
-                </tr>  
-                
-                <tr>
-                <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
-                <td> 325$</td>                
-                </tr>                  
-            
             </table>
             <a href="#" class="continue">&lt; continue</a>
             <a href="#" class="checkout">checkout &gt;</a>

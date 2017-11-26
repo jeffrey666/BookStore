@@ -31,14 +31,6 @@ public class BookUploadController extends BaseController{
 	@Autowired
 	private BookInfoService bookInfoService;
 	
-	@RequestMapping("/tocart")
-	public String tocart(Model model,String userId){
-		
-		List<UserInfo> bookInfos = bookInfoService.tocart(userId);
-		model.addAttribute("bookInfos",bookInfos);
-		return "cart";
-	}
-	
 	@RequestMapping("saveBookUpload")
 	public String upload(String userId,Book book,HttpServletRequest request,MultipartFile picFile,HttpSession session){
 		
