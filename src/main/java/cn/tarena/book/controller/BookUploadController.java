@@ -10,12 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
 import cn.tarena.book.service.BookService;
 import cn.tarena.book.utils.FileUpload;
+
+
+
 
 @Controller
 public class BookUploadController  extends BaseController{
@@ -25,6 +29,7 @@ public class BookUploadController  extends BaseController{
 	private BookService bookService;
 	@Autowired
 	private BookInfoService bookInfoService;
+
 
 	/**
 	 * 图书上传
@@ -36,6 +41,9 @@ public class BookUploadController  extends BaseController{
 	 */
 	@RequestMapping("saveBookUpload")
 	public String upload(HttpSession session,Book book,HttpServletRequest request,MultipartFile picFile){
+
+	
+	
 		
 		try {
 			//生成八级目录
@@ -66,8 +74,10 @@ public class BookUploadController  extends BaseController{
 			
 			User user =(User) session.getAttribute("_CURRENT_USER");
 			String userID =user.getId();
+			System.out.println("userID:"+userID);
 			//保存书籍用户关系表
 			bookService.saveBookAndUser(userID,book.getBookId());
+
 			
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);
@@ -80,7 +90,6 @@ public class BookUploadController  extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 	
-		
 		return "index";
 	}
 	

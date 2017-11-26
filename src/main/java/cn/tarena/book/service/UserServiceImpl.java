@@ -67,7 +67,5 @@ public class UserServiceImpl implements UserService {
 		
 		return userMapper.findUserByUsername(username);
 	}
-
-
-
+	
 }

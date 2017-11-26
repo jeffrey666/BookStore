@@ -46,7 +46,4 @@ public class BookServiceImpl implements BookService {
 		bookMapper.saveBookAndUser(userId,bookId);
 		
 	}
-
-	
-
 }

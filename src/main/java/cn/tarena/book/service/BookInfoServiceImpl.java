@@ -16,8 +16,5 @@ public class BookInfoServiceImpl  implements BookInfoService{
 
 	public void saveBookUpload(BookInfo bookInfo) {
 		bookInfoMapper.saveBookUpload(bookInfo);
-
-	}
-	
-
+  }
 }

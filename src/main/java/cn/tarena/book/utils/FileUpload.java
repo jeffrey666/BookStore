@@ -1,8 +1,15 @@
 package cn.tarena.book.utils;
 
 import java.util.UUID;
+import java.io.File;
 
 public class FileUpload {
+	
+
+	public static void main(String[] args) {
+		filePhoto();
+	}
+
 	/**
 	 * 生成八级目录，testing
 	 * @return
@@ -16,15 +23,10 @@ public class FileUpload {
 		}
 		
 		String path ="";
-
 		// 产生一个八级深的目录
 		for (char c : hc.toCharArray()) {
 			path = path + "\\" + c;
 		}
-		
 		return path;
 	}
-
-
-
 }

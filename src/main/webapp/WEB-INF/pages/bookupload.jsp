@@ -243,8 +243,6 @@
 	</div>
 </body>
 <%@include file="_foot.jsp"%>
->>>>>>> master
->>>>>>> 09cf4a79d592ccaa33368b2846c1a1c47d161e95
 </html>
 
 
