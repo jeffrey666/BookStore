@@ -38,7 +38,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("details")
-	public String details() {
+	public String details(String bookId,Model model) {
+		Book book =bookInfoService.findOneByBookId(bookId);
+		model.addAttribute("book",book);
 		return "/details";
 	}
 
