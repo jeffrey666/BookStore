@@ -26,5 +26,12 @@ public interface BookInfoService {
 	 * @return
 	 */
 	public List<Book> findNewBooks();
- 
+
+	/**根据bookid查询书籍
+	 * @param bookId:书籍id
+	 * @return
+	 */
+	public Book findOneByBookId(String bookId);
+
+
 }
