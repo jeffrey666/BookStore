@@ -1,6 +1,8 @@
 package cn.tarena.book.service;
 
 import java.util.Date;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +13,23 @@ import cn.tarena.book.pojo.User;
 @Service
 public class SearchServiceImpl implements SearchService {
 	
+	@Autowired
+	private SearchMapper searchMapper;
+	
+	@Override
+	public List<Book> findAll(Book book) {
+		
+		return searchMapper.findAll(book);
+	}
+	
+	
+	
+	
 	
 	
 	/******************************/
 
-	@Autowired
-	private SearchMapper searchMapper;
+	
 	@Override
 	public User findUserByBookId(String bookId) {
 
@@ -63,6 +76,8 @@ public class SearchServiceImpl implements SearchService {
 		searchMapper.updateBorrower(userId,bookId);
 	}
 	/******************************/
+
+	
 	
 	
 

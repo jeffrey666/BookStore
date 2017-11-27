@@ -124,7 +124,7 @@
                     
 
             <div class="pagination">
-            <span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a>?a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
+            <span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><span>...</span><a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
             </div>  
             
             </div> 
