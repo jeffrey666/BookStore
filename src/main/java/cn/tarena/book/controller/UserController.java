@@ -35,6 +35,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserInfoService userInfoService;
 
 	//注册用户
 	@RequestMapping("/toregist.action")
@@ -96,8 +99,7 @@ public class UserController {
 		return "恭喜,用户名可用";
 	}
 
-	@Autowired
-	private UserInfoService userInfoService;
+
 
 	@RequestMapping("/user/userInfo/Left.action")
 	public String userinfoLeft() {
