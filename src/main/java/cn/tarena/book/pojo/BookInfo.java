@@ -14,15 +14,25 @@ public class BookInfo {
 	private Date pubDate;//图书出版日期
 	private String category;//图书分类
 	private String imgurl;//图书存放地址
+	private String descripe;//图书简介
+	
+	public String getDescripe() {
+		return descripe;
+	}
+
+	public void setDescripe(String descripe) {
+		this.descripe = descripe;
+	}
+
 	
 	@Override
 	public String toString() {
 		return "BookInfo [bookInfoId=" + bookInfoId + ", author=" + author + ", updateTime=" + updateTime
 				+ ", borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", searchVolume=" + searchVolume
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
-				+ category + ", imgurl=" + imgurl + "]";
+				+ category + ", imgurl=" + imgurl + ", descripe=" + descripe + "]";
 	}
-	
+
 	public String getBookInfoId() {
 		return bookInfoId;
 	}

@@ -2,23 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.BookInfoMapper">
 
-    <resultMap type="Book" id="BookRM">
+    <resultMap type="Book" id="BookRM" autoMapping="true">
 	    <id column="book_id" property="bookId" />
-	    <result column="book_name" property="bookName"/>
 	    <association property="bookInfo" javaType="BookInfo">
 	    	<result column="author" property="author"/>
-	    	<result column="imgurl" property="imgurl"/>
-	    	<result column="book_pub" property="bookPub"/>
+	    	<result column="update_time" property="updateTime"/>
 	    	<result column="borrow_date" property="borrowDate"/>
 	    	<result column="return_date" property="reaturnDate"/>
-	    	<result column="category" property="category"/>
+	    	<result column="book_pub" property="bookPub"/>
+	    	<result column="search_volume" property="searchVolume"/>
+	    	<result column="borrow_count" property="borrowCount" />
 	    	<result column="pub_date" property="pubDate"/>
+	    	<result column="imgurl" property="imgurl"/>
+	    	<result column="category" property="category"/>
+	    	<result column="descripe" property="descripe" />
 	    </association>
     </resultMap>
     
     <insert id="saveBookUpload" >
-    insert into book_info (book_info_id,author,imgurl,pub_date,category,book_pub) 
-    		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub})
+    insert into book_info (book_info_id,author,imgurl,pub_date,category,book_pub,descripe) 
+    		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub},#{descripe})
     </insert>
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,u.* FROM 

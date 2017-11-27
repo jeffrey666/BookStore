@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.github.pagehelper.PageHelper;
 
-//启动类，不要启动tomcat，只需要执行这个main方法就可以运行
+/**
+ * 启动类，不需要启动tomcat，只需要执行
+ * 这个main方法就可以运行
+ */
 @SpringBootApplication
 @MapperScan("cn.tarena.book.mapper")
 @ServletComponentScan

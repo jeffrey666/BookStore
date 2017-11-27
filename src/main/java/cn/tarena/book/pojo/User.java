@@ -5,6 +5,15 @@ public class User {
 	private String username;
 	private String password;
 	private Integer state;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	private UserInfo userInfo;
 
 	public String getId() {
@@ -15,10 +24,12 @@ public class User {
 		this.id = id;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state
-				+ ", userInfo=" + userInfo + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", role="
+				+ role + ", userInfo=" + userInfo + "]";
 	}
 
 	public String getUsername() {
