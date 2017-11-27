@@ -29,7 +29,7 @@
 							<td class="tds">书籍名称：</td>
 							<td><input type="text" name="bookName"
 								onblur="checkNull('bookName','书籍名称不能为空')"
-								value="${book.bookName}" />
+								 />
 								<span></span></td>
 						</tr>
 						<tr>

@@ -4,11 +4,11 @@
 function checkForm(){
 	//>>非空校验
 	var res1=checkNull("bookName","书籍名称不能为空");
-	var res2=checkNull("bookAuthor","书籍作者不能为空");
-	var res3=checkNull("press","书籍出版社不能为空");
-	var res4=checkNull("nickname","书籍出版日期不能为空");
+	var res2=checkNull("bookInfo.author","书籍作者不能为空");
+	var res3=checkNull("bookInfo.bookPub","书籍出版社不能为空");
+	var res4=checkNull("bookInfo.pubDate","书籍出版日期不能为空");
 	
-	return res1 && res2 && res3 && res4 ;
+	return res4 && res1 && res2 && res3;
 }
 
 
