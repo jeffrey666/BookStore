@@ -46,7 +46,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("/bookupload")
-	public String upload() {
+	public String upload(HttpSession session) {
 		return "/bookupload";
 	}
 
@@ -59,6 +59,7 @@ public class HomeController {
 	@RequestMapping("/tocart")
 	public String tocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
+		
 		session.setAttribute("num", 1);
 		List<Book> books = bookInfoService.tocart(user.getId(), 0, 4);
 		model.addAttribute("books", books);

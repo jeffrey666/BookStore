@@ -39,6 +39,10 @@
 				alert("请输入正确的记录数");
 				return;
 			}
+			if(pageSize>10){
+				alert("每页显示记录数请不要超过10条");
+				return;
+			}
 			if(!/^[1-9]\d*$/.test(pageNum)){
 				alert("请输入正确的页数");
 				return;

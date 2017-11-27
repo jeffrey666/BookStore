@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.tarena.book.pojo.Book;
+import cn.tarena.book.service.BookListService;
 import cn.tarena.book.utils.PageBean;
 
 @Controller

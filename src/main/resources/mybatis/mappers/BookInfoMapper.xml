@@ -22,29 +22,31 @@
     </insert>
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,u.* FROM 
-			book b
-			LEFT JOIN
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 			b.book_pub,b.pub_date,b.category,b.imgurl
 		 FROM 
 		book_info b
 			,
 		user_book_borrower u
-			WHERE u.user_id=#{userId} 
+			WHERE u.user_id=#{userId}
 			 AND u.book_id=b.book_info_id) u
-			ON b.book_id=u.book_id LIMIT #{i},#{y}
+			 LEFT JOIN
+			 book b
+			ON b.book_id=u.book_id 
+			limit #{i},#{y}
+
     </select>
 	<select id="line" resultType="Integer">
 		SELECT COUNT(*) FROM 
 		book b
 		LEFT JOIN
-		(SELECT u.book_id,b.author,b.borrow_date,b.return_time,
+		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM 
 		book_info b
 		,
 		user_book_borrower u
-		WHERE u.user_id='7cc56253-a0bb-4a59-a517-72b77ac07e03' 
+		WHERE u.user_id=#{userId} 
 		 AND u.book_id=b.book_info_id) u
 		ON b.book_id=u.book_id
 	</select>

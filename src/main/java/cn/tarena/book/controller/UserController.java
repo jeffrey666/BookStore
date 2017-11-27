@@ -197,14 +197,6 @@ public class UserController {
 		return true;
 
 	}
-	
-	//查找用户的自己拥有的书
-	@RequestMapping("/user/findMyBookList.action")
-	public String findMyBookLis(HttpSession session,Model model){
-		User user = (User) session.getAttribute("_CURRENT_USER");
-		List<Book> books = userService.findMyBookListByUserId(user.getId());
-		model.addAttribute("bookList",books);
-		return "/myBookList";
-	}
+
 	
 }
