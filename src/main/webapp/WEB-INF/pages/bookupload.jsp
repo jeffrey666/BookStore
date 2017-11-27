@@ -43,7 +43,9 @@
 							<td class="tds">书籍出版社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
-								/>
+
+								 />
+
 
 								<span></span></td>
 						</tr>
@@ -51,7 +53,9 @@
 							<td class="tds">书籍出版日期：</td>
 							<td><input type="date" name="bookInfo.pubDate"
 								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')"
-								 />
+
+								/>
+
 
 								<span></span></td>
 						</tr>
