@@ -59,4 +59,10 @@
 	<select id="findNewBooks" resultMap="BookRM">
 		SELECT * FROM book_info,book HAVING book.book_id=book_info.book_info_id  ORDER BY update_time DESC LIMIT 0,4 
 	</select>
+	
+	<select id="findOneByBookId" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.book_id=#{bookId}
+	</select>
+	
+	
 </mapper>
