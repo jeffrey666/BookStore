@@ -10,11 +10,9 @@ import org.springframework.stereotype.Component;
 
 import cn.tarena.book.user.annotation.RequireRole;
 
-
 @Component
 @Aspect
 public class RoleCheckAspect {
-
 
 	@Around(value = "execution( * *.* (..) ) && @annotation(ann)")
 	private Object arround(ProceedingJoinPoint joinPoint,

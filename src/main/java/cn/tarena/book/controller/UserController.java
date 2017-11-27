@@ -110,7 +110,6 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userinfo.action")
-	@RequireRole("test")
 	public String userinfoAction() {
 
 		return "/userinfo/fmain_user_info";
@@ -198,6 +197,5 @@ public class UserController {
 		return true;
 
 	}
-
 
 }

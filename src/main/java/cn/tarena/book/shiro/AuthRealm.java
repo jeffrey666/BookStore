@@ -17,7 +17,6 @@ import cn.tarena.book.service.UserService;
 import cn.tarena.book.user.utils.StringTool;
 
 
-@Component
 public class AuthRealm extends SimpleAccountRealm {
 
 	@Autowired
