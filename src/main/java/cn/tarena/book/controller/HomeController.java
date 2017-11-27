@@ -101,16 +101,6 @@ public class HomeController {
 		return "cart";
 	}
 
-	public int[] getColumn(int line, int i) {
-		int[] arr = new int[2];
-		arr[0] = (i - 1) * 4;
-		if (line - i * 4 + 4 >= 0) {
-			arr[1] = 4;
-		} else {
-			arr[1] = line - arr[0];
-		}
-		return arr;
-	}
 
 	@RequestMapping("/tocategory")
 	public String category() {
@@ -120,6 +110,18 @@ public class HomeController {
 	@RequestMapping("/topsellers")
 	public String topsellers() {
 		return "sellers";
+	}
+	
+	
+	public int[] getColumn(int line, int i) {
+		int[] arr = new int[2];
+		arr[0] = (i - 1) * 4;
+		if (line - i * 4 + 4 >= 0) {
+			arr[1] = 4;
+		} else {
+			arr[1] = line - arr[0];
+		}
+		return arr;
 	}
 
 }
