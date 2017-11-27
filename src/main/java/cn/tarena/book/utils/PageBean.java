@@ -1,6 +1,11 @@
 package cn.tarena.book.utils;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.output.ByteArrayOutputStream;
 
 public class PageBean<T> {
 	// 当前页
@@ -103,8 +108,10 @@ public class PageBean<T> {
 				+ "]";
 	}
 
-	
-
-	
-	
+	public void download(ByteArrayOutputStream os, HttpServletResponse response, String path) throws IOException {
+		response.setHeader("Content-Disposition","attachment;filename="+path);
+		response.setContentType("text/html;charset=gbk");
+		response.getOutputStream().write(os.toByteArray());
+		
+	}
 }
