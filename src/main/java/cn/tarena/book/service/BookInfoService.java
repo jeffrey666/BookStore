@@ -15,5 +15,5 @@ public interface BookInfoService {
 	public Integer line(String id);
 
 	public List<BookInfo> findAll();
-
+ 
 }
