@@ -18,5 +18,10 @@
 		user_info_id = #{userInfoId}
 	</update>
 
+	<!-- 用户上传图书,增加50积分 -->
+	<update id="saveUserScore">
+		UPDATE user_info SET score=score+#{i} WHERE user_info_id =#{userId}
+	</update>
+
 
 </mapper>

@@ -10,4 +10,26 @@
 	<insert id="saveBookAndUser" >
     insert into user_book_borrower (user_id,book_id) values(#{userId},#{bookId})
     </insert>
+    
+    
+    <!-- 根据租借量查询所有书籍 -->
+    <resultMap type="Book" id="bookRM" autoMapping="true">
+    	<id column="book_id" property="bookId"/>
+   		<association property="bookInfo" javaType="BookInfo">
+	     	 <id column="book_info_id" property="bookInfoId"/>
+	      	 <result column="author" property="author"/>
+	       	 <result column="borrow_count" property="borrowCount"/>
+	         <result column="imgurl" property="imgurl"/>
+    	</association>
+    </resultMap>
+
+    <select id="findAllBookBySeller" resultMap="bookRM">
+    	select b.book_id,b.book_name,b.state,bi.book_info_id,
+    	bi.author,bi.borrow_count,bi.imgurl from book b ,
+    	book_info bi where b.book_id=bi.book_info_id order by bi.borrow_count desc
+    </select>
+    
+    <select id="countBook" resultType="Integer">
+    	select count(*) from book 
+    </select>
 </mapper>

@@ -26,8 +26,6 @@ public class BookUploadController  extends BaseController{
 	private BookService bookService;
 	@Autowired
 	private BookInfoService bookInfoService;
-
-
 	/**
 	 * 图书上传
 	 * @param book
@@ -62,17 +60,17 @@ public class BookUploadController  extends BaseController{
 			String imgurl="\\upload"+path+"\\"+filename;
 			//给图片设置路径
 			book. getBookInfo().setImgurl(imgurl);
+			//设置书本的ID
 			String Id=UUID.randomUUID().toString();
 			book.setBookId(Id);
 			//新增书数据保存为(未借)
 			book.setState(0);
 			
-			User user =(User) session.getAttribute("_CURRENT_USER");
+			//获取当前登录用户		
+			User user =(User) session.getAttribute("_CURRENT_USER"); 
 			String userID =user.getId();
 			//保存书籍用户关系表
 			bookService.saveBookAndUser(userID,book.getBookId());
-
-
 			
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);
