@@ -2,29 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.BookInfoMapper">
 
-<<<<<<< HEAD
-	<resultMap type="Book" id="BookRM">
-		<id column="book_id" property="bookId" />
-		<result column="book_name" property="bookName" />
-		<association property="bookInfo" javaType="BookInfo">
-			<result column="author" property="author" />
-			<result column="imgurl" property="imgurl" />
-			<result column="book_pub" property="bookPub" />
-			<result column="borrow_date" property="borrowDate" />
-			<result column="return_date" property="reaturnDate" />
-			<result column="category" property="category" />
-			<result column="pub_date" property="pubDate" />
-		</association>
-	</resultMap>
 
-	<insert id="saveBookUpload">
-		insert into book_info
-		(book_info_id,author,imgurl,pub_date,category,book_pub)
-		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub})
-	</insert>
-	<select id="tocart" resultMap="BookRM">
-		SELECT b.book_name,u.* FROM
-=======
     <resultMap type="Book" id="BookRM" autoMapping="true">
 	    <id column="book_id" property="bookId" />
 	    <association property="bookInfo" javaType="BookInfo">
@@ -48,7 +26,6 @@
     </insert>
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,u.* FROM 
->>>>>>> master
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM
@@ -76,7 +53,9 @@
 		AND u.book_id=b.book_info_id) u
 		ON b.book_id=u.book_id
 	</select>
-	
+	<select id="findAll" resultType="BookInfo">
+		SELECT * FROM book_info
+	</select>
 	<select id="findNewBooks" resultMap="BookRM">
 		SELECT * FROM book_info,book HAVING book.book_id=book_info.book_info_id  ORDER BY update_time DESC LIMIT 0,4 
 	</select>
