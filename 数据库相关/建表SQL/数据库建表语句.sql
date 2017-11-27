@@ -36,10 +36,10 @@ DROP TABLE IF EXISTS `book_info`;
 
 CREATE TABLE `book_info` (
   `book_info_id` VARCHAR(40) NOT NULL COMMENT '图书id',
-  `author` VARBINARY(40) DEFAULT NULL COMMENT '作者',
+  `author` VARCHAR(40) DEFAULT NULL COMMENT '作者',
   `update_time` DATE DEFAULT NULL COMMENT '上传日期',
   `borrow_date` DATE DEFAULT NULL COMMENT '借出日期',
-  `return_time` DATE DEFAULT NULL COMMENT '归还期限',
+  `return_date` DATE DEFAULT NULL COMMENT '归还期限',
   `search_volume` INT(11) DEFAULT NULL COMMENT '搜索量',
   `borrow_count` INT(11) DEFAULT NULL COMMENT '借阅量',
   `book_pub` VARCHAR(40) DEFAULT NULL COMMENT '出版社',

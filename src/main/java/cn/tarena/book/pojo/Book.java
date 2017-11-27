@@ -5,6 +5,7 @@ public class Book {
 	private String bookName;//图书名字
 	private Integer state;//图书状态,1代表被借出,0代表未借出
 	private BookInfo bookInfo;
+	
 	public String getBookId() {
 		return bookId;
 	}
