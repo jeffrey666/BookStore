@@ -17,5 +17,7 @@ public interface BookInfoMapper {
 
 	List <Book> findNewBooks();
 
+	List<BookInfo> findAll();
+
 }
 
