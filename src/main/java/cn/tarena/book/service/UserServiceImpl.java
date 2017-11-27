@@ -57,4 +57,9 @@ public class UserServiceImpl implements UserService {
 		
 		return userMapper.findMyBookListByUserId(userId);
 	}
+
+	@Override
+	public List<Book> findMyBookListByUserIdReturn(String userId) {
+		return userMapper.findMyBookListByUserIdReturn(userId);
+	}
 }

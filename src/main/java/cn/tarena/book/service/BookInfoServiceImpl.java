@@ -28,4 +28,8 @@ public class BookInfoServiceImpl  implements BookInfoService{
 	public Integer line(String id) {
 		return bookInfoMapper.line(id);
 	}
+	@Override
+	public List<BookInfo> findAll() {
+		return bookInfoMapper.findAll();
+	}
 }

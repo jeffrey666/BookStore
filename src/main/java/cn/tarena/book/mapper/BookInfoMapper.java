@@ -15,5 +15,6 @@ public interface BookInfoMapper {
 
 	Integer line(String id);
 
+	List<BookInfo> findAll();
 }
 
