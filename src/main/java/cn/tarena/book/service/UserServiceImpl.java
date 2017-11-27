@@ -2,8 +2,11 @@ package cn.tarena.book.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.UUID;
 import cn.tarena.book.mapper.UserMapper;
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 @Service
@@ -42,10 +45,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findUserByIdAndPsw(user);
 	}
 
-	// 根据用户名查找用户，校验是否注册时候用了重复的用户名
+	// 根据用户名查找用户，校验是否注册时候使用重复的用户名
 	@Override
 	public User findUserByUsername(String username) {
 
 		return userMapper.findUserByUsername(username);
 	}
+	
 }

@@ -3,6 +3,8 @@ package cn.tarena.book.controller;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 
@@ -13,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 import org.apache.shiro.web.session.HttpServletSession;
@@ -195,4 +198,5 @@ public class UserController {
 
 	}
 
+	
 }

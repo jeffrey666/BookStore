@@ -50,4 +50,5 @@
 	<select id="findUser" resultType="cn.tarena.book.pojo.User">
 		select * from user where username=#{username} and password=#{password}
 	</select>
+	
 </mapper>

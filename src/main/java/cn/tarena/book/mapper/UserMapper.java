@@ -1,9 +1,12 @@
 package cn.tarena.book.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 public interface UserMapper {
@@ -30,6 +33,7 @@ public interface UserMapper {
 	//根据用户名查找用户，校验是否注册时候用了重复的用户名
 	@Select("select * from user where username=#{username}")
 	public User findUserByUsername(String username);
+	
 
 
 	
