@@ -2,4 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.SearchMapper">
 	
+	<!-- 根据bookId搜索图书的拥有人 -->
+	<select id="findUserByBookId" type="User">
+		SELECT user.* FROM USER 
+		LEFT JOIN
+		(SELECT user_id FROM user_book_borrower WHERE book_id=#{bookId}) ub
+		ON user.id=ub.user_id
+	</select>
+	<!-- 根据useId扣去对应的10积分 -->
+	<update id="deduct">
+		UPDATE  user_info SET score=score-10 WHERE user_info_id=#{userId} 
+	</update>
+	<!-- 根据图书拥有用户id,在图书借给别人后获得对应积分 -->
+	<update id="gain">
+		update user_info set score=score+10 where user_info_id=#{user.id}
+	</update>
+	<!-- 根据用户id得到用户的详细信息 -->
+	<select id="findUser" resultType="UserInfo">
+		select * from user_info where user_id=#{userId}
+	</select>
+	<!-- 更改图书的状态 -->
+	<update id="updateState">
+		update book set state=0 where book_id=#{bookId}
+	</update>
+	<!-- 更改图书的借出与归还期限 -->
+	<update id="updateDate">
+		update book_info set borrow_date=#{borrowDate},return_time=#{returnTime} where book_id=#{bookId}
+	</update>
+	<!-- 根据bookId获取书籍的详细信息 -->
+	<select id="findOne" resultType="Book">
+		select * from book_info where book_info_id =#{bookId}
+	</select>
+	<!-- 添加历史记录 -->
+	<insert id="addHistory">
+		insert into history (user_id,book_id,borrow_date,return_date) values (userId,bookId,borrowDate,returnDate)
+	</insert>
+	<!-- 添加借阅人的信息到借阅关系表中 -->
+	<update id="updateBorrower">
+		update user_book_borrower set borrower_id=#{userId} where book_id=#{bookId}
+	</update>
 </mapper>
