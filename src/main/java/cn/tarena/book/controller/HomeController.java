@@ -67,6 +67,10 @@ public class HomeController {
     public String category(){
     	return "/category";
     }
+    @RequestMapping("backmanager")
+    public String back(){
+    	return "manage";
+    }
     
 
     

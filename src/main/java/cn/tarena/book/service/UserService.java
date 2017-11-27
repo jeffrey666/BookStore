@@ -22,4 +22,11 @@ public interface UserService {
 	//根据用户Id 查找自己拥有的书
 	public List<Book> findMyBookListByUserId(String userId);
 
+	//后台:查询所有用户
+	public List<User> findBackAllUser();
+	//后台：修改用户状态
+	public void changeState(int i, String[] ids);
+	//后台:删除用户
+	public void delete(String[] ids);
+
 }

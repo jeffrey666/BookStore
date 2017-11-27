@@ -1,5 +1,7 @@
 package cn.tarena.book.pojo;
 
+import java.util.Date;
+
 public class UserInfo {
 
 	private String userInfoId;
@@ -10,10 +12,13 @@ public class UserInfo {
 	private Integer score;
 	private String telephone;
 	private String gender;
+	private Date birthday;
+	private String userLevel;
 
 	public UserInfo(String userInfoId, String nickname,
 			String email, String address, String cardNo,
-			Integer score, String telephone, String gender) {
+			Integer score, String telephone, String gender,
+			Date birthday,String userLevel) {
 		super();
 		this.userInfoId = userInfoId;
 		this.nickname = nickname;
@@ -23,6 +28,8 @@ public class UserInfo {
 		this.score = score;
 		this.telephone = telephone;
 		this.gender = gender;
+		this.birthday=birthday;
+		this.userLevel=userLevel;
 	}
 
 	public UserInfo() {
@@ -95,12 +102,34 @@ public class UserInfo {
 		this.gender = gender;
 	}
 
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	
+	public String getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(String userLevel) {
+		this.userLevel = userLevel;
+	}
+
 	@Override
 	public String toString() {
 		return "UserInfo [userInfoId=" + userInfoId + ", nickname=" + nickname + ", email=" + email + ", address="
 				+ address + ", cardNo=" + cardNo + ", score=" + score + ", telephone=" + telephone + ", gender="
-				+ gender + "]";
+				+ gender + ", birthday=" + birthday + ", userLevel=" + userLevel + "]";
 	}
+
+	
+
+	
 
 	
 }

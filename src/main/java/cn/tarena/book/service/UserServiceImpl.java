@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+
+import cn.tarena.book.mapper.BackUserMapper;
 import cn.tarena.book.mapper.UserMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
@@ -13,6 +15,8 @@ import cn.tarena.book.pojo.User;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private BackUserMapper backUserMapper;
 
 	// 登录时查找用户是否存在
 	@Override
@@ -56,5 +60,39 @@ public class UserServiceImpl implements UserService {
 	public List<Book> findMyBookListByUserId(String userId) {
 		
 		return userMapper.findMyBookListByUserId(userId);
+	}
+
+	
+	
+	/*
+	 * 
+	 *后台............ 
+	 */
+	
+	//后台:查询所有用户
+	@Override
+	public List<User> findBackAllUser() {
+		
+		return backUserMapper.findBackAllUser();
+	}
+	//后台:修改用户状态
+	@Override
+	public void changeState(int i, String[] ids) {
+		    
+		backUserMapper.changeState(i,ids);
+	}
+
+	//后台:删除用户
+	@Override
+	public void delete(String[] ids) {
+		//删除用户
+		backUserMapper.deleteUser(ids);
+		//删除用户详情
+		backUserMapper.deleteUserInfo(ids);
+		
+		
+		
+		
+		
 	}
 }
