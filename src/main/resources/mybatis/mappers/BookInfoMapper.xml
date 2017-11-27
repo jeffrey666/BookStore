@@ -20,11 +20,12 @@
     insert into book_info (book_info_id,author,imgurl,pub_date,category,book_pub) 
     		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub})
     </insert>
+    
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,u.* FROM 
 			book b
 			LEFT JOIN
-		(SELECT u.book_id,b.author,b.borrow_date,b.return_time,
+		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 			b.book_pub,b.pub_date,b.category,b.imgurl
 		 FROM 
 		book_info b
@@ -38,7 +39,7 @@
 		SELECT COUNT(*) FROM 
 		book b
 		LEFT JOIN
-		(SELECT u.book_id,b.author,b.borrow_date,b.return_time,
+		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM 
 		book_info b
