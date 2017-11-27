@@ -10,5 +10,9 @@ import java.lang.annotation.Target;
 @Target(METHOD)
 public @interface RequireRole {
 	
+	public static final String NORMAL_ROLE = "NormalRole";
+	public static final String ADMIN_ROLE = "Admin";
+	public static final String SUPER_ADMIN_ROLE = "SuperAdmin";
+	
 	public String value();
 }

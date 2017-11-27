@@ -18,6 +18,7 @@ public class RoleCheckAspect {
 	private Object arround(ProceedingJoinPoint joinPoint,
 			RequireRole ann) throws Throwable {
 
+
 		Subject subject = SecurityUtils.getSubject();
 		Object resultObject = null;
 
