@@ -3,7 +3,7 @@
 <mapper namespace="cn.tarena.book.mapper.SearchMapper">
 	
 	<!-- 根据bookId搜索图书的拥有人 -->
-	<select id="findUserByBookId" type="User">
+	<select id="findUserByBookId" resultType="User">
 		SELECT user.* FROM USER 
 		LEFT JOIN
 		(SELECT user_id FROM user_book_borrower WHERE book_id=#{bookId}) ub
