@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
-import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.BookInfoService;
 
 @Controller
@@ -50,10 +49,7 @@ public class HomeController {
 		return "/login";
 	}
 
-	@RequestMapping("/bookupload")
-	public String upload(HttpSession session) {
-		return "/bookupload";
-	}
+	
 
 	@RequestMapping("tosearch")
 	public String tosearch() {
@@ -62,11 +58,7 @@ public class HomeController {
 	}
 
     
-    @RequestMapping("details")
-    public String details(){
-    	return "/details";
-    }
-    
+   
     
     
     //点击图书上传拦截

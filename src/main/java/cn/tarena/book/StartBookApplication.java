@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Bean;
 
 
 //启动类，不要启动tomcat，只需要执行这个main方法就可以运行
+/**
+ * @author tarena
+ *
+ */
 @SpringBootApplication
 @MapperScan("cn.tarena.book.mapper")
 @ServletComponentScan

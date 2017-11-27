@@ -103,7 +103,7 @@
 				<img width="120px" height="120px" src="${app}${book.bookInfo.imgurl}" alt="${app}${book.bookInfo.imgurl}" > 
 
 			</td>
-			<td> 
+			<td id="c1"> 
 			   ${book.bookName}
 			</td>
 			<td>
@@ -115,7 +115,7 @@
 			     <c:if test="${book.state==1}">已借</c:if>
 
 			</td>
-			<td>
+			<td id="c4">
 			    ${book.bookInfo.borrowCount}
 			</td>
 			
@@ -125,10 +125,10 @@
 	</table>
 	<div>
 
-		<input id="oldNum" value="${pageBean.pageSize }" type="hidden"  />
+		<input id="oldNum" value="${pageBean.pageSize }" type="hidden" size="6"/>
 		<span id="${pageBean.totalNum }">共${pageBean.totalNum }条记录，
 		每页显示 <input id="view" type="text"
-			name="page.pageSize" value="${pageBean.pageSize }">条记录，
+			name="page.pageSize" value="${pageBean.pageSize }" size="1">条记录，
 		</span> 
 		<br/>
 		<span>当前第${pageBean.currentPage }</span> 页
@@ -148,7 +148,7 @@
 		</c:if>
 		<span>
 			转到第 <input id="changeNum" type="text" name="currentPage"
-			value="${pageBean.currentPage}" />页<a id="changePageNum" href="">GO</a>
+			value="${pageBean.currentPage}" size="1"/>页<a id="changePageNum" href="">GO</a>
 
 		</span>
 	</div>
