@@ -71,8 +71,6 @@ public class BookUploadController  extends BaseController{
 			String userID =user.getId();
 			//保存书籍用户关系表
 			bookService.saveBookAndUser(userID,book.getBookId());
-
-
 			
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);

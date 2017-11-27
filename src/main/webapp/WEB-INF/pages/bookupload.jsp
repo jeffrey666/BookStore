@@ -67,7 +67,7 @@
 						</tr>
 						<tr>
 							<td class="tds">书籍照片：</td>
-							<td><input type="file" name="picFile" /> <span></span>
+							<td><input type="file" name="picFile" onblur="checkNull('picFile','图片不能为空!')"  /> <span></span>
 							</td>
 						</tr>
 						<tr>
