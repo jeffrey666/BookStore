@@ -62,6 +62,7 @@ public class BookUploadController  extends BaseController{
 			String imgurl="\\upload"+path+"\\"+filename;
 			//给图片设置路径
 			book. getBookInfo().setImgurl(imgurl);
+			//设置书本的ID
 			String Id=UUID.randomUUID().toString();
 			book.setBookId(Id);
 			//新增书数据保存为(未借)
@@ -71,8 +72,6 @@ public class BookUploadController  extends BaseController{
 			String userID =user.getId();
 			//保存书籍用户关系表
 			bookService.saveBookAndUser(userID,book.getBookId());
-
-
 			
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);
