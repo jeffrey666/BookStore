@@ -98,6 +98,9 @@
 
 package cn.tarena.book;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -159,6 +162,21 @@ public class ShiroConfiguration {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean
 				.setSecurityManager(securityManager());
+		shiroFilterFactoryBean.setLoginUrl("/tologin");
+		shiroFilterFactoryBean.setSuccessUrl("/");
+
+		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+		/*
+		 * 需要登录才能进入的页面在下面设置  ↓  如示例所示
+		 */
+
+		filterChainDefinitionMap.put("/bookupload", "authc");
+
+		/*
+		 * 需要登录才能进入的页面在上面设置  ↑  如示例所示
+		 */
+		shiroFilterFactoryBean.setFilterChainDefinitionMap(
+				filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}
 

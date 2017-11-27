@@ -13,6 +13,7 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.BookInfoService;
+import cn.tarena.book.user.annotation.RequireRole;
 
 @Controller
 public class HomeController {
