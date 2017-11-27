@@ -17,8 +17,7 @@ import com.github.pagehelper.PageHelper;
 public class StartBookApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StartBookApplication.class, args);
-	}
-	
+	}	
 	//配置mybatis的分页插件pageHelper
 	@Bean
 	public PageHelper pageHelper(){
@@ -32,3 +31,4 @@ public class StartBookApplication {
 		  return pageHelper;
      }
 }
+

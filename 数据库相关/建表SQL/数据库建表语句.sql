@@ -26,7 +26,7 @@ CREATE TABLE `book_info` (
   `search_volume` INT(11) DEFAULT NULL COMMENT '搜索量',
   `borrow_count` INT(11) DEFAULT NULL COMMENT '借阅量',
   `book_pub` VARCHAR(40) DEFAULT NULL COMMENT '出版社',
-  `pub_date` VARCHAR(40) DEFAULT NULL COMMENT '出版日期',
+  `pub_date` DATE DEFAULT NULL COMMENT '出版日期',
   `category` INT(11) DEFAULT NULL COMMENT '类别',
   `imgurl` VARCHAR(100) DEFAULT NULL COMMENT '图书存放地址',
   PRIMARY KEY (`book_info_id`)
@@ -56,9 +56,9 @@ CREATE TABLE `history` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `id` VARCHAR(40) NOT NULL,
-  `username` VARCHAR(20) DEFAULT NULL COMMENT '用户名',
-  `password` VARCHAR(50) DEFAULT NULL COMMENT '密码',
+  `id` VARCHAR(40)  NOT NULL,
+  `username` VARCHAR(20)  NOT NULL COMMENT '用户名',
+  `password` VARCHAR(50)  NOT NULL COMMENT '密码',
   `state` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -86,14 +86,14 @@ INSERT  INTO `user_book_borrower`(`book_id`,`user_id`,`borrower_id`) VALUES ('1'
 DROP TABLE IF EXISTS `user_info`;
 
 CREATE TABLE `user_info` (
-  `user_info_id` VARCHAR(40) NOT NULL,
-  `nickname` VARCHAR(20) DEFAULT NULL COMMENT '真实姓名',
-  `email` VARCHAR(40) DEFAULT NULL COMMENT '邮箱',
-  `address` VARCHAR(200) DEFAULT NULL COMMENT '地址',
-  `card_no` VARCHAR(20) DEFAULT NULL COMMENT '身份证号',
-  `score` INT(11) DEFAULT NULL COMMENT '积分',
-  `telephone` VARCHAR(20) DEFAULT NULL,
-  `gender` VARCHAR(5) DEFAULT NULL,
+  `user_info_id` VARCHAR(40)  NOT NULL,
+  `nickname` VARCHAR(20)  DEFAULT NULL COMMENT '真实姓名',
+  `email` VARCHAR(40)  DEFAULT NULL COMMENT '邮箱',
+  `address` VARCHAR(200)  DEFAULT NULL COMMENT '地址',
+  `card_no` VARCHAR(20)  DEFAULT NULL COMMENT '身份证号',
+  `score` INT(11) DEFAULT 0 COMMENT '积分',
+  `telephone` VARCHAR(20)  DEFAULT NULL,
+  `gender` VARCHAR(5)  DEFAULT NULL,
   PRIMARY KEY (`user_info_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
