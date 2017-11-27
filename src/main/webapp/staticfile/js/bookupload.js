@@ -9,6 +9,7 @@ function checkForm(){
 	var res4=checkNull("bookInfo.pubDate","书籍出版日期不能为空");
 	var res5=checkNull("picFile","上传图片不能为空!");
 	return res4 && res1 && res2 && res3 && res5;
+
 }
 
 
