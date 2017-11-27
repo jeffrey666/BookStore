@@ -1,43 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="app" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Book Store</title>
-		<link rel="stylesheet" type="text/css" href="${app}/staticfile/css/style.css" />
-	</head>
-	<%@include file="_head.jsp" %>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Book Store</title>
+<link rel="stylesheet" type="text/css" href="${app}/staticfile/css/style.css" />
+</head>
+
+<%@include file="_head.jsp" %>
 <div id="wrap">    
        
        <div class="center_content">
        	<div class="left_content">
         	
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Featured books</div>
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>新书上架</div>
         
+        	<c:forEach items="${BookList}" var="book">
         	<div class="feat_prod_box">
             
-            	<div class="prod_img"><a href="/details"><img src="${app}/staticfile/images/prod1.gif" alt="" title="" border="0" /></a></div>
+            	<div class="prod_img"><a href="/details"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a></div>
                 
                 <div class="prod_det_box">
                 	<div class="box_top"></div>
                     <div class="box_center">
-                    <div class="prod_title">Product name</div>
-                    <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                    <a href="/details" class="more">- more details -</a>
+                    <div class="prod_title">书名:${book.bookName}</div>
+                    <p class="details">作者:${book.bookInfo.author}</p>
+                     <p class="details">出版社:${book.bookInfo.bookPub}</p>
+                    <p class="details">上传日期:<fmt:formatDate value="${book.bookInfo.updateTime}" pattern="yyyy-MM-dd" /></p>
+                     
+                    <a href="/details" class="more">-书籍详情 -</a>
                     <div class="clear"></div>
                     </div>
-                    
                     <div class="box_bottom"></div>
                 </div>    
             <div class="clear"></div>
             </div>	
+            </c:forEach>
             
-            
-        	<div class="feat_prod_box">
+        	<%-- <div class="feat_prod_box">
             
             	<div class="prod_img"><a href="details.html"><img src="${app}/staticfile/images/prod2.gif" alt="" title="" border="0" /></a></div>
                 
@@ -53,11 +57,11 @@
                     <div class="box_bottom"></div>
                 </div>    
             <div class="clear"></div>
-            </div>      
+            </div>  --%>     
             
             
             
-           <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet2.gif" alt="" title="" /></span>New books</div> 
+          <%--  <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet2.gif" alt="" title="" /></span>New books</div> 
            
            <div class="new_products">
            
@@ -85,9 +89,11 @@
                         </div>           
                     </div>          
             
-            </div> 
+            </div>  --%>
           
             
+            
+       <!-- 主页右侧 -->     
         <div class="clear"></div>
         </div><!--end of left content-->
         

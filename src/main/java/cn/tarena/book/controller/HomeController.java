@@ -21,7 +21,9 @@ public class HomeController {
 	private BookInfoService bookInfoService;
 
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) {
+		List<Book> BookList =bookInfoService.findNewBooks();
+		model.addAttribute("BookList", BookList);
 		return "/index";
 	}
 
@@ -46,7 +48,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("/bookupload")
-	public String upload() {
+	public String upload(HttpSession session) {
 		return "/bookupload";
 	}
 
@@ -59,9 +61,11 @@ public class HomeController {
 	@RequestMapping("/tocart")
 	public String tocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
+		
 		session.setAttribute("num", 1);
 		List<Book> books = bookInfoService.tocart(user.getId(), 0, 4);
 		model.addAttribute("books", books);
+		System.out.println(books.get(0).getBookInfo().getPubDate()+"====================================");
 		return "cart";
 	}
 
@@ -101,16 +105,6 @@ public class HomeController {
 		return "cart";
 	}
 
-	public int[] getColumn(int line, int i) {
-		int[] arr = new int[2];
-		arr[0] = (i - 1) * 4;
-		if (line - i * 4 + 4 >= 0) {
-			arr[1] = 4;
-		} else {
-			arr[1] = line - arr[0];
-		}
-		return arr;
-	}
 
 	@RequestMapping("/tocategory")
 	public String category() {
@@ -120,6 +114,18 @@ public class HomeController {
 	@RequestMapping("/topsellers")
 	public String topsellers() {
 		return "sellers";
+	}
+	
+	
+	public int[] getColumn(int line, int i) {
+		int[] arr = new int[2];
+		arr[0] = (i - 1) * 4;
+		if (line - i * 4 + 4 >= 0) {
+			arr[1] = 4;
+		} else {
+			arr[1] = line - arr[0];
+		}
+		return arr;
 	}
 
 }

@@ -51,6 +51,7 @@
 		select * from user where username=#{username} and password=#{password}
 	</select>
 	
+<<<<<<< HEAD
 	
 	<resultMap type="Book" id="bookRM"  autoMapping="true">
 		<id column="book_id" property="bookId"/>
@@ -113,4 +114,6 @@ ubb.user_id=#{userId}
 	ubb.user_id=#{userId} -->
 	</select> 
 	
+=======
+>>>>>>> master
 </mapper>
