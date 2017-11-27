@@ -1,6 +1,9 @@
 package cn.tarena.book.controller;
 
+
 import java.util.Date;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,19 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
-import cn.tarena.book.service.UserService;
 
 @Controller
-@RequestMapping("/search")
-public class SearchController {
-	
-	
-	
-	
+@RequestMapping("/search/")
+public class SearchController extends BaseController{
+
 	@Autowired
 	private SearchService searchService;
-	@Autowired
-	private UserService userService;
+	
+	@RequestMapping("/search")
+	public String searchBooks(Book book,Model model){
+		model.addAttribute("book",book);
+		List<Book> books = searchService.findAll(book);
+		System.out.println(books);
+		model.addAttribute("books",books);
+		return "search";
+	}
+	
+	
+
+	
 	/**
 	 * 在图书详情页面用户点击借书按钮时，实现该过程
 	 * @param userId：用户id
@@ -49,7 +59,7 @@ public class SearchController {
 		//将图书拥有者的信息添加到model中，以便在页面中显示持有人的信息，让用户能通过页面与图书拥有者联系
 		model.addAttribute("user", user);
 		//转发到拥有者详情页面
-		return "/userinfo";
+		return "/bookinfos";
 	}
 	/**
 	 * 图书详情页面：点击搜索出的书籍列表上的图书时，进入到图书详情页面
@@ -72,6 +82,8 @@ public class SearchController {
 		//转发到图书详情页面
 		return "/tobookview";
 	}
-	
-
+	@RequestMapping("/tobook")
+	public String toview() {
+		return "bookinfos";
+	}
 }

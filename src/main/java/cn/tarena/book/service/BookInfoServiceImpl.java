@@ -29,4 +29,18 @@ public class BookInfoServiceImpl  implements BookInfoService{
 		return bookInfoMapper.line(id);
 
 	}
+	@Override
+	public List<BookInfo> findAll() {
+		return bookInfoMapper.findAll();
+	}
+		
+	public List<Book> findNewBooks() {
+		
+		return bookInfoMapper.findNewBooks();
+	}
+	@Override
+	public Book findOneByBookId(String bookId) {
+		
+		return bookInfoMapper.findOneByBookId(bookId);
+	}
 }

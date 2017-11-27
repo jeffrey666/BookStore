@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +27,7 @@ import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
 
 import cn.tarena.book.service.UserService;
+import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.user.utils.StringTool;
 
 @Controller
@@ -36,68 +36,70 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private UserInfoService userInfoService;
+
 	//注册用户
 	@RequestMapping("/toregist.action")
-	public String toRegist(User user,Model model){
-		if(StringUtils.isEmpty(user.getUsername())||StringUtils.isEmpty(user.getPassword())){
-			model.addAttribute("errorInfo","用户名或密码不能为空");
+	public String toRegist(User user, Model model) {
+		if (StringUtils.isEmpty(user.getUsername())
+				|| StringUtils.isEmpty(user.getPassword())) {
+			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/regist";
 		}
-		User exitUser = userService.findUserByUsername(user.getUsername()); 
-		if(exitUser!=null){
-			model.addAttribute("errorInfo","用户名已存在");
+		User exitUser = userService
+				.findUserByUsername(user.getUsername());
+		if (exitUser != null) {
+			model.addAttribute("errorInfo", "用户名已存在");
 			return "/regist";
 		}
-		
+
 		userService.addUser(user);
 		//成功则跳转至主页
 		return "redirect:/";
 	}
-	//用户的登录
+
 	//用户的登录
 	@RequestMapping("/tologin.action")
-	public String toLogin(String username,String password,Model model,HttpSession session){
+	public String toLogin(String username, String password,
+			Model model, HttpSession session) {
 		//非空验证
-		if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
-			model.addAttribute("errorInfo","用户名或密码不能为空");
+		if (StringUtils.isEmpty(username)
+				|| StringUtils.isEmpty(password)) {
+			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
 		}
-		
+
 		//根据用户名和密码查找单个用户
-		User user = userService.findUser(username,password);
-		
-		if(user==null){
-			model.addAttribute("errorInfo","用户名或密码错误");
+		User user = userService.findUser(username, password);
+
+		if (user == null) {
+			model.addAttribute("errorInfo", "用户名或密码错误");
 			return "/login";
 		}
 		session.setAttribute("_CURRENT_USER", user);
 		return "redirect:/";
 	}
+
 	//用户退出登录
 	@RequestMapping("tologout")
-	public String tologout(HttpSession session){
+	public String tologout(HttpSession session) {
 		session.removeAttribute("_CURRENT_USER");
 		return "redirect:/";
 	}
-	
+
 	//注册时ajax验证用户名是否存在
 	@RequestMapping("/AjaxCheckUsername.action")
 	@ResponseBody
-	public String AjaxCheckUsername( String username){
-		 User exitUser = userService.findUserByUsername(username); 
-		 if(exitUser!=null){
-			 return "用户名已存在";
-		 }
+	public String AjaxCheckUsername(String username) {
+		User exitUser = userService.findUserByUsername(username);
+		if (exitUser != null) {
+			return "用户名已存在";
+		}
 		return "恭喜,用户名可用";
 	}
-	
-	
 
 
-
-
-	@Autowired
-	private UserInfoService userInfoService;
 
 	@RequestMapping("/user/userInfo/Left.action")
 	public String userinfoLeft() {
@@ -197,14 +199,5 @@ public class UserController {
 		return true;
 
 	}
-	
-	//查找用户的自己拥有的书
-	@RequestMapping("/user/findMyBookList.action")
-	public String findMyBookLis(HttpSession session,Model model){
-		User user = (User) session.getAttribute("_CURRENT_USER");
-		List<Book> books = userService.findMyBookListByUserId(user.getId());
-		model.addAttribute("bookList",books);
-		return "/myBookList";
-	}
-	
+
 }

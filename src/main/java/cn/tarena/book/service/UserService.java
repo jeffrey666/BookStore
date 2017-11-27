@@ -19,8 +19,12 @@ public interface UserService {
 
 	// 根据用户名查找用户，校验是否注册时候用了重复的用户名
 	public abstract User findUserByUsername(String username);
-	//根据用户Id 查找自己拥有的书
-	public List<Book> findMyBookListByUserId(String userId);
+
+
+	//根据用户Id 查找自己拥有的未还的书
+	public List<Book> findMyBookListByUserIdReturn(String userId);
+
+	List<Book> findMyBookListByUserId(String userId);
 
 	//后台:查询所有用户
 	public List<User> findBackAllUser();

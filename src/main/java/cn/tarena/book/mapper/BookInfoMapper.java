@@ -17,7 +17,14 @@ public interface BookInfoMapper {
 
 	Integer line(String id);
 
+
 	public List<Book> findAllByCount();
+
+	List <Book> findNewBooks();
+
+	Book findOneByBookId(String bookId);
+	List<BookInfo> findAll();
+
 
 }
 

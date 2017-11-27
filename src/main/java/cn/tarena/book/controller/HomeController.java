@@ -21,7 +21,9 @@ public class HomeController {
 	private BookInfoService bookInfoService;
 
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) {
+		List<Book> BookList =bookInfoService.findNewBooks();
+		model.addAttribute("BookList", BookList);
 		return "/index";
 	}
 
@@ -36,16 +38,36 @@ public class HomeController {
 	}
 
 
+	@RequestMapping("details")
+	public String details(String bookId,Model model) {
+		Book book =bookInfoService.findOneByBookId(bookId);
+		model.addAttribute("book",book);
+		return "/details";
+	}
+
+	@RequestMapping("/tologin")
+	public String login() {
+		return "/login";
+	}
+
+	@RequestMapping("/bookupload")
+	public String upload(HttpSession session) {
+		return "/bookupload";
+	}
+
+	@RequestMapping("tosearch")
+	public String tosearch() {
+
+		return "/search";
+	}
+
     
     @RequestMapping("details")
     public String details(){
     	return "/details";
     }
     
-    @RequestMapping("/tologin")
-    public String login(){
-    	return "/login";
-    }
+    
     
     //点击图书上传拦截
     @RequestMapping("/bookupload")
@@ -55,11 +77,7 @@ public class HomeController {
     }
 
     
-    @RequestMapping("tosearch")
-    public String tosearch(){
-    	
-    	return "/search";
-    }
+   
 
     
     
@@ -81,9 +99,11 @@ public class HomeController {
 	@RequestMapping("/tocart")
 	public String tocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
+		
 		session.setAttribute("num", 1);
 		List<Book> books = bookInfoService.tocart(user.getId(), 0, 4);
 		model.addAttribute("books", books);
+		System.out.println(books.get(0).getBookInfo().getPubDate()+"====================================");
 		return "cart";
 	}
 
@@ -123,6 +143,15 @@ public class HomeController {
 		return "cart";
 	}
 
+
+
+
+	@RequestMapping("/topsellers")
+	public String topsellers() {
+		return "sellers";
+	}
+	
+	
 	public int[] getColumn(int line, int i) {
 		int[] arr = new int[2];
 		arr[0] = (i - 1) * 4;
@@ -133,8 +162,5 @@ public class HomeController {
 		}
 		return arr;
 	}
-
-
-	
 
 }
