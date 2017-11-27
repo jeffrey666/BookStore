@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,7 +36,7 @@
 							<tr>
 								<td>${v.index+1}</td>
 								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
-										height="80" width="200" /> </a></td>
+										height="150" width="98" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
 								<td><c:if test="${b.bookInfo.category==4}">-科技-</c:if> <c:if
@@ -44,9 +45,10 @@
 										test="${b.bookInfo.category==1}">-经济-</c:if> <c:if
 										test="${b.bookInfo.category==0}">-其它-</c:if></td>
 								<td>${b.bookInfo.bookPub }</td>
-								<td width="50">${b.bookInfo.pubDate}</td>
-								<td>${b.bookInfo.borrowDate }</td>
-								<td>${b.bookInfo.returnDate }</td>
+								<%-- <td width="50">${b.bookInfo.pubDate}</td> --%>
+								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>
+								<td width="50"><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy/MM/dd" /></td>
+								<td width="50"><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy/MM/dd" /></td>
 							</tr>
 						</c:forEach>
 					</table>

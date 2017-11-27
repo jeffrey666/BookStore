@@ -63,6 +63,7 @@ public class HomeController {
 		session.setAttribute("num", 1);
 		List<Book> books = bookInfoService.tocart(user.getId(), 0, 4);
 		model.addAttribute("books", books);
+		System.out.println(books.get(0).getBookInfo().getPubDate()+"====================================");
 		return "cart";
 	}
 
