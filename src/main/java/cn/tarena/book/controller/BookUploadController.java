@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,8 +87,10 @@ public class BookUploadController  extends BaseController{
 			//保存书籍用户关系表
 			bookService.saveBookAndUser(userID,book.getBookId());
 			
+			Date date =new Date();
 			BookInfo bookInfo =book.getBookInfo();
 			bookInfo.setBookInfoId(Id);
+			bookInfo.setUpdateTime(date);
 			//把书籍信息存到书籍表
 			bookService.saveBookUpload(book);
 			
@@ -99,7 +100,7 @@ public class BookUploadController  extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 	
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/list.action")
@@ -107,6 +108,7 @@ public class BookUploadController  extends BaseController{
 		PageBean<Book> pageBean = (PageBean<Book>) session.getAttribute("pageBean");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String inputDate = sdf.format(new Date());
+		
 		//获取工作蒲
 		Workbook wb = new HSSFWorkbook();
 
