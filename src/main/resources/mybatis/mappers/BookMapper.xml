@@ -3,10 +3,12 @@
 <mapper namespace="cn.tarena.book.mapper.BookMapper">
 
     
+    <!-- 把书籍id,书籍名称,书籍状态存到Book表 -->
     <insert id="saveBookUpload">
     insert into book (book_id,book_name,state) values(#{bookId},#{bookName},#{state})
     </insert>
 
+    <!-- 把用户的图书信息关联到用户书籍关联表-->
 	<insert id="saveBookAndUser" >
     insert into user_book_borrower (user_id,book_id) values(#{userId},#{bookId})
     </insert>

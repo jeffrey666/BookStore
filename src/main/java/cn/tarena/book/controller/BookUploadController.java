@@ -49,7 +49,6 @@ public class BookUploadController  extends BaseController{
 			
 			//设置文件存放路径
 			String uploadDir=request.getSession().getServletContext().getRealPath("/upload")+path;
-			System.out.println(uploadDir);
 			//生成路径
 			File dir=new File(uploadDir);
 			if(!dir.exists()){
@@ -61,7 +60,10 @@ public class BookUploadController  extends BaseController{
 			
 			//获取书籍图片全路径
 			String imgurl="\\upload"+path+"\\"+filename;
-			book.getBookInfo().setImgurl(imgurl);
+
+			//给图片设置路径
+			book. getBookInfo().setImgurl(imgurl);
+
 			String Id=UUID.randomUUID().toString();
 			book.setBookId(Id);
 			//新增书数据保存为(未借)
@@ -69,9 +71,7 @@ public class BookUploadController  extends BaseController{
 			
 			User user =(User) session.getAttribute("_CURRENT_USER");
 			String userID =user.getId();
-			System.out.println("userID:"+userID);
 			//保存书籍用户关系表
-
 			bookService.saveBookAndUser(userID,book.getBookId());
 
 

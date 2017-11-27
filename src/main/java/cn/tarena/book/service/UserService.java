@@ -1,5 +1,8 @@
 package cn.tarena.book.service;
 
+import java.util.List;
+
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 public interface UserService {
@@ -16,5 +19,7 @@ public interface UserService {
 
 	// 根据用户名查找用户，校验是否注册时候用了重复的用户名
 	public abstract User findUserByUsername(String username);
+	//根据用户Id 查找自己拥有的书
+	public List<Book> findMyBookListByUserId(String userId);
 
 }
