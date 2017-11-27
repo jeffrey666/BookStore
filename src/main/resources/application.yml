@@ -11,6 +11,8 @@ spring:
     view:
       prefix: /WEB-INF/pages/
       suffix: .jsp
+  aop:
+    auto: true
       
   http:
     encoding:
