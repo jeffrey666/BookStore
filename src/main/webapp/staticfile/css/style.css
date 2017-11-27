@@ -561,23 +561,23 @@ color:#afaeaf;
 
 
 /*搜索条*/
-#content #search_div,#content #search_div2{
+#content #search_div,#content #search_div2,#content #search_div3{
 	border: 1px solid #D4D4D4;
 	padding:8px;
 }
-#content #search_div .input_span,#content #search_div2 .input_span{
+#content #search_div .input_span,#content #search_div2 .input_span,#content #search_div3 .input_span{
 	margin: 0px 0px 0px 15px;
 }
-#content #search_div input[type=text],#content #search_div select[name=bookInfo.category],#content #search_div2 input[name=mindate],#search_div2 input[name=author]{
+#content #search_div input[type=text],#content #search_div select[name=bookInfo.category],#content #search_div3 input[name=bookInfo.pubDate],#content #search_div2 input[name=bookInfo.author]{
 	border: 1px solid #D4D4D4;
 	height:20px;
 }
 
-#content #search_div input[name=bookname],#content #search_div select[name=bookInfo.category],#content #search_div2 input[name=mindate]{
+#content #search_div input[name=bookName],#content #search_div select[name=bookInfo.category],#content #search_div3 input[name=bookInfo.pubDate]{
 	width:100px;
 }
-#content #search_div2 input[name=author]{
-	width:60px;;
+#content #search_div2 input[name=bookInfo.author]{
+	width:50px;
 }
 
 #content #search_div input[type=submit]{

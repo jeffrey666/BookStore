@@ -1,9 +1,18 @@
 package cn.tarena.book.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
@@ -12,15 +21,26 @@ import cn.tarena.book.service.UserService;
 
 @Controller
 @RequestMapping("/search")
-public class SearchController {
-	
-	
-	
-	
+public class SearchController extends BaseController{
+
 	@Autowired
 	private SearchService searchService;
 	@Autowired
 	private UserService userService;
+	
+	
+	@RequestMapping("/search")
+	public String searchBooks(Book book,Model model){
+		model.addAttribute("book",book);
+		List<Book> books = searchService.findAll(book);
+		System.out.println(books);
+		model.addAttribute("books",books);
+		return "search";
+	}
+	
+	
+
+	
 	/**
 	 * 在图书详情页面用户点击借书按钮时，实现该过程
 	 * @param userId：用户id

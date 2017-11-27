@@ -11,7 +11,7 @@ public class BookInfo {
 	private String searchVolume;//图书搜索次数
 	private String borrowCount;//图书借阅次数
 	private	String bookPub;//图书出版社
-	private String pubDate;//图书出版日期
+	private Date pubDate;//图书出版日期
 	private String category;//图书分类
 	private String imgurl;//图书存放地址
 	public String getImgurl() {
@@ -69,10 +69,11 @@ public class BookInfo {
 	public void setBookPub(String bookPub) {
 		this.bookPub = bookPub;
 	}
-	public String getPubDate() {
+	
+	public Date getPubDate() {
 		return pubDate;
 	}
-	public void setPubDate(String pubDate) {
+	public void setPubDate(Date pubDate) {
 		this.pubDate = pubDate;
 	}
 	public String getCategory() {
@@ -88,6 +89,7 @@ public class BookInfo {
 				+ ", borrowCount=" + borrowCount + ", bookPub=" + bookPub + ", pubDate=" + pubDate + ", category="
 				+ category + ", imgurl=" + imgurl + "]";
 	}
+	
 }
 
 
