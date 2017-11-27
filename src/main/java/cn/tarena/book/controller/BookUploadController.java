@@ -216,7 +216,7 @@ public class BookUploadController  extends BaseController{
 		// OutputStream os=new FileOutputStream(new File("D:\\outProduct.xls"));
 		
 		// 下载
-		PageBean pb = new PageBean();
+		PageBean<Book> pb = new PageBean<Book>();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		response.setContentType("text/html;charset=gbk");
 		wb.write(os);
