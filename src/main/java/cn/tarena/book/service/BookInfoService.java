@@ -25,5 +25,5 @@ public interface BookInfoService {
 	 * @return
 	 */
 	public List<Book> findNewBooks();
-
+ 
 }
