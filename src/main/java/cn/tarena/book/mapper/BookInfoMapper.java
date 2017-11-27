@@ -15,11 +15,9 @@ public interface BookInfoMapper {
 
 	Integer line(String id);
 
-<<<<<<< HEAD
-	List<BookInfo> findAll();
-=======
 	List <Book> findNewBooks();
 
->>>>>>> master
+	List<BookInfo> findAll();
+
 }
 

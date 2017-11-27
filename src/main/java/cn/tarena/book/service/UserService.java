@@ -24,4 +24,6 @@ public interface UserService {
 	//根据用户Id 查找自己拥有的未还的书
 	public List<Book> findMyBookListByUserIdReturn(String userId);
 
+	List<Book> findMyBookListByUserId(String userId);
+
 }

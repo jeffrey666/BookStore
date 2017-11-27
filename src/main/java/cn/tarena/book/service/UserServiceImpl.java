@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
 
 		return userMapper.findUserByUsername(username);
 	}
-<<<<<<< HEAD
 	//根据用户Id 查找自己拥有的书
 	@Override
 	public List<Book> findMyBookListByUserId(String userId) {
@@ -63,7 +62,5 @@ public class UserServiceImpl implements UserService {
 	public List<Book> findMyBookListByUserIdReturn(String userId) {
 		return userMapper.findMyBookListByUserIdReturn(userId);
 	}
-=======
 	
->>>>>>> master
 }

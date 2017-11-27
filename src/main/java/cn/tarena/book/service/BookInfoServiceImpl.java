@@ -29,13 +29,12 @@ public class BookInfoServiceImpl  implements BookInfoService{
 		return bookInfoMapper.line(id);
 	}
 	@Override
-<<<<<<< HEAD
 	public List<BookInfo> findAll() {
 		return bookInfoMapper.findAll();
-=======
+	}
+		
 	public List<Book> findNewBooks() {
 		
 		return bookInfoMapper.findNewBooks();
->>>>>>> master
 	}
 }

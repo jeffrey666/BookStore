@@ -20,14 +20,11 @@ public interface BookInfoService {
 
 	public Integer line(String id);
 
-<<<<<<< HEAD
 	public List<BookInfo> findAll();
-=======
 	/**
 	 * 查找新上传的书籍
 	 * @return
 	 */
 	public List<Book> findNewBooks();
->>>>>>> master
  
 }
