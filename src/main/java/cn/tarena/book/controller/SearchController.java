@@ -1,5 +1,7 @@
 package cn.tarena.book.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,13 +31,13 @@ public class SearchController {
 	 * @return 转发到的URL
 	 */
 	@RequestMapping("/toborrow")
-	public String toborrow(String userId,String bookId,Model model) {
+	public String toborrow(Date borrowDate,Date returnTime,String userId,String bookId,Model model) {
 		//通过bookId找到拥有者
 		User user=searchService.findUserByBookId(bookId);
 		//通过bookId更改图书state
 		searchService.updateState(bookId);
 		//通过bookId更改图书的借阅时间和归还期限
-		searchService.updateDate(bookId);
+		searchService.updateDate(bookId,borrowDate,returnTime);
 		//将借阅人的信息添加到借阅关联表中
 		searchService.updateBorrower(userId,bookId);
 		//用户扣去相应的积分
@@ -43,7 +45,7 @@ public class SearchController {
 		//图书拥有者得到相应的积分
 		searchService.gain(user);
 		//在历史记录中添加该条借阅信息
-		searchService.addHistory(userId,bookId);
+		searchService.addHistory(userId,bookId,borrowDate,returnTime);
 		//将图书拥有者的信息添加到model中，以便在页面中显示持有人的信息，让用户能通过页面与图书拥有者联系
 		model.addAttribute("user", user);
 		//转发到拥有者详情页面
@@ -61,6 +63,12 @@ public class SearchController {
 		Book book=searchService.findOne(bookId);
 		//将图书添加到model中，以便在图书详情页面上使用
 		model.addAttribute("book", book);
+		//将当前时间设为借书时间
+		Date borrowDate =new Date();
+		//当前时间加上借书时间为还书期限
+		Date returnTime=borrowDate;
+		model.addAttribute("borrowDate", borrowDate);
+		model.addAttribute("returnTime", returnTime);
 		//转发到图书详情页面
 		return "/tobookview";
 	}
