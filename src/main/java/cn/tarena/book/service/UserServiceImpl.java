@@ -101,6 +101,14 @@ public class UserServiceImpl implements UserService {
 	public List<Book> findMyBookListByUserIdReturn(String userId) {
 		return userMapper.findMyBookListByUserIdReturn(userId);
 	}
+
+	@Override
+	public String findRoleByUserId(String userId) {
+		
+		User user = userMapper.findUserById(userId);
+		
+		return user.getRole();
+	}
 	
 
 }
