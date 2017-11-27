@@ -20,6 +20,7 @@ public interface BookInfoService {
 
 	public Integer line(String id);
 
+	public List<BookInfo> findAll();
 	/**
 	 * 查找新上传的书籍
 	 * @return
@@ -31,5 +32,6 @@ public interface BookInfoService {
 	 * @return
 	 */
 	public Book findOneByBookId(String bookId);
+
 
 }
