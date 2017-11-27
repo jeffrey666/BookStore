@@ -112,6 +112,5 @@ public class PageBean<T> {
 		response.setHeader("Content-Disposition","attachment;filename="+path);
 		response.setContentType("text/html;charset=gbk");
 		response.getOutputStream().write(os.toByteArray());
-		
 	}
 }

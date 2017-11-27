@@ -19,10 +19,10 @@
 
 				<div class="feat_prod_box_details">
 
-					<table class="cart_table1" align="center" cellspacing="0" cellpadding="5px" border="1">
+					<table class="cart_table1" align="center" cellspacing="0" cellpadding="5px" border="">
 						<tr class="cart_title">
 							<td width="40px">商品序号:</td>
-							<td>商品图片:</td>
+							<td width="88px">商品图片:</td>
 							<td width="40px">商品名称:</td>
 							<td width="40px">商品作者:</td>
 							<td width="40px">图书类别:</td>
@@ -36,7 +36,7 @@
 							<tr>
 								<td>${v.index+1}</td>
 								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
-										height="150" width="98" /> </a></td>
+										height="150px" width="98px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
 								<td><c:if test="${b.bookInfo.category==4}">-科技-</c:if> <c:if

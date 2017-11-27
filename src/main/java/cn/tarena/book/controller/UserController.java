@@ -151,7 +151,7 @@ public class UserController {
 			String new_password, Model model,
 			HttpSession session) {
 
-		// 旧密码是否正确？
+		//旧密码是否正确？
 		if (StringTool.isEmpty(user_id)
 				|| StringTool.isEmpty(old_psw)) {
 			model.addAttribute("errMsg", "页面出错，请重新登录");

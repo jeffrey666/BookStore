@@ -103,6 +103,7 @@ public class BookUploadController  extends BaseController{
 		return "redirect:/";
 	}
 	
+	//榜单下载功能
 	@RequestMapping("/list.action")
 	public void print(HttpServletResponse response,HttpSession session) throws IOException {
 		PageBean<Book> pageBean = (PageBean<Book>) session.getAttribute("pageBean");
