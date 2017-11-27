@@ -2,8 +2,11 @@ package cn.tarena.book.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.UUID;
 import cn.tarena.book.mapper.UserMapper;
+import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 @Service
@@ -47,5 +50,11 @@ public class UserServiceImpl implements UserService {
 	public User findUserByUsername(String username) {
 
 		return userMapper.findUserByUsername(username);
+	}
+	//根据用户Id 查找自己拥有的书
+	@Override
+	public List<Book> findMyBookListByUserId(String userId) {
+		
+		return userMapper.findMyBookListByUserId(userId);
 	}
 }

@@ -1,5 +1,7 @@
 package cn.tarena.book.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +44,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public void updateDate(String bookId) {
-		searchMapper.updateDate(bookId);
+	public void updateDate(String bookId,Date borrowDate,Date returnTime) {
+		searchMapper.updateDate(bookId,borrowDate,returnTime);
 	}
 
 	@Override
@@ -52,8 +54,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public void addHistory(String userId, String bookId) {
-		searchMapper.addHistory(userId,bookId);
+	public void addHistory(String userId, String bookId,Date borrowDate,Date returnDate) {
+		searchMapper.addHistory(userId,bookId,borrowDate,returnDate);
 	}
 
 	@Override
