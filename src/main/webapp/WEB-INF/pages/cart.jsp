@@ -19,17 +19,17 @@
 
 				<div class="feat_prod_box_details">
 
-					<table class="cart_table1" align="center">
+					<table class="cart_table1" align="center" cellspacing="0" cellpadding="5px" border="1">
 						<tr class="cart_title">
-							<td>商品序号:</td>
+							<td width="40px">商品序号:</td>
 							<td>商品图片:</td>
-							<td>商品名称:</td>
-							<td>商品作者:</td>
-							<td>图书类别:</td>
-							<td>图书出版社:</td>
+							<td width="40px">商品名称:</td>
+							<td width="40px">商品作者:</td>
+							<td width="40px">图书类别:</td>
+							<td width="60px">图书出版社:</td>
 							<td width="80px">出版日期</td>
-							<td>借出时间:</td>
-							<td>归还时间:</td>
+							<td width="80px">借出时间:</td>
+							<td width="80px">归还时间:</td>
 						</tr>
 
 						<c:forEach items="${books }" var="b" varStatus="v">
