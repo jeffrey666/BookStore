@@ -8,10 +8,10 @@ import cn.tarena.book.pojo.User;
 public interface UserService {
 
 	// 注册时添加用户
-	public void addUser(User user);
+	public abstract void addUser(User user);
 
 	// 登录时查找单个用户
-	public User findUser(String username, String password);
+	public abstract User findUser(String username, String password);
 
 	public abstract int updatePsw(String userId, String newPassword);
 
@@ -22,8 +22,10 @@ public interface UserService {
 
 
 	//根据用户Id 查找自己拥有的未还的书
-	public List<Book> findMyBookListByUserIdReturn(String userId);
+	public abstract List<Book> findMyBookListByUserIdReturn(String userId);
 
-	List<Book> findMyBookListByUserId(String userId);
+	public abstract List<Book> findMyBookListByUserId(String userId);
+
+	public abstract String findRoleByUserId(String userId);
 
 }
