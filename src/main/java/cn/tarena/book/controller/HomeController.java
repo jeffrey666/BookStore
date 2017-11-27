@@ -21,7 +21,9 @@ public class HomeController {
 	private BookInfoService bookInfoService;
 
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) {
+		List<Book> BookList =bookInfoService.findNewBooks();
+		model.addAttribute("BookList", BookList);
 		return "/index";
 	}
 
