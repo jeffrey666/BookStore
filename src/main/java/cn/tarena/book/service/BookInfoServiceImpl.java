@@ -28,4 +28,9 @@ public class BookInfoServiceImpl  implements BookInfoService{
 	public Integer line(String id) {
 		return bookInfoMapper.line(id);
 	}
+	@Override
+	public List<Book> findNewBooks() {
+		
+		return bookInfoMapper.findNewBooks();
+	}
 }
