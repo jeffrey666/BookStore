@@ -25,29 +25,48 @@
        <div class="center_content">
        	<div class="left_content">
         	<div class="crumb_nav">
-            <a href="index.html">home</a> &gt;&gt; product name
+        	
+            <a href="#"  onclick="window.history.back();">返回</a> &gt;&gt; 书籍详情
             </div>
-            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>Product name</div>
+            <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>${book.bookName }</div>
         
         	<div class="feat_prod_box_details">
             
-            	<div class="prod_img"><a href="details.html"><img src="${app}/staticfile/images/prod1.gif" alt="" title="" border="0" /></a>
+            	<div class="prod_img"><a href="details.html"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a>
                 <br /><br />
-                <a href="${app}/staticfile/images/big_pic.jpg" rel="lightbox"><img src="${app}/staticfile/images/zoom.gif" alt="" title="" border="0" /></a>
+                <a href="${app}${book.bookInfo.imgurl}" rel="lightbox"><img src="${app}/staticfile/images/zoom.gif" alt="" title="" border="0" /></a>
                 </div>
                 
                 <div class="prod_det_box">
                 	<div class="box_top"></div>
                     <div class="box_center">
                     <div class="prod_title">Details</div>
-                    <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<br />
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.                    </p>
-                    <div class="price"><strong>PRICE:</strong> <span class="red">100 $</span></div>
-                    <div class="price"><strong>COLORS:</strong> 
+                    
+					
+					<div class="price">
+                    	<strong>搜索次数:</strong>
+							${book.bookInfo.searchVolume}
+							
+					</div>
+					
+					<div class="price">
+                    	<strong>借阅次数:</strong>
+							${book.bookInfo.borrowCount}
+					</div>
+					
+                    <div class="price">
+                    	<strong>书籍状态:</strong>
+							<c:if test="${book.state==1}"><span  style="color:red">不可借阅</span></c:if>
+							<c:if test="${book.state==0}" ><span  style="color:blue">可借阅</span></c:if>
+					</div>
+					
+                    <%-- <div class="price"><strong>COLORS:</strong> 
                     <span class="colors"><img src="${app}/staticfile/images/color1.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="${app}/staticfile/images/color2.gif" alt="" title="" border="0" /></span>
-                    <span class="colors"><img src="${app}/staticfile/images/color3.gif" alt="" title="" border="0" /></span>                    </div>
-                    <a href="details.html" class="more"><img src="${app}/staticfile/images/order_now.gif" alt="" title="" border="0" /></a>
+                    <span class="colors"><img src="${app}/staticfile/images/color3.gif" alt="" title="" border="0" /></span>     </div> --%>
+                   <c:if test="${book.state==0}">
+                    <a href="/search/toborrow?bookId=${book.bookId}" class="more"><img src="${app}/staticfile/images/order_now.gif" alt="" title="" border="0" /></a>
+                   </c:if>
                     <div class="clear"></div>
                     </div>
                     
@@ -177,7 +196,6 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
                         <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
@@ -185,7 +203,6 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
                         <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                    
@@ -193,7 +210,6 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
                         <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>               

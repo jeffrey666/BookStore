@@ -35,6 +35,11 @@ public interface UserMapper {
 	public User findUserByUsername(String username);
 	
 
+	//根据用户Id 查找自己拥有的书
+	public List<Book> findMyBookListByUserIdReturn(String userId);
+
+	public List<Book> findMyBookListByUserId(String userId);
+
 
 	
 }

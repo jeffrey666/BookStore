@@ -2,6 +2,8 @@ package cn.tarena.book.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +20,11 @@ public class ListController {
 	private BookListService bookListService;
 	
 	@RequestMapping("/findlist")
-	public String list(Integer currentPage,Integer pageSize,Model model){
+	public String list(Integer currentPage,Integer pageSize,HttpSession session){
 		
 		PageBean<Book> pageBean=bookListService.findBookList(currentPage,pageSize);
 		
-		model.addAttribute("pageBean",pageBean);
-		List<Book> books =pageBean.getItems();
+		session.setAttribute("pageBean",pageBean);
 		return "borrowlist";
 	}
 }
