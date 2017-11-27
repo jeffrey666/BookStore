@@ -32,7 +32,7 @@
         
         	<div class="feat_prod_box_details">
             
-            	<div class="prod_img"><a href="details.html"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a>
+            	<div class="prod_img"><a href="#"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a>
                 <br /><br />
                 <a href="${app}${book.bookInfo.imgurl}" rel="lightbox"><img src="${app}/staticfile/images/zoom.gif" alt="" title="" border="0" /></a>
                 </div>
