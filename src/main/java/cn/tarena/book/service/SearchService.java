@@ -1,13 +1,19 @@
 package cn.tarena.book.service;
 
 import java.util.Date;
+import java.util.List;
+
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
 public interface SearchService {
+	/**
+	 * @param book:查询条件的封装
+	 * @return
+	 */
 
-	
+	List<Book> findAll(Book book);
 	
 	/******************************/
 
