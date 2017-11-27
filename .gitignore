@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /bin/
 /bin/
 /bin/
@@ -143,3 +144,8 @@
 /bin/
 /bin/
 /target/
+=======
+src/main/java/cn/tarena/book/user/filter/DevlopTestDataInitFilter.java
+target/m2e-jee/web-resources/META-INF/MANIFEST.MF
+target/
+>>>>>>> master
