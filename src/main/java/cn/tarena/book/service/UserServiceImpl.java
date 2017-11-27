@@ -45,16 +45,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findUserByIdAndPsw(user);
 	}
 
-	// 根据用户名查找用户，校验是否注册时候用了重复的用户名
+	// 根据用户名查找用户，校验是否注册时候使用重复的用户名
 	@Override
 	public User findUserByUsername(String username) {
 
 		return userMapper.findUserByUsername(username);
 	}
-	//根据用户Id 查找自己拥有的书
-	@Override
-	public List<Book> findMyBookListByUserId(String userId) {
-		
-		return userMapper.findMyBookListByUserId(userId);
-	}
+	
 }

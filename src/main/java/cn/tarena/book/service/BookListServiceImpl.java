@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 
-import cn.tarena.book.controller.BookListService;
 import cn.tarena.book.mapper.BookMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.utils.PageBean;
@@ -30,6 +29,7 @@ public class BookListServiceImpl implements BookListService {
       List<Book> books = bookMapper.findAllBookBySeller();       //全部商品
       int countNums = bookMapper.countBook();            //总记录数
       PageBean<Book> pageData = new PageBean<Book>(currentPage, pageSize, countNums);
+      //将全部的书籍存进pageData，自动会截取需要的书籍出来
       pageData.setItems(books);
      return pageData;
 		
