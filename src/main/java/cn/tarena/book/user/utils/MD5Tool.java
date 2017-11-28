@@ -1,6 +1,7 @@
 package cn.tarena.book.user.utils;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.junit.Test;
 
 public class MD5Tool {
 
@@ -15,7 +16,10 @@ public class MD5Tool {
 
 		return md5Hash.toString();
 	}
-	
 
+	@Test
+	public void testGetMD5() {
+		System.out.println(getMD5("arti", "123456"));
+	}
 
 }
