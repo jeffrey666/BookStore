@@ -10,9 +10,10 @@
 <script
 	src="<%=request.getContextPath()%>/staticfile/js/jquery-1.6.2.js"></script>
 <script src="<%=request.getContextPath()%>/staticfile/js/bookupload.js"></script>
-<script>
+<script type="text/javascript">
 	
 </script>
+
 </head>
 <%@include file="_head.jsp"%>
 <body>
@@ -67,9 +68,18 @@
 						</tr>
 						<tr>
 							<td class="tds">书籍照片：</td>
-							<td><input type="file" name="picFile" onblur="checkNull('picFile','图片不能为空!')"  /> <span></span>
+							<td><input type="file" name="picFile"/> <span></span>
 							</td>
 						</tr>
+						
+						<tr>
+							<td class="tds">书籍简介：</td>
+							<td>
+								<textarea name="bookInfo.descripe" rows="5px" cols="20px" onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')" onblur="checkdescripe()"></textarea>
+								<span></span>
+							</td>
+						</tr>
+						
 						<tr>
 							<td class="sub_td" colspan="2" class="tds"><input
 								type="submit" value="上传" /></td>
