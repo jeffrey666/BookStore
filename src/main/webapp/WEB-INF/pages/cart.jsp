@@ -20,7 +20,7 @@
 		<div class="center_content">
 			<div class="left_content2">
 				<div class="title1" align="center"
-					style="font-size: 15px; color: #F00">我的仓库--当前第${num}页</div>
+					style="font-size: 15px; color: #F00">上传书籍--当前第${num}页</div>
 
 				<div class="feat_prod_box_details">
 

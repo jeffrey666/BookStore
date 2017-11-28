@@ -10,7 +10,7 @@
 	    	<result column="author" property="author"/>
 	    	<result column="update_time" property="updateTime"/>
 	    	<result column="borrow_date" property="borrowDate"/>
-	    	<result column="return_date" property="reaturnDate"/>
+	    	<result column="return_date" property="returnDate"/>
 	    	<result column="search_volume" property="searchVolume"/>
 	    	<result column="borrow_count" property="borrowCount"/>
 	    	<result column="imgurl" property="imgurl"/>
@@ -43,18 +43,18 @@
 		limit #{i},#{y}
 	</select>
 	<select id="line" resultType="Integer">
-		SELECT COUNT(*) FROM
-		book b
-		LEFT JOIN
+		SELECT COUNT(u.book_id) FROM
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM
 		book_info b
 		,
-		user_book_borrower u
-		WHERE u.user_id=#{userId}
-		AND u.book_id=b.book_info_id) u
-		ON b.book_id=u.book_id
+		(SELECT book_id FROM user_book_borrower WHERE 
+		user_id=#{user_id}) u
+		WHERE b.book_info_id = u.book_id ) u
+		LEFT JOIN 
+		book b
+		ON b.book_id=u.book_id;
 	</select>
 	<select id="findAll" resultType="BookInfo">
 		SELECT * FROM book_info
