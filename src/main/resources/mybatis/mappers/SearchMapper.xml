@@ -35,19 +35,19 @@
 	</select>
 	<!-- 根据useId扣去对应的10积分 -->
 	<update id="deduct">
-		UPDATE  user_info SET score=score-10 WHERE user_info_id=#{loginUser.userId} 
+		UPDATE  user_info SET score=score-10 WHERE user_info_id=#{loginUser.id} 
 	</update>
 	<!-- 根据图书拥有用户id,在图书借给别人后获得对应积分 -->
 	<update id="gain">
-		update user_info set score=score+10 where user_info_id=#{user.id}
+		update user_info set score=score+10 where user_info_id=#{userId}
 	</update>
 	<!-- 更改图书的状态 -->
 	<update id="updateState">
-		update book set state=0 where book_id=#{bookId}
+		update book set state=1 where book_id=#{bookId}
 	</update>
 	<!-- 更改图书的借出与归还期限 -->
 	<update id="updateDate">
-		update book_info set borrow_date=#{borrowDate},return_time=#{returnDate} where book_id=#{bookId}
+		update book_info set borrow_date=#{borrowDate},return_date=#{returnDate} where book_info_id=#{bookId}
 	</update>
 	<!-- 根据bookId获取书籍的详细信息 -->
 	<select id="findOne" resultType="Book">
@@ -55,18 +55,20 @@
 	</select>
 	<!-- 添加历史记录 -->
 	<insert id="addHistory">
-		insert into history (book_id,user_id,borrower_id,borrow_date) values (bookId,user.userId,loginUser.usreId,borrowDate)
+		insert into history (book_id,user_id,borrower_id,borrow_date) values (#{bookId},#{userId},#{loginUserId},#{borrowDate})
 	</insert>
 	<!-- 添加借阅人的信息到借阅关系表中 -->
 	<update id="updateBorrower">
-		update user_book_borrower set borrower_id=#{loginUser.userId} where book_id=#{bookId}
+		update user_book_borrower set borrower_id=#{loginUserId} where book_id=#{bookId}
 	</update>
 	<!-- 查询所有已借阅的图书 -->
-	<resultMap type="Book" id="BorrowedBooks">
+ 	<resultMap type="Book" id="BorrowedBooks"  autoMapping="true">
 		<id column="book_id" property="bookId"/>
 		<result column="book_name" property="bookName"/>
-		<association property="BookInfo">
-			<result column="imgurl" property="imfurl"/>
+		<result column="state" property="state"/>
+		<association property="bookInfo" javaType="BookInfo">
+			<id column="book_info_id" property="bookInfoId"/>
+			<result column="imgurl" property="imgurl"/>
 			<result column="author" property="author"/>
 			<result column="category" property="category"/>
 			<result column="book_pub" property="bookPub"/>
@@ -78,12 +80,14 @@
 	<select id="findAllBorrowed" resultMap="BorrowedBooks">
 	SELECT ui.* FROM
 	(SELECT
-	b.book_id,b.book_name,bi.author,bi.borrow_date,bi.return_date,bi.book_pub,bi.pub_date,bi.category,bi.imgurl
+	b.book_id,b.book_name,bi.book_info_id,bi.author,bi.borrow_date,bi.return_date,bi.book_pub,bi.pub_date,bi.category,bi.imgurl
 	FROM book b
 	LEFT JOIN book_info bi
 	ON b.book_id=bi.book_info_id) ui
 	LEFT JOIN
 	(SELECT ubb.book_id FROM user_book_borrower ubb WHERE ubb.borrower_id=#{loginUserId}) ubb
 	ON ui.book_id=ubb.book_id
-   </select>
+   </select> 
+   
+
 </mapper>
