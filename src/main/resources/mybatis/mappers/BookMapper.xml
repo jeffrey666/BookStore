@@ -47,13 +47,13 @@
     </foreach>
     </delete>
    
+<!--===== 删除书，书的信息，书的关系表 ====-->
     <delete id="deleteMyUserBookBorrower">
     delete from user_book_borrower where book_id in
      <foreach collection="array" item="id" open="(" close=")" separator=",">
     	#{id}
     </foreach>
     </delete>
-<!--===== 删除书，书的信息，书的关系表 ====-->
     
     
 </mapper>

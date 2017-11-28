@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
+import cn.tarena.book.utils.MailUtils;
 
 @Controller
 @RequestMapping("/search/")
@@ -20,7 +22,12 @@ public class SearchController extends BaseController{
 
 	@Autowired
 	private SearchService searchService;
+<<<<<<< HEAD
 
+=======
+	@Autowired
+	private MailUtils mailUtils;
+>>>>>>> master
 	/**
 	 * @param book:查询条件
 	 * @param model：回传数据
@@ -74,5 +81,24 @@ public class SearchController extends BaseController{
 	public String toview() {
 		return "bookinfos";
 	}
+<<<<<<< HEAD
   
+=======
+	
+	/**
+	 * 测试发送邮件
+	 */
+	@RequestMapping("/mail")
+	public String e(){
+		return "sendemail";
+	}
+
+    
+    @RequestMapping("/sendemail")
+    @ResponseBody
+    public String sendMail(String email) throws Exception{
+        mailUtils.sendSimpleMail(email);
+        return "success";
+    }
+>>>>>>> master
 }

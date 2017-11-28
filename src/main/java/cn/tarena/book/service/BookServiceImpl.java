@@ -67,4 +67,22 @@ public class BookServiceImpl implements BookService {
 		userInfoMapper.saveUserScore(userId,-50);
 		
 	}
+
+	@Override
+	public void updateBookState(Date date,String bookId) {
+		System.out.println(date);
+		//更改书籍借阅状态
+		bookMapper.updateBookState(bookId);
+		//获取并更改bookInfo信息
+		bookMapper.updateBookInfo(date,bookId);
+		//更改user_book_borrower信息,删除借阅人
+		bookMapper.updateUserBookBorrower("",bookId);
+		//更改历史记录归回日期
+		bookMapper.updateHistoryReturnDate(date,bookId);
+	}
+
+	@Override
+	public Book findOne(String bookId) {
+		return bookMapper.findOne(bookId);
+	}
 }
