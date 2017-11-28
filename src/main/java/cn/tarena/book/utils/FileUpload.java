@@ -1,7 +1,6 @@
 package cn.tarena.book.utils;
 
 import java.util.UUID;
-import java.io.File;
 
 public class FileUpload {
 	
