@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.SimpleAccountRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,20 +51,12 @@ public class AuthRealm extends SimpleAccountRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 
-		
-//		User user = (User) principals.getPrimaryPrincipal();
-//
-//		List<String> modules = userService
-//				.findModulesByUserId(user.getUserId());
-//		
-//
-//		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-//
-//		simpleAuthorizationInfo.addStringPermissions(modules);
-//		
-//		simpleAuthorizationInfo.addRoles(modules);
+		User user = (User) principals.getPrimaryPrincipal();
 
-		return null;
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		simpleAuthorizationInfo.addRole(user.getRole());
+
+		return simpleAuthorizationInfo;
 	}
 
 }

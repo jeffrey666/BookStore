@@ -71,9 +71,9 @@
 
                <c:forEach items="${books}" var="b">
                     <div class="new_prod_box">
-                        <a href="/details?bookId=${b.bookId}">${b.bookName}</a>
+                        <a href="/details?bookId=${b.bookId}"><font color="blue" >${b.bookName}</font></a>
                         <div class="new_prod_bg">
-                        <a href="/details?bookId=${b.bookId}"><img src="${b.bookInfo.imgurl}" alt="图片暂无" title="" class="thumb" border="0" /></a>
+                        <a href="/details?bookId=${b.bookId}"><img src="${b.bookInfo.imgurl}" width="70px" height="90px" alt="图片暂无" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
                </c:forEach>
