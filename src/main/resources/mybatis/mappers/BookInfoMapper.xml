@@ -56,16 +56,25 @@
 		book b
 		ON b.book_id=u.book_id;
 	</select>
+	
 	<select id="findAll" resultType="BookInfo">
 		SELECT * FROM book_info
 	</select>
+	<!-- 查询新上传的图书 -->
 	<select id="findNewBooks" resultMap="BookRM">
 		SELECT * FROM book_info,book HAVING book.book_id=book_info.book_info_id  ORDER BY update_time DESC LIMIT 0,4 
 	</select>
 	
+	<!-- 查询单本书籍的详细信息 -->
 	<select id="findOneByBookId" resultMap="BookRM">
 		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.book_id=#{bookId}
 	</select>
+	
+	<!-- 查询相关书籍 -->
+	<select id="findRelateBooks" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id  AND bi.category=#{category} and b.book_id!=#{bookId} 
+	</select>
+	
 	
 	
 </mapper>
