@@ -1,6 +1,9 @@
 package cn.tarena.book.service;
 
+import java.util.Date;
+
 import cn.tarena.book.pojo.Book;
+import cn.tarena.book.pojo.BookInfo;
 
 public interface BookService {
 	/**
@@ -22,5 +25,14 @@ public interface BookService {
 	 */
 	void deleteMyBook(String[] ids, String string);
 
+	/**
+	 * 根据选中书本Id改变书本借阅状态
+	 * @param dateString 
+	 * @param bookId :选中书本的Id
+	 * @return
+	 */
+	public void updateBookState(Date date, String bookId);
+
+	Book findOne(String bookId);
 
 }
