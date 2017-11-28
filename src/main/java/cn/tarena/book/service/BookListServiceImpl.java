@@ -24,6 +24,7 @@ public class BookListServiceImpl implements BookListService {
 		if(pageSize==null){
 			pageSize=5;
 		}
+	//表示开启分页模式
 	  PageHelper.startPage(currentPage, pageSize);
       
       List<Book> books = bookMapper.findAllBookBySeller();       //全部商品
