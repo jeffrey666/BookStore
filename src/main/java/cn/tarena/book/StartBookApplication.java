@@ -18,7 +18,5 @@ public class StartBookApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StartBookApplication.class, args);
 	}	
-
-	
 }
 
