@@ -41,4 +41,8 @@ public class BookInfoServiceImpl  implements BookInfoService{
 		
 		return bookInfoMapper.findOneByBookId(bookId);
 	}
+	@Override
+	public List<Book> findRelateBooks(String category) {
+		return bookInfoMapper.findRelateBooks(category);
+	}
 }

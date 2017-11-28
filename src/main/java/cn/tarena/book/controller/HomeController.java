@@ -13,19 +13,12 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
 
-import cn.tarena.book.service.BookListService;
-
-import cn.tarena.book.user.annotation.RequireRole;
-
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private BookInfoService bookInfoService;
-	
-	@Autowired
-	private BookListService bookListService;
 
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -47,7 +40,9 @@ public class HomeController {
 	@RequestMapping("details")
 	public String details(String bookId,Model model) {
 		Book book =bookInfoService.findOneByBookId(bookId);
+		List<Book> bookList= bookInfoService.findRelateBooks(book.getBookInfo().getCategory());
 		model.addAttribute("book",book);
+		model.addAttribute("bookList", bookList);
 		return "/details";
 	}
 

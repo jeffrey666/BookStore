@@ -45,5 +45,11 @@ public interface BookInfoMapper {
 	 */
 	List<BookInfo> findAll();
 
+	/**查询相关书籍
+	 * @param category:书籍分类
+	 * @return
+	 */
+	List<Book> findRelateBooks(String category);
+
 }
 
