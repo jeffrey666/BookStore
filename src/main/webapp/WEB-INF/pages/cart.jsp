@@ -71,8 +71,8 @@
 					 <a class="checkout1" href="#" onclick="formSubmit('deleteMyBook.action','_self');this.blur();">&lt; 删除 &gt;</a> 
 				<%-- 	<a href="/deleteMyBook.action?bookId=${bookId }" class="checkout1">&lt; 删除 &gt;</a>  --%>
 					<a href="#" class="continue" onclick="window.history.back();">&lt; back</a> 
-					<a href="${app }/lastTocart.action" class="checkout1">&lt; last</a> 
-					<a href="${app }/nextTocart.action" class="checkout">next &gt;</a>
+					<a href="${app }/lastTocart.action?method=last" class="checkout1">&lt; last</a> 
+					<a href="${app }/nextTocart.action?method=next" class="checkout">next &gt;</a>
 				</div>
 
 				<div class="clear"></div>
