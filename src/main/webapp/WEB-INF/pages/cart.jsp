@@ -51,11 +51,7 @@
 										height="150px" width="98px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
-								<td><c:if test="${b.bookInfo.category==4}">-科技-</c:if> <c:if
-										test="${b.bookInfo.category==3}">-生活-</c:if> <c:if
-										test="${b.bookInfo.category==2}">-文学-</c:if> <c:if
-										test="${b.bookInfo.category==1}">-经济-</c:if> <c:if
-										test="${b.bookInfo.category==0}">-其它-</c:if></td>
+								<td>${b.bookInfo.category }</td>
 								<td>${b.bookInfo.bookPub }</td>
 								<%-- <td width="50">${b.bookInfo.pubDate}</td> --%>
 								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>

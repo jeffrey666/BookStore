@@ -54,7 +54,7 @@ public class AuthRealm extends SimpleAccountRealm {
 		User user = (User) principals.getPrimaryPrincipal();
 
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-		simpleAuthorizationInfo.addRole(user.getRole());
+//		simpleAuthorizationInfo.addRole(user.getRole());
 
 		return simpleAuthorizationInfo;
 	}
