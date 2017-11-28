@@ -1,6 +1,5 @@
 package cn.tarena.book.controller;
 
-
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
@@ -21,7 +20,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
@@ -35,7 +33,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
@@ -46,7 +43,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private UserInfoService userInfoService;
 
@@ -72,45 +69,51 @@ public class UserController {
 
 	//用户的登录
 	@RequestMapping("/tologin.action")
-	public String toLogin(String username, String password,String remname,String autologin,HttpServletResponse response,
-			HttpServletRequest request,Model model, HttpSession session) throws UnsupportedEncodingException {
+	public String toLogin(String username, String password,
+			String remname, String autologin,
+			HttpServletResponse response,
+			HttpServletRequest request, Model model,
+			HttpSession session)
+			throws UnsupportedEncodingException {
 
-		if("true".equals(remname)){
-			Cookie cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
-			cookie.setMaxAge(3600*24*30);
-			cookie.setPath(request.getContextPath()+"/");
+		if ("true".equals(remname)) {
+			Cookie cookie = new Cookie("remname",
+					URLEncoder.encode(username, "utf-8"));
+			cookie.setMaxAge(3600 * 24 * 30);
+			cookie.setPath(request.getContextPath() + "/");
 			response.addCookie(cookie);
-		}else{
-			Cookie cookie = new Cookie("remname","");
+		} else {
+			Cookie cookie = new Cookie("remname", "");
 			cookie.setMaxAge(0);
-			cookie.setPath(request.getContextPath()+"/");
+			cookie.setPath(request.getContextPath() + "/");
 			response.addCookie(cookie);
 		}
-		if("true".equals(autologin)){
-			Cookie atlCk = new Cookie("autologin",URLEncoder.encode(username+","+password,"utf-8"));
+		if ("true".equals(autologin)) {
+			Cookie atlCk = new Cookie("autologin", URLEncoder
+					.encode(username + "," + password, "utf-8"));
 			atlCk.setPath("/");
 			atlCk.setMaxAge(2592000);//3600*24*30
 			response.addCookie(atlCk);
 		}
-		
-		
-		
-		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
+
+		if (StringUtils.isEmpty(username)
+				|| StringUtils.isEmpty(password)) {
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
 		}
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+		UsernamePasswordToken token = new UsernamePasswordToken(
+				username, password);
 		try {
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
 			session.setAttribute("_CURRENT_USER", user);
 			return "redirect:/";
 		} catch (AuthenticationException e) {
-			model.addAttribute("errorInfo","用户名或者密码错误");
+			model.addAttribute("errorInfo", "用户名或者密码错误");
 			return "/login";
 		}
-		
+
 	}
 
 	//用户退出登录
@@ -118,7 +121,7 @@ public class UserController {
 	public String tologout(HttpSession session) {
 		session.removeAttribute("_CURRENT_USER");
 		Subject subject = SecurityUtils.getSubject();
-		if(subject.isAuthenticated()){
+		if (subject.isAuthenticated()) {
 			subject.logout();
 		}
 		return "redirect:/";
@@ -135,8 +138,6 @@ public class UserController {
 		return "恭喜,用户名可用";
 	}
 
-
-
 	@RequestMapping("/user/userInfo/Left.action")
 	public String userinfoLeft() {
 		return "/userinfo/left";
@@ -148,7 +149,10 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userinfo.action")
-	public String userinfoAction() {
+	public String userinfoAction(HttpSession session) {
+
+		System.err.println(
+				(User) session.getAttribute("_CURRENT_USER"));
 
 		return "/userinfo/fmain_user_info";
 	}
