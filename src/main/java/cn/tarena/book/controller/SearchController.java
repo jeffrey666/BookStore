@@ -1,41 +1,35 @@
 package cn.tarena.book.controller;
 
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
-import cn.tarena.book.service.UserService;
 
 @Controller
-@RequestMapping("/search")
+@RequestMapping("/search/")
 public class SearchController extends BaseController{
 
 	@Autowired
 	private SearchService searchService;
-	@Autowired
-	private UserService userService;
-	
+	/**
+	 * @param book:查询条件
+	 * @param model：回传数据
+	 * @return：返回搜索结果并返回搜索页面
+	 */
 	
 	@RequestMapping("/search")
 	public String searchBooks(Book book,Model model){
 		model.addAttribute("book",book);
 		List<Book> books = searchService.findAll(book);
-		System.out.println(books);
 		model.addAttribute("books",books);
 		return "search";
 	}
@@ -69,7 +63,7 @@ public class SearchController extends BaseController{
 		//将图书拥有者的信息添加到model中，以便在页面中显示持有人的信息，让用户能通过页面与图书拥有者联系
 		model.addAttribute("user", user);
 		//转发到拥有者详情页面
-		return "/userinfo";
+		return "/bookinfos";
 	}
 	/**
 	 * 图书详情页面：点击搜索出的书籍列表上的图书时，进入到图书详情页面
@@ -92,6 +86,8 @@ public class SearchController extends BaseController{
 		//转发到图书详情页面
 		return "/tobookview";
 	}
-	
-
+	@RequestMapping("/tobook")
+	public String toview() {
+		return "bookinfos";
+	}
 }

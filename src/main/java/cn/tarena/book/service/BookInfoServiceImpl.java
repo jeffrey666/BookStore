@@ -37,4 +37,9 @@ public class BookInfoServiceImpl  implements BookInfoService{
 		
 		return bookInfoMapper.findNewBooks();
 	}
+	@Override
+	public Book findOneByBookId(String bookId) {
+		
+		return bookInfoMapper.findOneByBookId(bookId);
+	}
 }
