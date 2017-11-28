@@ -26,20 +26,14 @@ public interface SearchService {
 	User findUserByBookId(String bookId);
 	/**
 	 * 通过userId扣去用户积分
-	 * @param userId
+	 * @param loginUser
 	 */
-	void deduct(String userId);
+	void deduct(User loginUser);
 	/**
 	 * 通过userId给用户增加积分
 	 * @param user
 	 */
 	void gain(User user);
-	/**
-	 * 通过userId找到对应的用户
-	 * @param userId
-	 * @return
-	 */
-	User findUser(String userId);
 	/**
 	 * 通过bookId改变书的状态
 	 * @param bookId
@@ -49,7 +43,7 @@ public interface SearchService {
 	 * 通过bookId更改书的借书日期和归还期限
 	 * @param bookId
 	 */
-	void updateDate(String bookId,Date borrowDate,Date returnTime);
+	void updateDate(String bookId);
 	/**
 	 * 通过bookId找到书的详细信息
 	 * @param bookId
@@ -57,17 +51,24 @@ public interface SearchService {
 	 */
 	Book findOne(String bookId);
 	/**
-	 * 将图书的借阅信息添加到历史记录中
-	 * @param userId：借书人的id
-	 * @param bookId：图书的id
-	 */
-	void addHistory(String userId, String bookId,Date borrowDate,Date returnDate);
-	/**
-	 * 将借阅信息添加到借阅关联表中
-	 * @param userId：借书人的id
+	 * 将借阅信息添加到历史记录中
 	 * @param bookId：图书id
+	 * @param user：图书所有人id
+	 * @param loginUser：登录用户id
 	 */
-	void updateBorrower(String userId, String bookId);
-	
+	void addHistory(String bookId, User user, User loginUser);
+	/**
+	 * 修改借阅信息，添加借阅人的id到借阅表中
+	 * @param bookId：图书id
+	 * @param loginUser：用户id
+	 */
+	void updateBorrower(String bookId, User loginUser);
+	/**
+	 * 通过用户id查询当前借阅的所有图书
+	 * @param loginUserId：登录用户的id
+	 * @return：当前借阅的所有图书
+	 */
+	List<Book> findAllBorrowed(String loginUserId);
+
 	/******************************/
 }

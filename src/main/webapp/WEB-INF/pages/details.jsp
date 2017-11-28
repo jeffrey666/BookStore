@@ -60,6 +60,11 @@
 							<c:if test="${book.state==0}" ><span  style="color:blue">可借阅</span></c:if>
 					</div>
 					
+					<div class="price">
+                    	<strong>书籍简介:</strong>
+							${book.bookInfo.descripe}
+					</div>
+					
                     <%-- <div class="price"><strong>COLORS:</strong> 
                     <span class="colors"><img src="${app}/staticfile/images/color1.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="${app}/staticfile/images/color2.gif" alt="" title="" border="0" /></span>
@@ -196,6 +201,7 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
+
                         <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>

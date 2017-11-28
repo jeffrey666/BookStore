@@ -28,4 +28,15 @@ public class BookServiceImpl implements BookService {
 		userInfoMapper.saveUserScore(userId,50);
 		
 	}
+
+	@Override
+	public void deleteMyBook(String[] ids,String userId) {
+		// 删除书，书的信息，书的关系表
+		bookMapper.deleteMyUserBookBorrower(ids);
+		bookMapper.deleteMyBook(ids);
+		bookMapper.deleteMyBookInfo(ids);
+		//删除书之后用户积分减少50分
+		userInfoMapper.saveUserScore(userId,-50);
+		
+	}
 }
