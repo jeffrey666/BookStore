@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
 import cn.tarena.book.service.UserService;
+import cn.tarena.book.utils.MailUtils;
 
 @Controller
 @RequestMapping("/search")
@@ -21,6 +23,8 @@ public class SearchController {
 	private SearchService searchService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private MailUtils mailUtils;
 	/**
 	 * 在图书详情页面用户点击借书按钮时，实现该过程
 	 * @param userId：用户id
@@ -65,5 +69,17 @@ public class SearchController {
 		return "/tobookview";
 	}
 	
+	@RequestMapping("/mail")
+	public String e(){
+		return "sendemail";
+	}
+
+    
+    @RequestMapping("/sendemail")
+    @ResponseBody
+    public String sendMail(String email) throws Exception{
+        mailUtils.sendSimpleMail(email);
+        return "success";
+    }
 
 }

@@ -7,6 +7,19 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/jieshu
     username: root
     password: ROOT
+ 
+  mail:  
+    host: smtp.163.com  
+    username: jack_husx@163.com  
+    password: hushuangxi1990
+    properties:  
+          mail:  
+              smtp:  
+              auth: true  
+              starttls:  
+              enable: true  
+              required: true 
+    
   mvc:
     view:
       prefix: /WEB-INF/pages/
