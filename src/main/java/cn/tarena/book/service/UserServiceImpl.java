@@ -8,6 +8,7 @@ import java.util.UUID;
 import cn.tarena.book.mapper.UserMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.user.utils.MD5Tool;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,6 +29,8 @@ public class UserServiceImpl implements UserService {
 		String userId = UUID.randomUUID().toString();
 		user.setId(userId);
 		user.setState(1);
+		String password = MD5Tool.getMD5(user.getUsername(), user.getPassword());
+		user.setPassword(password);
 		userMapper.addUser(user);
 		// 同时为userinfo表中插入一个用户Id，用于在用于中心更新信息
 		userMapper.addUserInfoId(userId);
