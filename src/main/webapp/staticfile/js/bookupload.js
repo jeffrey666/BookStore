@@ -8,9 +8,27 @@ function checkForm(){
 	var res3=checkNull("bookInfo.bookPub","书籍出版社不能为空");
 	var res4=checkNull("bookInfo.pubDate","书籍出版日期不能为空");
 	var res5=checkNull("picFile","上传图片不能为空!");
-	return res4 && res1 && res2 && res3 && res5;
-
+	var res6=checkdescripe("bookInfo.descripe","书籍简介不能为空!");
+	return res4 && res1 && res2 && res3 && res5 && res6;
 }
+function checkdescripe(name,msg){
+	var a=$("#descripe").val().trim();
+	setDescripe(name,"");
+	if(a===""){
+		setDescripe(name,msg);
+		return false;
+	}
+	return true;
+}
+
+function setDescripe(name,msg){
+	var $oInp=$("#descripe");
+	var $oSpan=$oInp.nextAll("span");
+	$oSpan.html(msg);
+	$oSpan.css("color","red");
+}
+
+
 
 
 /*检查输入项是否为空*/
@@ -18,7 +36,7 @@ function checkNull(name,msg){
 	var value=$("input=[name='"+name+"']").val().trim();
 	//清空上一次的提示消息
 	setMsg(name,"");
-	if(value==""){
+	if(value=="" ){
 		//alert(msg);
 		setMsg(name,msg);
 		return false;
