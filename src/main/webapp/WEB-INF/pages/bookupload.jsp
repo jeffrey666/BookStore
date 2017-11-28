@@ -61,11 +61,14 @@
 						<tr>
 							<td class="tds">书籍类别：</td>
 							<td><select name="bookInfo.category">
-									<option value="4">-科技-</option>
-									<option value="3">-生活-</option>
-									<option value="2">-文学-</option>
-									<option value="1">-经济-</option>
-									<option value="0" selected="selected">-其它-</option>
+								<option value=""  selected="selected"></option>
+								<option value="文学类">文学类</option>
+								<option value="小说类">小说类</option>
+								<option value="IT类">IT类</option>
+								<option value="艺术与摄影类" >艺术与摄影类</option>
+								<option value="军事类">军事类</option>
+								<option value="辅导教材类" >辅导教材类</option>
+								<option value="历史类" >历史类</option>
 							</select> <span></span></td>
 						</tr>
 						<tr>
