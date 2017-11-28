@@ -75,6 +75,8 @@
 		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id  AND bi.category=#{category} and b.book_id!=#{bookId} 
 	</select>
 	
-	
+	<select id="findAllCategory" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id
+	</select>
 	
 </mapper>
