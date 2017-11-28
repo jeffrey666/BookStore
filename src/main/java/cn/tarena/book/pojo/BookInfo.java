@@ -100,6 +100,7 @@ public class BookInfo {
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
+	
 }
 
 

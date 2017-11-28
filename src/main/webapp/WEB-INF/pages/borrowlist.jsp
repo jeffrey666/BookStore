@@ -71,7 +71,7 @@
 		<div class="center_content">
 			<div class="left_content">
 
-			<h1 id="tt">借阅书籍榜单</h1>
+			<h1 id="tt">借阅书籍榜单                <a href="${app }/list.action">榜单下载</a></h1>
 	<table border="1">
 		<tr>
 			<th class="ths">序号</th>

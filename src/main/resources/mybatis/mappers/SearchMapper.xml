@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.SearchMapper">
+    <resultMap type="Book" id="bookRM" autoMapping="true">
+    <id column="book_id" property="bookId"/>
+    <association property="bookInfo" javaType="BookInfo" >
+    <id column="book_info_id" property="bookInfoId"/>
+    <result column="category" property="category"/>
+    <result column="imgurl" property="imgurl"/>
+    </association>
+    </resultMap>
+
+
+	<select id="findAll" resultMap="bookRM">
+    SELECT b.book_id,b.book_name,b.book_info_id,b.category,b.imgurl FROM 
+(SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.state=0 )b
+  <where>
+ 	<if test="bookName!=null">book_name LIKE concat(concat('%',#{bookName}),'%') </if>
+ 	<if test="bookInfo.category!=''">AND category=#{bookInfo.category} </if> 
+ 	<if test="bookInfo.author!=null">AND author LIKE concat(concat('%',#{bookInfo.author}),'%') </if> 
+ 	<if test="bookInfo.pubDate!=null">AND pub_date &gt; #{bookInfo.pubDate} </if>  
+ </where> 
+
+
+	</select>
+	
+	
 	
 	<!-- 根据bookId搜索图书的拥有人 -->
 	<select id="findUserByBookId" resultType="User">

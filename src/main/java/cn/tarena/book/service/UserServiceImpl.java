@@ -51,5 +51,24 @@ public class UserServiceImpl implements UserService {
 
 		return userMapper.findUserByUsername(username);
 	}
+	//根据用户Id 查找自己拥有的书
+	@Override
+	public List<Book> findMyBookListByUserId(String userId) {
+		
+		return userMapper.findMyBookListByUserId(userId);
+	}
+
+	@Override
+	public List<Book> findMyBookListByUserIdReturn(String userId) {
+		return userMapper.findMyBookListByUserIdReturn(userId);
+	}
+
+	@Override
+	public String findRoleByUserId(String userId) {
+		
+		User user = userMapper.findUserById(userId);
+		
+		return user.getRole();
+	}
 	
 }

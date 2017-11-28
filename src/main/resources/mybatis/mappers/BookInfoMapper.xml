@@ -2,16 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.BookInfoMapper">
 
+
     <resultMap type="Book" id="BookRM" autoMapping="true">
 	    <id column="book_id" property="bookId" />
 	    <association property="bookInfo" javaType="BookInfo">
+	    	<id column="book_info_id" property="bookInfoId" />
 	    	<result column="author" property="author"/>
 	    	<result column="update_time" property="updateTime"/>
 	    	<result column="borrow_date" property="borrowDate"/>
 	    	<result column="return_date" property="reaturnDate"/>
-	    	<result column="book_pub" property="bookPub"/>
 	    	<result column="search_volume" property="searchVolume"/>
-	    	<result column="borrow_count" property="borrowCount" />
+	    	<result column="borrow_count" property="borrowCount"/>
+	    	<result column="imgurl" property="imgurl"/>
+	    	<result column="book_pub" property="bookPub"/>
+	    	<result column="category" property="category"/>
 	    	<result column="pub_date" property="pubDate"/>
 	    	<result column="imgurl" property="imgurl"/>
 	    	<result column="category" property="category"/>
@@ -26,31 +30,42 @@
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,u.* FROM 
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
-			b.book_pub,b.pub_date,b.category,b.imgurl
-		 FROM 
+		b.book_pub,b.pub_date,b.category,b.imgurl
+		FROM
 		book_info b
-			,
+		,
 		user_book_borrower u
-			WHERE u.user_id=#{userId}
-			 AND u.book_id=b.book_info_id) u
-			 LEFT JOIN
-			 book b
-			ON b.book_id=u.book_id 
-			limit #{i},#{y}
-
-    </select>
+		WHERE u.user_id=#{userId}
+		AND u.book_id=b.book_info_id) u
+		LEFT JOIN
+		book b
+		ON b.book_id=u.book_id
+		limit #{i},#{y}
+	</select>
 	<select id="line" resultType="Integer">
-		SELECT COUNT(*) FROM 
+		SELECT COUNT(*) FROM
 		book b
 		LEFT JOIN
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
-		FROM 
+		FROM
 		book_info b
 		,
 		user_book_borrower u
-		WHERE u.user_id=#{userId} 
-		 AND u.book_id=b.book_info_id) u
+		WHERE u.user_id=#{userId}
+		AND u.book_id=b.book_info_id) u
 		ON b.book_id=u.book_id
 	</select>
+	<select id="findAll" resultType="BookInfo">
+		SELECT * FROM book_info
+	</select>
+	<select id="findNewBooks" resultMap="BookRM">
+		SELECT * FROM book_info,book HAVING book.book_id=book_info.book_info_id  ORDER BY update_time DESC LIMIT 0,4 
+	</select>
+	
+	<select id="findOneByBookId" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.book_id=#{bookId}
+	</select>
+	
+	
 </mapper>
