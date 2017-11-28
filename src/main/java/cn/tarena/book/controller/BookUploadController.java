@@ -23,6 +23,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.tarena.book.pojo.Book;
@@ -279,6 +280,24 @@ public class BookUploadController  extends BaseController{
 
 		nStyle.setFont(font);
 		return nStyle;
+	}
+	
+	/**
+	 * 删除我拥有的书本
+	 * @param ids jsp页面传来需要删除的书本id
+	 * @return
+	 */
+	@RequestMapping("/deleteMyBook.action")        
+	public String deleteMyBook(@RequestParam(value="bookId",required=false)String[] ids,HttpSession session){
+	
+		System.out.println(1);
+		if(ids!=null){
+			User user = (User) session.getAttribute("_CURRENT_USER");
+			bookService.deleteMyBook(ids,user.getId());
+		}
+		System.out.println(2);
+		
+		return "redirect:/tocart";
 	}
 	
 }
