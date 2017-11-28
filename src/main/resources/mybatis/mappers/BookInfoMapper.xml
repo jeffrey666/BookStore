@@ -25,8 +25,8 @@
     		values(#{bookInfoId},#{author},#{imgurl},#{pubDate},#{category},#{bookPub},#{updateTime})
     </insert>
     <select id="tocart" resultMap="BookRM">
-   		SELECT b.book_name,u.* FROM 
-		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
+   		SELECT b.book_name,b.state,u.* FROM 
+		(SELECT u.user_id,u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM
 		book_info b
