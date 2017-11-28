@@ -256,6 +256,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
         </dependency>
+        
+        <!-- 邮件发送 -->
+        <dependency>  
+           <groupId>org.springframework.boot</groupId>  
+           <artifactId>spring-boot-starter-mail</artifactId>  
+        </dependency>
 
 	</dependencies>
 
