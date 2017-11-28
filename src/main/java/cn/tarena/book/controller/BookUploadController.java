@@ -104,6 +104,7 @@ public class BookUploadController  extends BaseController{
 		return "redirect:/";
 	}
 	
+	//榜单下载功能
 	@RequestMapping("/list.action")
 	public void print(HttpServletResponse response,HttpSession session) throws IOException {
 		PageBean<Book> pageBean = (PageBean<Book>) session.getAttribute("pageBean");
@@ -216,7 +217,7 @@ public class BookUploadController  extends BaseController{
 		// OutputStream os=new FileOutputStream(new File("D:\\outProduct.xls"));
 		
 		// 下载
-		PageBean pb = new PageBean();
+		PageBean<Book> pb = new PageBean<Book>();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		response.setContentType("text/html;charset=gbk");
 		wb.write(os);

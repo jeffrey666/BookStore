@@ -72,8 +72,8 @@
 			<div class="left_content">
 
 			<h1 id="tt">借阅书籍榜单                <a href="${app }/list.action">榜单下载</a></h1>
-	<table border="1">
-		<tr>
+	<table border="1" align="center" cellspacing="0" cellpadding="5px"  >
+		<tr bgcolor="gray">
 			<th class="ths">序号</th>
 			<th class="ths">书籍图片</th>
 			<th class="ths">书籍名称</th>
@@ -114,11 +114,11 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<div>
+	<div align="center">
 		<input id="oldNum" value="${pageBean.pageSize }" type="hidden"  />
 		<span id="${pageBean.totalNum }">共${pageBean.totalNum }条记录，
 		每页显示 <input id="view" type="text"
-			name="page.pageSize" value="${pageBean.pageSize }">条记录，
+			name="page.pageSize" value="${pageBean.pageSize }" size="1">条记录，
 		</span> 
 		<br/>
 		<span>当前第${pageBean.currentPage }</span> 页
@@ -138,7 +138,7 @@
 		</c:if>
 		<span>
 			转到第 <input id="changeNum" type="text" name="currentPage"
-			value="${pageBean.currentPage}" />页<a id="changePageNum" href="">GO</a>
+			value="${pageBean.currentPage}" size="1"/>页<a id="changePageNum" href="">GO</a>
 		</span>
 	</div>
 					

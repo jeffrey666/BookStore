@@ -201,10 +201,7 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-<<<<<<< HEAD
-                        <%-- <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span> --%>
-=======
->>>>>>> master
+
                         <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
@@ -212,10 +209,6 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-<<<<<<< HEAD
-                        <%-- <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span> --%>
-=======
->>>>>>> master
                         <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                    
@@ -223,10 +216,6 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
-<<<<<<< HEAD
-                        <%-- <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span> --%>
-=======
->>>>>>> master
                         <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>               

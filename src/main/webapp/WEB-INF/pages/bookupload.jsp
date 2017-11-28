@@ -26,6 +26,8 @@
 
 					<h1 id="tt">书籍上传</h1>
 					<table>
+						
+					
 						<tr>
 							<td class="tds">书籍名称：</td>
 							<td><input type="text" name="bookName"
@@ -75,11 +77,10 @@
 						<tr>
 							<td class="tds">书籍简介：</td>
 							<td>
-								<textarea name="bookInfo.descripe" rows="5px" cols="20px" onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')" onblur="checkdescripe()"></textarea>
+								<textarea id="descripe" name="bookInfo.descripe" rows="5px" cols="20px" onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')" ></textarea>
 								<span></span>
 							</td>
 						</tr>
-						
 						<tr>
 							<td class="sub_td" colspan="2" class="tds"><input
 								type="submit" value="上传" /></td>
