@@ -19,7 +19,7 @@
 			<result column="nickname" property="nickname" />
 			<result column="email" property="email" />
 			<result column="address" property="address" />
-			<result column="cardNo" property="cardNo" />
+			<result column="card_no" property="cardNo" />
 			<result column="score" property="score" />
 			<result column="telephone" property="telephone" />
 			<result column="gender" property="gender" />
