@@ -40,7 +40,7 @@ public class HomeController {
 	@RequestMapping("details")
 	public String details(String bookId,Model model) {
 		Book book =bookInfoService.findOneByBookId(bookId);
-		List<Book> bookList= bookInfoService.findRelateBooks(book.getBookInfo().getCategory());
+		List<Book> bookList= bookInfoService.findRelateBooks(bookId,book.getBookInfo().getCategory());
 		model.addAttribute("book",book);
 		model.addAttribute("bookList", bookList);
 		return "/details";
