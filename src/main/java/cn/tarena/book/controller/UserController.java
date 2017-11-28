@@ -1,5 +1,6 @@
 package cn.tarena.book.controller;
 
+
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
@@ -32,11 +35,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
-
 import cn.tarena.book.service.UserService;
-import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.user.utils.StringTool;
 
 @Controller
@@ -187,7 +189,7 @@ public class UserController {
 			String new_password, Model model,
 			HttpSession session) {
 
-		// 旧密码是否正确？
+		//旧密码是否正确？
 		if (StringTool.isEmpty(user_id)
 				|| StringTool.isEmpty(old_psw)) {
 			model.addAttribute("errMsg", "页面出错，请重新登录");

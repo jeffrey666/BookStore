@@ -32,7 +32,7 @@
         
         	<div class="feat_prod_box_details">
             
-            	<div class="prod_img"><a href="details.html"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a>
+            	<div class="prod_img"><a href="#"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a>
                 <br /><br />
                 <a href="${app}${book.bookInfo.imgurl}" rel="lightbox"><img src="${app}/staticfile/images/zoom.gif" alt="" title="" border="0" /></a>
                 </div>
@@ -58,6 +58,11 @@
                     	<strong>书籍状态:</strong>
 							<c:if test="${book.state==1}"><span  style="color:red">不可借阅</span></c:if>
 							<c:if test="${book.state==0}" ><span  style="color:blue">可借阅</span></c:if>
+					</div>
+					
+					<div class="price">
+                    	<strong>书籍简介:</strong>
+							${book.bookInfo.descripe}
 					</div>
 					
                     <%-- <div class="price"><strong>COLORS:</strong> 
@@ -177,7 +182,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/tocart" class="view_cart">view cart</a>
+                  <a href="/toborrowCart" class="view_cart">view cart</a>
               
               </div>
         
@@ -196,6 +201,7 @@
                     <div class="new_prod_box">
                         <a href="details.html">product name</a>
                         <div class="new_prod_bg">
+
                         <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
