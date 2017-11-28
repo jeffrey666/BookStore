@@ -10,7 +10,7 @@
     </association>
     </resultMap>
 
-
+	<!-- 根据搜索条件搜索图书 -->
 	<select id="findAll" resultMap="bookRM">
 		SELECT b.book_id,b.book_name,b.book_info_id,b.category,b.imgurl FROM
 		(SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND

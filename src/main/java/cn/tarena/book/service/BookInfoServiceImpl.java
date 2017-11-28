@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import cn.tarena.book.mapper.BookInfoMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
-import cn.tarena.book.pojo.UserInfo;
 
 @Service
 public class BookInfoServiceImpl  implements BookInfoService{

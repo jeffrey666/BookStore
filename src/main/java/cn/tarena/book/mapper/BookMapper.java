@@ -17,4 +17,10 @@ public interface BookMapper {
 	
 	public int countBook();
 
+	public void deleteMyBook(String[] ids);
+
+	public void deleteMyUserBookBorrower(String[] ids);
+
+	public void deleteMyBookInfo(String[] ids);
+
 }

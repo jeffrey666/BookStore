@@ -15,6 +15,12 @@ public interface BookService {
 	 * @param bookId:书籍的id
 	 */
 	void saveBookAndUser(String userId, String bookId);
+	/**
+	 * 删除我拥有的书
+	 * @param string 
+	 * @param ids:书本的Id
+	 */
+	void deleteMyBook(String[] ids, String string);
 
 
 }

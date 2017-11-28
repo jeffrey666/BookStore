@@ -11,18 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
-import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.BookInfoService;
+
+import cn.tarena.book.service.BookListService;
+
+import cn.tarena.book.user.annotation.RequireRole;
+
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private BookInfoService bookInfoService;
+	
+	@Autowired
+	private BookListService bookListService;
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		List<Book> BookList =bookInfoService.findNewBooks();
+		List<Book> BookList = bookInfoService.findNewBooks();
 		model.addAttribute("BookList", BookList);
 		return "/index";
 	}
@@ -60,21 +67,22 @@ public class HomeController {
 		return "/search";
 	}
 
+	// 查询仓库一次显示四页
 	@RequestMapping("/tocart")
 	public String tocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
-		
+
 		session.setAttribute("num", 1);
 		List<Book> books = bookInfoService.tocart(user.getId(), 0, 4);
 		model.addAttribute("books", books);
-		System.out.println(books.get(0).getBookInfo().getPubDate()+"====================================");
 		return "cart";
 	}
 
+	// 实现上一页功能
 	@RequestMapping("lastTocart")
 	public String lastTocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
-		int num = (int) session.getAttribute("num")-1;
+		int num = (int) session.getAttribute("num") - 1;
 		if (num < 1) {
 			return "redirect:tocart";
 		}
@@ -82,31 +90,30 @@ public class HomeController {
 		int[] column = getColumn(line, num);
 		List<Book> books = bookInfoService.tocart(user.getId(), column[0], column[1]);
 		model.addAttribute("books", books);
-		session.setAttribute("num",num);
+		session.setAttribute("num", num);
 		return "cart";
 	}
 
+	// 实现下一页功能
 	@RequestMapping("nextTocart")
 	public String nextTocart(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("_CURRENT_USER");
-		int num = (int) session.getAttribute("num")+1;
+		int num = (int) session.getAttribute("num") + 1;
 		int line = bookInfoService.line(user.getId());
-		int number = line/4+1;
+		int number = line / 4 + 1;
 		if (num > number) {
-			num=num-1;
+			num = num - 1;
 			int[] column = getColumn(line, num);
 			List<Book> books = bookInfoService.tocart(user.getId(), column[0], column[1]);
 			model.addAttribute("books", books);
-			session.setAttribute("num",num);
 			return "cart";
 		}
 		int[] column = getColumn(line, num);
 		List<Book> books = bookInfoService.tocart(user.getId(), column[0], column[1]);
 		model.addAttribute("books", books);
-		session.setAttribute("num",num);
+		session.setAttribute("num", num);
 		return "cart";
 	}
-
 
 	@RequestMapping("/tocategory")
 	public String category() {
@@ -117,17 +124,16 @@ public class HomeController {
 	public String topsellers() {
 		return "sellers";
 	}
-	
-	
+
 	public int[] getColumn(int line, int i) {
-		int[] arr = new int[2];
-		arr[0] = (i - 1) * 4;
+		int[] Pages = new int[2];
+		Pages[0] = (i - 1) * 4;
 		if (line - i * 4 + 4 >= 0) {
-			arr[1] = 4;
+			Pages[1] = 4;
 		} else {
-			arr[1] = line - arr[0];
+			Pages[1] = line - Pages[0];
 		}
-		return arr;
+		return Pages;
 	}
 
 }
