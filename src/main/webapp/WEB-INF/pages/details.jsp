@@ -80,73 +80,38 @@
             <div class="clear"></div>
             </div>	
             
-              
+             <!-- 相关书籍 --> 
             <div id="demo" class="demolayout">
 
                 <ul id="demo-nav" class="demolayout">
-                <li><a class="active" href="#tab1">More details</a></li>
-                <li><a class="" href="#tab2">Related books</a></li>
+                <li><a class="active" href="#tab1">名言警句</a></li>
+                <li><a class="" href="#tab2">相关书籍</a></li>
                 </ul>
     
             <div class="tabs-container">
             
                     <div style="display: block;" class="tab" id="tab1">
-                                        <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                                        </p>
+                               <p class="more_details" style="text-align:center;font-size:20px">欢迎来到书籍的海洋,以书会友,开启智慧人生</p>
                             <ul class="list">
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>                                          
+                            <li><p style="font-family:楷体;font-size:15px">书籍是人类进步的阶梯,终生的伴侣,最诚挚的朋友。 -----高尔基 </p> </li>
+                            <li><p style="font-family:楷体;font-size:15px">一个家庭中没有书籍,等于一间房子没有窗子。 ----- 约翰森 </p></li>
+                            <li><p style="font-family:楷体;font-size:15px">人是活的,书是死的.活人读死书,可以把书读活.死书读活人,可以把人读死.  -----郭沫若</p></li>
+                            <li><p style="font-family:楷体;font-size:15px">阅读一本不适合自己阅读的书，比不阅读还要坏。我们必须会这样一种本领，选择最有价值、最适合自己所需要的读物。 -----别林斯基 
+                                        </p> </li>                         
                             </ul>
-                                         <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                                        </p>                           
-                    </div>	
+                    </div>
                     
+                    <!-- 相关书籍 -->
                             <div style="display: none;" class="tab" id="tab2">
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>    
-
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>  
-
-
+                            
+                      	<c:forEach items="${bookList}" var="b">    
+		                    <div class="new_prod_box">
+		                        <a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+		                        <div class="new_prod_bg">
+		                        <a href="/details.action?bookId=${b.bookId}"><img src="${app}${b.bookInfo.imgurl}" alt="" title="" class="thumb" border="0" /></a>
+		                        </div>           
+		                    </div>
+                     </c:forEach> 
                    
                     <div class="clear"></div>
                             </div>	
@@ -161,6 +126,11 @@
         <div class="clear"></div>
         </div><!--end of left content-->
         
+        
+        
+        
+        
+        <!-- 右侧区域 -->
         <div class="right_content">
         
                 	<div class="languages_box">

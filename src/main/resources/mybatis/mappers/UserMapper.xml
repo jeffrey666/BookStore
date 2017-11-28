@@ -11,7 +11,6 @@
 		`user`.id = user_info.user_info_id
 	</sql>
 
-
 	<resultMap type="User" id="user_rm" autoMapping="true">
 		<id column="id" property="id" />
 		<association property="userInfo" javaType="UserInfo">
