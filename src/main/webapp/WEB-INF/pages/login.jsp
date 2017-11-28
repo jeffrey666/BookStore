@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page  language="java" import="java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="app" value="${pageContext.request.contextPath}"/>
@@ -37,7 +37,7 @@
                   <form name="register" action="tologin.action">          
                     <div class="form_row">
                     <label class="contact"><strong>用户名:</strong></label>
-                    <input name="username" type="text" class="contact_input" />
+                    <input name="username" type="text" class="contact_input"  value="${cookie.remname.value }"/>
                     </div>  
 
 
@@ -47,7 +47,13 @@
                     </div> 
                    
                    
-             
+             		<div class="form_row">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="remname" value="true"
+						${empty cookie.remname?"":"checked='checked'" }/>记住用户名
+						
+					
+					</div>
 
                     
                     <div class="form_row">
