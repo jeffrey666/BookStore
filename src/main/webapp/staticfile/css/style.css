@@ -156,8 +156,9 @@ padding:0 5px 0 0;
 span.title_icon1{
 padding:0 5px 0 0;
 }
+/*更改主页书名  */
 .prod_title{
-color:#f8981d;
+color:#4783E4;
 padding:5px 0 0 15px;
 font-size:13px;
 }
@@ -595,7 +596,7 @@ color:#afaeaf;
 
 
 
-/*搜索条*/
+/*鎼滅储鏉�/
 #content #search_div,#content #search_div2,#content #search_div3{
 	border: 1px solid #D4D4D4;
 	padding:8px;
