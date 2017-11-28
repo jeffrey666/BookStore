@@ -3,6 +3,7 @@ package cn.tarena.book.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
@@ -69,6 +70,13 @@ public interface SearchService {
 	 * @return：当前借阅的所有图书
 	 */
 	List<Book> findAllBorrowed(String loginUserId);
+	
+	/**
+	 * 借阅图书
+	 * @param httpSession：session缓存
+	 * @param bookId：图书id
+	 */
+	void toborrow(HttpSession httpSession, String bookId);
 
 	/******************************/
 }

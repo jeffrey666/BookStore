@@ -19,11 +19,11 @@ public interface SearchMapper {
 
 	void updateState(String bookId);
 
-	void updateDate(String bookId,Date borrowDate,Date returnTime);
+	void updateDate(String bookId,Date borrowDate,Date returnDate);
 
 	Book findOne(String bookId);
 
-	void addHistory(String userId, User user,User loginUser,Date returnDate);
+	void addHistory(String bookId, User user,User loginUser,Date borrowDate);
 
 	void updateBorrower(String userId, User loginUser);
 
