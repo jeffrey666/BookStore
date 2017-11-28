@@ -12,16 +12,16 @@
 
 
 	<select id="findAll" resultMap="bookRM">
-    SELECT b.book_id,b.book_name,b.book_info_id,b.category,b.imgurl FROM 
-(SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.state=0 )b
-  <where>
- 	<if test="bookName!=null">book_name LIKE concat(concat('%',#{bookName}),'%') </if>
- 	<if test="bookInfo.category!=''">AND category=#{bookInfo.category} </if> 
- 	<if test="bookInfo.author!=null">AND author LIKE concat(concat('%',#{bookInfo.author}),'%') </if> 
- 	<if test="bookInfo.pubDate!=null">AND pub_date &gt; #{bookInfo.pubDate} </if>  
- </where> 
-
-
+		SELECT b.book_id,b.book_name,b.book_info_id,b.category,b.imgurl FROM
+		(SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND
+		b.state=0 )b
+		<where>
+			<if test="bookName!=null">book_name LIKE concat(concat('%',#{bookName}),'%') </if>
+			<if test="bookInfo.category!=''">AND category=#{bookInfo.category} </if>
+			<if test="bookInfo.author!=null">AND author LIKE
+				concat(concat('%',#{bookInfo.author}),'%') </if>
+			<if test="bookInfo.pubDate!=null">AND pub_date &gt; #{bookInfo.pubDate} </if>
+		</where>
 	</select>
 	
 	
@@ -35,23 +35,19 @@
 	</select>
 	<!-- 根据useId扣去对应的10积分 -->
 	<update id="deduct">
-		UPDATE  user_info SET score=score-10 WHERE user_info_id=#{userId} 
+		UPDATE  user_info SET score=score-10 WHERE user_info_id=#{loginUser.userId} 
 	</update>
 	<!-- 根据图书拥有用户id,在图书借给别人后获得对应积分 -->
 	<update id="gain">
 		update user_info set score=score+10 where user_info_id=#{user.id}
 	</update>
-	<!-- 根据用户id得到用户的详细信息 -->
-	<select id="findUser" resultType="UserInfo">
-		select * from user_info where user_id=#{userId}
-	</select>
 	<!-- 更改图书的状态 -->
 	<update id="updateState">
 		update book set state=0 where book_id=#{bookId}
 	</update>
 	<!-- 更改图书的借出与归还期限 -->
 	<update id="updateDate">
-		update book_info set borrow_date=#{borrowDate},return_time=#{returnTime} where book_id=#{bookId}
+		update book_info set borrow_date=#{borrowDate},return_time=#{returnDate} where book_id=#{bookId}
 	</update>
 	<!-- 根据bookId获取书籍的详细信息 -->
 	<select id="findOne" resultType="Book">
@@ -59,10 +55,35 @@
 	</select>
 	<!-- 添加历史记录 -->
 	<insert id="addHistory">
-		insert into history (user_id,book_id,borrow_date,return_date) values (userId,bookId,borrowDate,returnDate)
+		insert into history (book_id,user_id,borrower_id,borrow_date) values (bookId,user.userId,loginUser.usreId,borrowDate)
 	</insert>
 	<!-- 添加借阅人的信息到借阅关系表中 -->
 	<update id="updateBorrower">
-		update user_book_borrower set borrower_id=#{userId} where book_id=#{bookId}
+		update user_book_borrower set borrower_id=#{loginUser.userId} where book_id=#{bookId}
 	</update>
+	<!-- 查询所有已借阅的图书 -->
+	<resultMap type="Book" id="BorrowedBooks">
+		<id column="book_id" property="bookId"/>
+		<result column="book_name" property="bookName"/>
+		<association property="BookInfo">
+			<result column="imgurl" property="imfurl"/>
+			<result column="author" property="author"/>
+			<result column="category" property="category"/>
+			<result column="book_pub" property="bookPub"/>
+			<result column="pub_date" property="pubDate"/>
+			<result column="borrow_date" property="borrowDate"/>
+			<result column="return_date" property="returnDate"/>
+		</association>
+	</resultMap>
+	<select id="findAllBorrowed" resultMap="BorrowedBooks">
+	SELECT ui.* FROM
+	(SELECT
+	b.book_id,b.book_name,bi.author,bi.borrow_date,bi.return_date,bi.book_pub,bi.pub_date,bi.category,bi.imgurl
+	FROM book b
+	LEFT JOIN book_info bi
+	ON b.book_id=bi.book_info_id) ui
+	LEFT JOIN
+	(SELECT ubb.book_id FROM user_book_borrower ubb WHERE ubb.borrower_id=#{loginUserId}) ubb
+	ON ui.book_id=ubb.book_id
+   </select>
 </mapper>
