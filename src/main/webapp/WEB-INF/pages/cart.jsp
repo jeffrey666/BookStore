@@ -40,14 +40,14 @@
 							<td width="80px">归还时间:</td>
 						</tr>
 						<%-- <c:set var="bookId" value="0"></c:set> --%>
-						<c:forEach items="${books }" var="b" varStatus="v">
+						<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
 								<td width="40px">
 								<c:if test="${b.state==0}"><input type="checkbox" name="bookId" value="${b.bookId}"/></c:if>
 								<c:if test="${b.state==1}"></c:if>
 								</td>
 								<td>${v.index+1}</td>
-								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
+								<td><a><img src="${b.bookInfo.imgurl}" alt="暂无图片"
 										height="150px" width="98px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
