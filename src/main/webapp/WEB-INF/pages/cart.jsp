@@ -27,7 +27,7 @@
 					<table class="cart_table1" align="center" cellspacing="0" cellpadding="5px" border="1">
 						
 						<tr class="cart_title">
-							<td width="40px" class="tableHeader"><input type="checkbox" name="bookId" onclick="checkAll('bookId',this)"></td>
+							<td width="20px" class="tableHeader"><input type="checkbox" name="bookId" onclick="checkAll('bookId',this)"></td>
 							<td width="40px">商品序号:</td>
 							<td width="88px">商品图片:</td>
 							<td width="40px">商品名称:</td>
@@ -38,11 +38,12 @@
 							<td width="80px">状态</td>
 							<td width="80px">借出时间:</td>
 							<td width="80px">归还时间:</td>
+							<td width="100px">书籍简介:</td>
 						</tr>
 						<%-- <c:set var="bookId" value="0"></c:set> --%>
 						<c:forEach items="${books }" var="b" varStatus="v">
 							<tr>
-								<td width="40px">
+								<td >
 								<c:if test="${b.state==0}"><input type="checkbox" name="bookId" value="${b.bookId}"/></c:if>
 								<c:if test="${b.state==1}"></c:if>
 								</td>
@@ -54,13 +55,14 @@
 								<td>${b.bookInfo.category }</td>
 								<td>${b.bookInfo.bookPub }</td>
 								<%-- <td width="50">${b.bookInfo.pubDate}</td> --%>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>
+								<td ><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>
 								<td>
 									<c:if test="${b.state==0}">未借出</c:if>
 									<c:if test="${b.state==1}">已借出</c:if>
 								</td>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy/MM/dd" /></td>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy/MM/dd" /></td>
+								<td ><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy/MM/dd" /></td>
+								<td><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy/MM/dd" /></td>
+								<td>${b.bookInfo.descripe}</td>
 							</tr>
 						<%-- <c:set var="bookId" value="${b.bookId}"></c:set> --%>
 						</c:forEach>

@@ -29,7 +29,7 @@ public class ReturnController extends BaseController {
 	 * @return 转发到的URL
 	 */
 	@RequestMapping("/toreturn")
-	public String toborrow(String userId, Model model) {
+	public String toborrow(String userId, Model model){
 		List<Book> books = userService.findMyBookListByUserIdReturn(userId);
 		model.addAttribute("books", books);
 		List<BookInfo> bookInfos = bookInfoService.findAll();

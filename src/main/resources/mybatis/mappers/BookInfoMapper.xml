@@ -30,12 +30,12 @@
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,b.state,u.* FROM 
 		(SELECT u.user_id,u.book_id,b.author,b.borrow_date,b.return_date,
-		b.book_pub,b.pub_date,b.category,b.imgurl
+		b.book_pub,b.pub_date,b.category,b.imgurl,b.descripe
 		FROM
 		book_info b
 		,
 		user_book_borrower u
-		WHERE u.user_id=#{userId}
+		WHERE u.user_id = #{userId}
 		AND u.book_id=b.book_info_id) u
 		LEFT JOIN
 		book b
