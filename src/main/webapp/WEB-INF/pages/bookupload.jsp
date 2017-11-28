@@ -61,7 +61,7 @@
 						<tr>
 							<td class="tds">书籍类别：</td>
 							<td><select name="bookInfo.category">
-								<option value=""  selected="selected"></option>
+								<option value="其他"  selected="selected">其他</option>
 								<option value="文学类">文学类</option>
 								<option value="小说类">小说类</option>
 								<option value="IT类">IT类</option>

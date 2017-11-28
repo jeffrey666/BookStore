@@ -16,7 +16,9 @@ function checkdescripe(name,msg){
 	setDescripe(name,"");
 	if(a===""){
 		setDescripe(name,msg);
+		return false;
 	}
+	return true;
 }
 
 function setDescripe(name,msg){
