@@ -10,9 +10,10 @@
 <script
 	src="<%=request.getContextPath()%>/staticfile/js/jquery-1.6.2.js"></script>
 <script src="<%=request.getContextPath()%>/staticfile/js/bookupload.js"></script>
-<script>
+<script type="text/javascript">
 	
 </script>
+
 </head>
 <%@include file="_head.jsp"%>
 <body>
@@ -25,6 +26,8 @@
 
 					<h1 id="tt">书籍上传</h1>
 					<table>
+						
+					
 						<tr>
 							<td class="tds">书籍名称：</td>
 							<td><input type="text" name="bookName"
@@ -58,16 +61,27 @@
 						<tr>
 							<td class="tds">书籍类别：</td>
 							<td><select name="bookInfo.category">
-									<option value="4">-科技-</option>
-									<option value="3">-生活-</option>
-									<option value="2">-文学-</option>
-									<option value="1">-经济-</option>
-									<option value="0" selected="selected">-其它-</option>
+								<option value="其他"  selected="selected">其他</option>
+								<option value="文学类">文学类</option>
+								<option value="小说类">小说类</option>
+								<option value="IT类">IT类</option>
+								<option value="艺术与摄影类" >艺术与摄影类</option>
+								<option value="军事类">军事类</option>
+								<option value="辅导教材类" >辅导教材类</option>
+								<option value="历史类" >历史类</option>
 							</select> <span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍照片：</td>
-							<td><input type="file" name="picFile" onblur="checkNull('picFile','图片不能为空!')"  /> <span></span>
+							<td><input type="file" name="picFile"/> <span></span>
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="tds">书籍简介：</td>
+							<td>
+								<textarea id="descripe" name="bookInfo.descripe" rows="5px" cols="20px" onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')" ></textarea>
+								<span></span>
 							</td>
 						</tr>
 						<tr>
