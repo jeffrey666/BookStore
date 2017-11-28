@@ -20,12 +20,16 @@ public class SearchController extends BaseController{
 
 	@Autowired
 	private SearchService searchService;
+	/**
+	 * @param book:查询条件
+	 * @param model：回传数据
+	 * @return：返回搜索结果并返回搜索页面
+	 */
 	
 	@RequestMapping("/search")
 	public String searchBooks(Book book,Model model){
 		model.addAttribute("book",book);
 		List<Book> books = searchService.findAll(book);
-		System.out.println(books);
 		model.addAttribute("books",books);
 		return "search";
 	}

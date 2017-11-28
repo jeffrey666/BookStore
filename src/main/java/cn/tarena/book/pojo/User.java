@@ -5,7 +5,23 @@ public class User {
 	private String username;
 	private String password;
 	private Integer state;
+	private String role;
 	private UserInfo userInfo;
+
+	public User(String id, String username, String password,
+			Integer state, String role, UserInfo userInfo) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.state = state;
+		this.role = role;
+		this.userInfo = userInfo;
+	}
+
+	public User() {
+		super();
+	}
 
 	public String getId() {
 		return id;
@@ -13,12 +29,6 @@ public class User {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state
-				+ ", userInfo=" + userInfo + "]";
 	}
 
 	public String getUsername() {
@@ -45,14 +55,28 @@ public class User {
 		this.state = state;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public UserInfo getUserInfo() {
 		return userInfo;
-
 	}
 
 	public void setUserInfo(UserInfo userInfo) {
 		this.userInfo = userInfo;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username
+				+ ", password=" + password + ", state=" + state
+				+ ", role=" + role + ", userInfo=" + userInfo
+				+ "]";
 	}
 
 }

@@ -43,15 +43,15 @@
 				<div id="search_div">
 				<span class="input_span">书名：<input type="text" name="bookName" value="${book.bookName }"/></span>
 				<span class="input_span">书籍种类：
-				<select name="bookInfo.category">
-				<option value="" <c:if test="${book.bookInfo.category eq '' } ">selected="selected"</c:if>>无选择</option>
-				<option value="文学类" <c:if test="${book.bookInfo.category eq '文学类' } ">selected="selected"</c:if>>文学类</option>
-				<option value="小说类" <c:if test="${book.bookInfo.category eq '小说类' } ">selected="selected"</c:if>>小说类</option>
-				<option value="IT类" <c:if test="${book.bookInfo.category eq 'IT类' } ">selected="selected"</c:if>>IT类</option>
-				<option value="艺术与摄影类" <c:if test="${book.bookInfo.category eq '艺术与摄影类' } ">selected="selected"</c:if>>艺术与摄影类</option>
-				<option value="军事类" <c:if test="${book.bookInfo.category eq '军事类' } ">selected="selected"</c:if>>军事类</option>
-				<option value="辅导教材类" <c:if test="${book.bookInfo.category eq '辅导教材类' } ">selected="selected"</c:if>>辅导教材类</option>
-				<option value="历史类" <c:if test="${book.bookInfo.category eq '历史类' } ">selected="selected"</c:if>>历史类</option>
+				<select name="bookInfo.category"  >
+					<option value=""  <c:if test="${book.bookInfo.category eq '' } ">selected="selected"</c:if>>无选择</option>
+					<option value="文学类" <c:if test="${book.bookInfo.category eq '文学类'}">selected="selected"</c:if> >文学类</option>
+					<option value="小说类" <c:if test="${book.bookInfo.category eq '小说类'}">selected="selected"</c:if> >小说类</option>
+					<option value="IT类" <c:if test="${book.bookInfo.category eq 'IT类'}">selected="selected"</c:if> >IT类</option>
+					<option value="艺术与摄影类" <c:if test="${book.bookInfo.category eq '艺术与摄影类'}">selected="selected"</c:if> >艺术与摄影类</option>
+					<option value="军事类" <c:if test="${book.bookInfo.category eq '军事类' }">selected="selected"</c:if> >军事类</option>
+					<option value="辅导教材类" <c:if test="${book.bookInfo.category eq '辅导教材类' }">selected="selected"</c:if> >辅导教材类</option>
+					<option value="历史类" <c:if test="${book.bookInfo.category eq '历史类' }">selected="selected"</c:if> >历史类</option>
 				</select>
 				</span>
 				</div>
@@ -71,9 +71,9 @@
 
                <c:forEach items="${books}" var="b">
                     <div class="new_prod_box">
-                        <a href="search/toview?id=${b.bookId}">${b.bookName}</a>
+                        <a href="/details?bookId=${b.bookId}"><font color="blue" >${b.bookName}</font></a>
                         <div class="new_prod_bg">
-                        <a href="search/toview?id=${b.bookId}"><img src="${b.bookInfo.imgurl}" alt="图片暂无" title="" class="thumb" border="0" /></a>
+                        <a href="/details?bookId=${b.bookId}"><img src="${b.bookInfo.imgurl}" width="70px" height="90px" alt="图片暂无" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
                </c:forEach>
