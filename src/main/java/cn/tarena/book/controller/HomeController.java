@@ -115,6 +115,7 @@ public class HomeController {
 		return "cart";
 	}
 
+
 	@RequestMapping("/tocategory")
 	public String category() {
 		return "/category";
@@ -136,4 +137,10 @@ public class HomeController {
 		return Pages;
 	}
 
+
+	
+	@RequestMapping("/toborrowCart")
+	public String borrowCart(){
+		return "borrowCart";
+	}
 }
