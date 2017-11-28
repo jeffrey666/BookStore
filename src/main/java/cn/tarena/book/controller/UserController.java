@@ -73,25 +73,25 @@ public class UserController {
 	//用户的登录
 	@RequestMapping("/tologin.action")
 	public String toLogin(String username, String password,String remname,String autologin,HttpServletResponse response,
-			HttpServletRequest request,Model model, HttpSession session) throws UnsupportedEncodingException {
+			HttpServletRequest request,Model model, HttpSession session)  {
 
 		if("true".equals(remname)){
-			Cookie cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
-			cookie.setMaxAge(3600*24*30);
-			cookie.setPath(request.getContextPath()+"/");
-			response.addCookie(cookie);
+			Cookie cookie;
+			try {
+				cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
+				cookie.setMaxAge(3600*24*30);
+				cookie.setPath(request.getContextPath()+"/");
+				response.addCookie(cookie);
+			} catch (UnsupportedEncodingException e) {
+				
+			}
 		}else{
 			Cookie cookie = new Cookie("remname","");
 			cookie.setMaxAge(0);
 			cookie.setPath(request.getContextPath()+"/");
 			response.addCookie(cookie);
 		}
-		if("true".equals(autologin)){
-			Cookie atlCk = new Cookie("autologin",URLEncoder.encode(username+","+password,"utf-8"));
-			atlCk.setPath("/");
-			atlCk.setMaxAge(2592000);//3600*24*30
-			response.addCookie(atlCk);
-		}
+		
 		
 		
 		
