@@ -9,7 +9,7 @@
 <title>Book email</title>
 
 </head>
-<%@include file="_head.jsp"%>
+<%@include file="../_head.jsp"%>
 <body>
 	<h1 style="text-align:center">邮件发送</h1>
 	    <form action="sendemail" method="post">
@@ -23,5 +23,5 @@
         </form>
     </form>
 </body>
-<%@include file="_foot.jsp"%>
+<%@include file="../_foot.jsp"%>
 </html>
