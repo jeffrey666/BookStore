@@ -24,7 +24,6 @@ public class SearchController extends BaseController{
 	@RequestMapping("/search")
 	public String searchBooks(Book book,Model model){
 		model.addAttribute("book",book);
-		System.err.println(book);
 		List<Book> books = searchService.findAll(book);
 		model.addAttribute("books",books);
 		return "search";
