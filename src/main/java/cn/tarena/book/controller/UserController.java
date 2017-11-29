@@ -11,7 +11,6 @@ import java.util.UUID;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +27,18 @@ import cn.tarena.book.pojo.UserInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.session.HttpServletSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
@@ -72,7 +77,7 @@ public class UserController {
 	@RequestMapping("/tologin.action")
 
 	public String toLogin(String username, String password,
-			String remname, String autologin,
+			String remname, String rememberMe,
 			HttpServletResponse response,
 			HttpServletRequest request, Model model,
 			HttpSession session) {
@@ -105,9 +110,32 @@ public class UserController {
 		UsernamePasswordToken token = new UsernamePasswordToken(
 				username, password);
 		try {
+			//30天自动登录
+			if(!subject.isAuthenticated()&&"true".equals(rememberMe)){
+				token.setRememberMe(true);
+			}
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
 			session.setAttribute("_CURRENT_USER", user);
+			//实现记住用户名
+			if("true".equals(remname)){
+				Cookie cookie;
+				try {
+					cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
+					cookie.setMaxAge(3600*24*30);
+					cookie.setPath(request.getContextPath()+"/");
+					response.addCookie(cookie);
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			}else{
+				Cookie cookie = new Cookie("remname","");
+				cookie.setMaxAge(0);
+				cookie.setPath(request.getContextPath()+"/");
+				response.addCookie(cookie);
+			}
+			
+			
 			return "redirect:/";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo", "用户名或者密码错误");
@@ -118,8 +146,7 @@ public class UserController {
 
 	//用户退出登录
 	@RequestMapping("tologout")
-	public String tologout(HttpSession session) {
-		session.removeAttribute("_CURRENT_USER");
+	public String tologout(HttpServletRequest request,HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.isAuthenticated()) {
 			subject.logout();
