@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.pojo.UserInfo;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -61,7 +63,6 @@ public class UserController {
 			model.addAttribute("errorInfo", "用户名已存在");
 			return "/regist";
 		}
-
 		userService.addUser(user);
 		//成功则跳转至主页
 		return "redirect:/";
@@ -70,28 +71,32 @@ public class UserController {
 	//用户的登录
 	@RequestMapping("/tologin.action")
 
-	public String toLogin(String username, String password,String remname,String autologin,HttpServletResponse response,
-			HttpServletRequest request,Model model, HttpSession session)  {
+	public String toLogin(String username, String password,
+			String remname, String autologin,
+			HttpServletResponse response,
+			HttpServletRequest request, Model model,
+			HttpSession session) {
 
-		if("true".equals(remname)){
+		if ("true".equals(remname)) {
 			Cookie cookie;
 			try {
-				cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
-				cookie.setMaxAge(3600*24*30);
-				cookie.setPath(request.getContextPath()+"/");
+				cookie = new Cookie("remname",
+						URLEncoder.encode(username, "utf-8"));
+				cookie.setMaxAge(3600 * 24 * 30);
+				cookie.setPath(request.getContextPath() + "/");
 				response.addCookie(cookie);
 			} catch (UnsupportedEncodingException e) {
-				
+
 			}
-		}else{
-			Cookie cookie = new Cookie("remname","");
+		} else {
+			Cookie cookie = new Cookie("remname", "");
 			cookie.setMaxAge(0);
 			cookie.setPath(request.getContextPath() + "/");
 			response.addCookie(cookie);
 		}
 
-
-		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
+		if (StringUtils.isEmpty(username)
+				|| StringUtils.isEmpty(password)) {
 
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
@@ -144,16 +149,21 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userinfo.action")
-	public String userinfoAction(HttpSession session) {
-
-		System.err.println(
-				(User) session.getAttribute("_CURRENT_USER"));
+	public String userinfoAction() {
 
 		return "/userinfo/fmain_user_info";
 	}
 
 	@RequestMapping("/user/toUserInfoUpdate.action")
-	public String toUserInfoUpdate() {
+	public String toUserInfoUpdate(HttpSession session) {
+
+		//更新session中的登录user信息
+		User _CURRENT_USER = (User) session
+				.getAttribute("_CURRENT_USER");
+		User refresh_current_user = userService
+				.findUserByUsername(_CURRENT_USER.getUsername());
+		session.setAttribute("_CURRENT_USER",
+				refresh_current_user);
 
 		return "/userinfo/jUserInfoUpdate";
 	}
@@ -162,11 +172,14 @@ public class UserController {
 	public String UserInfoUpdate(User user,
 			HttpSession session) {
 
-		userInfoService.update(user.getUserInfo());
-
+		userInfoService.updateExceptforEmail(user.getUserInfo());
+		
+		
+		//更新session中的登录user的userinfo
 		User _CURRENT_USER = (User) session
 				.getAttribute("_CURRENT_USER");
-		_CURRENT_USER.setUserInfo(user.getUserInfo());
+		UserInfo refreshUserInfo =  userInfoService.findByUserInfoId(_CURRENT_USER.getUserInfoId());
+		_CURRENT_USER.setUserInfo(refreshUserInfo);
 
 		return "/userinfo/main";
 	}
@@ -223,6 +236,35 @@ public class UserController {
 		_CURRENT_USER.setPassword(new_password);
 
 		return "redirect:/user/userInfo/Main.action";
+	}
+
+	@RequestMapping("/user/wantChangeEmail.action")
+	@ResponseBody
+	public String wantChangeEmail(String user_id,
+			String new_email) {
+
+		userService.wantChangeEmail(user_id, new_email);
+
+		return "";
+	}
+
+	@RequestMapping("/user/verifyEmail")
+	public String verifyEmail(String verify_email_id,
+			Model model, HttpSession session) {
+
+		String new_email = userService
+				.verifyEmail(verify_email_id);
+
+		model.addAttribute("new_email", new_email);
+
+		Object _CURRENT_USER_Object = session
+				.getAttribute("_CURRENT_USER");
+		if (_CURRENT_USER_Object != null) {
+			User _CURRENT_USER = (User) _CURRENT_USER_Object;
+			_CURRENT_USER.getUserInfo().setEmail(new_email);
+		}
+
+		return "/userinfo/verifyEmailSuccess";
 	}
 
 	private boolean checkPsws(String new_password) {
