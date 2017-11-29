@@ -27,12 +27,8 @@ public class SearchController extends BaseController{
 
 	@Autowired
 	private SearchService searchService;
-<<<<<<< HEAD
-
-=======
 	@Autowired
 	private MailUtils mailUtils;
->>>>>>> 485ce111c2dbbbd805ec0ed3b720cef4f9ade59c
 	/**
 	 * @param book:查询条件
 	 * @param model：回传数据
@@ -89,9 +85,6 @@ public class SearchController extends BaseController{
 	public String toview() {
 		return "bookinfos";
 	}
-<<<<<<< HEAD
-  
-=======
 	
 	/**
 	 * 测试发送邮件
@@ -108,5 +101,4 @@ public class SearchController extends BaseController{
         mailUtils.sendSimpleMail(email);
         return "success";
     }
->>>>>>> 485ce111c2dbbbd805ec0ed3b720cef4f9ade59c
 }
