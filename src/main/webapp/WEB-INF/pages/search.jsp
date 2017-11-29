@@ -104,8 +104,6 @@
                         </div>           
                     </div>
                </c:forEach>
- 
-                     
 
             <div class="pagination">
             <c:if test="${pageBean!=null }">
