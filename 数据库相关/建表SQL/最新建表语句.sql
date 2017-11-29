@@ -120,7 +120,21 @@ CREATE TABLE `user_info` (
 
 /*Data for the table `user_info` */
 
-
+-- ----------------------------
+-- Table structure for `verify_email`
+-- ----------------------------
+DROP TABLE IF EXISTS `verify_email`;
+CREATE TABLE `verify_email` (
+  `verify_email_id` varchar(50) NOT NULL,
+  `user_id` varchar(40) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `is_verified` int(11) NOT NULL DEFAULT '0' COMMENT '0：没有验证   \r\n1：已经验证',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `verified_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`verify_email_id`),
+  KEY `verify_email_2_user` (`user_id`),
+  CONSTRAINT `verify_email_2_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

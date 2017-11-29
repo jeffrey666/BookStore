@@ -171,7 +171,8 @@ public class ShiroConfiguration {
 		 */
 
 
-		//filterChainDefinitionMap.put("/bookupload", "authc");
+		filterChainDefinitionMap.put("/bookupload", "authc");
+		filterChainDefinitionMap.put("/toborrowCart", "authc");
 
 
 		/*filterChainDefinitionMap.put("/bookupload", "authc");*/

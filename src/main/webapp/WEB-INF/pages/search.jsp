@@ -96,7 +96,7 @@
                         </div>           
                     </div>
                </c:forEach>
-               <c:forEach items="${pageBean.items}" var="b">
+               <c:forEach items="${pageBeans.items}" var="b">
                     <div class="new_prod_box">
                         <a href="/details?bookId=${b.bookId}"><font color="blue" >${b.bookName}</font></a>
                         <div class="new_prod_bg">
@@ -108,21 +108,21 @@
                      
 
             <div class="pagination">
-            <c:if test="${pageBean!=null }">
+            <c:if test="${pageBeans!=null }">
             <span class="disabled">
-            	<c:if test="${pageBean.currentPage==1}"><a href="#"><<</a></c:if>
+            	<c:if test="${pageBeans.currentPage==1}"><a href="#"><<</a></c:if>
             </span>
             
-            	<c:if test="${pageBean.currentPage>1}"><a href="${app}/search/search?currentPage=${pageBean.currentPage-1}"><<</a></c:if>
-            	<input id="totalPageNum" value="${pageBean.totalPage }" type="hidden"  />
-            	<c:forEach begin="1" end="${pageBean.totalPage }" step="1" var="pageNum">
+            	<c:if test="${pageBeans.currentPage>1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage-1}"><<</a></c:if>
+            	<input id="totalPageNum" value="${pageBeans.totalPage }" type="hidden"  />
+            	<c:forEach begin="1" end="${pageBeans.totalPage }" step="1" var="pageNum">
             		<a	href="${app}/search/search?currentPage=${pageNum}">${pageNum }</a>
             	</c:forEach>
-            	<c:if test="${pageBean.isMore==1}"><a href="${app}/search/search?currentPage=${pageBean.currentPage+1}">>></a> </c:if>
+            	<c:if test="${pageBeans.isMore==1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage+1}">>></a> </c:if>
 
             <span >
 				转到第 <input id="changeNum" type="text" name="currentPage"
-				value="${pageBean.currentPage}" />页<a id="changePageNum" href="">GO</a>
+				value="${pageBeans.currentPage}" />页<a id="changePageNum" href="">GO</a>
 		    </span>
 
             
