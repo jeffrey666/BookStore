@@ -107,7 +107,10 @@ public class HomeController {
 	}
 
 	@RequestMapping("/tocategory")
-	public String category() {
+	public String category(Model model) {
+		//查询所有的书籍
+		List<Book> categoryBooks =bookInfoService.findAllCategory();
+		model.addAttribute("categoryBooks", categoryBooks);
 		return "/category";
 	}
 

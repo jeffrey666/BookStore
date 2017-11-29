@@ -21,14 +21,9 @@
 <%@include file="_head.jsp"%>
 <body>
 	<div id="wrap">
-
-
-
-
 		<div class="center_content">
 			<div class="left_content">
 				<div class="crumb_nav">
-
 					<a href="#" onclick="window.history.back();">返回</a> &gt;&gt; 书籍详情
 				</div>
 				<div class="title">
@@ -97,12 +92,9 @@
 					<ul id="demo-nav" class="demolayout">
 						<li><a class="active" href="#tab1">名言警句</a></li>
 						<li><a class="" href="#tab2">相关书籍</a></li>
-						<li><a class="" href="#tab2">书籍</a></li>
-						<li><a class="" href="#tab2">111</a></li>
 					</ul>
 
 					<div class="tabs-container">
-
 						<div style="display: block;" class="tab" id="tab1">
 							<p class="more_details"
 								style="text-align: center; font-size: 20px">欢迎来到书籍的海洋,以书会友,开启智慧人生</p>
@@ -117,7 +109,6 @@
 										-----别林斯基</p></li>
 							</ul>
 						</div>
-
 						<!-- 相关书籍 -->
 						<div style="display: none;" class="tab" id="tab2">
 
@@ -126,18 +117,15 @@
 									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
 									<div class="new_prod_bg">
 										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" alt="" title=""
-											class="thumb" border="0" width="98px" height="98px" /></a>
+											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
+											class="thumb" border="0" /></a>
 									</div>
 								</div>
 							</c:forEach>
 
 							<div class="clear"></div>
 						</div>
-
-						<div style="display: none;" class="tab" id="tab3" >sssss</div>
 					</div>
-
 				</div>
 
 
