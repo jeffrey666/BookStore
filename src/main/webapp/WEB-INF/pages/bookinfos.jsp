@@ -33,25 +33,25 @@
 							<td>归还时间</td>
 						</tr>
 
-					<%-- 	<c:forEach items="${books }" var="b" varStatus="v">
+				 	<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
 								<td>${v.index+1}</td>
 								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
 										height="80" width="200" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
-								<td><c:if test="${b.bookInfo.category.eq'科技'}">科技</c:if>
-									<c:if test="${b.bookInfo.category.eq'生活'}">生活</c:if>
-									<c:if test="${b.bookInfo.category.eq'小说'}">小说</c:if>
-									<c:if test="${b.bookInfo.category.eq'IT'}">IT</c:if>
-									<c:if test="${b.bookInfo.category.eq'时尚'}">时尚</c:if>
-									<c:if test="${b.bookInfo.category.eq'其它'}">其它</c:if></td>
+								<td><c:if test="${b.bookInfo.category eq '科技'}">科技</c:if>
+									<c:if test="${b.bookInfo.category eq '生活'}">生活</c:if>
+									<c:if test="${b.bookInfo.category eq '小说'}">小说</c:if>
+									<c:if test="${b.bookInfo.category eq 'IT'}">IT</c:if>
+									<c:if test="${b.bookInfo.category eq '时尚'}">时尚</c:if>
+									<c:if test="${b.bookInfo.category eq '其它'}">其它</c:if></td>
 								<td>${b.bookInfo.bookPub }</td>
-								<td width="50">${b.bookInfo.pubDate}</td>
-								<td>${b.bookInfo.borrowDate }</td>
-								<td>${b.bookInfo.returnDate }</td>
+								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate }" pattern="yyyy-MM-dd"/></td>
+								<td><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy-MM-dd" /></td>
+								<td><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy-MM-dd"/> </td>
 							</tr>
-						</c:forEach> --%>
+						</c:forEach>
 					</table>
 					<a href="#" class="continue" onclick="window.history.back();">&lt;
 						back</a> <a href="${app }/lastTocart.action" class="checkout1">&lt;
