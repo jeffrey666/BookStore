@@ -117,7 +117,6 @@ public class HomeController {
 		return "cart";
 	}
 
-	
 	@RequestMapping("/tocategory")
 	public String category(Model model) {
 		//查询所有的书籍

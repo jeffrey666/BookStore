@@ -24,7 +24,6 @@
 		<div class="center_content">
 			<div class="left_content">
 				<div class="crumb_nav">
-
 					<a href="#" onclick="window.history.back();">返回</a> &gt;&gt; 书籍详情
 				</div>
 				<div class="title">

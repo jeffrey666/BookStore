@@ -24,5 +24,6 @@ public class ListController {
 		session.setAttribute("pageBean",pageBean);
 		
 		return "borrowlist";
+		
 	}
 }
