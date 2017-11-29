@@ -73,7 +73,7 @@ public class UserController {
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			//30天自动登录
-			if("true".equals(autologin)){
+			if(!subject.isAuthenticated()&&"true".equals(autologin)){
 				token.setRememberMe(true);
 			}
 			subject.login(token);
@@ -111,12 +111,8 @@ public class UserController {
 	@RequestMapping("tologout")
 	public String tologout(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		session.removeAttribute("_CURRENT_USER");
-		
-		
 		Subject subject = SecurityUtils.getSubject();
-		if(subject.isAuthenticated()){
-			subject.logout();
-		}
+		subject.logout();
 		return "redirect:/";
 	}
 
