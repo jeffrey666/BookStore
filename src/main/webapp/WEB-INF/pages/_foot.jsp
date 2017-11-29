@@ -12,7 +12,7 @@
 <div class="footer">
        	<div class="left_footer">
        	<img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" />
-       	<br />  
+       	<br /> 
        	<a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
         <a href="#">home</a>
