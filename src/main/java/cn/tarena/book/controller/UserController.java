@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,8 @@ public class UserController {
 
 	//用户的登录
 	@RequestMapping("/tologin.action")
-	public String toLogin(String username, String password,String remname,String autologin,HttpServletResponse response,
-			HttpServletRequest request,Model model, HttpSession session)  {
+	public String toLogin(String username, String password,String remname,String rememberMe,HttpServletResponse response,
+			HttpServletRequest request,Model model)  {
 
 		
 		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
@@ -73,11 +74,12 @@ public class UserController {
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			//30天自动登录
-			if(!subject.isAuthenticated()&&"true".equals(autologin)){
+			if(!subject.isAuthenticated()&&"true".equals(rememberMe)){
 				token.setRememberMe(true);
 			}
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
+			Session session = subject.getSession();
 			session.setAttribute("_CURRENT_USER", user);
 			//实现记住用户名
 			if("true".equals(remname)){
@@ -98,7 +100,6 @@ public class UserController {
 			}
 			
 			
-			
 			return "redirect:/";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo","用户名或者密码错误");
@@ -109,9 +110,10 @@ public class UserController {
 
 	//用户退出登录
 	@RequestMapping("tologout")
-	public String tologout(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
-		session.removeAttribute("_CURRENT_USER");
+	public String tologout(HttpServletRequest request,HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		session.removeAttribute("_CURRENT_USER");
 		subject.logout();
 		return "redirect:/";
 	}
