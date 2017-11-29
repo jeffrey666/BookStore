@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.tarena.book.pojo.Book;
+import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
+import cn.tarena.book.utils.PageBean;
 
 @Controller
 @RequestMapping("/search/")
@@ -27,10 +29,13 @@ public class SearchController extends BaseController{
 	 */
 	
 	@RequestMapping("/search")
-	public String searchBooks(Book book,Model model){
+	public String searchBooks(Book book,Model model,Integer currentPage){
+		if(book.getBookInfo()==null){
+			book.setBookInfo(new BookInfo());
+		}
 		model.addAttribute("book",book);
-		List<Book> books = searchService.findAll(book);
-		model.addAttribute("books",books);
+		PageBean pageBean = searchService.findAllByConditions(book,currentPage);
+		model.addAttribute("pageBean",pageBean);
 		return "search";
 	}
 	

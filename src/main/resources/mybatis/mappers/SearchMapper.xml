@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.tarena.book.mapper.SearchMapper">
     <resultMap type="Book" id="bookRM" autoMapping="true">
-    <id column="book_id" property="bookId"/>
+    	<id column="book_id" property="bookId"/>
     <association property="bookInfo" javaType="BookInfo" >
-    <id column="book_info_id" property="bookInfoId"/>
-    <result column="category" property="category"/>
-    <result column="imgurl" property="imgurl"/>
+    	<id column="book_info_id" property="bookInfoId"/>
+    	<result column="category" property="category"/>
+    	<result column="imgurl" property="imgurl"/>
     </association>
     </resultMap>
 
@@ -16,13 +16,29 @@
 (SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.state=0 )b
   <where>
  	<if test="bookName!=null">book_name LIKE concat(concat('%',#{bookName}),'%') </if>
- 	<if test="bookInfo.category!=''">AND category=#{bookInfo.category} </if> 
+ 	<if test="bookInfo.category!='无选择' and bookInfo.category!=null">AND category=#{bookInfo.category} </if> 
  	<if test="bookInfo.author!=null">AND author LIKE concat(concat('%',#{bookInfo.author}),'%') </if> 
  	<if test="bookInfo.pubDate!=null">AND pub_date &gt; #{bookInfo.pubDate} </if>  
  </where> 
-
-
 	</select>
+	
+	<select id="findBooksNum" resultType="Integer">
+	SELECT count(b.book_id) FROM 
+(SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.state=0 )b
+  <where>
+ 	<if test="bookName!=null">book_name LIKE concat(concat('%',#{bookName}),'%') </if>
+ 	<if test="bookInfo.category!='无选择' and bookInfo.category!=null">AND category=#{bookInfo.category} </if> 
+ 	<if test="bookInfo.author!=null">AND author LIKE concat(concat('%',#{bookInfo.author}),'%') </if> 
+ 	<if test="bookInfo.pubDate!=null">AND pub_date &gt; #{bookInfo.pubDate} </if>  
+ </where> 
+	</select>
+	
+	<!-- 根据租借量推荐热门书籍 -->
+    <select id="findAllBookBySeller" resultMap="bookRM">
+    	select b.book_id,b.book_name,b.state,bi.book_info_id,
+    	bi.author,bi.borrow_count,bi.imgurl from book b ,
+    	book_info bi where b.book_id=bi.book_info_id AND b.state=0 order by bi.borrow_count desc LIMIT 6
+    </select>
 	
 	
 	

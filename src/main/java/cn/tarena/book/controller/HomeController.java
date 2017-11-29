@@ -14,7 +14,7 @@ import cn.tarena.book.pojo.User;
 import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.BookInfoService;
 
-import cn.tarena.book.service.BookListService;
+import cn.tarena.book.service.SearchService;
 
 import cn.tarena.book.user.annotation.RequireRole;
 
@@ -26,7 +26,7 @@ public class HomeController {
 	private BookInfoService bookInfoService;
 	
 	@Autowired
-	private BookListService bookListService;
+	private SearchService searchService;
 
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -63,8 +63,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("tosearch")
-	public String tosearch() {
-
+	public String tosearch(Model model) {
+		List<Book> books = searchService.findAllBookBySeller();
+		model.addAttribute("books",books);
 		return "/search";
 	}
 

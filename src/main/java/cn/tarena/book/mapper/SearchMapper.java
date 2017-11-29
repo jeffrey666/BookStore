@@ -31,4 +31,8 @@ public interface SearchMapper {
 
 	List<Book> findAll(Book book);
 
+	List<Book> findAllBookBySeller();
+
+	Integer findBooksNum(Book book);
+
 }
