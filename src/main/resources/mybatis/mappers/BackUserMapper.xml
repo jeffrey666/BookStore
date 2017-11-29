@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.tarena.book.mapper.BackUserMapper">
+
+	<sql id="findAllUser_sql">
+		SELECT * FROM
+		user
+		LEFT JOIN
+		user_info
+		ON
+		`user`.id = user_info.user_info_id
+	</sql>
+
+	<resultMap type="User" id="user_rm" autoMapping="true">
+		<id column="id" property="id" />
+		<association property="userInfo" javaType="UserInfo">
+			<id column="user_info_id" property="userInfoId" />
+			<result column="nickname" property="nickname" />
+			<result column="email" property="email" />
+			<result column="address" property="address" />
+			<result column="card_no" property="cardNo" />
+			<result column="score" property="score" />
+			<result column="telephone" property="telephone" />
+			<result column="gender" property="gender" />
+			<result column="birthday" property="birthday" />
+		</association>
+	</resultMap>
+	
+    <!-- 后台:查询所有的用户 -->
+	<select id="findBackAllUser" resultMap="user_rm">
+		<include refid="findAllUser_sql"></include>
+	</select>
+	
+	<!--后台:修改用户状态  -->
+	<update id="changeState">
+       update user set state=#{state} where id in
+       <foreach collection="ids" item="id" open="(" close=")" separator=",">
+           #{id}
+       </foreach>
+      </update>
+      
+	<!--后台:删除用户  -->
+	 <delete id="delete">
+        delete from user where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+           #{id}
+       </foreach>
+      </delete>
+      
+      <!--后台:删除用户详情  -->
+	 <delete id="deleteUserInfo">
+        delete from user_info where user_info_id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+           #{id}
+       </foreach>
+      </delete>
+      <!-- 批量删除某几个用户的关联关系 -->
+	<delete id="deleteByUserIds">
+		delete from role_user_p where user_id in
+		<foreach collection="array" item="userId" open="(" close=")" separator=",">
+			#{userId}
+		</foreach>
+	</delete>
+      
+      
+      <!--后台:新增用户  -->
+      <insert id="save">
+      insert into user (id,username,password,state,role) 
+            values(#{id},#{username},#{password},#{state},#{role})
+      </insert>
+      
+      <!--后台:新增用户详情  -->
+      <insert id="saveUserInfo">
+		INSERT INTO user_info (user_info_id,nickname,card_no,birthday,gender,address,telephone,score,email) 
+		VALUES
+		(#{userInfoId},#{nickname},#{cardNo},#{birthday},#{gender},#{address},#{telephone},#{score},#{email})
+	</insert>
+	
+	<!--后台:查询某个用户  -->
+	 <select id="findOne" resultMap="user_rm">
+		<include refid="findAllUser_sql"/> where user.id=#{id}
+		
+	</select> 
+	
+	<!--后台:修改用户信息  -->
+	 <update id="update">
+	update user set username=#{username},PASSWORD=#{password},state=#{state},role=#{role} where id=#{id}
+	</update>
+	
+	<!--后台:修改用户信息表  -->
+	<update id="updateUserInfo">
+		update user_info set nickname=#{nickname},card_no=#{cardNo},birthday=#{birthday},gender=#{gender},telephone=#{telephone},address=#{address} where user_info_id=#{userInfoId}
+	</update>
+	
+	 <!--后台:查询用户  -->
+	<select id="findOneUser" resultMap="user_rm">
+		<include refid="findAllUser_sql"/> where user.id=#{id}
+	</select>
+	
+	
+	
+	
+	<!--后台:删除角色  -->
+	<delete id="roledelete">
+	 delete from role_p where role_id in
+	 <foreach collection="array" item="id" open="(" close=")" separator=",">
+	 #{id}
+	 </foreach>
+	</delete>
+	
+	 <!--后台:新增角色 -->
+	
+     <!--   <insert id="rolesave">
+      insert into role (role_id,name,remarks,order_no) 
+            values(#{roleId},#{name},#{remarks},#{orderNo})
+      </insert> -->
+      
+	<!--后台:查看某个角色  -->
+	<!-- <select id="findAllRole" resultMap="role_rm">
+		select * from role where role_id=#{role_id}
+	</select> -->
+	
+	<!--后台:修改用户信息  -->
+	<!--  <update id="roleupdate">
+	    update role set name=#{name},remarks=#{remarks},order_no=#{orderNo} where role_id=#{roleId}
+	</update> -->
+	
+	<sql id="moduleFind" >
+   SELECT * FROM
+module_p m
+LEFT JOIN
+(SELECT module_id p_id,NAME p_name FROM module_p) p
+	ON m.`PARENT_ID`=p.p_id
+	ORDER BY order_no
+  </sql>
+  <resultMap type="Module" id="moduleRM" autoMapping="true">
+  <id column="module_id" property="moduleId"></id>
+  <association property="parentModule" javaType="Module">
+       <id column="p_id" property="moduleId"></id>
+       <result column="p_name" property="name"/>
+  </association>
+      
+  </resultMap>
+  
+  <!--后台:查询所有模块  -->
+  <select id="findModuleAll" resultMap="moduleRM">
+   <include refid="moduleFind"/>
+  </select>
+  
+  <!--后台:修改模块状态  -->
+  <update id="modulechangeState">
+   update module_p set state = #{state} where module_id in
+   <foreach collection="moduleIds" item="moduleId" open="(" close=")" separator=",">
+    #{moduleId}
+   </foreach>
+  </update>
+  
+  <!--后台:删除模块  -->
+  <delete id="moduledelete">
+   delete from module_p where module_id in
+   <foreach collection="array" item="moduleId" open="(" close=")" separator=",">
+    #{moduleId}
+   </foreach>
+  </delete>
+  
+  <!--后台:查询某个模块  -->
+  <select id="findModuleOne" resultMap="moduleRM">
+  SELECT * FROM
+module_p m
+LEFT JOIN
+(SELECT module_id p_id,NAME p_name FROM module_p) p
+	ON m.`PARENT_ID`=p.p_id
+   where m.module_id=#{moduleId}
+  </select>
+  
+  <!--保存用户所对应的角色  -->
+ <insert id="saveUserAndRole">
+		INSERT INTO role_user_p (role_id,user_id) VALUES
+		<foreach collection="roleIds" item="roleId" separator=",">
+			(#{roleId},#{id})
+		</foreach>
+	</insert>
+	
+	<!-- 批量添加 角色对应的模块 -->
+<insert id="saveRoleModule">
+	insert into role_module_p (module_id,role_id) values 
+	<foreach collection="moduleIds" item="moduleId" separator=",">
+		(#{moduleId},#{roleId})
+	</foreach>
+</insert>
+
+
+	
+	<!-- 批量删除和用户的关联关系 -->
+	
+	<delete id="deleteUserRole">
+		delete from role_user_p where role_id in
+		<foreach collection="array" item="roleId" open="(" close=")" separator=",">
+			#{roleId}
+		</foreach>
+	</delete>
+	
+	<!-- 批量删除和模块的关系 -->
+	<delete id="deleteRoleModules">
+		delete from role_module_p where role_id in
+		<foreach collection="array" item="roleId" open="(" close=")" separator=",">
+			#{roleId}
+		</foreach>
+	</delete>
+	
+	<!-- 批量删除和角色的关联关系 -->
+	<delete id="deleteModuleRole">
+		delete from role_module_p where module_id in
+		<foreach collection="array" item="moduleId" open="(" close=")" separator=",">
+			#{moduleId}
+		</foreach>
+	</delete>
+	
+	
+	
+	
+</mapper>

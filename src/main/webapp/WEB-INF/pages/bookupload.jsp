@@ -20,7 +20,7 @@
 		<div class="center_content">
 			<div class="left_content">
 				<form onsubmit="return checkForm()"
-					action="<%=request.getContextPath()%>/saveBookUpload.action"
+					action="<%=request.getContextPath()%>/saveBookUploadAuditing.action"
 					method="POST" enctype="multipart/form-data">
 
 					<h1 id="tt">书籍上传</h1>

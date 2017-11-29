@@ -28,4 +28,5 @@ public interface UserService {
 
 	public abstract String findRoleByUserId(String userId);
 
+
 }

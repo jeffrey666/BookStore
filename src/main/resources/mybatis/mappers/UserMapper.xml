@@ -25,7 +25,17 @@
 			<result column="gender" property="gender" />
 		</association>
 	</resultMap>
+	
+	
 
+    <!-- 后台:查询所有的用户 -->
+	<select id="findBackAllUser" resultMap="user_rm">
+		<include refid="findAllUser_sql"></include>
+	</select>
+	
+	
+	<!-- =====================  -->
+	
 	<select id="findAllUser" resultMap="user_rm">
 		<include refid="findAllUser_sql"></include>
 	</select>

@@ -1,6 +1,6 @@
 package cn.tarena.book.pojo;
 
-public class User {
+public class User extends BaseEntity {
 	private String id;
 	private String username;
 	private String password;

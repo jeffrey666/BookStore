@@ -1,6 +1,8 @@
 package cn.tarena.book.pojo;
 
-public class UserInfo {
+import java.util.Date;
+
+public class UserInfo extends BaseEntity{
 
 	private String userInfoId;
 	private String nickname;
@@ -10,6 +12,15 @@ public class UserInfo {
 	private Integer score;
 	private String telephone;
 	private String gender;
+	private Date birthday;
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
 	public UserInfo(String userInfoId, String nickname,
 			String email, String address, String cardNo,
