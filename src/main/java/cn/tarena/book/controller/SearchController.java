@@ -42,7 +42,7 @@ public class SearchController extends BaseController{
 		}
 		model.addAttribute("book",book);
 		PageBean pageBean = searchService.findAllByConditions(book,currentPage);
-		model.addAttribute("pageBean",pageBean);
+		model.addAttribute("pageBeans",pageBean);
 		return "search";
 	}
 	

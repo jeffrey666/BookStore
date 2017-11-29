@@ -41,7 +41,9 @@
           for(var i=0;i<lis.length;i++) {
             lis[i].className = "hide";
           }
+          	//次数+1
           index++;
+          	/* 将当前class名改为show */
           lis[index%lis.length].className = "show";
         }, 5000);
       }

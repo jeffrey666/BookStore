@@ -22,6 +22,7 @@ public class ListController {
 		PageBean<Book> pageBean=bookListService.findBookList(currentPage,pageSize);
 		
 		session.setAttribute("pageBean",pageBean);
+		
 		return "borrowlist";
 		
 	}

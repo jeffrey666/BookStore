@@ -1,13 +1,18 @@
 package cn.tarena.book.pojo;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String username;
 	private String password;
 	private Integer state;
 	private String role;
-
-
 	private UserInfo userInfo;
 
 	public User(String id, String username, String password,
@@ -29,10 +34,13 @@ public class User {
 		return id;
 	}
 
+	public String getUserInfoId() {
+		return userInfo.getUserInfoId();
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;

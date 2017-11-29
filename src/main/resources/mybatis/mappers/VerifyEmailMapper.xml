@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.tarena.book.mapper.VerifyEmailMapper">
+
+	<insert id="addRecord">insert into verify_email (verify_email_id, user_id, email) values
+		(#{verify_email_id}, #{user_id}, #{new_email})
+	</insert>
+	
+	<update id="verifyEmail">update verify_email set is_verified=1, verified_time = #{update_time} where
+		verify_email_id = #{verify_email_id}
+	</update>
+	
+	
+	
+	<sql id="findAll_sql">
+		SELECT * FROM verify_email
+	</sql>
+
+	
+	
+	<select id="findPojoByVerifyEmailId" resultType="VerifyEmail">
+		<include refid="findAll_sql"></include>  WHERE verify_email_id = #{verify_email_id}
+	</select>
+	
+</mapper>

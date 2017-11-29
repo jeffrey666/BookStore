@@ -31,6 +31,7 @@ import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
 import cn.tarena.book.service.BookService;
+import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.utils.FileUpload;
 import cn.tarena.book.utils.PageBean;
 
@@ -277,12 +278,10 @@ public class BookUploadController  extends BaseController{
 	@RequestMapping("/deleteMyBook.action")        
 	public String deleteMyBook(@RequestParam(value="bookId",required=false)String[] ids,HttpSession session){
 	
-		System.out.println(1);
 		if(ids!=null){
 			User user = (User) session.getAttribute("_CURRENT_USER");
 			bookService.deleteMyBook(ids,user.getId());
 		}
-		System.out.println(2);
 		
 		return "redirect:/tocart";
 	}
