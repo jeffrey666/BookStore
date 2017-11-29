@@ -36,8 +36,8 @@
 				 	<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
 								<td>${v.index+1}</td>
-								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
-										height="80" width="200" /> </a></td>
+								<td><a><img src="${b.bookInfo.imgurl}" alt="暂无图片"
+										width="70px" height="100px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
 								<td><c:if test="${b.bookInfo.category eq '科技'}">科技</c:if>

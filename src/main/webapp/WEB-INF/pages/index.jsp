@@ -22,7 +22,7 @@
         	<c:forEach items="${BookList}" var="book">
         	<div class="feat_prod_box">
             
-            	<div class="prod_img"><a href="/details.action?bookId=${book.bookId}"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="" title="" border="0" /></a></div>
+            	<div class="prod_img"><a href="/details.action?bookId=${book.bookId}"><img src="${app}${book.bookInfo.imgurl}" width="98px" height="150px" alt="暂无图片" title="" border="0" /></a></div>
                 
                 <div class="prod_det_box">
                 	<div class="box_top"></div>
