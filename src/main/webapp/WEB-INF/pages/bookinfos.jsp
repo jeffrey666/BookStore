@@ -22,6 +22,7 @@
 
 					<table class="cart_table1" align="center">
 						<tr class="cart_title">
+							<td>归还</td>
 							<td>序号</td>
 							<td>图书图片</td>
 							<td>图书名称</td>
@@ -35,9 +36,12 @@
 
 				 	<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
+								<td>
+								<a href="${app }/return/return?bookId=${b.bookId}" class="checkout1">还书</a>
+						</td>
 								<td>${v.index+1}</td>
-								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
-										height="80" width="200" /> </a></td>
+								<td><a><img src="${b.bookInfo.imgurl }" alt="暂无图片"
+										height="80px" width="150px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
 								<td><c:if test="${b.bookInfo.category eq '科技'}">科技</c:if>
@@ -54,9 +58,7 @@
 						</c:forEach>
 					</table>
 					<a href="#" class="continue" onclick="window.history.back();">&lt;
-						back</a> <a href="${app }/lastTocart.action" class="checkout1">&lt;
-						last</a> <a href="${app }/nextTocart.action" class="checkout">next
-						&gt;</a>
+						back</a>
 				</div>
 
 				<div class="clear"></div>
