@@ -20,6 +20,7 @@
 </head>
 <%@include file="_head.jsp"%>
 <body>
+
 	<div id="wrap">
 		<div class="center_content">
 			<div class="left_content">

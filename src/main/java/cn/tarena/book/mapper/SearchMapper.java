@@ -3,6 +3,8 @@ package cn.tarena.book.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.Date;
 
 
@@ -13,19 +15,19 @@ public interface SearchMapper {
 
 	User findUserByBookId(String bookId);
 
-	void deduct(User loginUser);
+	void deduct(String loginUserId);
 
-	void gain(User user);
+	void gain(String  userId);
 
 	void updateState(String bookId);
 
-	void updateDate(String bookId,Date borrowDate,Date returnTime);
+	void updateDate(@Param("bookId") String bookId,@Param("borrowDate") Date borrowDate,@Param("returnDate") Date returnDate);
 
 	Book findOne(String bookId);
 
-	void addHistory(String userId, User user,User loginUser,Date returnDate);
+	void addHistory(@Param("bookId")String bookId, @Param("userId")String userId,@Param("loginUserId")String loginUserId,@Param("borrowDate")Date borrowDate);
 
-	void updateBorrower(String userId, User loginUser);
+	void updateBorrower(@Param("bookId")String bookId, @Param("loginUserId")String loginUserId);
 
 	List<Book> findAll(Book book);
 
