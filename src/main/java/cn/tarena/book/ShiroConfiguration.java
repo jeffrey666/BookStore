@@ -170,8 +170,11 @@ public class ShiroConfiguration {
 		 * 需要登录才能进入的页面在下面设置  ↓  如示例所示
 		 */
 
-		filterChainDefinitionMap.put("/bookupload", "authc");
 
+		//filterChainDefinitionMap.put("/bookupload", "authc");
+
+
+		/*filterChainDefinitionMap.put("/bookupload", "authc");*/
 		/*
 		 * 需要登录才能进入的页面在上面设置  ↑  如示例所示
 		 */

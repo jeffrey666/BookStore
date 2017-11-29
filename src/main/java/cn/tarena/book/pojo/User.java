@@ -6,6 +6,8 @@ public class User {
 	private String password;
 	private Integer state;
 	private String role;
+
+
 	private UserInfo userInfo;
 
 	public User(String id, String username, String password,
@@ -30,6 +32,7 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 
 	public String getUsername() {
 		return username;

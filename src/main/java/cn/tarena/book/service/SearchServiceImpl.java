@@ -53,8 +53,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public void deduct(String userId) {
-		searchMapper.deduct(userId);
+	public void deduct(User loginUser) {
+		searchMapper.deduct(loginUser);
 	}
 
 	@Override
@@ -63,18 +63,17 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public User findUser(String userId) {
-		return searchMapper.findUser(userId);
-	}
-
-	@Override
 	public void updateState(String bookId) {
 		searchMapper.updateState(bookId);
 	}
 
 	@Override
-	public void updateDate(String bookId,Date borrowDate,Date returnTime) {
-		searchMapper.updateDate(bookId,borrowDate,returnTime);
+	public void updateDate(String bookId) {
+		Date borrowDate=new Date();
+		Date returnDate=new Date();
+		long time =2592000000L;
+		returnDate.setTime(time+borrowDate.getTime());
+		searchMapper.updateDate(bookId,borrowDate,returnDate);
 	}
 
 	@Override
@@ -83,20 +82,21 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public void addHistory(String userId, String bookId,Date borrowDate,Date returnDate) {
-		searchMapper.addHistory(userId,bookId,borrowDate,returnDate);
+	public void addHistory(String bookId, User user, User loginUser) {
+		Date borrowDate=new Date();
+		searchMapper.addHistory(bookId,user,loginUser,borrowDate);
 	}
 
 	@Override
-	public void updateBorrower(String userId, String bookId) {
-		searchMapper.updateBorrower(userId,bookId);
+	public void updateBorrower(String bookId,User loginUser) {
+		searchMapper.updateBorrower(bookId,loginUser);
+	}
+	
+	@Override
+	public List<Book> findAllBorrowed(String loginUserId) {
+		return searchMapper.findAllBorrowed(loginUserId);
 	}
 	/******************************/
-
-
-
-	
-
 
 
 

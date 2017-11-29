@@ -13,11 +13,9 @@ public interface SearchMapper {
 
 	User findUserByBookId(String bookId);
 
-	void deduct(String userId);
+	void deduct(User loginUser);
 
 	void gain(User user);
-
-	User findUser(String userId);
 
 	void updateState(String bookId);
 
@@ -25,14 +23,17 @@ public interface SearchMapper {
 
 	Book findOne(String bookId);
 
-	void addHistory(String userId, String bookId,Date borrowDate,Date returnDate);
+	void addHistory(String userId, User user,User loginUser,Date returnDate);
 
-	void updateBorrower(String userId, String bookId);
+	void updateBorrower(String userId, User loginUser);
 
 	List<Book> findAll(Book book);
 
 	List<Book> findAllBookBySeller();
 
 	Integer findBooksNum(Book book);
+
+	List<Book> findAllBorrowed(String loginUserId);
+
 
 }

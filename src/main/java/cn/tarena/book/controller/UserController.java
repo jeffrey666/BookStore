@@ -1,9 +1,16 @@
 package cn.tarena.book.controller;
 
+
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,20 +21,24 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
-
 import cn.tarena.book.service.UserService;
-import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.user.utils.StringTool;
 
 @Controller
@@ -61,30 +72,55 @@ public class UserController {
 
 	//用户的登录
 	@RequestMapping("/tologin.action")
-	public String toLogin(String username, String password,
-			Model model, HttpSession session) {
-		//非空验证
-		if (StringUtils.isEmpty(username)
-				|| StringUtils.isEmpty(password)) {
+	public String toLogin(String username, String password,String remname,String autologin,HttpServletResponse response,
+			HttpServletRequest request,Model model, HttpSession session)  {
+
+		if("true".equals(remname)){
+			Cookie cookie;
+			try {
+				cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
+				cookie.setMaxAge(3600*24*30);
+				cookie.setPath(request.getContextPath()+"/");
+				response.addCookie(cookie);
+			} catch (UnsupportedEncodingException e) {
+				
+			}
+		}else{
+			Cookie cookie = new Cookie("remname","");
+			cookie.setMaxAge(0);
+			cookie.setPath(request.getContextPath()+"/");
+			response.addCookie(cookie);
+		}
+		
+		
+		
+		
+		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
 		}
-
-		//根据用户名和密码查找单个用户
-		User user = userService.findUser(username, password);
-
-		if (user == null) {
-			model.addAttribute("errorInfo", "用户名或密码错误");
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+		try {
+			subject.login(token);
+			User user = (User) subject.getPrincipal();
+			session.setAttribute("_CURRENT_USER", user);
+			return "redirect:/";
+		} catch (AuthenticationException e) {
+			model.addAttribute("errorInfo","用户名或者密码错误");
 			return "/login";
 		}
-		session.setAttribute("_CURRENT_USER", user);
-		return "redirect:/";
+		
 	}
 
 	//用户退出登录
 	@RequestMapping("tologout")
 	public String tologout(HttpSession session) {
 		session.removeAttribute("_CURRENT_USER");
+		Subject subject = SecurityUtils.getSubject();
+		if(subject.isAuthenticated()){
+			subject.logout();
+		}
 		return "redirect:/";
 	}
 
@@ -153,7 +189,7 @@ public class UserController {
 			String new_password, Model model,
 			HttpSession session) {
 
-		// 旧密码是否正确？
+		//旧密码是否正确？
 		if (StringTool.isEmpty(user_id)
 				|| StringTool.isEmpty(old_psw)) {
 			model.addAttribute("errMsg", "页面出错，请重新登录");
