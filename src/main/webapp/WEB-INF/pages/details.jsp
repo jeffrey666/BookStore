@@ -43,7 +43,7 @@
 					<div class="prod_det_box">
 						<div class="box_top"></div>
 						<div class="box_center">
-							<div class="prod_title">Details</div>
+							<div class="prod_title"><strong>作者:</strong> ${book.bookInfo.author}</div>
 
 
 							<div class="price">
