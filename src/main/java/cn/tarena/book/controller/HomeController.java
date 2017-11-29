@@ -12,7 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
+
+
+import cn.tarena.book.service.SearchService;
+
+import cn.tarena.book.user.annotation.RequireRole;
+
 import cn.tarena.book.utils.toCartUtils;
+
 
 
 @Controller
@@ -20,6 +27,9 @@ public class HomeController {
 
 	@Autowired
 	private BookInfoService bookInfoService;
+	
+	@Autowired
+	private SearchService searchService;
 
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -58,8 +68,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("tosearch")
-	public String tosearch() {
-
+	public String tosearch(Model model) {
+		List<Book> books = searchService.findAllBookBySeller();
+		model.addAttribute("books",books);
 		return "/search";
 	}
 
