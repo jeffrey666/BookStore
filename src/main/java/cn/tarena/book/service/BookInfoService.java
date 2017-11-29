@@ -41,5 +41,13 @@ public interface BookInfoService {
 	 */
 	public List<Book> findRelateBooks(String category, String bookId);
 
+	/**
+	 * 查询所有的图书
+	 * @return
+	 */
+	public List<Book> findAllCategory();
+
+	
+
 
 }
