@@ -32,11 +32,16 @@ public class HomeController {
 	private SearchService searchService;
 
 	@RequestMapping("/")
+	public String cover() {
+		return "/cover";
+	}
+	
+	@RequestMapping("/index")
 	public String index(Model model) {
 		List<Book> BookList = bookInfoService.findNewBooks();
 		model.addAttribute("BookList", BookList);
 		return "/index";
-	}
+	}	
 
 	@RequestMapping("/toregist")
 	public String regist() {
