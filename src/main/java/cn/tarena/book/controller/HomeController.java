@@ -54,6 +54,7 @@ public class HomeController {
 		List<Book> bookList= bookInfoService.findRelateBooks(bookId,book.getBookInfo().getCategory());
 		model.addAttribute("book",book);
 		model.addAttribute("bookList", bookList);
+		
 		return "/details";
 	}
 
