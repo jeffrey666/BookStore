@@ -67,7 +67,7 @@ public class HomeController {
 		return "/bookupload";
 	}
 
-	@RequestMapping("tosearch")
+	@RequestMapping("/tosearch")
 	public String tosearch(Model model) {
 		List<Book> books = searchService.findAllBookBySeller();
 		model.addAttribute("books",books);
