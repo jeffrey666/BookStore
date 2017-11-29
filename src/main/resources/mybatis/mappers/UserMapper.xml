@@ -11,7 +11,6 @@
 		`user`.id = user_info.user_info_id
 	</sql>
 
-
 	<resultMap type="User" id="user_rm" autoMapping="true">
 		<id column="id" property="id" />
 		<association property="userInfo" javaType="UserInfo">
@@ -34,6 +33,7 @@
 		<include refid="findAllUser_sql"></include> WHERE id = #{user_id}
 	</select>
 	
+
 	<select id="findUserByUsername" resultMap="user_rm"  >
 		<include refid="findAllUser_sql"></include> WHERE username = #{username}
 	</select>	
