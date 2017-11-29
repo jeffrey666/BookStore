@@ -31,6 +31,11 @@ public interface SearchMapper {
 
 	List<Book> findAll(Book book);
 
+	List<Book> findAllBookBySeller();
+
+	Integer findBooksNum(Book book);
+
 	List<Book> findAllBorrowed(String loginUserId);
+
 
 }

@@ -30,12 +30,12 @@
     <select id="tocart" resultMap="BookRM">
    		SELECT b.book_name,b.state,u.* FROM 
 		(SELECT u.user_id,u.book_id,b.author,b.borrow_date,b.return_date,
-		b.book_pub,b.pub_date,b.category,b.imgurl
+		b.book_pub,b.pub_date,b.category,b.imgurl,b.descripe
 		FROM
 		book_info b
 		,
 		user_book_borrower u
-		WHERE u.user_id=#{userId}
+		WHERE u.user_id = #{userId}
 		AND u.book_id=b.book_info_id) u
 		LEFT JOIN
 		book b
@@ -43,29 +43,40 @@
 		limit #{i},#{y}
 	</select>
 	<select id="line" resultType="Integer">
-		SELECT COUNT(*) FROM
-		book b
-		LEFT JOIN
+		SELECT COUNT(u.book_id) FROM
 		(SELECT u.book_id,b.author,b.borrow_date,b.return_date,
 		b.book_pub,b.pub_date,b.category,b.imgurl
 		FROM
 		book_info b
 		,
-		user_book_borrower u
-		WHERE u.user_id=#{userId}
-		AND u.book_id=b.book_info_id) u
-		ON b.book_id=u.book_id
+		(SELECT book_id FROM user_book_borrower WHERE 
+		user_id=#{user_id}) u
+		WHERE b.book_info_id = u.book_id ) u
+		LEFT JOIN 
+		book b
+		ON b.book_id=u.book_id;
 	</select>
+	
 	<select id="findAll" resultType="BookInfo">
 		SELECT * FROM book_info
 	</select>
+	<!-- 查询新上传的图书 -->
 	<select id="findNewBooks" resultMap="BookRM">
 		SELECT * FROM book_info,book HAVING book.book_id=book_info.book_info_id  ORDER BY update_time DESC LIMIT 0,4 
 	</select>
 	
+	<!-- 查询单本书籍的详细信息 -->
 	<select id="findOneByBookId" resultMap="BookRM">
 		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id AND b.book_id=#{bookId}
 	</select>
 	
+	<!-- 查询相关书籍 -->
+	<select id="findRelateBooks" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id  AND bi.category=#{category} and b.book_id!=#{bookId} 
+	</select>
+	
+	<select id="findAllCategory" resultMap="BookRM">
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id
+	</select>
 	
 </mapper>

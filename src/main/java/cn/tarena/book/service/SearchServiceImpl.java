@@ -8,10 +8,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+
 import cn.tarena.book.mapper.SearchMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+<<<<<<< HEAD
 
+=======
+import cn.tarena.book.utils.PageBean;
+>>>>>>> 485ce111c2dbbbd805ec0ed3b720cef4f9ade59c
 @Service
 public class SearchServiceImpl implements SearchService {
 
@@ -19,11 +25,37 @@ public class SearchServiceImpl implements SearchService {
 	private SearchMapper searchMapper;
 
 	@Override
+<<<<<<< HEAD
 	public List<Book> findAll(Book book) {
 
 		return searchMapper.findAll(book);
 	}
 
+=======
+	public PageBean findAllByConditions(Book book,Integer currentPage){
+		//设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
+		//搜索页面的每页显示数据固定为6条
+		if(currentPage==null){
+			currentPage = 1;
+		}
+		int pageSize = 6;
+		PageHelper.startPage(currentPage, pageSize);
+		List<Book> books = searchMapper.findAll(book);
+		Integer count = searchMapper.findBooksNum(book);
+		PageBean<Book> pageBean = new PageBean<Book>(currentPage,pageSize,count);
+		pageBean.setItems(books);
+		return pageBean;
+	}
+	
+	
+	@Override
+	public List<Book> findAllBookBySeller() {
+		return searchMapper.findAllBookBySeller();
+	}
+	
+	
+	
+>>>>>>> 485ce111c2dbbbd805ec0ed3b720cef4f9ade59c
 	/******************************/
 
 	@Override
@@ -81,6 +113,7 @@ public class SearchServiceImpl implements SearchService {
 		return searchMapper.findAllBorrowed(loginUserId);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public void toborrow(String bookId,HttpSession httpSession) {
 		// 通过session获取登录用户
@@ -101,5 +134,15 @@ public class SearchServiceImpl implements SearchService {
 		addHistory(bookId, user, loginUser);
 	}
 	/******************************/
+=======
+
+
+
+
+
+	
+	
+	
+>>>>>>> 485ce111c2dbbbd805ec0ed3b720cef4f9ade59c
 
 }
