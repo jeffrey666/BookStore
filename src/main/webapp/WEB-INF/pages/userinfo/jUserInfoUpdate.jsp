@@ -4,6 +4,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>编辑个人信息</title>
+	
+	<script src="https://cdn.bootcss.com/jquery/1.4.2/jquery.js"></script>
+	<script type="text/javascript">
+	
+	function checkEmail(){
+	
+		promptMsg("text","userInfo.email","");	
+		hideVerifyEmailButton();
+	
+		$oEmail = $("input[type='text'][name='userInfo.email']");
+		$oOldEmail = $("input[type='hidden'][name='old_userInfo.email']");
+		if($oOldEmail.val() == $oEmail.val()){
+			
+			return;
+		}
+	
+
+		
+		isOK = true;
+		
+		if(isOK){
+			reg = /^\w+@\w+(\.[a-zA-Z]+)+$/;
+			
+			if( !reg.test( $oEmail.val() )){
+				isOK = false;
+				
+				promptMsg("text","userInfo.email","邮箱格式不正确");
+			}
+		}
+		
+ 		if(isOK){
+			showVerifyEmailButton();
+		} 
+		
+		return isOK;
+	}
+	
+	function promptMsg(type, name, msg){
+		$span = $("input[type='"+type+"'][name='"+name+"']+span");
+		$span.css("color","red").text(msg);
+	}
+	
+ 	function showVerifyEmailButton(){
+		$button = $("input[type='button'][value='验证邮箱']");
+		$button.attr("hidden","");
+	}
+	
+ 	function hideVerifyEmailButton(){
+		$button = $("input[type='button'][value='验证邮箱']");
+		$button.attr("hidden","hidden");
+	}	
+
+ 	function onclickVerifyEamil(thisobj){
+		$verifyEamilButton = $(thisobj);
+		$oTextEmail =  $("input[type='text'][name='userInfo.email']");
+		$oUserIdHidden =  $("input[type='hidden'][name='id']");
+		
+		
+		$.post("/user/wantChangeEmail.action",
+			{"user_id":$oUserIdHidden.val(),"new_email":$oTextEmail.val()},
+			function(result){
+			});	
+		
+		
+		alert("已发送邮箱，请验证");	
+		$verifyEamilButton.attr("disabled","disabled");	
+		$oTextEmail.attr("readonly","readonly");
+			
+	}	
+	
+	</script>	
 </head>
 
 <body>
@@ -37,7 +108,12 @@
 		<td>昵称：</td>
 		<td><input type="text" name="userInfo.nickname" value="${_CURRENT_USER.userInfo.nickname }" /></td>
 		<td>email：</td>
-		<td><input type="text" name="userInfo.email" value="${_CURRENT_USER.userInfo.email }" /></td>
+		<td>
+			<input type="hidden" name="old_userInfo.email" value="${_CURRENT_USER.userInfo.email }"  />		
+			<input type="text" name="userInfo.email" value="${_CURRENT_USER.userInfo.email }" onblur="checkEmail()"  />
+			<span></span>
+			<input hidden="hidden"  type="button"   value="验证邮箱" onclick="onclickVerifyEamil(this)" />
+		</td>
 	</tr>
 	<tr>
 		<td>性别：</td>

@@ -10,7 +10,6 @@
 <div class="header">
        		<div class="logo"><a href="index.html" target="_top" ><img src="${app}/staticfile/images/logo.gif" alt="" title="" border="0" /></a></div>            
         <div id="menu">
-        
             <ul>                                                                       
             <li class="selected"><a href="/" target="_top" >主页</a></li>
             <li><a href="/tosearch" target="_top" >搜索</a></li>
@@ -27,7 +26,7 @@
 				<c:otherwise>
 					<a href="${app }/tocart.action" target="_top">我的图书</a>
 					<a href="/user/userinfo.action" target="_top" >您好：${_CURRENT_USER.username}</a>	
-					<a href="${app}/tologout"   target="_top" >&nbsp;&nbsp;注销</a>				
+					<a href="${app}/tologout"   target="_top" >&nbsp;&nbsp;注销</a>
 				</c:otherwise>
 			</c:choose>
             </li>
