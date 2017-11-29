@@ -13,6 +13,17 @@ public class UserInfoServiceImpl implements UserInfoService {
 	private UserInfoMapper userInfoMapper;
 
 	@Override
+	public void updateExceptforEmail(UserInfo userInfo) {
+		
+		userInfoMapper.updateExceptforEmail(userInfo);
+	}
+
+	@Override
+	public UserInfo findByUserInfoId(String userInfoId) {
+		return userInfoMapper.findByUserInfoId(userInfoId);
+	}
+
+	@Override
 	public void update(UserInfo userInfo) {
 		userInfoMapper.update(userInfo);
 	}
