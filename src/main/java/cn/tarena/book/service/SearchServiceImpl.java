@@ -2,18 +2,21 @@ package cn.tarena.book.service;
 
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 
 import cn.tarena.book.mapper.SearchMapper;
 import cn.tarena.book.pojo.Book;
+import cn.tarena.book.pojo.History;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.utils.PageBean;
 @Service
+@Transactional
 public class SearchServiceImpl implements SearchService {
 	
 	@Autowired
@@ -46,57 +49,37 @@ public class SearchServiceImpl implements SearchService {
 	/******************************/
 
 	
-	@Override
-	public User findUserByBookId(String bookId) {
-
-		return searchMapper.findUserByBookId(bookId);
-	}
 
 	@Override
-	public void deduct(User loginUser) {
-		searchMapper.deduct(loginUser);
-	}
-
-	@Override
-	public void gain(User user) {
-		searchMapper.gain(user);
-	}
-
-	@Override
-	public void updateState(String bookId) {
+	public void toborrow(String bookId, User user) {
+		//1.修改用户关系表，添加借阅人ID
+		searchMapper.updateBorrower(bookId,user.getId());
+		//2.修改书籍状态为借阅状态
 		searchMapper.updateState(bookId);
+		//3.修改图书详情借阅日期与归还期限，借阅次数+1
+		Date borrowDate = new Date();
+		long time=borrowDate.getTime();
+		Date returnTime = new Date(time+(1000l*60*60*24*30));
+		searchMapper.updateDate(bookId, borrowDate, returnTime);
+		//4.增加一条借阅历史记录
+		History history = new History();
+		history.setHistoryId(UUID.randomUUID().toString());
+		history.setBookId(bookId);
+		history.setBorrowDate(borrowDate);
+		history.setUserId(user.getId());
+		searchMapper.insertHistoryRecord(history);
+		//5.修改借阅人积分-10
+		searchMapper.deduct(user.getId());
+		//6.修改上传人积分+10
+		searchMapper.gain(bookId);
 	}
 
 	@Override
-	public void updateDate(String bookId) {
-		Date borrowDate=new Date();
-		Date returnDate=new Date();
-		long time =2592000000L;
-		returnDate.setTime(time+borrowDate.getTime());
-		searchMapper.updateDate(bookId,borrowDate,returnDate);
+	public List<Book> findAllBorrowed(String userId) {
+		
+		return searchMapper.findAllBorrowed(userId);
+		
 	}
-
-	@Override
-	public Book findOne(String bookId) {
-		return searchMapper.findOne(bookId);
-	}
-
-	@Override
-	public void addHistory(String bookId, User user, User loginUser) {
-		Date borrowDate=new Date();
-		searchMapper.addHistory(bookId,user,loginUser,borrowDate);
-	}
-
-	@Override
-	public void updateBorrower(String bookId,User loginUser) {
-		searchMapper.updateBorrower(bookId,loginUser);
-	}
-	
-	@Override
-	public List<Book> findAllBorrowed(String loginUserId) {
-		return searchMapper.findAllBorrowed(loginUserId);
-	}
-	/******************************/
 
 
 

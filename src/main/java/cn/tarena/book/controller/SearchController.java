@@ -57,25 +57,12 @@ public class SearchController extends BaseController{
 	 * @return 转发到的URL
 	 */
 	@RequestMapping("/toborrow")
-	public String toborrow(HttpSession httpSession,String bookId) {
-		//通过session获取登录用户
-		User loginUser=(User)httpSession.getAttribute("_CURRENT_USER");
-		//通过bookId找到拥有者
-		User user=searchService.findUserByBookId(bookId);
-		//通过bookId更改图书state
-		searchService.updateState(bookId);
-		//通过bookId更改图书的借阅时间和归还期限
-		searchService.updateDate(bookId);
-		//将借阅人的信息添加到借阅关联表中
-		searchService.updateBorrower(bookId,loginUser);
-		//登录用户扣去相应的积分
-		searchService.deduct(loginUser);
-		//图书拥有者得到相应的积分
-		searchService.gain(user);
-		//在历史记录中添加该条借阅信息
-		searchService.addHistory(bookId,user,loginUser);
+	public String toborrow(HttpSession session,String bookId) {
+		User user= (User) session.getAttribute("_CURRENT_USER");
+		//调用service层的方法实现该过程
+		searchService.toborrow(bookId,user);
 		//重定向到用户当前借阅书籍页面
-		return "redirect：/search/borrowed";
+		return "redirect:/search/borrowed";
 	}
 	/**
 	 * 跳转到已借图书
@@ -84,11 +71,12 @@ public class SearchController extends BaseController{
 	 * @return：当前借阅图书
 	 */
 	@RequestMapping("/borrowed")
-	public String borrowed(HttpSession httpSession,Model model) {
-		User loginUser=(User)httpSession.getAttribute("_CURRENT_USER");
-		String loginUserId=loginUser.getId();
-		List<Book> books=searchService.findAllBorrowed(loginUserId);
+	public String borrowed(HttpSession session,Model model) {
+		User user=(User)session.getAttribute("_CURRENT_USER");
+		String userId=user.getId();
+		List<Book> books=searchService.findAllBorrowed(userId);
 		model.addAttribute("books", books);
+		
 		return "/bookinfos";
 		
 	}
