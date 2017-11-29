@@ -43,6 +43,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
+import cn.tarena.book.user.utils.MD5Tool;
 import cn.tarena.book.user.utils.StringTool;
 
 @Controller
@@ -111,31 +112,33 @@ public class UserController {
 				username, password);
 		try {
 			//30天自动登录
-			if(!subject.isAuthenticated()&&"true".equals(rememberMe)){
+			if (!subject.isAuthenticated()
+					&& "true".equals(rememberMe)) {
 				token.setRememberMe(true);
 			}
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
 			session.setAttribute("_CURRENT_USER", user);
 			//实现记住用户名
-			if("true".equals(remname)){
+			if ("true".equals(remname)) {
 				Cookie cookie;
 				try {
-					cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
-					cookie.setMaxAge(3600*24*30);
-					cookie.setPath(request.getContextPath()+"/");
+					cookie = new Cookie("remname", URLEncoder
+							.encode(username, "utf-8"));
+					cookie.setMaxAge(3600 * 24 * 30);
+					cookie.setPath(
+							request.getContextPath() + "/");
 					response.addCookie(cookie);
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				}
-			}else{
-				Cookie cookie = new Cookie("remname","");
+			} else {
+				Cookie cookie = new Cookie("remname", "");
 				cookie.setMaxAge(0);
-				cookie.setPath(request.getContextPath()+"/");
+				cookie.setPath(request.getContextPath() + "/");
 				response.addCookie(cookie);
 			}
-			
-			
+
 			return "redirect:/";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo", "用户名或者密码错误");
@@ -146,7 +149,8 @@ public class UserController {
 
 	//用户退出登录
 	@RequestMapping("tologout")
-	public String tologout(HttpServletRequest request,HttpServletResponse response) {
+	public String tologout(HttpServletRequest request,
+			HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.isAuthenticated()) {
 			subject.logout();
@@ -200,15 +204,15 @@ public class UserController {
 			HttpSession session) {
 
 		userInfoService.updateExceptforEmail(user.getUserInfo());
-		
-		
+
 		//更新session中的登录user的userinfo
 		User _CURRENT_USER = (User) session
 				.getAttribute("_CURRENT_USER");
-		UserInfo refreshUserInfo =  userInfoService.findByUserInfoId(_CURRENT_USER.getUserInfoId());
+		UserInfo refreshUserInfo = userInfoService
+				.findByUserInfoId(_CURRENT_USER.getUserInfoId());
 		_CURRENT_USER.setUserInfo(refreshUserInfo);
 
-		return "/userinfo/main";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/user/toChangePassword.action")
@@ -228,6 +232,9 @@ public class UserController {
 			String new_password, Model model,
 			HttpSession session) {
 
+		User _CURRENT_USER = (User) session
+				.getAttribute("_CURRENT_USER");
+
 		//旧密码是否正确？
 		if (StringTool.isEmpty(user_id)
 				|| StringTool.isEmpty(old_psw)) {
@@ -238,7 +245,8 @@ public class UserController {
 		User u = new User();
 		u.setId(user_id);
 		u.setPassword(old_psw);
-		User user = userService.findUserByIdAndPsw(u);
+		User user = userService.findUserByIdAndPsw(u,
+				_CURRENT_USER.getUsername());
 		if (user == null) {
 			model.addAttribute("errMsg", "旧密码输入错误，请重试");
 			model.addAttribute("user_id", user_id);
@@ -253,16 +261,15 @@ public class UserController {
 		}
 
 		// 数据库更新密码
-		//TODO 查看这里的rowsAffected有没有值
 		int rowsAffected = userService.updatePsw(user_id,
-				new_password);
+				new_password, _CURRENT_USER.getUsername());
 
 		//更改完成后 session里面的密码要改成新的
-		User _CURRENT_USER = (User) session
-				.getAttribute("_CURRENT_USER");
-		_CURRENT_USER.setPassword(new_password);
 
-		return "redirect:/user/userInfo/Main.action";
+		_CURRENT_USER.setPassword(MD5Tool.getMD5(
+				_CURRENT_USER.getUsername(), new_password));
+
+		return "redirect:/";
 	}
 
 	@RequestMapping("/user/wantChangeEmail.action")
