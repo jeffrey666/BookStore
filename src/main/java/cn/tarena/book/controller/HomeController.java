@@ -106,7 +106,6 @@ public class HomeController {
 		return "cart";
 	}
 
-
 	@RequestMapping("/tocategory")
 	public String category() {
 		return "/category";
