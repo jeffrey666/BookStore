@@ -98,7 +98,7 @@
 	FROM book b
 	LEFT JOIN book_info bi
 	ON b.book_id=bi.book_info_id) ui
-	RIGHT JOIN
+	LEFT JOIN
 	(SELECT ubb.book_id FROM user_book_borrower ubb WHERE ubb.borrower_id=#{loginUserId}) ubb
 	ON ui.book_id=ubb.book_id
    </select>
