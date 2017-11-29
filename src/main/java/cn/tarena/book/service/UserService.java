@@ -37,5 +37,11 @@ public interface UserService {
 	 * @return 返回新生效的邮箱
 	 */
 	public abstract String verifyEmail(String verify_email_id);
+	/**
+	 * 根据用户id查找用户积分
+	 * @param id
+	 * @return
+	 */
+	public abstract int findUserScore(String userId);
 
 }

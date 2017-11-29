@@ -15,7 +15,7 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.SearchService;
-
+import cn.tarena.book.service.UserService;
 import cn.tarena.book.utils.PageBean;
 
 import cn.tarena.book.utils.MailUtils;
@@ -24,7 +24,8 @@ import cn.tarena.book.utils.MailUtils;
 @Controller
 @RequestMapping("/search/")
 public class SearchController extends BaseController{
-
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private SearchService searchService;
 	@Autowired
@@ -59,6 +60,11 @@ public class SearchController extends BaseController{
 	@RequestMapping("/toborrow")
 	public String toborrow(HttpSession session,String bookId) {
 		User user= (User) session.getAttribute("_CURRENT_USER");
+		int score = userService.findUserScore(user.getId());
+		if(score<10){
+			session.setAttribute("shortOfScore", "对不起，您的积分已不足，上传书籍可增加积分。");
+			return "redirect:/bookupload";
+		}
 		//调用service层的方法实现该过程
 		searchService.toborrow(bookId,user);
 		//重定向到用户当前借阅书籍页面
