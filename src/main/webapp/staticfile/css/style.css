@@ -34,6 +34,25 @@ padding:25px 20px 0px 20px;
 font-size:11px;
 
 }
+.Ad1{
+	position: fixed;
+	top: 100px;
+	left: 10px;
+	width: 284px;
+	height: 450px;
+	background-color:#D7E0DF;
+	font-size:20px;
+}
+.Ad2{
+	position: fixed;
+	top: 100px;
+	right: 10px;
+	width: 284px;
+	height: 450px;
+	background-color:#D7E0DF;
+	font-size:20px;
+}
+
 #wrap{
 width:900px;
 height: auto;
@@ -126,7 +145,7 @@ float:left;
 padding:20px 0 20px 20px;
 }
 .left_content2{
-width:880px;
+width:860px;
 float:none;
 background-color:white;
 padding:20px 0 20px 20px;
@@ -331,7 +350,7 @@ color:#795636;
 
 .tabs-container {
 clear: left;
-padding:0px;
+padding-bottom: 0px;
 }
 /*-----------------------languages_box---------*/
 .languages_box{

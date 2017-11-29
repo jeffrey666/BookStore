@@ -20,17 +20,16 @@
 		<div class="center_content">
 			<div class="left_content2">
 				<div class="title1" align="center"
-					style="font-size: 15px; color: #F00">我的仓库--当前第${num}页</div>
+					style="font-size: 15px; color: #F00">上传书籍--当前第${num}页</div>
 
 				<div class="feat_prod_box_details">
 
 					<table class="cart_table1" align="center" cellspacing="0" cellpadding="5px" border="1">
 						
-						
 						<tr class="cart_title">
-							<td width="40px" class="tableHeader"><input type="checkbox" name="bookId" onclick="checkAll('bookId',this)"></td>
+							<td width="20px" class="tableHeader"><input type="checkbox" name="bookId" onclick="checkAll('bookId',this)"></td>
 							<td width="40px">商品序号:</td>
-							<td>商品图片:</td>
+							<td width="88px">商品图片:</td>
 							<td width="40px">商品名称:</td>
 							<td width="40px">商品作者:</td>
 							<td width="40px">图书类别:</td>
@@ -39,33 +38,31 @@
 							<td width="80px">状态</td>
 							<td width="80px">借出时间:</td>
 							<td width="80px">归还时间:</td>
+							<td width="100px">书籍简介:</td>
 						</tr>
 						<%-- <c:set var="bookId" value="0"></c:set> --%>
-						<c:forEach items="${books }" var="b" varStatus="v">
+						<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
-								<td width="40px">
+								<td >
 								<c:if test="${b.state==0}"><input type="checkbox" name="bookId" value="${b.bookId}"/></c:if>
 								<c:if test="${b.state==1}"></c:if>
 								</td>
 								<td>${v.index+1}</td>
-								<td><a><img src=${b.bookInfo.imgurl } alt="暂无图片"
-										height="150" width="98" /> </a></td>
+								<td><a><img src="${b.bookInfo.imgurl}" alt="暂无图片"
+										height="150px" width="98px" /> </a></td>
 								<td>${b.bookName}</td>
 								<td>${b.bookInfo.author}</td>
-								<td><c:if test="${b.bookInfo.category==4}">-科技-</c:if> <c:if
-										test="${b.bookInfo.category==3}">-生活-</c:if> <c:if
-										test="${b.bookInfo.category==2}">-文学-</c:if> <c:if
-										test="${b.bookInfo.category==1}">-经济-</c:if> <c:if
-										test="${b.bookInfo.category==0}">-其它-</c:if></td>
+								<td>${b.bookInfo.category }</td>
 								<td>${b.bookInfo.bookPub }</td>
 								<%-- <td width="50">${b.bookInfo.pubDate}</td> --%>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>
+								<td ><fmt:formatDate value="${b.bookInfo.pubDate}" pattern="yyyy/MM/dd" /></td>
 								<td>
 									<c:if test="${b.state==0}">未借出</c:if>
 									<c:if test="${b.state==1}">已借出</c:if>
 								</td>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy/MM/dd" /></td>
-								<td width="50"><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy/MM/dd" /></td>
+								<td ><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy/MM/dd" /></td>
+								<td><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy/MM/dd" /></td>
+								<td>${b.bookInfo.descripe}</td>
 							</tr>
 						<%-- <c:set var="bookId" value="${b.bookId}"></c:set> --%>
 						</c:forEach>
@@ -73,9 +70,10 @@
 					</table>
 					 <a class="checkout1" href="#" onclick="formSubmit('deleteMyBook.action','_self');this.blur();">&lt; 删除 &gt;</a> 
 				<%-- 	<a href="/deleteMyBook.action?bookId=${bookId }" class="checkout1">&lt; 删除 &gt;</a>  --%>
-					<a href="#" class="continue" onclick="window.history.back();">&lt; back</a> 
-					<a href="${app }/lastTocart.action" class="checkout1">&lt; last</a> 
-					<a href="${app }/nextTocart.action" class="checkout">next &gt;</a>
+					<a href="#" class="continue" onclick="window.history.back();">&lt; 返回</a> 
+					<a href="#" class="continue" onclick="window.history.forward();">前进 &gt; </a> 
+					<a href="${app }/lastTocart.action?method=last" class="checkout1">&lt; 上一页</a> 
+					<a href="${app }/nextTocart.action?method=next" class="checkout">下一页 &gt;</a>
 				</div>
 
 				<div class="clear"></div>

@@ -9,6 +9,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Book Store</title>
 <link rel="stylesheet" type="text/css" href="${app}/staticfile/css/style.css" />
+<script src="${app}/staticfile/js/jquery-1.6.2.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		//跳到指定页面
+		$("#changePageNum").click(function(){
+			var totalPages = $("#totalPageNum").val();
+			var pageNum = $("#changeNum").val();
+			if(!/^[1-9]\d*$/.test(pageNum)){
+				alert("请输入正确的页数");
+				return;
+			}
+			if(pageNum>totalPages){
+				alert("请输入正确的页数");
+				return;
+			}
+			$("#changePageNum").attr("href","${app}/search/search?&currentPage="+pageNum);
+		});	
+	});
+</script>
 </head>
 <%@include file="_head.jsp" %>
 <body>
@@ -44,7 +63,7 @@
 				<span class="input_span">书名：<input type="text" name="bookName" value="${book.bookName }"/></span>
 				<span class="input_span">书籍种类：
 				<select name="bookInfo.category"  >
-					<option value=""  <c:if test="${book.bookInfo.category eq '' } ">selected="selected"</c:if>>无选择</option>
+					<option >无选择</option>
 					<option value="文学类" <c:if test="${book.bookInfo.category eq '文学类'}">selected="selected"</c:if> >文学类</option>
 					<option value="小说类" <c:if test="${book.bookInfo.category eq '小说类'}">selected="selected"</c:if> >小说类</option>
 					<option value="IT类" <c:if test="${book.bookInfo.category eq 'IT类'}">selected="selected"</c:if> >IT类</option>
@@ -77,11 +96,35 @@
                         </div>           
                     </div>
                </c:forEach>
- 
-                     
+               <c:forEach items="${pageBeans.items}" var="b">
+                    <div class="new_prod_box">
+                        <a href="/details?bookId=${b.bookId}"><font color="blue" >${b.bookName}</font></a>
+                        <div class="new_prod_bg">
+                        <a href="/details?bookId=${b.bookId}"><img src="${b.bookInfo.imgurl}" width="70px" height="90px" alt="图片暂无" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>
+               </c:forEach>
 
             <div class="pagination">
-            <span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><span>...</span><a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
+            <c:if test="${pageBeans!=null }">
+            <span class="disabled">
+            	<c:if test="${pageBeans.currentPage==1}"><a href="#"><<</a></c:if>
+            </span>
+            
+            	<c:if test="${pageBeans.currentPage>1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage-1}"><<</a></c:if>
+            	<input id="totalPageNum" value="${pageBeans.totalPage }" type="hidden"  />
+            	<c:forEach begin="1" end="${pageBeans.totalPage }" step="1" var="pageNum">
+            		<a	href="${app}/search/search?currentPage=${pageNum}">${pageNum }</a>
+            	</c:forEach>
+            	<c:if test="${pageBeans.isMore==1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage+1}">>></a> </c:if>
+
+            <span >
+				转到第 <input id="changeNum" type="text" name="currentPage"
+				value="${pageBeans.currentPage}" />页<a id="changePageNum" href="">GO</a>
+		    </span>
+
+            
+            </c:if>
             </div>    
             
             </div> 
@@ -110,7 +153,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="cart.html" class="view_cart">view cart</a>
+                  <a href="/search/toborrow" class="view_cart">view cart</a>
               
               </div>
                        

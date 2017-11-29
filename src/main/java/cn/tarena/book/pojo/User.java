@@ -1,6 +1,15 @@
 package cn.tarena.book.pojo;
 
-public class User extends BaseEntity {
+
+import java.io.Serializable;
+
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String id;
 	private String username;
 	private String password;
@@ -25,6 +34,10 @@ public class User extends BaseEntity {
 
 	public String getId() {
 		return id;
+	}
+
+	public String getUserInfoId() {
+		return userInfo.getUserInfoId();
 	}
 
 	public void setId(String id) {

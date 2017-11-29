@@ -1,9 +1,17 @@
 package cn.tarena.book.pojo;
 
+
 import java.util.Date;
 
-public class UserInfo extends BaseEntity{
+import java.io.Serializable;
 
+
+public class UserInfo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userInfoId;
 	private String nickname;
 	private String email;

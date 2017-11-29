@@ -1,60 +1,48 @@
 package cn.tarena.book.utils;
 
-import java.util.Properties;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMessage.RecipientType;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@ActiveProfiles("163")
 public class MailUtils {
 
-	public static void sendMail(String email, String emailMsg)
-			throws AddressException, MessagingException {
-		// 1.创建一个程序与邮件服务器会话对象 Session
+	@Autowired
+	private JavaMailSender mailSender; //自动注入的Bean
 
-		Properties props = new Properties();
-		//设置发送的协议
-		props.setProperty("mail.transport.protocol", "SMTP");
-		
-		//设置发送邮件的服务器
-		props.setProperty("mail.host", "localhost");
-		props.setProperty("mail.smtp.auth", "true");// 指定验证为true
+	@Value("${spring.mail.username}")
+	private String Sender; //读取配置文件中的参数
 
-		// 创建验证器
-		Authenticator auth = new Authenticator() {
-			public PasswordAuthentication getPasswordAuthentication() {
-				//设置发送人的帐号和密码
-				return new PasswordAuthentication("service", "123");
-			}
-		};
+	/*
+	 * 发送邮件的方法
+	 */
+	public void sendSimpleMail(String email) throws Exception {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(Sender);//发送者
+		message.setTo(email); //收件人邮箱
+		message.setSubject("主题：欢迎您注册借书网！");
+		message.setText("感谢您的注册，祝你在以后的时光中，学习愉快！");
+		mailSender.send(message);
+		System.out.println("发送邮件成功");
+	}
 
-		Session session = Session.getInstance(props, auth);
-
-		// 2.创建一个Message，它相当于是邮件内容
-		Message message = new MimeMessage(session);
-
-		//设置发送者
-		message.setFrom(new InternetAddress("service@store.com"));
-
-		//设置发送方式与接收者
-		message.setRecipient(RecipientType.TO, new InternetAddress(email)); 
-
-		//设置邮件主题
-		message.setSubject("用户激活");
-		// message.setText("这是一封激活邮件，请<a href='#'>点击</a>");
-
-		//设置邮件内容
-		message.setContent(emailMsg, "text/html;charset=utf-8");
-
-		// 3.创建 Transport用于将邮件发送
-		Transport.send(message);
+	public void sendVerifyEmailMail(String email,
+			String verify_email_id) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(Sender);//发送者
+		message.setTo(email); //收件人邮箱
+		message.setSubject("主题：欢迎您注册借书网！");
+		message.setText("请打开以下地址使您的新邮箱生效："
+				+ "http://localhost:8090/user/verifyEmail.action?verify_email_id="
+				+ verify_email_id);
+		mailSender.send(message);
 	}
 
 }

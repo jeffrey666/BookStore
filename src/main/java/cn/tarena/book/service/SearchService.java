@@ -3,71 +3,42 @@ package cn.tarena.book.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.utils.PageBean;
 
 public interface SearchService {
+	
+    /**
+     * @param book:搜索的条件
+     * @param currentPage：当前的页数
+     * @return
+     */
+	PageBean findAllByConditions(Book book,Integer currentPage);
+	
 	/**
-	 * @param book:查询条件的封装
-	 * @return
+	 * @return:进入搜索页面时推荐的热门书籍
 	 */
-
-	List<Book> findAll(Book book);
+	
+	List<Book> findAllBookBySeller();
 	
 	/******************************/
 
 	/**
-	 * 根据bookId查找图书的拥有人
-	 * @param bookId
-	 * @return：图书拥有者的对象
+	 * 通过用户id查询当前借阅的所有图书
+	 * @param loginUserId：登录用户的id
+	 * @return：当前借阅的所有图书
 	 */
+	List<Book> findAllBorrowed(String userId);
+	/**
+	 * 用户借书处理的一系列逻辑
+	 * @param bookId 书的Id
+	 * @param user 用户的完整信息
+	 */
+	void toborrow(String bookId, User user);
 
-	User findUserByBookId(String bookId);
-	/**
-	 * 通过userId扣去用户积分
-	 * @param userId
-	 */
-	void deduct(String userId);
-	/**
-	 * 通过userId给用户增加积分
-	 * @param user
-	 */
-	void gain(User user);
-	/**
-	 * 通过userId找到对应的用户
-	 * @param userId
-	 * @return
-	 */
-	User findUser(String userId);
-	/**
-	 * 通过bookId改变书的状态
-	 * @param bookId
-	 */
-	void updateState(String bookId);
-	/**
-	 * 通过bookId更改书的借书日期和归还期限
-	 * @param bookId
-	 */
-	void updateDate(String bookId,Date borrowDate,Date returnTime);
-	/**
-	 * 通过bookId找到书的详细信息
-	 * @param bookId
-	 * @return
-	 */
-	Book findOne(String bookId);
-	/**
-	 * 将图书的借阅信息添加到历史记录中
-	 * @param userId：借书人的id
-	 * @param bookId：图书的id
-	 */
-	void addHistory(String userId, String bookId,Date borrowDate,Date returnDate);
-	/**
-	 * 将借阅信息添加到借阅关联表中
-	 * @param userId：借书人的id
-	 * @param bookId：图书id
-	 */
-	void updateBorrower(String userId, String bookId);
-	
+
 	/******************************/
 }

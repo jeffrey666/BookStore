@@ -3,16 +3,32 @@ package cn.tarena.book.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import cn.tarena.book.mapper.UserMapper;
+import cn.tarena.book.mapper.VerifyEmailMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.pojo.UserInfo;
+import cn.tarena.book.pojo.VerifyEmail;
+import cn.tarena.book.user.utils.MD5Tool;
+import cn.tarena.book.utils.MailUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserMapper userMapper;
+
+	@Autowired
+	private VerifyEmailMapper verifyEmailMapper;
+
+	@Autowired
+	private UserInfoService userInfoService;
+	
+	@Autowired
+	private MailUtils mailUtils;
 
 	// 登录时查找用户是否存在
 	@Override
@@ -28,6 +44,9 @@ public class UserServiceImpl implements UserService {
 		String userId = UUID.randomUUID().toString();
 		user.setId(userId);
 		user.setState(1);
+		String password = MD5Tool.getMD5(user.getUsername(),
+				user.getPassword());
+		user.setPassword(password);
 		userMapper.addUser(user);
 		// 同时为userinfo表中插入一个用户Id，用于在用于中心更新信息
 		userMapper.addUserInfoId(userId);
@@ -51,26 +70,59 @@ public class UserServiceImpl implements UserService {
 
 		return userMapper.findUserByUsername(username);
 	}
+
 	//根据用户Id 查找自己拥有的书
 	@Override
 	public List<Book> findMyBookListByUserId(String userId) {
-		
+
 		return userMapper.findMyBookListByUserId(userId);
 	}
 
 	@Override
-	public List<Book> findMyBookListByUserIdReturn(String userId) {
+	public List<Book> findMyBookListByUserIdReturn(
+			String userId) {
 		return userMapper.findMyBookListByUserIdReturn(userId);
 	}
 
 	@Override
 	public String findRoleByUserId(String userId) {
-		
+
 		User user = userMapper.findUserById(userId);
-		
+
 		return user.getRole();
 	}
 
-	
-	
+
+	@Override
+	public void wantChangeEmail(String user_id,
+			String new_email) {
+
+		//数据库添加记录
+		String emailValidateId = UUID.randomUUID().toString();
+		verifyEmailMapper.addRecord(emailValidateId, user_id,
+				new_email);
+
+		//给新email发验证地址
+		mailUtils.sendVerifyEmailMail(new_email,
+				emailValidateId);
+	}
+
+	@Override
+	public String verifyEmail(String verify_email_id) {
+
+		verifyEmailMapper.verifyEmail(verify_email_id,
+				new Date());
+		VerifyEmail ve = verifyEmailMapper
+				.findPojoByVerifyEmailId(verify_email_id);
+
+		//userinfo表更新email
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserInfoId(ve.getUserId());
+		userInfo.setEmail(ve.getEmail());
+		userInfoService.update(userInfo);
+		
+		return ve.getEmail();
+	}
+
+
 }

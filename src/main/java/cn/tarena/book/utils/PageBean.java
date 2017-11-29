@@ -107,11 +107,16 @@ public class PageBean<T> {
 				+ ", isMore=" + isMore + ", totalPage=" + totalPage + ", startIndex=" + startIndex + ", items=" + items
 				+ "]";
 	}
-
+	/**
+	 * 榜单下载功能
+	 * @param os 文件内容
+	 * @param response 
+	 * @param path 路径
+	 * @throws IOException
+	 */
 	public void download(ByteArrayOutputStream os, HttpServletResponse response, String path) throws IOException {
 		response.setHeader("Content-Disposition","attachment;filename="+path);
 		response.setContentType("text/html;charset=gbk");
 		response.getOutputStream().write(os.toByteArray());
-		
 	}
 }

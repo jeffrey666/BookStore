@@ -29,4 +29,15 @@ public interface UserService {
 	public abstract String findRoleByUserId(String userId);
 
 
+	public abstract void wantChangeEmail(String user_id,
+			String new_email);
+
+	/**
+	 * 
+	 * @param verify_email_id
+	 * @return 返回新生效的邮箱
+	 */
+	public abstract String verifyEmail(String verify_email_id);
+
+
 }

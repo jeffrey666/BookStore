@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.tarena.book.mapper.BookInfoMapper;
+import cn.tarena.book.mapper.BookMapper;
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.BookInfo;
-import cn.tarena.book.pojo.UserInfo;
 
 @Service
 public class BookInfoServiceImpl  implements BookInfoService{
@@ -39,7 +39,19 @@ public class BookInfoServiceImpl  implements BookInfoService{
 	}
 	@Override
 	public Book findOneByBookId(String bookId) {
-		
+		//点击书籍详情增加搜索次数
+		bookInfoMapper.addSearchVolume(bookId);
 		return bookInfoMapper.findOneByBookId(bookId);
+	}
+	
+	
+	
+	@Override
+	public List<Book> findRelateBooks(String category, String bookId) {
+		return bookInfoMapper.findRelateBooks(bookId,category);
+	}
+	@Override
+	public List<Book> findAllCategory() {
+		return bookInfoMapper.findAllCategory();
 	}
 }

@@ -31,6 +31,7 @@ import cn.tarena.book.pojo.BookInfo;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
 import cn.tarena.book.service.BookService;
+import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.utils.FileUpload;
 import cn.tarena.book.utils.PageBean;
 
@@ -76,27 +77,13 @@ public class BookUploadController  extends BaseController{
 			String imgurl="\\upload"+path+"\\"+filename;
 			//给图片设置路径
 			book. getBookInfo().setImgurl(imgurl);
-			//设置书本的ID
-			String Id=UUID.randomUUID().toString();
-			book.setBookId(Id);
-			//新增书数据保存为(未借)
-			book.setState(0);
 			
 			//获取当前登录用户		
 			User user =(User) session.getAttribute("_CURRENT_USER"); 
 			String userID =user.getId();
-			//保存书籍用户关系表
-			bookService.saveBookAndUser(userID,book.getBookId());
 			
-			Date date =new Date();
-			BookInfo bookInfo =book.getBookInfo();
-			bookInfo.setBookInfoId(Id);
-			bookInfo.setUpdateTime(date);
-			//把书籍信息存到书籍表
-			bookService.saveBookUpload(book);
-			
-			//把书籍信息存到书籍详情表
-			bookInfoService.saveBookUpload(bookInfo);
+			//保存书籍、书籍详情及用户书籍关联的信息
+			bookService.saveBookAndUser(userID,book);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,6 +91,7 @@ public class BookUploadController  extends BaseController{
 		return "redirect:/";
 	}
 	
+	//榜单下载功能
 	@RequestMapping("/list.action")
 	public void print(HttpServletResponse response,HttpSession session) throws IOException {
 		PageBean<Book> pageBean = (PageBean<Book>) session.getAttribute("pageBean");
@@ -216,7 +204,7 @@ public class BookUploadController  extends BaseController{
 		// OutputStream os=new FileOutputStream(new File("D:\\outProduct.xls"));
 		
 		// 下载
-		PageBean pb = new PageBean();
+		PageBean<Book> pb = new PageBean<Book>();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		response.setContentType("text/html;charset=gbk");
 		wb.write(os);
@@ -290,12 +278,10 @@ public class BookUploadController  extends BaseController{
 	@RequestMapping("/deleteMyBook.action")        
 	public String deleteMyBook(@RequestParam(value="bookId",required=false)String[] ids,HttpSession session){
 	
-		System.out.println(1);
 		if(ids!=null){
 			User user = (User) session.getAttribute("_CURRENT_USER");
 			bookService.deleteMyBook(ids,user.getId());
 		}
-		System.out.println(2);
 		
 		return "redirect:/tocart";
 	}
