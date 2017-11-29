@@ -54,6 +54,7 @@ public class HomeController {
 		List<Book> bookList= bookInfoService.findRelateBooks(bookId,book.getBookInfo().getCategory());
 		model.addAttribute("book",book);
 		model.addAttribute("bookList", bookList);
+		
 		return "/details";
 	}
 
@@ -67,7 +68,7 @@ public class HomeController {
 		return "/bookupload";
 	}
 
-	@RequestMapping("tosearch")
+	@RequestMapping("/tosearch")
 	public String tosearch(Model model) {
 		List<Book> books = searchService.findAllBookBySeller();
 		model.addAttribute("books",books);

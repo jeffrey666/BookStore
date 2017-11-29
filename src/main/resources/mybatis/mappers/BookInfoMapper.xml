@@ -72,11 +72,17 @@
 	
 	<!-- 查询相关书籍 -->
 	<select id="findRelateBooks" resultMap="BookRM">
-		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id  AND bi.category=#{category} and b.book_id!=#{bookId} 
+		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id  AND bi.category=#{category} and b.book_id!=#{bookId} LIMIT 0,9 
 	</select>
 	
+	<!-- 查询所有的书籍-->
 	<select id="findAllCategory" resultMap="BookRM">
 		SELECT * FROM book b,book_info bi WHERE b.book_id=bi.book_info_id
 	</select>
+	
+	<!-- 增加搜索量 -->
+	<update id="addSearchVolume">
+		UPDATE book_info SET search_volume =search_volume+1 WHERE book_info_id =#{bookId}
+	</update>
 	
 </mapper>

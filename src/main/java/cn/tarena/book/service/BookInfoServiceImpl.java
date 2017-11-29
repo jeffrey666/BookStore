@@ -39,7 +39,8 @@ public class BookInfoServiceImpl  implements BookInfoService{
 	}
 	@Override
 	public Book findOneByBookId(String bookId) {
-		
+		//点击书籍详情增加搜索次数
+		bookInfoMapper.addSearchVolume(bookId);
 		return bookInfoMapper.findOneByBookId(bookId);
 	}
 	
