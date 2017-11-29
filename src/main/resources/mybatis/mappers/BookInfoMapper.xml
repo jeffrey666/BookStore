@@ -10,7 +10,7 @@
 	    	<result column="author" property="author"/>
 	    	<result column="update_time" property="updateTime"/>
 	    	<result column="borrow_date" property="borrowDate"/>
-	    	<result column="return_date" property="reaturnDate"/>
+	    	<result column="return_date" property="returnDate"/>
 	    	<result column="search_volume" property="searchVolume"/>
 	    	<result column="borrow_count" property="borrowCount"/>
 	    	<result column="imgurl" property="imgurl"/>
