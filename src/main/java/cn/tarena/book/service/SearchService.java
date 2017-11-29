@@ -6,14 +6,22 @@ import java.util.List;
 
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.utils.PageBean;
 
 public interface SearchService {
+	
+    /**
+     * @param book:搜索的条件
+     * @param currentPage：当前的页数
+     * @return
+     */
+	PageBean findAllByConditions(Book book,Integer currentPage);
+	
 	/**
-	 * @param book:查询条件的封装
-	 * @return
+	 * @return:进入搜索页面时推荐的热门书籍
 	 */
-
-	List<Book> findAll(Book book);
+	
+	List<Book> findAllBookBySeller();
 	
 	/******************************/
 
@@ -69,6 +77,7 @@ public interface SearchService {
 	 * @return：当前借阅的所有图书
 	 */
 	List<Book> findAllBorrowed(String loginUserId);
+
 
 	/******************************/
 }
