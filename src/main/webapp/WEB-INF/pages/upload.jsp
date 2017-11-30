@@ -68,10 +68,11 @@
         <div class="right_content">
                 
               <div class="cart">
-				<div id="view_cart">
-					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+					<div id="view_cart">
+						<span><img src="${app}/staticfile/images/cart.gif" alt=""  /> &nbsp;&nbsp;<a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px;color:#860606">我的借阅</a></span>
+					</div>
 				</div>
-			</div>
         
              <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
              <div class="about">

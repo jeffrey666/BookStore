@@ -202,16 +202,11 @@
 
 
 					<div class="cart">
-						<div class="title">
-							<span class="title_icon"><img
-								src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My
-							cart
-						</div>
-						<div class="home_cart_content">
-							3 x items | <span class="red">TOTAL: 100$</span>
-						</div>
-						<a href="/search/toborrow" class="view_cart">我的借阅</a>
+					<div id="view_cart">
+						<span><img src="${app}/staticfile/images/cart.gif" alt=""  /> &nbsp;&nbsp;<a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px;color:#860606">我的借阅</a></span>
 					</div>
+				</div>
 
 					<div class="title">
 						<span class="title_icon"><img
