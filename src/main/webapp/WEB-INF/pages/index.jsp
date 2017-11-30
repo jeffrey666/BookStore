@@ -52,8 +52,8 @@
 
 		<div class="right_content">
 			<div class="cart">
-				<div id="view_cart">
-					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+				<div id="messi_cart">
+					<span><img src="${app}/staticfile/images/cart.gif" width="36px" height="29px" alt="" /><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
 				</div>
 			</div>
 
