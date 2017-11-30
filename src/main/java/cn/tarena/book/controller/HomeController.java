@@ -45,7 +45,7 @@ public class HomeController {
 
 	@RequestMapping("/login")
 	public String toLogin() {
-		return "login";
+		return "/userinfo/password";
 	}
 
 	@RequestMapping("details")
