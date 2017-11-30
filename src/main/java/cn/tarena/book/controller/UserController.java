@@ -310,6 +310,7 @@ public class UserController {
 		try {
 			verifyCode.getDraw(response.getOutputStream());
 			String valistr = verifyCode.getCode();
+		System.out.println(valistr);
 			session.setAttribute("code", valistr);
 		} catch (IOException e) {
 			

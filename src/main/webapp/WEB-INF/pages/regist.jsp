@@ -55,7 +55,7 @@
 
 						<form name="register" 
 						onsubmit=" return checkForm()"					
-						action="toregist.action" method="POST">
+						action="/toregist.action" method="POST">
 							<div class="form_row">
 								<label class="contact"><strong>用户名:</strong></label>
 								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input" />
