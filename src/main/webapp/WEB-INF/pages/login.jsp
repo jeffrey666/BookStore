@@ -81,17 +81,11 @@
 
 
 				<div class="cart">
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My
-						cart
-					</div>
-					<div class="home_cart_content">
-						3 x items | <span class="red">TOTAL: 100$</span>
-					</div>
-					<a href="/search/toborrow" class="view_cart">我的借阅</a>
-				</div>
-
+			<div id="view_cart">
+				<span><a href="/search/toborrow"
+					style="text-align: center; font-family: 微软雅黑; font-size: 22px">我的借阅</a></span>
+			</div>
+		</div>
 				<div class="title">
 					<span class="title_icon"><img
 						src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>Welcome
@@ -105,16 +99,10 @@
 			</div>
 		</div>
 		<!--end of right content-->
-
-
 		<div class="clear"></div>
 	</div>
 	<!--end of center content-->
-
-
-
 	</div>
-
 </body>
 
 <%@include file="_foot.jsp"%>

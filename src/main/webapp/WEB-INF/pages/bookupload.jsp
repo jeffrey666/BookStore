@@ -58,7 +58,7 @@
 								onblur="checkNull('bookInfo.author','书籍作者不能为空!')" /> <span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">出版 社：</td>
+							<td class="tds">出版社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')" />
 
@@ -108,22 +108,11 @@
 			<!--end of left content-->
 
 			<div class="right_content">
-
-
-				<div class="cart">
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My
-						cart
-					</div>
-					<a href="/search/toborrow" class="view_cart">我的借阅</a>
+              <div class="cart">
+				<div id="view_cart">
+					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
 				</div>
-
-				<div class="title">
-					<span class="title_icon"><img
-						src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>Welcome
-					to our Book Store!
-				</div>
+			</div>
 				<div class="about">
 					<p>
 						<%@include file="graphCopy.jsp"%>
@@ -136,24 +125,6 @@
 		<div class="clear"></div>
 	</div>
 	<!--end of center content-->
-
-
-	<%--        
-       <div class="footer">
-
-       	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
-
-        <div class="right_footer">
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-       
-        </div>
-        
-       
-       </div> --%>
 
 
 
