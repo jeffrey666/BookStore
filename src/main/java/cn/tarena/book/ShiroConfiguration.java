@@ -172,8 +172,18 @@ public class ShiroConfiguration {
 
 		
 		filterChainDefinitionMap.put("/bookupload", "authc");
-		filterChainDefinitionMap.put("/toborrowCart", "authc");
+		filterChainDefinitionMap.put("/search/borrowed", "authc");
 		filterChainDefinitionMap.put("/search/toborrow", "authc");
+		
+		filterChainDefinitionMap.put("/user/userInfo/Left.action", "authc");
+		filterChainDefinitionMap.put("/user/userInfo/Main.action", "authc");
+		filterChainDefinitionMap.put("/user/userinfo.action", "authc");
+		filterChainDefinitionMap.put("/user/toUserInfoUpdate.action", "authc");
+		filterChainDefinitionMap.put("/user/userinfo/update", "authc");
+		filterChainDefinitionMap.put("/user/toChangePassword.action", "authc");
+		filterChainDefinitionMap.put("/user/password/update", "authc");
+		filterChainDefinitionMap.put("/user/wantChangeEmail.action", "authc");
+		filterChainDefinitionMap.put("/user/verifyEmail", "authc");
 
 
 		/*filterChainDefinitionMap.put("/bookupload", "authc");*/

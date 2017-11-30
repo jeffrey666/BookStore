@@ -20,7 +20,7 @@
         
         	<div class="feat_prod_box_details">
             <p class="details">
-            	欢迎来到jieshu
+            	欢迎来到Book Store
             </p>
             
               	<div class="contact_form">
@@ -51,8 +51,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 						<input type="checkbox" name="remname" value="true"
 						${empty cookie.remname?"":"checked='checked'" }/>记住用户名
-						
-						
+		
 					
 					</div>
 
@@ -97,7 +96,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/search/toborrow" class="view_cart">view cart</a>
+                  <a href="/search/borrowed" class="view_cart">我的借阅</a>
               
               </div>
         
