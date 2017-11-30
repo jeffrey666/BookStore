@@ -15,22 +15,25 @@
 
 <script type="text/javascript">
 
-	function checkForm() {
-		isOK = true;
+	function promptMsg(msg) {
+		$errMsg = $("#errMsg");
+		$errMsg.css("color", "red").text(msg);
+	}
+	
+	function checkNull(name, msg) {
+		promptMsg("");
 
-		isOK = checkOldPsw();
-		
-		if(isOK){
-			isOK = checkNewPsw();
+		isOK = true;
+		$o = $("input[name='" + name + "']");
+
+		if ($o.val() == "") {
+			promptMsg(msg);
+			isOK = false;
 		}
-		
-		if(isOK){
-			isOK = checkNewPswConfirm();
-		}
-		
+
 		return isOK;
 	}
-
+	
 	function checkOldPsw() {
 		isOK = true;
 
@@ -61,26 +64,31 @@
 		}
 
 		return isOK;
-	}
+	}	
 
-	function promptMsg(msg) {
-		$errMsg = $("#errMsg");
-		$span.css("color", "red").text(msg);
-	}
-
-	function checkNull(name, msg) {
-		promptMsg("");
-
+	function checkForm() {
 		isOK = true;
-		$o = $("input[name='" + name + "']");
 
-		if ($o.val() == "") {
-			promptMsg(msg);
-			isOK = false;
+		isOK = checkOldPsw();
+		
+		if(isOK){
+			isOK = checkNewPsw();
 		}
-
+		
+		if(isOK){
+			isOK = checkNewPswConfirm();
+		}
+		
 		return isOK;
 	}
+
+
+
+
+
+
+	
+
 </script>
 </head>
 <%@include file="../_head.jsp"%>
@@ -119,15 +127,15 @@
 
 							<div class="form_row">
 								<label class="contact"><strong>旧密码:</strong></label> <input
-									class="contact_input" type="password" name="old_psw" />
+									class="contact_input" type="password" name="old_psw" onblur="checkOldPsw()" />
 							</div>
 							<div class="form_row">
 								<label class="contact"><strong>新密码:</strong></label> <input
-									class="contact_input" type="password" name="new_password" />
+									class="contact_input" type="password" name="new_password"  onblur="checkNewPsw()" />
 							</div>
 							<div class="form_row">
 								<label class="contact"><strong>确认密码:</strong></label> <input
-									class="contact_input" type="password"
+									class="contact_input" type="password"   onblur="checkNewPswConfirm()"
 									name="new_password_confirm" />
 							</div>
 
