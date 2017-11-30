@@ -13,16 +13,13 @@
 <script type="text/javascript"> 
 function validate_img(a){
 	 var file = a.value;
-	 
 	 if(!/.(gif|jpg|jpeg|png|GIF|JPG|png)$/.test(file)){
 	  alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
 	  var obj = document.getElementById('pic') ;   
 	  obj.outerHTML=obj.outerHTML;  
 	  return false;
 	}else{
-		
  		var fileSize = document.getElementById("pic").files[0].size / 1024;  
-	      
 	     if(fileSize>1024){
 	      alert('请上传大小小于1M的图片');
 	      var obj = document.getElementById('pic') ;   
