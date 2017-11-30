@@ -70,7 +70,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void updateBookState(Date date,String bookId) {
-		System.out.println(date);
 		//更改书籍借阅状态
 		bookMapper.updateBookState(bookId);
 		//获取并更改bookInfo信息

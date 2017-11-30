@@ -177,6 +177,7 @@
 			<div class="right_content">
 
 
+<<<<<<< HEAD
 				<div class="cart">
 					<div class="title">
 						<span class="title_icon"><img
@@ -187,6 +188,17 @@
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
 					<a href="/toborrowCart" class="view_cart">view cart</a>
+=======
+			<div class="cart">
+				<div class="title">
+					<span class="title_icon"><img
+						src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My cart
+				</div>
+				<div class="home_cart_content">
+					3 x items | <span class="red">TOTAL: 100$</span>
+				</div>
+				<a href="/search/toborrow" class="view_cart">我的借阅</a>
+>>>>>>> master
 
 				</div>
 

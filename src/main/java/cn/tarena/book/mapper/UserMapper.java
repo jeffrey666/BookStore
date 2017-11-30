@@ -40,6 +40,9 @@ public interface UserMapper {
 	public abstract List<Book> findMyBookListByUserIdReturn(String userId);
 
 	public abstract List<Book> findMyBookListByUserId(String userId);
+	//根据用户id，查询用户积分
+	@Select("select score from user_info where user_info_id =#{userId} ")
+	public abstract int findUserScore(String userId);
 
 	
 
