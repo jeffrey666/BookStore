@@ -168,9 +168,6 @@
 		<div class="clear"></div>
 	</div>
 	<!--end of center content-->
-
-
-
 	</div>
 </body>
 <%@include file="_foot.jsp"%>
