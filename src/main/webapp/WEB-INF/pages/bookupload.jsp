@@ -20,15 +20,11 @@ function validate_img(a){
 	  obj.outerHTML=obj.outerHTML;  
 	  return false;
 	}else{
-	      var image = new Image();
-	     image.src = file;
-	     var height = image.height;
-	     var width = image.width;
-	     var filesize = image.fileSize;
-	     alert(filesize); 
-	    
-	     if( filesize>1000){
-	      alert('请上传大小小于500k的图片');
+		
+ 		var fileSize = document.getElementById("pic").files[0].size / 1024;  
+	      
+	     if(fileSize>1024){
+	      alert('请上传大小小于1M的图片');
 	      var obj = document.getElementById('pic') ;   
 		  obj.outerHTML=obj.outerHTML;
 		  return false;
