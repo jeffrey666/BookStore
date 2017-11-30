@@ -10,26 +10,26 @@
 <script
 	src="<%=request.getContextPath()%>/staticfile/js/jquery-1.6.2.js"></script>
 <script src="<%=request.getContextPath()%>/staticfile/js/bookupload.js"></script>
-<script type="text/javascript"> 
-function validate_img(a){
-	 var file = a.value;
-	 if(!/.(gif|jpg|jpeg|png|GIF|JPG|png)$/.test(file)){
-	  alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
-	  var obj = document.getElementById('pic') ;   
-	  obj.outerHTML=obj.outerHTML;  
-	  return false;
-	}else{
- 		var fileSize = document.getElementById("pic").files[0].size / 1024;  
-	     if(fileSize>1024){
-	      alert('请上传大小小于1M的图片');
-	      var obj = document.getElementById('pic') ;   
-		  obj.outerHTML=obj.outerHTML;
-		  return false;
-	     }
-	 }
-	 alert("图片通过");
+<script type="text/javascript">
+	function validate_img(a) {
+		var file = a.value;
+		if (!/.(gif|jpg|jpeg|png|GIF|JPG|png)$/.test(file)) {
+			alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+			var obj = document.getElementById('pic');
+			obj.outerHTML = obj.outerHTML;
+			return false;
+		} else {
+			var fileSize = document.getElementById("pic").files[0].size / 1024;
+			if (fileSize > 1024) {
+				alert('请上传大小小于1M的图片');
+				var obj = document.getElementById('pic');
+				obj.outerHTML = obj.outerHTML;
+				return false;
+			}
+		}
+		alert("图片通过");
 	}
-</script> 
+</script>
 
 </head>
 <%@include file="_head.jsp"%>
@@ -38,70 +38,65 @@ function validate_img(a){
 		<div class="center_content">
 			<div class="left_content">
 				<c:if test="${_CURRENT_USER.userInfo.score<10 }">
-					<span style="color:red;text-align:center">${shortOfScore}</span>
+					<span style="color: red; text-align: center">${shortOfScore}</span>
 				</c:if>
 				<form onsubmit="return checkForm()"
 					action="<%=request.getContextPath()%>/saveBookUpload.action"
 					method="POST" enctype="multipart/form-data">
 					<h1 id="tt">书籍上传</h1>
 					<table>
-						
-					
+
+
 						<tr>
 							<td class="tds">书籍名称：</td>
 							<td><input type="text" name="bookName"
-								onblur="checkNull('bookName','书籍名称不能为空')"
-								 />
-								<span></span></td>
+								onblur="checkNull('bookName','书籍名称不能为空')" /> <span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍作者：</td>
 							<td><input type="text" name="bookInfo.author"
-								onblur="checkNull('bookInfo.author','书籍作者不能为空!')"
-								/>
-								<span></span></td>
+								onblur="checkNull('bookInfo.author','书籍作者不能为空!')" /> <span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">出版社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
-								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
-								 />
+								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')" />
 
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">出版日期：</td>
 							<td><input type="date" name="bookInfo.pubDate"
-								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')"
-								/>
+								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')" />
 
 								<span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍类别：</td>
 							<td><select name="bookInfo.category">
-								<option value="其他"  selected="selected">其他</option>
-								<option value="文学类">文学类</option>
-								<option value="小说类">小说类</option>
-								<option value="IT类">IT类</option>
-								<option value="艺术与摄影类" >艺术与摄影类</option>
-								<option value="军事类">军事类</option>
-								<option value="辅导教材类" >辅导教材类</option>
-								<option value="历史类" >历史类</option>
+									<option value="其他" selected="selected">其他</option>
+									<option value="文学类">文学类</option>
+									<option value="小说类">小说类</option>
+									<option value="IT类">IT类</option>
+									<option value="艺术与摄影类">艺术与摄影类</option>
+									<option value="军事类">军事类</option>
+									<option value="辅导教材类">辅导教材类</option>
+									<option value="历史类">历史类</option>
 							</select> <span></span></td>
 						</tr>
 						<tr>
 							<td class="tds">书籍照片：</td>
-							<td><input id="pic" type="file" name="picFile" onchange="Javascript:validate_img(this);" onblur="checkNull('picFile','书籍图片不能为空!')"/> <span></span>
-							</td>
+							<td><input id="pic" type="file" name="picFile"
+								onchange="Javascript:validate_img(this);"
+								onblur="checkNull('picFile','书籍图片不能为空!')" /> <span></span></td>
 						</tr>
-						
+
 						<tr>
 							<td class="tds">书籍简介：</td>
-							<td>
-								<textarea id="descripe" name="bookInfo.descripe" rows="5px" cols="20px" onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')" ></textarea>
-								<span></span>
-							</td>
+							<td><textarea id="descripe" name="bookInfo.descripe"
+									rows="5px" cols="20px"
+									onblur="checkdescripe('bookInfo.descripe','书籍简介不能为空!')"></textarea>
+								<span></span></td>
 						</tr>
 						<tr>
 							<td class="sub_td" colspan="2" class="tds"><input
@@ -118,109 +113,18 @@ function validate_img(a){
 					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
 				</div>
 			</div>
-                       
-            	
-        
-        
-             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
-             <div class="about">
-             <p>
-             <img src="${app}/staticfile/images/about.gif" alt="" title="" class="right" />
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-             </p>
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>              
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet5.gif" alt="" title="" /></span>Categories</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>                                              
-                </ul>
-                
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet6.gif" alt="" title="" /></span>Partners</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>                              
-                </ul>      
-             
-             </div>         
-             
-        
-        </div><!--end of right content-->
-
-
-
-
-			<div class="clear"></div>
+				<div class="about">
+					<p>
+						<%@include file="graphCopy.jsp"%>
+					</p>
+				</div>
+			</div>
 		</div>
-		<!--end of center content-->
+		<!--end of right content-->
 
-
-		<%--        
-       <div class="footer">
-
-       	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
-
-        <div class="right_footer">
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-       
-        </div>
-        
-       
-       </div> --%>
+		<div class="clear"></div>
+	</div>
+	<!--end of center content-->
 
 
 

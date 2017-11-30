@@ -11,7 +11,6 @@
 	href="${app}/staticfile/css/style.css" />
 <script src="https://cdn.bootcss.com/jquery/1.4.2/jquery.js"></script>
 <script type="text/javascript">
-
 	function checkEmail() {
 		promptMsg("text", "userInfo.email", "");
 		hideVerifyEmailButton();
@@ -22,8 +21,6 @@
 
 			return;
 		}
-
-
 
 		isOK = true;
 
@@ -64,14 +61,11 @@
 		$oTextEmail = $("input[type='text'][name='userInfo.email']");
 		$oUserIdHidden = $("input[type='hidden'][name='id']");
 
-
-		$.post("/user/wantChangeEmail.action",
-			{
-				"user_id" : $oUserIdHidden.val(),
-				"new_email" : $oTextEmail.val()
-			},
-			function(result) {});
-
+		$.post("/user/wantChangeEmail.action", {
+			"user_id" : $oUserIdHidden.val(),
+			"new_email" : $oTextEmail.val()
+		}, function(result) {
+		});
 
 		alert("已发送邮箱，请验证");
 		$verifyEamilButton.attr("disabled", "disabled");
@@ -147,8 +141,8 @@
 									class="contact_input" type="text" name="userInfo.email"
 									value="${_CURRENT_USER.userInfo.email }" onblur="checkEmail()" />
 								<span></span> <input hidden="hidden" class="register"
-									style="width: 60px;height: 18px;font-size: 10px" type="button"
-									value="验证邮箱" onclick="onclickVerifyEamil(this)" />
+									style="width: 60px; height: 18px; font-size: 10px"
+									type="button" value="验证邮箱" onclick="onclickVerifyEamil(this)" />
 
 							</div>
 
@@ -205,17 +199,6 @@
 				<!--end of left content-->
 
 				<div class="right_content">
-					<div class="languages_box">
-						<span class="red">Languages:</span> <a href="#" class="selected"><img
-							src="${app}/staticfile/images/gb.gif" alt="" title="" border="0" /></a>
-						<a href="#"><img src="images/fr.gif" alt="" title=""
-							border="0" /></a> <a href="#"><img src="images/de.gif" alt=""
-							title="" border="0" /></a>
-					</div>
-					<div class="currency">
-						<span class="red">Currency: </span> <a href="#">GBP</a> <a
-							href="#">EUR</a> <a href="#" class="selected">USD</a>
-					</div>
 
 
 					<div class="cart">
@@ -227,118 +210,25 @@
 						<div class="home_cart_content">
 							3 x items | <span class="red">TOTAL: 100$</span>
 						</div>
-						<a href="/toborrowCart" class="view_cart">view cart</a>
-
+						<a href="/search/toborrow" class="view_cart">我的借阅</a>
 					</div>
-
-
-
 
 					<div class="title">
 						<span class="title_icon"><img
-							src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About
-						Our Store
+							src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>Welcome
+						to our Book Store!
 					</div>
 					<div class="about">
 						<p>
-							<img src="${app}/staticfile/images/about.gif" alt="" title=""
-								class="right" /> Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+							<%@include file="../graphCopy.jsp"%>
 						</p>
-
 					</div>
-
-					<div class="right_box">
-
-						<div class="title">
-							<span class="title_icon"><img
-								src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions
-						</div>
-						<div class="new_prod_box">
-							<a href="details.html">product name</a>
-							<div class="new_prod_bg">
-								<span class="new_icon"><img
-									src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-								<a href="details.html"><img
-									src="${app}/staticfile/images/thumb1.gif" alt="" title=""
-									class="thumb" border="0" /></a>
-							</div>
-						</div>
-
-						<div class="new_prod_box">
-							<a href="details.html">product name</a>
-							<div class="new_prod_bg">
-								<span class="new_icon"><img
-									src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-								<a href="details.html"><img
-									src="${app}/staticfile/images/thumb2.gif" alt="" title=""
-									class="thumb" border="0" /></a>
-							</div>
-						</div>
-
-						<div class="new_prod_box">
-							<a href="details.html">product name</a>
-							<div class="new_prod_bg">
-								<span class="new_icon"><img
-									src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-								<a href="details.html"><img
-									src="${app}/staticfile/images/thumb3.gif" alt="" title=""
-									class="thumb" border="0" /></a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="right_box">
-
-						<div class="title">
-							<span class="title_icon"><img
-								src="${app}/staticfile/images/bullet5.gif" alt="" title="" /></span>Categories
-						</div>
-
-						<ul class="list">
-							<li><a href="#">accesories</a></li>
-							<li><a href="#">books gifts</a></li>
-							<li><a href="#">specials</a></li>
-							<li><a href="#">hollidays gifts</a></li>
-							<li><a href="#">accesories</a></li>
-							<li><a href="#">books gifts</a></li>
-							<li><a href="#">specials</a></li>
-							<li><a href="#">hollidays gifts</a></li>
-							<li><a href="#">accesories</a></li>
-							<li><a href="#">books gifts</a></li>
-							<li><a href="#">specials</a></li>
-						</ul>
-
-						<div class="title">
-							<span class="title_icon"><img
-								src="${app}/staticfile/images/bullet6.gif" alt="" title="" /></span>Partners
-						</div>
-
-						<ul class="list">
-							<li><a href="#">accesories</a></li>
-							<li><a href="#">books gifts</a></li>
-							<li><a href="#">specials</a></li>
-							<li><a href="#">hollidays gifts</a></li>
-							<li><a href="#">accesories</a></li>
-							<li><a href="#">books gifts</a></li>
-							<li><a href="#">specials</a></li>
-							<li><a href="#">hollidays gifts</a></li>
-							<li><a href="#">accesories</a></li>
-						</ul>
-
-					</div>
-
-
 				</div>
-				<!--end of right content-->
-
-
-
-
-				<div class="clear"></div>
 			</div>
+			<!--end of right content-->
+
+			<div class="clear"></div>
+		</div>
 
 
 

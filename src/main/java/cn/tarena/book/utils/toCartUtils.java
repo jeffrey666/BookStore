@@ -16,7 +16,7 @@ public class toCartUtils {
 			num = (int) session.getAttribute("num")+1;
 		}
 		//获取图书总行数/4为+1为可以显示的页数
-		int number = line / 4 + 1;
+		int number = line%4==0?line/4:line/4+1;
 		//点击下一页小于1,原页面保持不变
 		if (num < 1) {
 			num+=1;
@@ -56,7 +56,7 @@ public class toCartUtils {
 			if (line - ((i-1) * 4 + 4) > 0) {
 				pages[1] = 4;
 			} else {
-				pages[1] = line + pages[0];
+				pages[1] = line - pages[0];
 			}
 		}
 		//返回对应的X,Y

@@ -12,228 +12,90 @@
 <script src="${app }/staticfile/js/jquery-1.6.2.js"></script>
 <script src="${app }/staticfile/js/regist.js"></script>
 <script>
-			function checkUsername(thisObj){
-				var username = thisObj.value;
-				if($.trim(username)==""){
-					setMsg("username","用户名不能为空");
-					return;
-				}
-				$("#username_msg").load(
-					"/AjaxCheckUsername.action",
-					{"username":username}
-				);
-			}
-		</script>
+	function checkUsername(thisObj) {
+		var username = thisObj.value;
+		if ($.trim(username) == "") {
+			setMsg("username", "用户名不能为空");
+			return;
+		}
+		$("#username_msg").load("/AjaxCheckUsername.action", {
+			"username" : username
+		});
+	}
+</script>
 </head>
 <%@include file="_head.jsp"%>
 <body>
 	<div id="wrap">
-
-		
-
-
 		<div class="center_content">
 			<div class="left_content">
 				<div class="title">
 					<span class="title_icon"><img
 						src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>REGIST
 				</div>
-
 				<div class="feat_prod_box_details">
-					<p class="details">欢迎注册Book Store，完成注册后请至个人中心完善信息。。。注册成功后将跳转至主页。。</p>
+					<p class="details">欢迎注册Book
+						Store，完成注册后请至个人中心完善信息。。。注册成功后将跳转至主页。。</p>
 
 					<div class="contact_form">
 						<div class="form_subtitle">注册新用户</div>
-
-
-						<div class="details" >
+						<div class="details">
 							<c:if test="${!empty errorInfo}">
 								${errorInfo}
 							</c:if>
 						</div>
-
-
-						<form name="register" 
-						onsubmit=" return checkForm()"					
-						action="toregist.action">
+						<form name="register" onsubmit=" return checkForm()"
+							action="toregist.action">
 							<div class="form_row">
-								<label class="contact"><strong>用户名:</strong></label>
-								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input" />
-								<span id="username_msg">${msg }</span>
+								<label class="contact"><strong>用户名:</strong></label> <input
+									onblur="checkUsername(this)" name="username" type="text"
+									class="contact_input" /> <span id="username_msg">${msg }</span>
 							</div>
-
-
 							<div class="form_row">
-								<label class="contact"><strong>密码:</strong></label> 
-								<input  onblur="checkNull('password','密码不能为空')" name="password" type="password" class="contact_input" />
-								<span>${msg }</span>
+								<label class="contact"><strong>密码:</strong></label> <input
+									onblur="checkNull('password','密码不能为空')" name="password"
+									type="password" class="contact_input" /> <span>${msg }</span>
 							</div>
-
 							<div class="form_row">
-								<label class="contact"><strong>确认密码:</strong></label> 
-								<input onblur="checkPassword('password','两次密码不一致')" name="password2" type="password" class="contact_input" />
-								<span>${msg }</span>
+								<label class="contact"><strong>确认密码:</strong></label> <input
+									onblur="checkPassword('password','两次密码不一致')" name="password2"
+									type="password" class="contact_input" /> <span>${msg }</span>
 							</div>
-
-							<!--   <div class="form_row">
-                    <label class="contact"><strong>Email:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-
-
-                    <div class="form_row">
-                    <label class="contact"><strong>Phone:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-                    
-                    <div class="form_row">
-                    <label class="contact"><strong>Company:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-                    
-                    <div class="form_row">
-                    <label class="contact"><strong>Adrres:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>      -->
-
-							<!--   <div class="form_row">
-                        <div class="terms">
-                        <input type="checkbox" name="terms" />
-                        I agree to the <a href="#">terms &amp; conditions</a>                        </div>
-                    </div>  -->
-
-
 							<div class="form_row">
 								<input type="submit" class="register" value="注册" />
 							</div>
 						</form>
 					</div>
-
 				</div>
-
-
-
-
-
-
 				<div class="clear"></div>
 			</div>
 			<!--end of left content-->
 
 			<div class="right_content">
-              <div class="cart">
-				<div id="view_cart">
-					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+				<div class="cart">
+					<div id="view_cart">
+						<span><a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px">我的借阅</a></span>
+					</div>
+				</div>
+				<div class="title">
+					<span class="title_icon"><img
+						src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>Welcome
+					to our Book Store!
+				</div>
+				<div class="about">
+					<p>
+						<%@include file="graphCopy.jsp"%>
+					</p>
 				</div>
 			</div>
-                       
-            	
-        
-        
-             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
-             <div class="about">
-             <p>
-             <img src="${app}/staticfile/images/about.gif" alt="" title="" class="right" />
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-             </p>
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="${app}/staticfile/images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><img src="${app}/staticfile/images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>              
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet5.gif" alt="" title="" /></span>Categories</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>                                              
-                </ul>
-                
-             	<div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet6.gif" alt="" title="" /></span>Partners</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">books gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>                              
-                </ul>      
-             
-             </div>         
-             
-        
-        </div><!--end of right content-->
-
-
-
-
-			<div class="clear"></div>
 		</div>
-		<!--end of center content-->
+		<!--end of right content-->
 
-
-		<%--        
-       <div class="footer">
-
-       	<div class="left_footer"><img src="${app}/staticfile/images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
-
-        <div class="right_footer">
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-        <a href="#"></a>
-       
-        </div>
-        
-       
-       </div> --%>
-
-
-
+		<div class="clear"></div>
 	</div>
-
+	<!--end of center content-->
+	</div>
 </body>
 <%@include file="_foot.jsp"%>
 </html>

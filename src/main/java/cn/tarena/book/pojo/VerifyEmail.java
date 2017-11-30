@@ -30,7 +30,6 @@ public class VerifyEmail {
 	public String getVerifyEmailId() {
 		return verifyEmailId;
 	}
-
 	public void setVerifyEmailId(String verifyEmailId) {
 		this.verifyEmailId = verifyEmailId;
 	}
