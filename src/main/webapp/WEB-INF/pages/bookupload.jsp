@@ -113,7 +113,7 @@ function validate_img(a){
 			<!--end of left content-->
 
 			<div class="right_content">
-              <div class="cart">
+             <div class="cart">
 				<div id="view_cart">
 					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
 				</div>
