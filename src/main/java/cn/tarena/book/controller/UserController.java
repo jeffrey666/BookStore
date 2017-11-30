@@ -23,6 +23,7 @@ import cn.tarena.book.pojo.User;
 import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
+import cn.tarena.book.user.annotation.RequireRole;
 import cn.tarena.book.user.utils.MD5Tool;
 import cn.tarena.book.user.utils.StringTool;
 
@@ -122,22 +123,26 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userInfo/Left.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoLeft() {
 		return "/userinfo/left";
 	}
 
 	@RequestMapping("/user/userInfo/Main.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoMain() {
 		return "/userinfo/main";
 	}
 
 	@RequestMapping("/user/userinfo.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoAction() {
 
 		return "/userinfo/fmain_user_info";
 	}
 
 	@RequestMapping("/user/toUserInfoUpdate.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String toUserInfoUpdate(HttpSession session) {
 
 		//更新session中的登录user信息
@@ -152,6 +157,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userinfo/update")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String UserInfoUpdate(User user,
 			HttpSession session) {
 
@@ -168,6 +174,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/toChangePassword.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String toChangePassword(HttpSession session,
 			Model model) {
 
@@ -180,6 +187,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/password/update")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String passwordUpdate(String user_id, String old_psw,
 			String new_password, Model model,
 			HttpSession session) {
@@ -225,6 +233,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/wantChangeEmail.action")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	@ResponseBody
 	public String wantChangeEmail(String user_id,
 			String new_email) {
@@ -235,6 +244,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/verifyEmail")
+	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String verifyEmail(String verify_email_id,
 			Model model, HttpSession session) {
 
