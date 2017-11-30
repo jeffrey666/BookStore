@@ -133,32 +133,11 @@
 
 			<!-- 右侧区域 -->
 			<div class="right_content">
-
-				<div class="languages_box">
-					<span class="red">Languages:</span> <a href="#"><img
-						src="${app}/staticfile/images/gb.gif" alt="" title="" border="0" /></a>
-					<a href="#"><img src="${app}/staticfile/images/fr.gif" alt=""
-						title="" border="0" /></a> <a href="#"><img
-						src="${app}/staticfile/images/de.gif" alt="" title="" border="0" /></a>
-				</div>
-				<div class="currency">
-					<span class="red">Currency: </span> <a href="#">GBP</a> <a href="#">EUR</a>
-					<a href="#"><strong>USD</strong></a>
-				</div>
-
-
 				<div class="cart">
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My
-						cart
-					</div>
-					<div class="home_cart_content">
-						3 x items | <span class="red">TOTAL: 100$</span>
-					</div>
-					<a href="/search/borrowed" class="view_cart">我的借阅</a>
-
+				<div id="view_cart">
+					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
 				</div>
+			</div>
 
 				<div class="title">
 					<span class="title_icon"><img
