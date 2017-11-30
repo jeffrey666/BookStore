@@ -182,8 +182,8 @@
 
 				<div class="cart">
 					<div id="view_cart">
-						<span><a href="/search/toborrow"
-							style="text-align: center; font-family: 微软雅黑; font-size: 22px">我的借阅</a></span>
+						<span><img src="${app}/staticfile/images/cart.gif" alt=""  /> &nbsp;&nbsp;<a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px;color:#860606">我的借阅</a></span>
 					</div>
 				</div>
 

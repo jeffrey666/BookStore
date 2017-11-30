@@ -21,6 +21,7 @@
 		<div class="center_content">
 			<div class="left_content">
 
+
 				<div class="title">
 					<span class="title_icon"><img
 						src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>新书上架
@@ -71,8 +72,8 @@
 			<div class="right_content">
 				<div class="cart">
 					<div id="view_cart">
-						<span><a href="/search/toborrow"
-							style="text-align: center; font-family: 微软雅黑; font-size: 22px">我的借阅</a></span>
+						<span><img src="${app}/staticfile/images/cart.gif" alt=""  /> &nbsp;&nbsp;<a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px;color:#860606">我的借阅</a></span>
 					</div>
 				</div>
 
