@@ -8,8 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Book Store</title>
-<link rel="stylesheet" type="text/css"
-	href="${app}/staticfile/css/style.css" />
+<link rel="stylesheet" type="text/css" href="${app}/staticfile/css/search.css" />
 <script src="${app}/staticfile/js/jquery-1.6.2.js"></script>
 <script type="text/javascript">
 	$().ready(
