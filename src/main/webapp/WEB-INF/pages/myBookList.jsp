@@ -11,9 +11,6 @@
 <%@include file="_head.jsp" %>
 <body>
 <div id="wrap">
-
-     
-       
        <div class="center_content">
        	<div class="left_content">
             <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet1.gif" alt="" title="" /></span>MY BOOK</div>

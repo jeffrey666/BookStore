@@ -36,8 +36,6 @@ public class UserInfo implements Serializable{
 		super();
 	}
 
-
-
 	public String getUserInfoId() {
 		return userInfoId;
 	}
@@ -108,6 +106,4 @@ public class UserInfo implements Serializable{
 				+ address + ", cardNo=" + cardNo + ", score=" + score + ", telephone=" + telephone + ", gender="
 				+ gender + "]";
 	}
-
-	
 }

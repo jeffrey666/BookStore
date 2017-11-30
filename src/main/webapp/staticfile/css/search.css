@@ -10,10 +10,6 @@ color:#000000;
 a{
 color:#f8981d;
 }
-
-#view_cart{
-	text-align:center;
-}
 .clear{
 clear:both;
 }
@@ -599,7 +595,7 @@ color:#afaeaf;
 
 
 
-/*鎼滅储鏉�/
+/*搜索条*/
 #content #search_div,#content #search_div2,#content #search_div3{
 	border: 1px solid #D4D4D4;
 	padding:8px;
@@ -628,6 +624,3 @@ color:#afaeaf;
 	background-image: url("../img/prodlist/search_03.jpg");	
 	margin-left:5px;
 }
-
-
-

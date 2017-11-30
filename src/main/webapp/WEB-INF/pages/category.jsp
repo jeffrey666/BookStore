@@ -129,117 +129,30 @@
 			</div>
 			<!--end of left content-->
 
-
-
-			<!-- 右侧区域 -->
 			<div class="right_content">
 				<div class="cart">
-				<div id="view_cart">
-					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+					<div id="view_cart">
+						<span><img src="${app}/staticfile/images/cart.gif" alt=""  /> &nbsp;&nbsp;<a href="/search/toborrow"
+							style="text-align: center; font-family: 微软雅黑; font-size: 22px;color:#860606">我的借阅</a></span>
+					</div>
 				</div>
-			</div>
-
 				<div class="title">
 					<span class="title_icon"><img
-						src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About
-					Our Store
+						src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>Welcome
+					to our Book Store!
 				</div>
 				<div class="about">
 					<p>
-						<img src="${app}/staticfile/images/about.gif" alt="" title=""
-							class="right" /> Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+						<%@include file="graph.jsp"%>
 					</p>
-
 				</div>
-
-				<div class="right_box">
-
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions
-					</div>
-					<div class="new_prod_box">
-						<a href="#">product name</a>
-						<div class="new_prod_bg">
-
-							<a href="#"><img
-								src="${app}/staticfile/images/thumb1.gif" alt="" title=""
-								class="thumb" border="0" /></a>
-						</div>
-					</div>
-
-					<div class="new_prod_box">
-						<a href="#">product name</a>
-						<div class="new_prod_bg">
-							<a href="#"><img
-								src="${app}/staticfile/images/thumb2.gif" alt="" title=""
-								class="thumb" border="0" /></a>
-						</div>
-					</div>
-
-					<div class="new_prod_box">
-						<a href="#">product name</a>
-						<div class="new_prod_bg">
-							<a href="#"><img
-								src="${app}/staticfile/images/thumb3.gif" alt="" title=""
-								class="thumb" border="0" /></a>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="right_box">
-
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/bullet5.gif" alt="" title="" /></span>Categories
-					</div>
-
-					<ul class="list">
-						<li><a href="#">accesories</a></li>
-						<li><a href="#">books gifts</a></li>
-						<li><a href="#">specials</a></li>
-						<li><a href="#">hollidays gifts</a></li>
-						<li><a href="#">accesories</a></li>
-						<li><a href="#">books gifts</a></li>
-						<li><a href="#">specials</a></li>
-						<li><a href="#">hollidays gifts</a></li>
-						<li><a href="#">accesories</a></li>
-						<li><a href="#">books gifts</a></li>
-						<li><a href="#">specials</a></li>
-					</ul>
-
-					<div class="title">
-						<span class="title_icon"><img
-							src="${app}/staticfile/images/bullet6.gif" alt="" title="" /></span>Partners
-					</div>
-
-					<ul class="list">
-						<li><a href="#">accesories</a></li>
-						<li><a href="#">books gifts</a></li>
-						<li><a href="#">specials</a></li>
-						<li><a href="#">hollidays gifts</a></li>
-						<li><a href="#">accesories</a></li>
-						<li><a href="#">books gifts</a></li>
-						<li><a href="#">specials</a></li>
-						<li><a href="#">hollidays gifts</a></li>
-						<li><a href="#">accesories</a></li>
-					</ul>
-
-				</div>
-
-
 			</div>
-			<!--end of right content-->
-
-
-
-
-			<div class="clear"></div>
 		</div>
-		<!--end of center content-->
+		<!--end of right content-->
+
+		<div class="clear"></div>
+	</div>
+	<!--end of center content-->
 	</div>
 
 </body>
