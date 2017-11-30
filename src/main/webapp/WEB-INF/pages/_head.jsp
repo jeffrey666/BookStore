@@ -25,8 +25,10 @@
 				</c:when>
 				<c:otherwise>
 					<a href="${app }/tocart.action" target="_top">我的图书</a>
-					<a href="/user/userinfo.action" target="_top" >您好：${_CURRENT_USER.username}</a>	
+					<%-- <a href="/user/userinfo.action" target="_top" >您好：${_CURRENT_USER.username}</a>	 --%>
+					<a href="/user/toUserInfoUpdate.action" target="_top" >您好：${_CURRENT_USER.username}</a>
 					<a href="${app}/tologout"   target="_top" >&nbsp;&nbsp;注销</a>
+					<a href="/user/toChangePassword.action" target="_top" >密码管理</a>
 				</c:otherwise>
 			</c:choose>
             </li>
