@@ -56,8 +56,7 @@ public class UserController {
 
 	@Autowired
 	private UserInfoService userInfoService;
-	@Autowired
-	private VerifyCode verifyCode;
+
 	//注册用户
 	@RequestMapping("/toregist.action")
 	public String toRegist(User user, Model model,String valistr ,HttpSession session) {
@@ -79,6 +78,7 @@ public class UserController {
 		codeObj = codeObj.toLowerCase();
 		if(codeObj==null||!valistr.equalsIgnoreCase(codeObj)){
 			model.addAttribute("code_msg", "验证码错误");
+			model.addAttribute("username1",user.getUsername());
 			return "/regist";
 		}
 		
@@ -139,7 +139,7 @@ public class UserController {
 					cookie.setMaxAge(3600*24*30);
 					cookie.setPath(request.getContextPath()+"/");
 					response.addCookie(cookie);
-				} catch (UnsupportedEncodingException e) {
+				} catch (UnsupportedEncodingException e) {	
 					e.printStackTrace();
 				}
 			}else{
@@ -321,8 +321,15 @@ public class UserController {
 	@RequestMapping( value="ValiImage.action",method=RequestMethod.GET )
 	public void ValiImage(HttpSession session,HttpServletResponse response){
 		try {
+			
+			response.setDateHeader("Expires", -1);
+			response.setHeader("Cache-Control", "no-cache");
+			VerifyCode verifyCode= new VerifyCode();
 			verifyCode.getDraw(response.getOutputStream());
 			String valistr = verifyCode.getCode();
+			System.out.println(valistr);
+			
+			
 			session.setAttribute("code", valistr);
 		} catch (IOException e) {
 			

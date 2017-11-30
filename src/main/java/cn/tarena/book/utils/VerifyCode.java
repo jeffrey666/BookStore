@@ -11,7 +11,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Component;
-@Component
+
 public class VerifyCode {
 	private static int width = 100;
 	private static int height = 22;

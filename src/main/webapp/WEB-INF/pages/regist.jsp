@@ -58,7 +58,7 @@
 						action="toregist.action" method="POST">
 							<div class="form_row">
 								<label class="contact"><strong>用户名:</strong></label>
-								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input" />
+								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input"  value="${username1} "/>
 								<span id="username_msg">${msg }</span>
 							</div>
 
