@@ -104,8 +104,6 @@
                         </div>           
                     </div>
                </c:forEach>
- 
-                     
 
             <div class="pagination">
             <c:if test="${pageBeans!=null }">
@@ -155,7 +153,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/toborrowCart" class="view_cart">view cart</a>
+                  <a href="/search/borrowed" class="view_cart">我的借阅</a>
               
               </div>
                        

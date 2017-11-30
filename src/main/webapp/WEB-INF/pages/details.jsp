@@ -24,7 +24,6 @@
 		<div class="center_content">
 			<div class="left_content">
 				<div class="crumb_nav">
-
 					<a href="#" onclick="window.history.back();">返回</a> &gt;&gt; 书籍详情
 				</div>
 				<div class="title">
@@ -44,7 +43,7 @@
 					<div class="prod_det_box">
 						<div class="box_top"></div>
 						<div class="box_center">
-							<div class="prod_title">Details</div>
+							<div class="prod_title"><strong>作者:</strong> ${book.bookInfo.author}</div>
 
 
 							<div class="price">
@@ -164,7 +163,7 @@
 					<div class="home_cart_content">
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
-					<a href="/toborrowCart" class="view_cart">view cart</a>
+					<a href="/search/borrowed" class="view_cart">我的借阅</a>
 
 				</div>
 

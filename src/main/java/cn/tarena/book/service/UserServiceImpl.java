@@ -128,4 +128,9 @@ public class UserServiceImpl implements UserService {
 		return ve.getEmail();
 	}
 
+	@Override
+	public int findUserScore(String userId) {
+		return userMapper.findUserScore(userId);
+	}
+
 }

@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="feat_prod_box_details">
-					<p class="details">欢迎注册jieshu，完成注册后请至个人中心完善信息。。。注册成功后将跳转至主页。。</p>
+					<p class="details">欢迎注册Book Store，完成注册后请至个人中心完善信息。。。注册成功后将跳转至主页。。</p>
 
 					<div class="contact_form">
 						<div class="form_subtitle">注册新用户</div>
@@ -140,7 +140,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/toborrowCart" class="view_cart">view cart</a>
+                  <a href="/search/borrowed" class="view_cart">我的借阅</a>
               
               </div>
                        

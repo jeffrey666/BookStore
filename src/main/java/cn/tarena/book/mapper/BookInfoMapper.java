@@ -30,7 +30,7 @@ public interface BookInfoMapper {
 	Integer line(String id);
 	
 	/** 查询前四本新上架的书籍
-	 * @return:book随想
+	 * @return:book对象
 	 */
 	List <Book> findNewBooks();
 
@@ -56,6 +56,11 @@ public interface BookInfoMapper {
 	 * @return
 	 */
 	List<Book> findAllCategory();
+
+	/**点击详情增加一次搜索次数
+	 * @param bookId
+	 */
+	void addSearchVolume(String bookId);
 
 }
 

@@ -27,7 +27,7 @@
 
 					<a href="#" onclick="window.history.back();">返回</a> &gt;&gt; 书籍详情
 				</div>
-				
+
 				<!-- 相关书籍 -->
 				<div id="demo" class="demolayout">
 
@@ -39,90 +39,90 @@
 						<li><a class="" href="#tab5">军事</a></li>
 					</ul>
 
-					<div class="tabs-container">
+					<div class="new_products">
 						<div style="display: block;" class="tab" id="tab1">
 							<c:forEach items="${categoryBooks}" var="b">
 								<div class="new_prod_box">
-									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+									<a href="/details?bookId=${b.bookId}"><font color="blue">${b.bookName}</font></a>
 									<div class="new_prod_bg">
-										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
-											class="thumb" border="0" /></a>
+										<a href="/details?bookId=${b.bookId}"><img
+											src="${b.bookInfo.imgurl}" width="70px" height="90px"
+											alt="图片暂无" title="" class="thumb" border="0" /></a>
 									</div>
 								</div>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
-						
+
 						<!-- 第二个 -->
 						<!-- 相关书籍 -->
 						<div style="display: none;" class="tab" id="tab2">
 
 							<c:forEach items="${categoryBooks}" var="b">
 								<c:if test="${b.bookInfo.category=='IT类'}">
-								<div class="new_prod_box">
-									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
-									<div class="new_prod_bg">
-										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
-											class="thumb" border="0" /></a>
+									<div class="new_prod_box">
+										<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+										<div class="new_prod_bg">
+											<a href="/details.action?bookId=${b.bookId}"><img
+												src="${app}${b.bookInfo.imgurl}" width="60px" height="90px"
+												alt="" title="" class="thumb" border="0" /></a>
+										</div>
 									</div>
-								</div>
 								</c:if>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
-						
-						
+
+
 						<div style="display: none;" class="tab" id="tab3">
 							<c:forEach items="${categoryBooks}" var="b">
 								<c:if test="${b.bookInfo.category=='文学类'}">
-								<div class="new_prod_box">
-									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
-									<div class="new_prod_bg">
-										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
-											class="thumb" border="0" /></a>
+									<div class="new_prod_box">
+										<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+										<div class="new_prod_bg">
+											<a href="/details.action?bookId=${b.bookId}"><img
+												src="${app}${b.bookInfo.imgurl}" width="60px" height="90px"
+												alt="" title="" class="thumb" border="0" /></a>
+										</div>
 									</div>
-								</div>
 								</c:if>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
-						
-						
+
+
 						<div style="display: none;" class="tab">
 							<c:forEach items="${categoryBooks}" var="b">
 								<c:if test="${b.bookInfo.category=='小说类'}">
-								<div class="new_prod_box">
-									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
-									<div class="new_prod_bg">
-										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
-											class="thumb" border="0" /></a>
+									<div class="new_prod_box">
+										<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+										<div class="new_prod_bg">
+											<a href="/details.action?bookId=${b.bookId}"><img
+												src="${app}${b.bookInfo.imgurl}" width="60px" height="90px"
+												alt="" title="" class="thumb" border="0" /></a>
+										</div>
 									</div>
-								</div>
 								</c:if>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
-						
+
 						<div style="display: none;" class="tab">
 							<c:forEach items="${categoryBooks}" var="b">
 								<c:if test="${b.bookInfo.category=='军事类'}">
-								<div class="new_prod_box">
-									<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
-									<div class="new_prod_bg">
-										<a href="/details.action?bookId=${b.bookId}"><img
-											src="${app}${b.bookInfo.imgurl}" width="60px" height="90px" alt="" title=""
-											class="thumb" border="0" /></a>
+									<div class="new_prod_box">
+										<a href="/details.action?bookId=${b.bookId}">${b.bookName}</a>
+										<div class="new_prod_bg">
+											<a href="/details.action?bookId=${b.bookId}"><img
+												src="${app}${b.bookInfo.imgurl}" width="60px" height="90px"
+												alt="" title="" class="thumb" border="0" /></a>
+										</div>
 									</div>
-								</div>
 								</c:if>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -156,7 +156,7 @@
 					<div class="home_cart_content">
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
-					<a href="/toborrowCart" class="view_cart">view cart</a>
+					<a href="/search/borrowed" class="view_cart">我的借阅</a>
 
 				</div>
 
