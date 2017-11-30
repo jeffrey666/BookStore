@@ -59,7 +59,6 @@
 				<div class="home_cart_content">
 					3 x items | <span class="red">TOTAL: 100$</span>
 				</div>
-
 				<a href="/search/toborrow" class="view_cart">我的借阅</a>
 			</div>
 
