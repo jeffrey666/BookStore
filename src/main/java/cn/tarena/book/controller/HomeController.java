@@ -1,23 +1,15 @@
 package cn.tarena.book.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.BookInfoService;
-
-
 import cn.tarena.book.service.SearchService;
-
-import cn.tarena.book.user.annotation.RequireRole;
-
 import cn.tarena.book.utils.toCartUtils;
 
 
@@ -45,7 +37,7 @@ public class HomeController {
 
 	@RequestMapping("/login")
 	public String toLogin() {
-		return "login";
+		return "/userinfo/password";
 	}
 
 	@RequestMapping("details")

@@ -28,7 +28,7 @@ public class ReturnController extends BaseController {
 	@RequestMapping("/return")
 	public String toview(String bookId, Model model) {
 		Book book=bookService.findOne(bookId);
-		if(book.getState()==0){
+		if(book.getState()==1){
 		Date currentTime = new Date();
 //		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		String dateString = formatter.format(currentTime);
