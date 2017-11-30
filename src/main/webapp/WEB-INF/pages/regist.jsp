@@ -55,7 +55,7 @@
 
 						<form name="register" 
 						onsubmit=" return checkForm()"					
-						action="toregist.action">
+						action="toregist.action" method="POST">
 							<div class="form_row">
 								<label class="contact"><strong>用户名:</strong></label>
 								 <input onblur="checkUsername(this)" name="username" type="text" class="contact_input" />
@@ -74,33 +74,17 @@
 								<input onblur="checkPassword('password','两次密码不一致')" name="password2" type="password" class="contact_input" />
 								<span>${msg }</span>
 							</div>
-
-							<!--   <div class="form_row">
-                    <label class="contact"><strong>Email:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-
-
-                    <div class="form_row">
-                    <label class="contact"><strong>Phone:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-                    
-                    <div class="form_row">
-                    <label class="contact"><strong>Company:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>
-                    
-                    <div class="form_row">
-                    <label class="contact"><strong>Adrres:</strong></label>
-                    <input type="text" class="contact_input" />
-                    </div>      -->
-
-							<!--   <div class="form_row">
-                        <div class="terms">
-                        <input type="checkbox" name="terms" />
-                        I agree to the <a href="#">terms &amp; conditions</a>                        </div>
-                    </div>  -->
+						<div class="form_row">
+								<label class="contact"><strong>验证码:</strong></label> 
+								<input  class="contact_input" type="text" name="valistr" onblur="checkNull('valistr','验证码不能为空')"/>
+								<img  onclick="changeImage(this)" src="${app }/ValiImage.action" width="" height="" alt="" />
+								<span>${code_msg }</span>
+									<script>
+									function changeImage(thisObj){
+									thisObj.src = "${app }/ValiImage.action?a="+new Date().toLocaleString();
+									}
+									</script>
+							</div>
 
 
 							<div class="form_row">

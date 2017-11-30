@@ -3,6 +3,7 @@ package cn.tarena.book.controller;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.Book;
@@ -44,6 +46,7 @@ import cn.tarena.book.pojo.User;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
 import cn.tarena.book.user.utils.StringTool;
+import cn.tarena.book.utils.VerifyCode;
 
 @Controller
 public class UserController {
@@ -53,10 +56,11 @@ public class UserController {
 
 	@Autowired
 	private UserInfoService userInfoService;
-
+	@Autowired
+	private VerifyCode verifyCode;
 	//注册用户
 	@RequestMapping("/toregist.action")
-	public String toRegist(User user, Model model) {
+	public String toRegist(User user, Model model,String valistr ,HttpSession session) {
 		if (StringUtils.isEmpty(user.getUsername())
 				|| StringUtils.isEmpty(user.getPassword())) {
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
@@ -68,6 +72,16 @@ public class UserController {
 			model.addAttribute("errorInfo", "用户名已存在");
 			return "/regist";
 		}
+		
+		
+		String codeObj = (String)session.getAttribute("code");
+		valistr=valistr.toLowerCase();
+		codeObj = codeObj.toLowerCase();
+		if(codeObj==null||!valistr.equalsIgnoreCase(codeObj)){
+			model.addAttribute("code_msg", "验证码错误");
+			return "/regist";
+		}
+		
 		userService.addUser(user);
 		//成功则跳转至主页
 		return "redirect:/";
@@ -302,6 +316,18 @@ public class UserController {
 
 		return true;
 
+	}
+	
+	@RequestMapping( value="ValiImage.action",method=RequestMethod.GET )
+	public void ValiImage(HttpSession session,HttpServletResponse response){
+		try {
+			verifyCode.getDraw(response.getOutputStream());
+			String valistr = verifyCode.getCode();
+			session.setAttribute("code", valistr);
+		} catch (IOException e) {
+			
+		}
+		
 	}
 
 }

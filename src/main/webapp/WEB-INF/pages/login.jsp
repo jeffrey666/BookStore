@@ -51,7 +51,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 						<input type="checkbox" name="remname" value="true"
 						${empty cookie.remname?"":"checked='checked'" }/>记住用户名
-						<input type="checkbox" name="rememberMe" value="true"/>30天内自动登陆
+						
 						
 					
 					</div>
