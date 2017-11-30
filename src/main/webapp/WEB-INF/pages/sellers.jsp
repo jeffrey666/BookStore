@@ -22,9 +22,6 @@
 <body>
 	<div id="wrap">
 
-
-
-
 		<div class="center_content">
 			<div class="left_content">
 				<div class="crumb_nav">
@@ -208,12 +205,7 @@
 					<div class="home_cart_content">
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
-<<<<<<< HEAD
-					<a href="/search/toborrow" class="view_cart">已借书籍</a>
-=======
 					<a href="/search/borrowed" class="view_cart">我的借阅</a>
->>>>>>> master
-
 				</div>
 
 				<div class="title">
