@@ -41,7 +41,8 @@
 
 					<div class="new_products">
 						<div style="display: block;" class="tab" id="tab1">
-							<c:forEach items="${categoryBooks}" var="b">
+							<c:forEach items="${categoryBooks}" var="b" varStatus="n">
+							<c:if test="${n.index<12 }">
 								<div class="new_prod_box">
 									<a href="/details?bookId=${b.bookId}"><font color="blue">${b.bookName}</font></a>
 									<div class="new_prod_bg">
@@ -50,6 +51,7 @@
 											alt="图片暂无" title="" class="thumb" border="0" /></a>
 									</div>
 								</div>
+							</c:if>
 							</c:forEach>
 							<div class="clear"></div>
 						</div>
