@@ -129,12 +129,11 @@ public class UserServiceImpl implements UserService {
 		return ve.getEmail();
 	}
 
-<<<<<<< HEAD
-=======
+
 	@Override
 	public int findUserScore(String userId) {
 		return userMapper.findUserScore(userId);
 	}
->>>>>>> master
+
 
 }

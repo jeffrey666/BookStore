@@ -10,9 +10,26 @@
 <script
 	src="<%=request.getContextPath()%>/staticfile/js/jquery-1.6.2.js"></script>
 <script src="<%=request.getContextPath()%>/staticfile/js/bookupload.js"></script>
-<script type="text/javascript">
-	
-</script>
+<script type="text/javascript"> 
+function validate_img(a){
+	 var file = a.value;
+	 if(!/.(gif|jpg|jpeg|png|GIF|JPG|png)$/.test(file)){
+	  alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+	  var obj = document.getElementById('pic') ;   
+	  obj.outerHTML=obj.outerHTML;  
+	  return false;
+	}else{
+ 		var fileSize = document.getElementById("pic").files[0].size / 1024;  
+	     if(fileSize>1024){
+	      alert('请上传大小小于1M的图片');
+	      var obj = document.getElementById('pic') ;   
+		  obj.outerHTML=obj.outerHTML;
+		  return false;
+	     }
+	 }
+	 alert("图片通过");
+	}
+</script> 
 
 </head>
 <%@include file="_head.jsp"%>
@@ -47,7 +64,7 @@
 								<span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">书籍出版社：</td>
+							<td class="tds">出版	社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
 								 />
@@ -55,7 +72,7 @@
 								<span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">书籍出版日期：</td>
+							<td class="tds">出版日期：</td>
 							<td><input type="date" name="bookInfo.pubDate"
 								onblur="checkNull('bookInfo.pubDate','出版社日期不能为空!')"
 								/>
@@ -77,7 +94,7 @@
 						</tr>
 						<tr>
 							<td class="tds">书籍照片：</td>
-							<td><input type="file" name="picFile" onblur="checkNull('picFile','书籍图片不能为空!')"/> <span></span>
+							<td><input id="pic" type="file" name="picFile" onchange="Javascript:validate_img(this);" onblur="checkNull('picFile','书籍图片不能为空!')"/> <span></span>
 							</td>
 						</tr>
 						
