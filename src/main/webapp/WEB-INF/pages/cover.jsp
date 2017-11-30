@@ -36,10 +36,10 @@
 
 				<div class="masthead clearfix">
 					<div class="inner">
-						<h3 class="masthead-brand">书海</h3>
+						<h3 class="masthead-brand">借书</h3>
 						<nav>
 							<ul class="nav masthead-nav">
-								<li class="active"><a href="/index">主页</a></li>
+								<li class="active"><a href="#">主页</a></li>
 								<c:choose>
 									<c:when test="${sessionScope._CURRENT_USER == null}">
 										<li><a href="/toregist" target="_top">注册</a></li>
@@ -57,10 +57,10 @@
 				</div>
 
 				<div class="inner cover">
-					<h1 class="cover-heading">未授权.</h1>
-					<p class="lead">对不起，您没有相应权限。</p>
+					<h1 class="cover-heading">借书.</h1>
+					<p class="lead">借书是一个开放、分享、创新、高端人士聚集的网站，在这里，您可以分享、获得任何信息。</p>
 					<p class="lead">
-						<a href="/index" class="btn btn-lg btn-default">返回</a>
+						<a href="/index" class="btn btn-lg btn-default">进入新世界</a>
 					</p>
 				</div>
 

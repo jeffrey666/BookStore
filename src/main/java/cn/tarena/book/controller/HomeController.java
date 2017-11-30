@@ -20,10 +20,16 @@ public class HomeController {
 	@Autowired
 	private BookInfoService bookInfoService;
 	
+	
 	@Autowired
 	private SearchService searchService;
+	
+ 	@RequestMapping("/")
+	public String cover() {
+		return "/cover";
+	}
 
-	@RequestMapping("/")
+ 	@RequestMapping("/index")
 	public String index(Model model) {
 		List<Book> BookList = bookInfoService.findNewBooks();
 		model.addAttribute("BookList", BookList);

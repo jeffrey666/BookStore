@@ -40,7 +40,7 @@ public class MailUtils {
 		message.setTo(email); //收件人邮箱
 		message.setSubject("主题：欢迎您注册借书网！");
 		message.setText("请打开以下地址使您的新邮箱生效："
-				+ "http://176.129.12.2:8090/user/verifyEmail.action?verify_email_id="
+				+ "http://176.129.12.189:8090/user/verifyEmail.action?verify_email_id="
 				+ verify_email_id);
 		mailSender.send(message);
 	}

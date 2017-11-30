@@ -92,7 +92,7 @@ public class UserController {
 				response.addCookie(cookie);
 			}
 
-			return "redirect:/";
+			return "redirect:/index";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo", "用户名或者密码错误");
 			return "/login";
