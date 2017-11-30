@@ -1,0 +1,43 @@
+
+S(SNO, SNAME, AGE, SEX,Sdept)
+SC(SNO, CNO, GRADE)
+C(CNO, CNAME, TEACHER)
+1.查询学号为S3学生所学课程的课程名与任课教师名。
+
+
+SELECT s.sname FROM
+   s
+   LEFT JOIN
+(SELECT sc.sno,c.teacher,c.cname FROM 
+  sc 
+  LEFT JOIN 
+  c
+  ON
+  sc.cno=c.cno
+)  c  
+   ON WHERE s.sno='3' AND s.sno=c.sno
+   
+      
+   
+2.查询至少选修LIU老师所教课程中一门课的女生姓名。
+SELECT s.sname FROM
+   s
+   LEFT JOIN
+(SELECT sc.sno,c.teacher,c.cname FROM 
+  sc 
+  LEFT JOIN 
+  c
+  ON  
+ WHERE sc.cno=c.cno AND c.teacher='刘老师'
+)  c 
+   ON
+   GROUP BY s.sno
+   HAVING c.sno=s.sno  AND s.SEX='女' AND SUM(CNAME)>1
+
+3.查询WANG同学不学的课程的课程号。
+SELECT sc.sno,c.cname FROM
+     sc 
+     LEFT JOIN
+     c
+     ON
+   sc.cno=c.cno WHERE sc.sno NOT IN (SELECT sno FROM s WHERE sname='wang同学')
