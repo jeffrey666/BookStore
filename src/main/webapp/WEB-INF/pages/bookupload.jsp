@@ -85,7 +85,7 @@
 							</select> <span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">书籍照片：</td>
+							<td class="tds">书籍图片：</td>
 							<td><input id="pic" type="file" name="picFile"
 								onchange="Javascript:validate_img(this);"
 								onblur="checkNull('picFile','书籍图片不能为空!')" /> <span></span></td>
