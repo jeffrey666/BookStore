@@ -1,46 +1,26 @@
 package cn.tarena.book.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import cn.tarena.book.pojo.Book;
-import cn.tarena.book.pojo.User;
-import cn.tarena.book.pojo.UserInfo;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.User;
+import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
 import cn.tarena.book.user.utils.StringTool;
@@ -76,44 +56,17 @@ public class UserController {
 	//用户的登录
 	@RequestMapping("/tologin.action")
 
-	public String toLogin(String username, String password,
-			String remname, String rememberMe,
-			HttpServletResponse response,
-			HttpServletRequest request, Model model,
-			HttpSession session) {
-
-		if ("true".equals(remname)) {
-			Cookie cookie;
-			try {
-				cookie = new Cookie("remname",
-						URLEncoder.encode(username, "utf-8"));
-				cookie.setMaxAge(3600 * 24 * 30);
-				cookie.setPath(request.getContextPath() + "/");
-				response.addCookie(cookie);
-			} catch (UnsupportedEncodingException e) {
-
-			}
-		} else {
-			Cookie cookie = new Cookie("remname", "");
-			cookie.setMaxAge(0);
-			cookie.setPath(request.getContextPath() + "/");
-			response.addCookie(cookie);
-		}
-
-		if (StringUtils.isEmpty(username)
-				|| StringUtils.isEmpty(password)) {
-
+	public String toLogin(String username, String password,String remname, String rememberMe,
+			HttpServletResponse response,HttpServletRequest request, Model model,HttpSession session) {
+		//非空验证
+		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
 		}
+		
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(
-				username, password);
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		try {
-			//30天自动登录
-			if(!subject.isAuthenticated()&&"true".equals(rememberMe)){
-				token.setRememberMe(true);
-			}
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
 			session.setAttribute("_CURRENT_USER", user);
@@ -134,8 +87,6 @@ public class UserController {
 				cookie.setPath(request.getContextPath()+"/");
 				response.addCookie(cookie);
 			}
-			
-			
 			return "redirect:/";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo", "用户名或者密码错误");

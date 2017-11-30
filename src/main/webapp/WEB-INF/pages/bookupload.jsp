@@ -20,10 +20,12 @@
 	<div id="wrap">
 		<div class="center_content">
 			<div class="left_content">
+				<c:if test="${_CURRENT_USER.userInfo.score<10 }">
+					<span style="color:red;text-align:center">${shortOfScore}</span>
+				</c:if>
 				<form onsubmit="return checkForm()"
 					action="<%=request.getContextPath()%>/saveBookUpload.action"
 					method="POST" enctype="multipart/form-data">
-
 					<h1 id="tt">书籍上传</h1>
 					<table>
 						
@@ -113,7 +115,7 @@
                   <div class="home_cart_content">
                   3 x items | <span class="red">TOTAL: 100$</span>
                   </div>
-                  <a href="/search/toborrow" class="view_cart">view cart</a>
+                  <a href="/search/borrowed" class="view_cart">我的借阅</a>
               
               </div>
                        
