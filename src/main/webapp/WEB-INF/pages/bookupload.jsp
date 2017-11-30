@@ -62,7 +62,7 @@ function validate_img(a){
 								<span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">出版	社：</td>
+							<td class="tds">出版社：</td>
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
 								 />

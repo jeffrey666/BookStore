@@ -4,10 +4,12 @@ package cn.tarena.book.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,7 +39,7 @@ public class SearchController extends BaseController{
 	 */
 	
 	@RequestMapping("/search")
-	public String searchBooks(Book book,Model model,Integer currentPage){
+	public String searchBooks(@Valid Book book,BindingResult bindingResult, Model model,Integer currentPage){
 		if(book.getBookInfo()==null){
 			book.setBookInfo(new BookInfo());
 		}
