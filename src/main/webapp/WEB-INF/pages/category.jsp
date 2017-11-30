@@ -156,7 +156,11 @@
 					<div class="home_cart_content">
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
-					<a href="/search/toborrow" class="view_cart">view cart</a>
+<<<<<<< HEAD
+					<a href="/search/toborrow" class="view_cart">已借书籍</a>
+=======
+					<a href="/search/borrowed" class="view_cart">我的借阅</a>
+>>>>>>> master
 
 				</div>
 
@@ -182,28 +186,28 @@
 							src="${app}/staticfile/images/bullet4.gif" alt="" title="" /></span>Promotions
 					</div>
 					<div class="new_prod_box">
-						<a href="details.html">product name</a>
+						<a href="#">product name</a>
 						<div class="new_prod_bg">
 
-							<a href="details.html"><img
+							<a href="#"><img
 								src="${app}/staticfile/images/thumb1.gif" alt="" title=""
 								class="thumb" border="0" /></a>
 						</div>
 					</div>
 
 					<div class="new_prod_box">
-						<a href="details.html">product name</a>
+						<a href="#">product name</a>
 						<div class="new_prod_bg">
-							<a href="details.html"><img
+							<a href="#"><img
 								src="${app}/staticfile/images/thumb2.gif" alt="" title=""
 								class="thumb" border="0" /></a>
 						</div>
 					</div>
 
 					<div class="new_prod_box">
-						<a href="details.html">product name</a>
+						<a href="#">product name</a>
 						<div class="new_prod_bg">
-							<a href="details.html"><img
+							<a href="#"><img
 								src="${app}/staticfile/images/thumb3.gif" alt="" title=""
 								class="thumb" border="0" /></a>
 						</div>
