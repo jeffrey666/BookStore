@@ -51,7 +51,7 @@ public class VerifyCode {
 		    p.rotate(-theta*Math.PI/180,i*20+8, height-3);
 		  }
 		  //画干扰线
-		  for(int i=0;i<len;i++){
+		  for(int i=0;i<len+2;i++){
 			  p.setColor(new Color(getRandom(0,150),getRandom(0,150),getRandom(0,150)));
 			  p.drawLine(getRandom(0,120),getRandom(0,30),getRandom(0,120), getRandom(0,30));
 		  }
