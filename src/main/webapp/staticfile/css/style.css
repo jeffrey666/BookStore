@@ -10,6 +10,11 @@ color:#000000;
 a{
 color:#f8981d;
 }
+
+#view_cart{
+	text-align:center;
+}
+
 .clear{
 clear:both;
 }
@@ -595,7 +600,7 @@ color:#afaeaf;
 
 
 
-/*搜索条*/
+/*鎼滅储鏉�/
 #content #search_div,#content #search_div2,#content #search_div3{
 	border: 1px solid #D4D4D4;
 	padding:8px;
