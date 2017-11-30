@@ -9,7 +9,7 @@ function checkForm(){
 	var res4=checkNull("bookInfo.pubDate","书籍出版日期不能为空");
 	var res5=checkNull("picFile","上传图片不能为空!");
 	var res6=checkdescripe("bookInfo.descripe","书籍简介不能为空!");
-	return res4 && res1 && res2 && res3 && res5 && res6 && res7;
+	return res4 && res1 && res2 && res3 && res5 && res6;
 }
 function checkdescripe(name,msg){
 	var a=$("#descripe").val().trim();
@@ -27,8 +27,6 @@ function setDescripe(name,msg){
 	$oSpan.html(msg);
 	$oSpan.css("color","red");
 }
-
-
 
 
 

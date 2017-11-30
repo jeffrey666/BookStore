@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserInfoService userInfoService;
-
+	
 	@Autowired
 	private MailUtils mailUtils;
 
@@ -54,17 +54,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updatePsw(String userId, String newPassword,
-			String username) {
-		return userMapper.updatePsw(userId,
-				MD5Tool.getMD5(username, newPassword));
+	public int updatePsw(String userId, String newPassword) {
+		return userMapper.updatePsw(userId, newPassword);
 	}
 
 	@Override
-	public User findUserByIdAndPsw(User user, String username) {
-
-		user.setPassword(
-				MD5Tool.getMD5(username, user.getPassword()));
+	public User findUserByIdAndPsw(User user) {
 
 		return userMapper.findUserByIdAndPsw(user);
 	}
@@ -124,13 +119,8 @@ public class UserServiceImpl implements UserService {
 		userInfo.setUserInfoId(ve.getUserId());
 		userInfo.setEmail(ve.getEmail());
 		userInfoService.update(userInfo);
-
+		
 		return ve.getEmail();
-	}
-
-	@Override
-	public int findUserScore(String userId) {
-		return userMapper.findUserScore(userId);
 	}
 
 }

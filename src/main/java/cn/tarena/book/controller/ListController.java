@@ -16,7 +16,6 @@ public class ListController {
 	@Autowired
 	private BookListService bookListService;
 	
-	//借阅量榜单拦截
 	@RequestMapping("/findlist")
 	public String list(Integer currentPage,Integer pageSize,HttpSession session){
 		

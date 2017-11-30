@@ -25,7 +25,7 @@ public interface BookMapper {
 
 	public void deleteMyBookInfo(String[] ids);
 	
-	@Update("UPDATE book SET state='0' WHERE book_id=#{bookId}")
+	@Update("UPDATE book SET state='1' WHERE book_id=#{bookId}")
 	public void updateBookState(String bookId);
 	
 	@Update("UPDATE book_info SET return_date=#{date} WHERE book_info_id=#{bookId}")

@@ -16,6 +16,7 @@ import cn.tarena.book.pojo.History;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.utils.PageBean;
 @Service
+@Transactional
 public class SearchServiceImpl implements SearchService {
 	
 	@Autowired

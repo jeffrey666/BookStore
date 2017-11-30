@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @ActiveProfiles("163")
 public class MailUtils {
-	
+
 	@Autowired
 	private JavaMailSender mailSender; //自动注入的Bean
 

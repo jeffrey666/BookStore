@@ -1,19 +1,18 @@
 package cn.tarena.book.controller;
 
-
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.io.IOException;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,24 +26,25 @@ import cn.tarena.book.pojo.Book;
 import cn.tarena.book.pojo.User;
 import cn.tarena.book.pojo.UserInfo;
 
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tarena.book.pojo.User;
-import cn.tarena.book.pojo.UserInfo;
 import cn.tarena.book.service.UserInfoService;
 import cn.tarena.book.service.UserService;
-import cn.tarena.book.user.annotation.RequireRole;
-import cn.tarena.book.user.utils.MD5Tool;
 import cn.tarena.book.user.utils.StringTool;
 import cn.tarena.book.utils.VerifyCode;
 
@@ -90,40 +90,66 @@ public class UserController {
 	//用户的登录
 	@RequestMapping("/tologin.action")
 
-	public String toLogin(String username, String password,String remname, String rememberMe,
-			HttpServletResponse response,HttpServletRequest request, Model model,HttpSession session) {
-		//非空验证
-		if (StringUtils.isEmpty(username)|| StringUtils.isEmpty(password)) {
+	public String toLogin(String username, String password,
+			String remname, String rememberMe,
+			HttpServletResponse response,
+			HttpServletRequest request, Model model,
+			HttpSession session) {
+
+		if ("true".equals(remname)) {
+			Cookie cookie;
+			try {
+				cookie = new Cookie("remname",
+						URLEncoder.encode(username, "utf-8"));
+				cookie.setMaxAge(3600 * 24 * 30);
+				cookie.setPath(request.getContextPath() + "/");
+				response.addCookie(cookie);
+			} catch (UnsupportedEncodingException e) {
+
+			}
+		} else {
+			Cookie cookie = new Cookie("remname", "");
+			cookie.setMaxAge(0);
+			cookie.setPath(request.getContextPath() + "/");
+			response.addCookie(cookie);
+		}
+
+		if (StringUtils.isEmpty(username)
+				|| StringUtils.isEmpty(password)) {
+
 			model.addAttribute("errorInfo", "用户名或密码不能为空");
 			return "/login";
 		}
-		
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		UsernamePasswordToken token = new UsernamePasswordToken(
+				username, password);
 		try {
+			//30天自动登录
+			if(!subject.isAuthenticated()&&"true".equals(rememberMe)){
+				token.setRememberMe(true);
+			}
 			subject.login(token);
 			User user = (User) subject.getPrincipal();
 			session.setAttribute("_CURRENT_USER", user);
 			//实现记住用户名
-			if ("true".equals(remname)) {
+			if("true".equals(remname)){
 				Cookie cookie;
 				try {
-					cookie = new Cookie("remname", URLEncoder
-							.encode(username, "utf-8"));
-					cookie.setMaxAge(3600 * 24 * 30);
-					cookie.setPath(
-							request.getContextPath() + "/");
+					cookie = new Cookie("remname",URLEncoder.encode(username, "utf-8"));
+					cookie.setMaxAge(3600*24*30);
+					cookie.setPath(request.getContextPath()+"/");
 					response.addCookie(cookie);
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				}
-			} else {
-				Cookie cookie = new Cookie("remname", "");
+			}else{
+				Cookie cookie = new Cookie("remname","");
 				cookie.setMaxAge(0);
-				cookie.setPath(request.getContextPath() + "/");
+				cookie.setPath(request.getContextPath()+"/");
 				response.addCookie(cookie);
 			}
-
+			
+			
 			return "redirect:/";
 		} catch (AuthenticationException e) {
 			model.addAttribute("errorInfo", "用户名或者密码错误");
@@ -134,8 +160,7 @@ public class UserController {
 
 	//用户退出登录
 	@RequestMapping("tologout")
-	public String tologout(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String tologout(HttpServletRequest request,HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.isAuthenticated()) {
 			subject.logout();
@@ -155,26 +180,22 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userInfo/Left.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoLeft() {
 		return "/userinfo/left";
 	}
 
 	@RequestMapping("/user/userInfo/Main.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoMain() {
 		return "/userinfo/main";
 	}
 
 	@RequestMapping("/user/userinfo.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String userinfoAction() {
 
 		return "/userinfo/fmain_user_info";
 	}
 
 	@RequestMapping("/user/toUserInfoUpdate.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String toUserInfoUpdate(HttpSession session) {
 
 		//更新session中的登录user信息
@@ -189,24 +210,22 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/userinfo/update")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String UserInfoUpdate(User user,
 			HttpSession session) {
 
 		userInfoService.updateExceptforEmail(user.getUserInfo());
-
+		
+		
 		//更新session中的登录user的userinfo
 		User _CURRENT_USER = (User) session
 				.getAttribute("_CURRENT_USER");
-		UserInfo refreshUserInfo = userInfoService
-				.findByUserInfoId(_CURRENT_USER.getUserInfoId());
+		UserInfo refreshUserInfo =  userInfoService.findByUserInfoId(_CURRENT_USER.getUserInfoId());
 		_CURRENT_USER.setUserInfo(refreshUserInfo);
 
-		return "redirect:/";
+		return "/userinfo/main";
 	}
 
 	@RequestMapping("/user/toChangePassword.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String toChangePassword(HttpSession session,
 			Model model) {
 
@@ -219,13 +238,9 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/password/update")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String passwordUpdate(String user_id, String old_psw,
 			String new_password, Model model,
 			HttpSession session) {
-
-		User _CURRENT_USER = (User) session
-				.getAttribute("_CURRENT_USER");
 
 		//旧密码是否正确？
 		if (StringTool.isEmpty(user_id)
@@ -237,8 +252,7 @@ public class UserController {
 		User u = new User();
 		u.setId(user_id);
 		u.setPassword(old_psw);
-		User user = userService.findUserByIdAndPsw(u,
-				_CURRENT_USER.getUsername());
+		User user = userService.findUserByIdAndPsw(u);
 		if (user == null) {
 			model.addAttribute("errMsg", "旧密码输入错误，请重试");
 			model.addAttribute("user_id", user_id);
@@ -253,19 +267,19 @@ public class UserController {
 		}
 
 		// 数据库更新密码
+		//TODO 查看这里的rowsAffected有没有值
 		int rowsAffected = userService.updatePsw(user_id,
-				new_password, _CURRENT_USER.getUsername());
+				new_password);
 
 		//更改完成后 session里面的密码要改成新的
+		User _CURRENT_USER = (User) session
+				.getAttribute("_CURRENT_USER");
+		_CURRENT_USER.setPassword(new_password);
 
-		_CURRENT_USER.setPassword(MD5Tool.getMD5(
-				_CURRENT_USER.getUsername(), new_password));
-
-		return "redirect:/";
+		return "redirect:/user/userInfo/Main.action";
 	}
 
 	@RequestMapping("/user/wantChangeEmail.action")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	@ResponseBody
 	public String wantChangeEmail(String user_id,
 			String new_email) {
@@ -276,7 +290,6 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/verifyEmail")
-	@RequireRole(RequireRole.NORMAL_ROLE)
 	public String verifyEmail(String verify_email_id,
 			Model model, HttpSession session) {
 

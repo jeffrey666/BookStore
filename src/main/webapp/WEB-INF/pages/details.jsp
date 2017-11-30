@@ -58,10 +58,10 @@
 							<div class="price">
 								<strong>书籍状态:</strong>
 								<c:if test="${book.state==1}">
-									<span style="color: red">借出</span>
+									<span style="color: red">不可借阅</span>
 								</c:if>
 								<c:if test="${book.state==0}">
-									<span style="color: blue">可借</span>
+									<span style="color: blue">可借阅</span>
 								</c:if>
 							</div>
 
@@ -163,7 +163,7 @@
 					<div class="home_cart_content">
 						3 x items | <span class="red">TOTAL: 100$</span>
 					</div>
-					<a href="/search/borrowed" class="view_cart">我的借阅</a>
+					<a href="/toborrowCart" class="view_cart">view cart</a>
 
 				</div>
 

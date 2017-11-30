@@ -19,7 +19,7 @@
 					style="font-size: 15px; color: #F00"> 当前借阅图书</div>
 
 				<div class="feat_prod_box_details">
-					
+
 					<table class="cart_table1" align="center">
 						<tr class="cart_title">
 							<td>序号</td>
@@ -31,14 +31,11 @@
 							<td width="80px">出版日期</td>
 							<td>借出时间</td>
 							<td>归还时间</td>
-							<td>归还</td>
 						</tr>
 
 				 	<c:forEach items="${books}" var="b" varStatus="v">
 							<tr>
-								
 								<td>${v.index+1}</td>
-
 								<td><a><img src="${b.bookInfo.imgurl}" alt="暂无图片"
 										width="70px" height="100px" /> </a></td>
 								<td>${b.bookName}</td>
@@ -53,13 +50,13 @@
 								<td width="50"><fmt:formatDate value="${b.bookInfo.pubDate }" pattern="yyyy-MM-dd"/></td>
 								<td><fmt:formatDate value="${b.bookInfo.borrowDate }" pattern="yyyy-MM-dd" /></td>
 								<td><fmt:formatDate value="${b.bookInfo.returnDate }" pattern="yyyy-MM-dd"/> </td>
-								<td>
-								<a href="${app }/return/return?bookId=${b.bookId}" class="checkout1">还书</a>
-								</td>
 							</tr>
 						</c:forEach>
 					</table>
-					<a href="#" class="continue" onclick="window.history.back();">&lt;back</a>
+					<a href="#" class="continue" onclick="window.history.back();">&lt;
+						back</a> <a href="${app }/lastTocart.action" class="checkout1">&lt;
+						last</a> <a href="${app }/nextTocart.action" class="checkout">next
+						&gt;</a>
 				</div>
 
 				<div class="clear"></div>
