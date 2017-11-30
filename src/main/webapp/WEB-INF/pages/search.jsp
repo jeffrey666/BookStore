@@ -12,10 +12,26 @@
 <script src="${app}/staticfile/js/jquery-1.6.2.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
+		//跳转到上一页
+		$("#beforePage").click(function(){
+			var pubDate = $("#pubDate").val();
+			var href = $("#beforePage").attr("href")+"&bookInfo.pubDate="+pubDate;
+			$("#beforePage").attr("href", href);
+		});
+		//跳转到下一页
+		$("#afterPage").click(function(){
+			var pubDate = $("#pubDate").val();
+			var href = $("#afterPage").attr("href")+"&bookInfo.pubDate="+pubDate;
+			$("#afterPage").attr("href", href);
+		});
 		//跳到指定页面
 		$("#changePageNum").click(function(){
 			var totalPages = $("#totalPageNum").val();
 			var pageNum = $("#changeNum").val();
+			var bookName = $("#bookName").val();
+			var category = $("#category").val();
+			var author = $("#author").val();
+			var pubDate = $("#pubDate").val();
 			if(!/^[1-9]\d*$/.test(pageNum)){
 				alert("请输入正确的页数");
 				return;
@@ -24,7 +40,7 @@
 				alert("请输入正确的页数");
 				return;
 			}
-			$("#changePageNum").attr("href","${app}/search/search?&currentPage="+pageNum);
+			$("#changePageNum").attr("href","${app}/search/search?currentPage="+pageNum+"&bookName="+bookName+"&bookInfo.category="+category+"&bookInfo.author="+author+"&bookInfo.pubDate="+pubDate);
 		});	
 	});
 </script>
@@ -60,9 +76,9 @@
             
 			<form method="post" action="/search/search">
 				<div id="search_div">
-				<span class="input_span">书名：<input type="text" name="bookName" value="${book.bookName }"/></span>
+				<span class="input_span">书名：<input id="bookName" type="text" name="bookName" value="${book.bookName }"/></span>
 				<span class="input_span">书籍种类：
-				<select name="bookInfo.category"  >
+				<select id="category" name="bookInfo.category"  >
 					<option >无选择</option>
 					<option value="文学类" <c:if test="${book.bookInfo.category eq '文学类'}">selected="selected"</c:if> >文学类</option>
 					<option value="小说类" <c:if test="${book.bookInfo.category eq '小说类'}">selected="selected"</c:if> >小说类</option>
@@ -75,10 +91,10 @@
 				</span>
 				</div>
 				<div id="search_div2">
-				<span class="input_span">作者：<input type="text" name="bookInfo.author" value="${book.bookInfo.author }"/></span>
+				<span class="input_span">作者：<input id="author" type="text" name="bookInfo.author" value="${book.bookInfo.author }"/></span>
 				</div>
 				<div id="search_div3">
-				<span class="input_span">书籍出版日期年限：<input type="date" name="bookInfo.pubDate" value='<fmt:formatDate value="${book.bookInfo.pubDate }" pattern="yyyy-MM-dd"/>'/></span>
+				<span class="input_span">书籍出版日期年限：<input id="pubDate" type="date" name="bookInfo.pubDate" value='<fmt:formatDate value="${book.bookInfo.pubDate }" pattern="yyyy-MM-dd"/>'/></span>
 				<span class="input_span"><input type="submit" value="查询"></span>
 				</div>
 			</form>
@@ -107,21 +123,20 @@
 
             <div class="pagination">
             <c:if test="${pageBeans!=null }">
+            <span >共${pageBeans.totalPage }页搜索结果   </span>
             <span class="disabled">
-            	<c:if test="${pageBeans.currentPage==1}"><a href="#"><<</a></c:if>
+            	<c:if test="${pageBeans.currentPage==1}"><a href="#">上一页</a></c:if>
             </span>
-            
-            	<c:if test="${pageBeans.currentPage>1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage-1}"><<</a></c:if>
+            	<c:if test="${pageBeans.currentPage>1}">
+            	<a id="beforePage" href="${app}/search/search?currentPage=${pageBeans.currentPage-1}&bookName=${book.bookName }&bookInfo.category=${book.bookInfo.category}&bookInfo.author=${book.bookInfo.author }">上一页</a></c:if>
             	<input id="totalPageNum" value="${pageBeans.totalPage }" type="hidden"  />
-            	<c:forEach begin="1" end="${pageBeans.totalPage }" step="1" var="pageNum">
-            		<a	href="${app}/search/search?currentPage=${pageNum}">${pageNum }</a>
-            	</c:forEach>
-            	<c:if test="${pageBeans.isMore==1}"><a href="${app}/search/search?currentPage=${pageBeans.currentPage+1}">>></a> </c:if>
-
-            <span >
+            	<c:if test="${pageBeans.isMore==1}"><a id="afterPage" href="${app}/search/search?currentPage=${pageBeans.currentPage+1}&bookName=${book.bookName }&bookInfo.category=${book.bookInfo.category}&bookInfo.author=${book.bookInfo.author }">下一页</a> </c:if>
+            	<c:if test="${pageBeans.isMore==0}"><a href="#">上一页</a></c:if>
+            <div >
+            	<br />
 				转到第 <input id="changeNum" type="text" name="currentPage"
 				value="${pageBeans.currentPage}" />页<a id="changePageNum" href="">GO</a>
-		    </span>
+		    </div>
 
             
             </c:if>
@@ -134,31 +149,13 @@
         </div><!--end of left content-->
         
         <div class="right_content">
-        	<div class="languages_box">
-            <span class="red">Languages:</span>
-            <a href="#"><img src="${app}/staticfile/images/gb.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="${app}/staticfile/images/fr.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="${app}/staticfile/images/de.gif" alt="" title="" border="0" /></a>
-            </div>
-                <div class="currency">
-                <span class="red">Currency: </span>
-                <a href="#">GBP</a>
-                <a href="#">EUR</a>
-                <a href="#"><strong>USD</strong></a>
-                </div>
-                
-                
               <div class="cart">
-                  <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My cart</div>
-                  <div class="home_cart_content">
-                  3 x items | <span class="red">TOTAL: 100$</span>
-                  </div>
-                  <a href="/search/toborrow" class="view_cart">view cart</a>
-              
-              </div>
-                       
-            	
-        
+
+				<div id="view_cart">
+					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+				</div>
+			</div>
+
         
              <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/bullet3.gif" alt="" title="" /></span>About Our Store</div> 
              <div class="about">

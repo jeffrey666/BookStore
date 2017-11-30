@@ -43,7 +43,9 @@
 								<span></span></td>
 						</tr>
 						<tr>
-							<td class="tds">书籍出版社：</td>
+
+							<td class="tds">出版社：</td>
+
 							<td><input type="text" name="bookInfo.bookPub"
 								onblur="checkNull('bookInfo.bookPub','出版社不能为空!')"
 								 />
@@ -94,28 +96,13 @@
 			<!--end of left content-->
 
 			<div class="right_content">
-        	<div class="languages_box">
-            <span class="red">Languages:</span>
-            <a href="#" class="selected"><img src="${app}/staticfile/images/gb.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/fr.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/de.gif" alt="" title="" border="0" /></a>
-            </div>
-                <div class="currency">
-                <span class="red">Currency: </span>
-                <a href="#">GBP</a>
-                <a href="#">EUR</a>
-                <a href="#" class="selected">USD</a>
-                </div>
-                
-                
-              <div class="cart">
-                  <div class="title"><span class="title_icon"><img src="${app}/staticfile/images/cart.gif" alt="" title="" /></span>My cart</div>
-                  <div class="home_cart_content">
-                  3 x items | <span class="red">TOTAL: 100$</span>
-                  </div>
-                  <a href="/search/toborrow" class="view_cart">view cart</a>
-              
-              </div>
+
+             <div class="cart">
+				<div id="view_cart">
+					<span><a href="/search/toborrow" style="text-align:center;font-family:微软雅黑;font-size:22px">我的借阅</a></span>
+				</div>
+			</div>
+
                        
             	
         

@@ -30,8 +30,8 @@ spring:
       force: true
     multipart:
       enabled: true
-      max-file-size: 20MB
-      max-request-size: 20MB    
+      max-file-size: 1MB
+      max-request-size: 1MB    
 mybatis:
   type-aliases-package: cn.tarena.book.pojo
   config-location: classpath:/mybatis/mybatis-config.xml
