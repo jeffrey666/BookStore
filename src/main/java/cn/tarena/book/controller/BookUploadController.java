@@ -191,7 +191,7 @@ public class BookUploadController  extends BaseController{
 			nCell.setCellStyle(this.Text(wb, nStyle, font));
 			}else{
 				nCell = nRow.createCell(colNo++);
-				nCell.setCellValue("以借");
+				nCell.setCellValue("已借");
 				nCell.setCellStyle(this.Text(wb, nStyle, font));
 			}
 				
