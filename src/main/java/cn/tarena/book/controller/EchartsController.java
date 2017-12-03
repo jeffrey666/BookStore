@@ -36,25 +36,6 @@ public class EchartsController {
     }
     @RequestMapping("/GetAllData")
     @ResponseBody
-    public String demo5(){
-         /*销量*/
-        Integer[] salesVolume = {10,100,20,56,35,80};
-        /*营业额*/
-        double[] bussinessVolume = {10*10,100*8.5,20*9.5,56*9,35*9.5,80*9};
-        /*横轴, 月份数据*/
-        String[] months = {"1","2","3","4","5","6"};
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("salesVolume", salesVolume);
-        map.put("bussinessVolume",bussinessVolume);
-        map.put("months", months);
-
-        String data = JSON.toJSONString(map);
-        System.out.println(data);
-        return data;
-    }
-    @RequestMapping("/GetAllData1")
-    @ResponseBody
     public String demo6(){
         List<Book> books = chartService.findAll();
 
