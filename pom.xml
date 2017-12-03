@@ -1,5 +1,5 @@
-  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.tadu</groupId>
 	<artifactId>jieshu</artifactId>
@@ -7,8 +7,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jieshu Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
-
 
 	<!--springboot的全部的jar包文件都是通过parent定义 -->
 	<parent>
@@ -29,8 +27,6 @@
 		<shiro.version>1.2.3</shiro.version>
 
 	</properties>
-
-
 
 	<dependencies>
 
@@ -63,10 +59,6 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${aspectjrt.version}</version>
 		</dependency>
-
-		<!-- 实现图片上传功能 -->
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-thymeleaf</artifactId> 
-			</dependency> -->
 		<!--表示引入web的配置 引入该jar包才能实现浏览器访问 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,13 +84,8 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
-		<!-- 配置c3p0数据源 -->
-		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency>
+
+
 
 		<!--整合mybatis -->
 		<dependency>
@@ -107,15 +94,13 @@
 			<version>1.1.1</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>com.github.miemiedev</groupId> <artifactId>mybatis-paginator</artifactId> 
-			<version>1.2.15</version> </dependency> -->
 		<!--分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>${pagehelper.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.github.jsqlparser</groupId>
 			<artifactId>jsqlparser</artifactId>
@@ -133,12 +118,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- solr相关 -->
-		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-solrj</artifactId>
-			<version>4.10.3</version>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -146,13 +125,11 @@
 			<version>2.3</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.3.1</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -160,13 +137,11 @@
 			<version>4.3</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
 			<version>4.3.1</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.noggit</groupId>
@@ -174,13 +149,11 @@
 			<version>0.5</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.codehaus.woodstox</groupId>
 			<artifactId>wstx-asl</artifactId>
 			<version>3.2.7</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
@@ -212,18 +185,14 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.16</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.20</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.16</version>
-		</dependency>
+
 
 		<!-- 引入struts帮助文件上传 -->
 		<!-- <dependency> <groupId>struts</groupId> <artifactId>struts</artifactId> 
@@ -250,27 +219,27 @@
 			<version>0.9.1.2</version>
 		</dependency>
 		<!-- spring-sercurity权限控制框架 -->
-		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework.security</groupId> 
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId>
+			</dependency> <dependency> <groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId> </dependency> -->
 		<!-- poi -->
 		<dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.9</version>
-        </dependency>
-        
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
 
-        <!-- 邮件发送 -->
-        <dependency>  
-           <groupId>org.springframework.boot</groupId>  
-           <artifactId>spring-boot-starter-mail</artifactId>  
-        </dependency>
+
+		<!-- 邮件发送 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 
 
 	</dependencies>

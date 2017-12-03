@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.tarena.book.mapper.ChartMapper">
+
+	<resultMap id="chartRM" type="Book" autoMapping="true">
+		<association property="bookInfo" javaType="BookInfo" autoMapping="true">
+		</association>
+	</resultMap>
+	<select id="findAll" resultMap="chartRM">
+		select * from book b,book_info bi
+		where b.book_id = bi.book_info_id order by bi.borrow_count desc limit 6
+	</select>
+</mapper>
