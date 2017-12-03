@@ -18,7 +18,7 @@
     function showchart(){
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-        var url = '${pageContext.request.contextPath}/GetAllData1';
+        var url = '${pageContext.request.contextPath}/GetAllData';
         $.getJSON(url).done(function(json) {
             // 2.获取数据
             borrowVolume = json.borrowVolume;//借阅量
